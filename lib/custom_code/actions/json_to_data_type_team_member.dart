@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 
 Future<List<TeamMemberStruct>?> jsonToDataTypeTeamMember(
     List<dynamic>? jsonArray) async {
-  // Add your function code here!
   List<TeamMemberStruct> listOfStruct = [];
   for (var item in jsonArray!) {
     listOfStruct.add(TeamMemberStruct.fromMap(item));
