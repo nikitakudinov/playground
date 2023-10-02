@@ -272,6 +272,24 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                           ),
                         ),
                       ),
+                    Builder(
+                      builder: (context) {
+                        final sss = FFAppState().teamMembers.toList();
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemCount: sss.length,
+                          itemBuilder: (context, sssIndex) {
+                            final sssItem = sss[sssIndex];
+                            return Text(
+                              sssItem.email,
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ],
                 ),
                 Padding(

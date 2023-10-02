@@ -123,7 +123,10 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
-                                  teamMembersListItem.nickname,
+                                  valueOrDefault<String>(
+                                    teamMembersListItem.nickname,
+                                    '0',
+                                  ),
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
