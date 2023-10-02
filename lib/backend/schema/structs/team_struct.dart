@@ -15,7 +15,7 @@ class TeamStruct extends FFFirebaseStruct {
     String? tag,
     String? owner,
     String? logo,
-    String? countrie,
+    String? country,
     String? flag,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
@@ -23,7 +23,7 @@ class TeamStruct extends FFFirebaseStruct {
         _tag = tag,
         _owner = owner,
         _logo = logo,
-        _countrie = countrie,
+        _country = country,
         _flag = flag,
         super(firestoreUtilData);
 
@@ -58,11 +58,11 @@ class TeamStruct extends FFFirebaseStruct {
   set logo(String? val) => _logo = val;
   bool hasLogo() => _logo != null;
 
-  // "countrie" field.
-  String? _countrie;
-  String get countrie => _countrie ?? '';
-  set countrie(String? val) => _countrie = val;
-  bool hasCountrie() => _countrie != null;
+  // "country" field.
+  String? _country;
+  String get country => _country ?? '';
+  set country(String? val) => _country = val;
+  bool hasCountry() => _country != null;
 
   // "flag" field.
   String? _flag;
@@ -76,7 +76,7 @@ class TeamStruct extends FFFirebaseStruct {
         tag: data['tag'] as String?,
         owner: data['owner'] as String?,
         logo: data['logo'] as String?,
-        countrie: data['countrie'] as String?,
+        country: data['country'] as String?,
         flag: data['flag'] as String?,
       );
 
@@ -89,7 +89,7 @@ class TeamStruct extends FFFirebaseStruct {
         'tag': _tag,
         'owner': _owner,
         'logo': _logo,
-        'countrie': _countrie,
+        'country': _country,
         'flag': _flag,
       }.withoutNulls;
 
@@ -115,8 +115,8 @@ class TeamStruct extends FFFirebaseStruct {
           _logo,
           ParamType.String,
         ),
-        'countrie': serializeParam(
-          _countrie,
+        'country': serializeParam(
+          _country,
           ParamType.String,
         ),
         'flag': serializeParam(
@@ -152,8 +152,8 @@ class TeamStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        countrie: deserializeParam(
-          data['countrie'],
+        country: deserializeParam(
+          data['country'],
           ParamType.String,
           false,
         ),
@@ -175,13 +175,13 @@ class TeamStruct extends FFFirebaseStruct {
         tag == other.tag &&
         owner == other.owner &&
         logo == other.logo &&
-        countrie == other.countrie &&
+        country == other.country &&
         flag == other.flag;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([id, name, tag, owner, logo, countrie, flag]);
+      const ListEquality().hash([id, name, tag, owner, logo, country, flag]);
 }
 
 TeamStruct createTeamStruct({
@@ -190,7 +190,7 @@ TeamStruct createTeamStruct({
   String? tag,
   String? owner,
   String? logo,
-  String? countrie,
+  String? country,
   String? flag,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
@@ -203,7 +203,7 @@ TeamStruct createTeamStruct({
       tag: tag,
       owner: owner,
       logo: logo,
-      countrie: countrie,
+      country: country,
       flag: flag,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,

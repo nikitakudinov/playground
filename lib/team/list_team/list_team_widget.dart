@@ -235,7 +235,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                                 ),
                                               ),
                                               Text(
-                                                teamsListItem.countrie,
+                                                teamsListItem.country,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall,
