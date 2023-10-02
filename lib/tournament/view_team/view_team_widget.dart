@@ -128,7 +128,8 @@ class _ViewTeamWidgetState extends State<ViewTeamWidget> {
               ),
               Builder(
                 builder: (context) {
-                  final teamMembersList = FFAppState().teamMembers.toList();
+                  final teamMembersList =
+                      (_model.apiResultupm?.jsonBody ?? '').toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
@@ -143,14 +144,20 @@ class _ViewTeamWidgetState extends State<ViewTeamWidget> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(3.0),
                             child: Image.network(
-                              teamMembersListItem.avatar,
+                              getJsonField(
+                                teamMembersListItem,
+                                r'''$.Avatar''',
+                              ),
                               width: 40.0,
                               height: 40.0,
                               fit: BoxFit.cover,
                             ),
                           ),
                           Text(
-                            teamMembersListItem.nickname,
+                            getJsonField(
+                              teamMembersListItem,
+                              r'''$.Nickname''',
+                            ).toString(),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ],
