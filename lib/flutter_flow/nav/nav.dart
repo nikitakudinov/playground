@@ -104,6 +104,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             name: params.getParam('name', ParamType.String),
             tag: params.getParam('tag', ParamType.String),
             logo: params.getParam('logo', ParamType.String),
+            country: params.getParam('country', ParamType.String),
+            flag: params.getParam('flag', ParamType.String),
           ),
         ),
         FFRoute(
