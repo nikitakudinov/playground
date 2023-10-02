@@ -375,6 +375,10 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                               getCurrentTimestamp.toString(),
                                           logo: _model.uploadedFileUrl,
                                           owner: currentUserUid,
+                                          country: _model
+                                              .countryPickerModel.selectedName,
+                                          flag: _model
+                                              .countryPickerModel.selectedFlag,
                                         );
                                         if ((_model.apiResultp5p?.succeeded ??
                                             true)) {

@@ -223,7 +223,24 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
-                                            children: [],
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(2.0),
+                                                child: Image.network(
+                                                  teamsListItem.flag,
+                                                  width: 24.0,
+                                                  height: 16.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              Text(
+                                                teamsListItem.countrie,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall,
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),

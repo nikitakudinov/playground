@@ -128,6 +128,8 @@ class AddTeamCall {
     String? tag = '',
     String? logo = '',
     String? owner = '',
+    String? country = '',
+    String? flag = '',
   }) {
     final ffApiRequestBody = '''
 {
@@ -136,7 +138,9 @@ class AddTeamCall {
   "UpdatedAt": "${updatedAt}",
   "tag": "${tag}",
   "owner": "${owner}",
-  "logo": "${logo}"
+  "logo": "${logo}",
+  "country": "${country}",
+  "flag": "${flag}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addTeam',
