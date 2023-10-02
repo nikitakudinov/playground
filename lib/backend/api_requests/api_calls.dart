@@ -15,7 +15,7 @@ class GetTeamsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getTeams',
       apiUrl:
-          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team?fields=Id%2Cname%2Ctag%2Cowner%2Clogo&limit=25&shuffle=0&offset=0&nested%5BmembersRefs%5D%5Boffset%5D=0&nested%5BmembersRefs%5D%5Blimit%5D=25',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team?fields=Id%2Cname%2Ctag%2Cowner%2Clogo%2Ccountry%2Cflag&limit=25&shuffle=0&offset=0&nested%5BmembersRefs%5D%5Boffset%5D=0&nested%5BmembersRefs%5D%5Blimit%5D=25',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
@@ -39,14 +39,17 @@ class GetTeamsCall {
   static dynamic listId(dynamic response) => getJsonField(
         response,
         r'''$.list[:].Id''',
+        true,
       );
   static dynamic listname(dynamic response) => getJsonField(
         response,
         r'''$.list[:].name''',
+        true,
       );
   static dynamic listtag(dynamic response) => getJsonField(
         response,
         r'''$.list[:].tag''',
+        true,
       );
 }
 
