@@ -213,6 +213,62 @@ class GetTeamMembersListCall {
       cache: false,
     );
   }
+
+  static dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  static dynamic listTeams(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Teams''',
+        true,
+      );
+  static dynamic listEmail(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Email''',
+        true,
+      );
+  static dynamic listNickname(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Nickname''',
+        true,
+      );
+  static dynamic listFbUserRef(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].FbUserRef''',
+        true,
+      );
+  static dynamic listAvatar(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Avatar''',
+        true,
+      );
+  static dynamic listCountryName(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CountryName''',
+        true,
+      );
+  static dynamic listFlag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Flag''',
+        true,
+      );
+  static dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+        true,
+      );
+  static dynamic listCreatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CreatedAt''',
+        true,
+      );
+  static dynamic listUpdatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].UpdatedAt''',
+        true,
+      );
 }
 
 class GetTournamentsCall {

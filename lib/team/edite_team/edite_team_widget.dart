@@ -1,13 +1,11 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/user_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -50,22 +48,6 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
       setState(() {
         _model.imagePath = widget.logo;
       });
-      _model.apiResult1dc1 = await GetTeamMembersListCall.call(
-        teamID: widget.id,
-      );
-      if ((_model.apiResult1dc1?.succeeded ?? true)) {
-        _model.ccca = await actions.jsonToDataTypeTeamMember(
-          getJsonField(
-            (_model.apiResult1dc1?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
-        );
-        setState(() {
-          FFAppState().teamMembers =
-              _model.ccca!.toList().cast<TeamMemberStruct>();
-        });
-      }
     });
 
     _model.nameController ??= TextEditingController(text: widget.name);

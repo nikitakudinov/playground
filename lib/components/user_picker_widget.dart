@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -90,51 +91,84 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                 ),
               ],
             ),
-            Builder(
-              builder: (context) {
-                final teamMembersList = FFAppState().teamMembers.toList();
-                return ListView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: teamMembersList.length,
-                  itemBuilder: (context, teamMembersListIndex) {
-                    final teamMembersListItem =
-                        teamMembersList[teamMembersListIndex];
-                    return Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(3.0),
-                            child: Image.network(
-                              teamMembersListItem.avatar,
-                              width: 40.0,
-                              height: 40.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Column(
+            FutureBuilder<ApiCallResponse>(
+              future: GetTeamMembersListCall.call(
+                teamID: valueOrDefault<int>(
+                  widget.docId,
+                  0,
+                ),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: SpinKitChasingDots(
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 50.0,
+                      ),
+                    ),
+                  );
+                }
+                final squadGetTeamMembersListResponse = snapshot.data!;
+                return Builder(
+                  builder: (context) {
+                    final teamMembersList = getJsonField(
+                      squadGetTeamMembersListResponse.jsonBody,
+                      r'''$.list''',
+                    ).toList();
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: teamMembersList.length,
+                      itemBuilder: (context, teamMembersListIndex) {
+                        final teamMembersListItem =
+                            teamMembersList[teamMembersListIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 0.0, 0.0),
+                          child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  valueOrDefault<String>(
-                                    teamMembersListItem.nickname,
-                                    '0',
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(3.0),
+                                child: Image.network(
+                                  getJsonField(
+                                    teamMembersListItem,
+                                    r'''$.Avatar''',
                                   ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  width: 40.0,
+                                  height: 40.0,
+                                  fit: BoxFit.cover,
                                 ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        getJsonField(
+                                          teamMembersListItem,
+                                          r'''$.Nickname''',
+                                        ).toString(),
+                                        '0',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        );
+                      },
                     );
                   },
                 );
