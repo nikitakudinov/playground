@@ -354,11 +354,12 @@ class GetCountriesCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getCountries',
       apiUrl:
-          'http://37.139.36.167/api/v1/db/data/v1/database/Countries?fields=RuName%2CFlagLink48x36&limit=300&shuffle=0&offset=0',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Countries?fields=RuName%2CFlagLinkH24&limit=300&shuffle=0&offset=0',
       callType: ApiCallType.GET,
       headers: {
-        'xc-token': 'vdgJ3Duiy5c4nCQ2uvxqmffYmHK4GNAMr5RXdAmK',
         'accept': 'application/json',
+        'xc-auth': '0VJre1jJbOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
       },
       params: {},
       returnBody: true,
