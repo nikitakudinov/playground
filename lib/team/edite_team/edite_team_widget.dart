@@ -283,7 +283,10 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                           itemBuilder: (context, sssIndex) {
                             final sssItem = sss[sssIndex];
                             return Text(
-                              sssItem.email,
+                              valueOrDefault<String>(
+                                sssItem.nickname,
+                                '0',
+                              ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
                             );
                           },
