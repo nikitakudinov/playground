@@ -251,47 +251,30 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           _model.textControllerValidator.asValidator(context),
                     ),
                   ),
-                  Builder(
-                    builder: (context) {
-                      final searchResults = getJsonField(
-                        (_model.apiResultxw1?.jsonBody ?? ''),
-                        r'''$.list''',
-                      ).toList();
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: searchResults.length,
-                        itemBuilder: (context, searchResultsIndex) {
-                          final searchResultsItem =
-                              searchResults[searchResultsIndex];
-                          return Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(5.0),
-                                child: Image.network(
-                                  getJsonField(
-                                    searchResultsItem,
-                                    r'''$.Avatar''',
-                                  ),
-                                  width: 40.0,
-                                  height: 40.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Text(
-                                getJsonField(
-                                  searchResultsItem,
-                                  r'''$.Nickname''',
-                                ).toString(),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5.0),
+                            child: Image.network(
+                              'https://picsum.photos/seed/964/600',
+                              width: 40.0,
+                              height: 40.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Text(
+                            'Hello World',
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
