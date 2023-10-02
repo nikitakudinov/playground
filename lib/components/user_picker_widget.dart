@@ -37,7 +37,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
     super.initState();
     _model = createModel(context, () => UserPickerModel());
 
-    _model.textController ??= TextEditingController();
+    _model.textController ??= TextEditingController(text: '2@2.ru');
   }
 
   @override
@@ -193,7 +193,10 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                         Duration(milliseconds: 2000),
                         () async {
                           _model.apiResult6dq = await GetUserByEmailCall.call(
-                            email: _model.textController.text,
+                            email: valueOrDefault<String>(
+                              _model.textController.text,
+                              '0',
+                            ),
                           );
 
                           setState(() {});
