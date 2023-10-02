@@ -152,7 +152,10 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(0.0),
                                   child: Image.network(
-                                    _model.selectedFlag,
+                                    valueOrDefault<String>(
+                                      _model.selectedFlag,
+                                      '0',
+                                    ),
                                     width: 32.0,
                                     height: 24.0,
                                     fit: BoxFit.fill,
