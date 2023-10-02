@@ -344,7 +344,7 @@ class UpdateTeamCall {
     return ApiManager.instance.makeApiCall(
       callName: 'updateTeam',
       apiUrl:
-          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team/11Team/${iD}',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team/${iD}',
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',
