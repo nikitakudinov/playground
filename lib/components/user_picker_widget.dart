@@ -251,65 +251,43 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           _model.textControllerValidator.asValidator(context),
                     ),
                   ),
-                  FutureBuilder<ApiCallResponse>(
-                    future: GetUserByEmailCall.call(
-                      email: _model.textController.text,
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: SpinKitChasingDots(
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 50.0,
-                            ),
-                          ),
-                        );
-                      }
-                      final listViewGetUserByEmailResponse = snapshot.data!;
-                      return Builder(
-                        builder: (context) {
-                          final searchResults = getJsonField(
-                            (_model.apiResultxw1?.jsonBody ?? ''),
-                            r'''$.list''',
-                          ).toList();
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: searchResults.length,
-                            itemBuilder: (context, searchResultsIndex) {
-                              final searchResultsItem =
-                                  searchResults[searchResultsIndex];
-                              return Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(5.0),
-                                    child: Image.network(
-                                      getJsonField(
-                                        searchResultsItem,
-                                        r'''$.Avatar''',
-                                      ),
-                                      width: 40.0,
-                                      height: 40.0,
-                                      fit: BoxFit.cover,
-                                    ),
+                  Builder(
+                    builder: (context) {
+                      final searchResults = getJsonField(
+                        (_model.apiResultxw1?.jsonBody ?? ''),
+                        r'''$.list''',
+                      ).toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: searchResults.length,
+                        itemBuilder: (context, searchResultsIndex) {
+                          final searchResultsItem =
+                              searchResults[searchResultsIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: Image.network(
+                                  getJsonField(
+                                    searchResultsItem,
+                                    r'''$.Avatar''',
                                   ),
-                                  Text(
-                                    getJsonField(
-                                      searchResultsItem,
-                                      r'''$.Nickname''',
-                                    ).toString(),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                ],
-                              );
-                            },
+                                  width: 40.0,
+                                  height: 40.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Text(
+                                getJsonField(
+                                  searchResultsItem,
+                                  r'''$.Nickname''',
+                                ).toString(),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ],
                           );
                         },
                       );
