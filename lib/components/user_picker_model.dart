@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'user_picker_widget.dart' show UserPickerWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,19 +12,14 @@ import 'package:provider/provider.dart';
 class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for TextField widget.
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Backend Call - API (getUserByEmail)] action in TextField widget.
-  ApiCallResponse? apiResultus8;
+  // Stores action output result for [Backend Call - API (getTeamMembersList)] action in userPicker widget.
+  ApiCallResponse? apiResult1dc;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
-  void dispose() {
-    textController?.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,10 +13,11 @@ export 'user_picker_model.dart';
 class UserPickerWidget extends StatefulWidget {
   const UserPickerWidget({
     Key? key,
-    required this.docId,
-  }) : super(key: key);
+    int? docId,
+  })  : this.docId = docId ?? 0,
+        super(key: key);
 
-  final int? docId;
+  final int docId;
 
   @override
   _UserPickerWidgetState createState() => _UserPickerWidgetState();
@@ -35,7 +37,28 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
     super.initState();
     _model = createModel(context, () => UserPickerModel());
 
-    _model.textController ??= TextEditingController();
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult1dc = await GetTeamMembersListCall.call(
+        teamID: widget.docId,
+      );
+      if ((_model.apiResult1dc?.succeeded ?? true)) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('1'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    });
   }
 
   @override
@@ -172,86 +195,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
             Container(
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                child: TextFormField(
-                  controller: _model.textController,
-                  onFieldSubmitted: (_) async {
-                    _model.apiResultus8 = await GetUserByEmailCall.call(
-                      email: _model.textController.text,
-                    );
-
-                    setState(() {});
-                  },
-                  autofocus: true,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: 'Label here...',
-                    labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                    hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).alternate,
-                        width: 2.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).primary,
-                        width: 2.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    errorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 2.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    focusedErrorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 2.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                  validator:
-                      _model.textControllerValidator.asValidator(context),
-                ),
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(3.0),
-                    child: Image.network(
-                      getJsonField(
-                        (_model.apiResultus8?.jsonBody ?? ''),
-                        r'''$.avatar''',
-                      ),
-                      width: 40.0,
-                      height: 40.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Text(
-                    getJsonField(
-                      (_model.apiResultus8?.jsonBody ?? ''),
-                      r'''$.nickname''',
-                    ).toString(),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                  ),
-                ],
               ),
             ),
           ],
