@@ -324,35 +324,27 @@ class GetTournamentsCall {
 
 class UpdateTeamCall {
   static Future<ApiCallResponse> call({
-    int? id,
+    int? iD,
     String? name = '',
     String? tag = '',
-    int? memberOfTournament,
     String? logo = '',
-    String? countryName = '',
+    String? country = '',
     String? flag = '',
-    String? owner = '',
-    List<String>? tournamentNameList,
+    String? updated = '',
   }) {
-    final tournamentName = _serializeList(tournamentNameList);
-
     final ffApiRequestBody = '''
 {
-  "Name": "${name}",
-  "Tag": "${tag}",
-  "MemberOfTournament": ${memberOfTournament},
-  "Logo": "${logo}",
-  "countryName": "${countryName}",
-  "flag": "${flag}",
-  "owner": "${owner}",
-  "TournamentName": [
-    ${tournamentName}
-  ]
+  "name": "${name}",
+  "UpdatedAt": "${updated}",
+  "tag": "${tag}",
+  "logo": "${logo}",
+  "country": "${country}",
+  "flag": "${flag}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'updateTeam',
       apiUrl:
-          'http://37.139.36.167/api/v1/db/data/v1/database/Team/views/Team/${id}',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team/11Team/${iD}',
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',

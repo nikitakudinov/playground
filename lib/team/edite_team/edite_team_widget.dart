@@ -428,7 +428,8 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                               name: _model.nameController.text,
                                               tag: _model.tagController.text,
                                               logo: _model.imagePath,
-                                              id: widget.id,
+                                              flag: widget.flag,
+                                              country: widget.country,
                                             );
                                             if ((_model
                                                     .apiResultp5p?.succeeded ??
