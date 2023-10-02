@@ -184,20 +184,20 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                       'EDITE_TEAM',
                                       queryParameters: {
                                         'name': serializeParam(
-                                          '',
-                                          ParamType.String,
-                                        ),
-                                        'tag': serializeParam(
-                                          '',
+                                          teamsListItem.name,
                                           ParamType.String,
                                         ),
                                         'logo': serializeParam(
-                                          '',
+                                          teamsListItem.logo,
                                           ParamType.String,
                                         ),
                                         'id': serializeParam(
-                                          0,
+                                          teamsListItem.id,
                                           ParamType.int,
+                                        ),
+                                        'tag': serializeParam(
+                                          teamsListItem.tag,
+                                          ParamType.String,
                                         ),
                                       }.withoutNulls,
                                     );
