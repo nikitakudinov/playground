@@ -234,11 +234,16 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
-                                              Text(
-                                                teamsListItem.country,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall,
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  teamsListItem.country,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium,
+                                                ),
                                               ),
                                             ],
                                           ),
