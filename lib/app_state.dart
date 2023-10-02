@@ -179,6 +179,18 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInTeamMemberIds(int _index, TeamMemberIdStruct _value) {
     _teamMemberIds.insert(_index, _value);
   }
+
+  SearchUserResultItemStruct _searchUserResultITem =
+      SearchUserResultItemStruct();
+  SearchUserResultItemStruct get searchUserResultITem => _searchUserResultITem;
+  set searchUserResultITem(SearchUserResultItemStruct _value) {
+    _searchUserResultITem = _value;
+  }
+
+  void updateSearchUserResultITemStruct(
+      Function(SearchUserResultItemStruct) updateFn) {
+    updateFn(_searchUserResultITem);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -192,21 +193,29 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           email: _model.textController.text,
                         );
                         if ((_model.apiResultxw1?.succeeded ?? true)) {
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('1'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
+                          setState(() {
+                            FFAppState().updateSearchUserResultITemStruct(
+                              (e) => e
+                                ..email = GetUserByEmailCall.email(
+                                  (_model.apiResultxw1?.jsonBody ?? ''),
+                                ).toString()
+                                ..nickname = GetUserByEmailCall.nickname(
+                                  (_model.apiResultxw1?.jsonBody ?? ''),
+                                ).toString()
+                                ..avatar = GetUserByEmailCall.avatar(
+                                  (_model.apiResultxw1?.jsonBody ?? ''),
+                                )
+                                ..countryName = GetUserByEmailCall.countryName(
+                                  (_model.apiResultxw1?.jsonBody ?? ''),
+                                ).toString()
+                                ..flag = GetUserByEmailCall.flag(
+                                  (_model.apiResultxw1?.jsonBody ?? ''),
+                                )
+                                ..id = GetUserByEmailCall.id(
+                                  (_model.apiResultxw1?.jsonBody ?? ''),
+                                ),
+                            );
+                          });
                         }
 
                         setState(() {});
@@ -262,14 +271,14 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(5.0),
                             child: Image.network(
-                              'https://picsum.photos/seed/964/600',
+                              FFAppState().searchUserResultITem.avatar,
                               width: 40.0,
                               height: 40.0,
                               fit: BoxFit.cover,
                             ),
                           ),
                           Text(
-                            'Hello World',
+                            FFAppState().searchUserResultITem.nickname,
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ],
