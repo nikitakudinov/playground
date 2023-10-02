@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "165013543353",
+    "project_id": "nocode-80c8e",
+    "storage_bucket": "nocode-80c8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165013543353:android:1cbdab1efa79dd7e23fe68",
+        "android_client_info": {
+          "package_name": "com.mycompany.nocodedb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRsN_tMY1vkaeQ5gCeKPJucb--3FLWEqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
