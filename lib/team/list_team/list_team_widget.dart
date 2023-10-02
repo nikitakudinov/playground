@@ -204,7 +204,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                           ParamType.String,
                                         ),
                                         'flag': serializeParam(
-                                          '',
+                                          teamsListItem.flag,
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,
