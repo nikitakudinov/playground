@@ -273,7 +273,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                       return Builder(
                         builder: (context) {
                           final searchResults = getJsonField(
-                            listViewGetUserByEmailResponse.jsonBody,
+                            (_model.apiResultxw1?.jsonBody ?? ''),
                             r'''$.list''',
                           ).toList();
                           return ListView.builder(
