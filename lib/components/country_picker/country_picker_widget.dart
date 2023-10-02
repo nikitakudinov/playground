@@ -208,7 +208,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                             setState(() {
                               _model.selectedName = countriesListItem.ruName;
                               _model.selectedFlag =
-                                  countriesListItem.flagLink48x36;
+                                  countriesListItem.flagLinkH24;
                               _model.countriesListVISIBILITY = false;
                             });
                           },
@@ -223,7 +223,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(0.0),
                                   child: Image.network(
-                                    countriesListItem.flagLink48x36,
+                                    countriesListItem.flagLinkH24,
                                     width: 32.0,
                                     height: 24.0,
                                     fit: BoxFit.cover,
