@@ -131,12 +131,12 @@ class AddTeamCall {
   }) {
     final ffApiRequestBody = '''
 {
-  "Name": "${name}",
+  "name": "${name}",
   "CreatedAt": "${createdAt}",
   "UpdatedAt": "${updatedAt}",
-  "Tag": "${tag}",
-  "Logo": "${logo}",
-  "owner": "${owner}"
+  "tag": "${tag}",
+  "owner": "${owner}",
+  "logo": "${logo}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addTeam',
