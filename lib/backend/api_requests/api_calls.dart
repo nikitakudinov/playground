@@ -459,14 +459,12 @@ class GetUserByEmailCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getUserByEmail',
       apiUrl:
-          'http://37.139.36.167/api/v1/db/data/v1/database/user/find-one?where=%28email%2Ceq${email}',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user/find-one?where=%28email%2Ceq${email}',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJsaW5uYWZlZ0BnbWFpbC5jb20iLCJpZCI6InVzOTRidGJra21lZ29yajEiLCJyb2xlcyI6Im9yZy1sZXZlbC1jcmVhdG9yLHN1cGVyIiwidG9rZW5fdmVyc2lvbiI6IjJjYzc4ODg3ZmU4ZjkzYTI4ZTQ4ZDE0MzQ1NWQ5YjAwNjZhOTk3ZTFjNzNjODI1NDIxOWFlNmM3MjkzYjVkZTk3Mjg2ZjJkNjZhZDc4MDRjIiwiaWF0IjoxNjk2MjI2NjM5LCJleHAiOjE2OTYyNjI2Mzl9.I2-aAUpRQgTo0aWV97e4cuVQxI0-WfO9Kvjt7my6LiU',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJsaW5uYWZlZ0BnbWFpbC5jb20iLCJpZCI6InVzOTRidGJra21lZ29yajEiLCJyb2xlcyI6Im9yZy1sZXZlbC1jcmVhdG9yLHN1cGVyIiwidG9rZW5fdmVyc2lvbiI6IjJjYzc4ODg3ZmU4ZjkzYTI4ZTQ4ZDE0MzQ1NWQ5YjAwNjZhOTk3ZTFjNzNjODI1NDIxOWFlNmM3MjkzYjVkZTk3Mjg2ZjJkNjZhZDc4MDRjIiwiaWF0IjoxNjk2MjI2NjM5LCJleHAiOjE2OTYyNjI2Mzl9.I2-aAUpRQgTo0aWV97e4cuVQxI0-WfO9Kvjt7my6LiU',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
       },
       params: {
         'email': email,
