@@ -300,12 +300,16 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                 15.0, 15.0, 15.0, 0.0),
                             child: TextFormField(
                               controller: _model.nameController,
-                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Название команды',
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Saira Semi Condensed',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                    ),
                                 hintStyle:
                                     FlutterFlowTheme.of(context).labelMedium,
                                 enabledBorder: UnderlineInputBorder(
@@ -356,7 +360,6 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                 15.0, 0.0, 15.0, 0.0),
                             child: TextFormField(
                               controller: _model.tagController,
-                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: '[TAG]',
