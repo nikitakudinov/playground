@@ -348,7 +348,7 @@ class UpdateTeamCall {
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',
-        'xc-token': 'vdgJ3Duiy5c4nCQ2uvxqmffYmHK4GNAMr5RXdAmK',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
         'Content-Type': 'application/json',
       },
       params: {},
