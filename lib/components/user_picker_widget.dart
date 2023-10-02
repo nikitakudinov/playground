@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -188,20 +187,30 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                     child: TextFormField(
                       controller: _model.textController,
-                      onChanged: (_) => EasyDebounce.debounce(
-                        '_model.textController',
-                        Duration(milliseconds: 2000),
-                        () async {
-                          _model.apiResult6dq = await GetUserByEmailCall.call(
-                            email: valueOrDefault<String>(
-                              _model.textController.text,
-                              '0',
-                            ),
+                      onFieldSubmitted: (_) async {
+                        _model.apiResultxw1 = await GetUserByEmailCall.call(
+                          email: _model.textController.text,
+                        );
+                        if ((_model.apiResultxw1?.succeeded ?? true)) {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('1'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
                           );
+                        }
 
-                          setState(() {});
-                        },
-                      ),
+                        setState(() {});
+                      },
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -242,34 +251,46 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           _model.textControllerValidator.asValidator(context),
                     ),
                   ),
-                  ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(5.0),
-                            child: Image.network(
-                              GetUserByEmailCall.avatar(
-                                (_model.apiResult6dq?.jsonBody ?? ''),
+                  Builder(
+                    builder: (context) {
+                      final serchResult = getJsonField(
+                        (_model.apiResultxw1?.jsonBody ?? ''),
+                        r'''$.list''',
+                      ).toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: serchResult.length,
+                        itemBuilder: (context, serchResultIndex) {
+                          final serchResultItem = serchResult[serchResultIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: Image.network(
+                                  getJsonField(
+                                    serchResultItem,
+                                    r'''$.Avatar''',
+                                  ),
+                                  width: 40.0,
+                                  height: 40.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                              width: 40.0,
-                              height: 40.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            GetUserByEmailCall.nickname(
-                              (_model.apiResult6dq?.jsonBody ?? ''),
-                            ).toString(),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
-                      ),
-                    ],
+                              Text(
+                                getJsonField(
+                                  serchResultItem,
+                                  r'''$.Nickname''',
+                                ).toString(),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
                   ),
                 ],
               ),
