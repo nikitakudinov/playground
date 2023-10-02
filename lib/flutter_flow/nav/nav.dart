@@ -143,6 +143,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             tag: params.getParam('tag', ParamType.String),
             logo: params.getParam('logo', ParamType.String),
             id: params.getParam('id', ParamType.int),
+            country: params.getParam('country', ParamType.String),
+            flag: params.getParam('flag', ParamType.String),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

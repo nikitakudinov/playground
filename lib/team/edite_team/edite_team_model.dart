@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/country_picker/country_picker_widget.dart';
 import '/components/user_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -33,6 +34,8 @@ class EditeTeamModel extends FlutterFlowModel<EditeTeamWidget> {
   // State field(s) for tag widget.
   TextEditingController? tagController;
   String? Function(BuildContext, String?)? tagControllerValidator;
+  // Model for countryPicker component.
+  late CountryPickerModel countryPickerModel;
   // Stores action output result for [Backend Call - API (updateTeam)] action in Button widget.
   ApiCallResponse? apiResultp5p;
   // Model for userPicker component.
@@ -41,6 +44,7 @@ class EditeTeamModel extends FlutterFlowModel<EditeTeamWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    countryPickerModel = createModel(context, () => CountryPickerModel());
     userPickerModel = createModel(context, () => UserPickerModel());
   }
 
@@ -48,6 +52,7 @@ class EditeTeamModel extends FlutterFlowModel<EditeTeamWidget> {
     unfocusNode.dispose();
     nameController?.dispose();
     tagController?.dispose();
+    countryPickerModel.dispose();
     userPickerModel.dispose();
   }
 

@@ -199,6 +199,14 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                           teamsListItem.tag,
                                           ParamType.String,
                                         ),
+                                        'country': serializeParam(
+                                          teamsListItem.country,
+                                          ParamType.String,
+                                        ),
+                                        'flag': serializeParam(
+                                          '',
+                                          ParamType.String,
+                                        ),
                                       }.withoutNulls,
                                     );
                                   },
