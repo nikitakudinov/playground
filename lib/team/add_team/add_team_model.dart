@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -29,22 +28,17 @@ class AddTeamModel extends FlutterFlowModel<AddTeamWidget> {
   // State field(s) for tag widget.
   TextEditingController? tagController;
   String? Function(BuildContext, String?)? tagControllerValidator;
-  // Model for countryPicker component.
-  late CountryPickerModel countryPickerModel;
   // Stores action output result for [Backend Call - API (addTeam)] action in Button widget.
   ApiCallResponse? apiResultp5p;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    countryPickerModel = createModel(context, () => CountryPickerModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
     nameController?.dispose();
     tagController?.dispose();
-    countryPickerModel.dispose();
   }
 
   /// Action blocks are added here.

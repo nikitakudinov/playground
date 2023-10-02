@@ -127,8 +127,6 @@ class AddTeamCall {
     String? updatedAt = '',
     String? tag = '',
     String? logo = '',
-    String? countryName = '',
-    String? flag = '',
     String? owner = '',
   }) {
     final ffApiRequestBody = '''
@@ -138,17 +136,16 @@ class AddTeamCall {
   "UpdatedAt": "${updatedAt}",
   "Tag": "${tag}",
   "Logo": "${logo}",
-  "countryName": "${countryName}",
-  "flag": "${flag}",
   "owner": "${owner}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addTeam',
-      apiUrl: 'http://37.139.36.167/api/v1/db/data/v1/database/Team/views/Team',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team/views/Team',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
-        'xc-token': 'vdgJ3Duiy5c4nCQ2uvxqmffYmHK4GNAMr5RXdAmK',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
         'Content-Type': 'application/json',
       },
       params: {},

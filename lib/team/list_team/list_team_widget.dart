@@ -217,7 +217,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            teamsListItem.name,
+                                            '[${teamsListItem.tag}] ${teamsListItem.name}',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium,
                                           ),

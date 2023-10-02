@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -348,11 +347,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                   .asValidator(context),
                             ),
                           ),
-                          wrapWithModel(
-                            model: _model.countryPickerModel,
-                            updateCallback: () => setState(() {}),
-                            child: CountryPickerWidget(),
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 0.0, 15.0, 0.0),
@@ -374,10 +368,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                           updatedAt:
                                               getCurrentTimestamp.toString(),
                                           logo: _model.uploadedFileUrl,
-                                          countryName: _model
-                                              .countryPickerModel.selectedName,
-                                          flag: _model
-                                              .countryPickerModel.selectedFlag,
                                           owner: currentUserUid,
                                         );
                                         if ((_model.apiResultp5p?.succeeded ??
