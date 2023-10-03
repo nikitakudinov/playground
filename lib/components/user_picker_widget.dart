@@ -207,9 +207,11 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                         if ((_model.apiResultp2t?.succeeded ?? true)) {
                           _model.searchResults =
                               await actions.jsonToDataTypeSearchByEmail(
-                            GetUserByEmailCall.list(
+                            getJsonField(
                               (_model.apiResultp2t?.jsonBody ?? ''),
-                            )?.toList(),
+                              r'''$.list''',
+                              true,
+                            ),
                           );
                           setState(() {
                             _model.searchUserResults = _model.searchResults!
