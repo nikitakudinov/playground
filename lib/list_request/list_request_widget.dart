@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -88,7 +89,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final requestsList = FFAppState().requests.toList();
+                  final requestsList = FFAppState()
+                      .requests
+                      .where((e) => e.toUser == currentUserUid)
+                      .toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
