@@ -486,16 +486,16 @@ class AddRequestCall {
     String? type = '',
     String? createdAt = '',
     String? updatedAt = '',
-    String? from = '',
-    String? fromTeamName = '',
+    String? fromTeam = '',
+    String? toUser = '',
   }) {
     final ffApiRequestBody = '''
 {
   "Type": "${type}",
   "CreatedAt": "${createdAt}",
   "UpdatedAt": "${updatedAt}",
-  "from": "${from}",
-  "fromTeamName": "${fromTeamName}"
+  "fromTeam": "${fromTeam}",
+  "toUser": "${toUser}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addRequest',

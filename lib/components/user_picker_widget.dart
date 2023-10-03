@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -253,66 +252,10 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       type: 'Приглашение в команду',
                                       createdAt: getCurrentTimestamp.toString(),
                                       updatedAt: getCurrentTimestamp.toString(),
-                                      from: currentUserUid,
-                                      fromTeamName: widget.teamName,
+                                      fromTeam: widget.teamName,
+                                      toUser: _model.selectedUserIdVALUE
+                                          ?.toString(),
                                     );
-                                    if ((_model.apiResulto2t?.succeeded ??
-                                        true)) {
-                                      _model.apiResultjqx =
-                                          await GetCreatedRequesIdCall.call(
-                                        userId: currentUserUid,
-                                        fromTeamName: widget.teamName,
-                                      );
-                                      if ((_model.apiResultjqx?.succeeded ??
-                                          true)) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('1'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        _model.apiResultvog =
-                                            await AddRelationsCall.call(
-                                          dataTypeForUpdate: 'Request',
-                                          idOfDataForUpdate: getJsonField(
-                                            (_model.apiResultjqx?.jsonBody ??
-                                                ''),
-                                            r'''$.Id''',
-                                          ),
-                                          fildName: 'FromTeam',
-                                          fieldId: widget.docId,
-                                        );
-                                        if ((_model.apiResultvog?.succeeded ??
-                                            true)) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('1'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-                                      }
-                                    }
                                     setState(() {
                                       _model.squadVISIBILITY = true;
                                       _model.messageVISIBILITY = false;

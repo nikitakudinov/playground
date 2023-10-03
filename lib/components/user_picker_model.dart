@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -52,10 +51,6 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   // Stores action output result for [Backend Call - API (addRequest)] action in Button widget.
   ApiCallResponse? apiResulto2t;
-  // Stores action output result for [Backend Call - API (getCreatedRequesId)] action in Button widget.
-  ApiCallResponse? apiResultjqx;
-  // Stores action output result for [Backend Call - API (addRelations)] action in Button widget.
-  ApiCallResponse? apiResultvog;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
