@@ -140,6 +140,35 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInTeamMembers(int _index, TeamMemberStruct _value) {
     _teamMembers.insert(_index, _value);
   }
+
+  List<RequestStruct> _requests = [];
+  List<RequestStruct> get requests => _requests;
+  set requests(List<RequestStruct> _value) {
+    _requests = _value;
+  }
+
+  void addToRequests(RequestStruct _value) {
+    _requests.add(_value);
+  }
+
+  void removeFromRequests(RequestStruct _value) {
+    _requests.remove(_value);
+  }
+
+  void removeAtIndexFromRequests(int _index) {
+    _requests.removeAt(_index);
+  }
+
+  void updateRequestsAtIndex(
+    int _index,
+    RequestStruct Function(RequestStruct) updateFn,
+  ) {
+    _requests[_index] = updateFn(_requests[_index]);
+  }
+
+  void insertAtIndexInRequests(int _index, RequestStruct _value) {
+    _requests.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

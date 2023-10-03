@@ -146,6 +146,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             country: params.getParam('country', ParamType.String),
             flag: params.getParam('flag', ParamType.String),
           ),
+        ),
+        FFRoute(
+          name: 'LIST_REQUEST',
+          path: '/listRequest',
+          builder: (context, params) => ListRequestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
