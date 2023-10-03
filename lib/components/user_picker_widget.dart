@@ -246,11 +246,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                               Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    setState(() {
-                                      _model.squadVISIBILITY = true;
-                                      _model.messageVISIBILITY = false;
-                                      _model.callToTeamButtonVISIBILITY = true;
-                                    });
                                     _model.apiResulto2t =
                                         await AddRequestCall.call(
                                       type: 'Приглашение в  команду',
@@ -276,6 +271,11 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         },
                                       );
                                     }
+                                    setState(() {
+                                      _model.squadVISIBILITY = true;
+                                      _model.messageVISIBILITY = false;
+                                      _model.callToTeamButtonVISIBILITY = true;
+                                    });
 
                                     setState(() {});
                                   },
