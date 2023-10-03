@@ -1,7 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,6 +38,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UserPickerModel());
+
+    _model.textController ??= TextEditingController();
   }
 
   @override
@@ -186,6 +191,92 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                   },
                 );
               },
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                    child: TextFormField(
+                      controller: _model.textController,
+                      onFieldSubmitted: (_) async {
+                        _model.apiResultp2t = await GetUserByEmailCall.call(
+                          email: _model.textController.text,
+                        );
+                        if ((_model.apiResultp2t?.succeeded ?? true)) {
+                          _model.searchResults =
+                              await actions.jsonToDataTypeSearchByEmail(
+                            GetUserByEmailCall.list(
+                              (_model.apiResultp2t?.jsonBody ?? ''),
+                            )?.toList(),
+                          );
+                          setState(() {
+                            _model.searchUserResults = _model.searchResults!
+                                .toList()
+                                .cast<SearchUserByEmailResultsStruct>();
+                          });
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('1'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+
+                        setState(() {});
+                      },
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        labelText: 'Label here...',
+                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).alternate,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).primary,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        errorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        focusedErrorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).error,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      validator:
+                          _model.textControllerValidator.asValidator(context),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

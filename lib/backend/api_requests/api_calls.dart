@@ -429,7 +429,7 @@ class GetUserByEmailCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getUserByEmail',
       apiUrl:
-          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user/find-one?where=%28email%2Ceq${email}',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user?fields=Email%2CNickname%2CFbUserRef%2CAvatar%2CCountryName%2CFlag%2CId&where=%28Email%2Ceq%2C${email}%29&limit=25&shuffle=0&offset=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Boffset%5D=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Blimit%5D=25',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
@@ -446,41 +446,38 @@ class GetUserByEmailCall {
     );
   }
 
-  static dynamic id(dynamic response) => getJsonField(
+  static dynamic list(dynamic response) => getJsonField(
         response,
-        r'''$.Id''',
+        r'''$.list''',
+        true,
       );
   static dynamic email(dynamic response) => getJsonField(
         response,
-        r'''$.email''',
-      );
-  static dynamic createdAt(dynamic response) => getJsonField(
-        response,
-        r'''$.CreatedAt''',
-      );
-  static dynamic updatedAt(dynamic response) => getJsonField(
-        response,
-        r'''$.UpdatedAt''',
+        r'''$.list[:].Email''',
       );
   static dynamic nickname(dynamic response) => getJsonField(
         response,
-        r'''$.nickname''',
+        r'''$.list[:].Nickname''',
       );
   static dynamic fbUserRef(dynamic response) => getJsonField(
         response,
-        r'''$.fbUserRef''',
+        r'''$.list[:].FbUserRef''',
       );
   static dynamic avatar(dynamic response) => getJsonField(
         response,
-        r'''$.avatar''',
+        r'''$.list[:].Avatar''',
       );
   static dynamic countryName(dynamic response) => getJsonField(
         response,
-        r'''$.countryName''',
+        r'''$.list[:].CountryName''',
       );
   static dynamic flag(dynamic response) => getJsonField(
         response,
-        r'''$.flag''',
+        r'''$.list[:].Flag''',
+      );
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
       );
 }
 
