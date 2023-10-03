@@ -248,7 +248,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   onPressed: () async {
                                     _model.apiResulto2t =
                                         await AddRequestCall.call(
-                                      type: 'Приглашение в  команду',
+                                      type: 'Приглашение в команду',
                                       createdAt: getCurrentTimestamp.toString(),
                                       updatedAt: getCurrentTimestamp.toString(),
                                       from: currentUserUid,
@@ -261,6 +261,22 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       );
                                       if ((_model.apiResultjqx?.succeeded ??
                                           true)) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('1'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
                                         _model.apiResultvog =
                                             await AddRelationsCall.call(
                                           dataTypeForUpdate: 'Request',
