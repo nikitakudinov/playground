@@ -280,6 +280,102 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                 ),
               ],
             ),
+            FutureBuilder<ApiCallResponse>(
+              future: GetTeamMembersListCall.call(
+                teamID: valueOrDefault<int>(
+                  widget.docId,
+                  0,
+                ),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: SpinKitChasingDots(
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 50.0,
+                      ),
+                    ),
+                  );
+                }
+                final squadGetTeamMembersListResponse = snapshot.data!;
+                return Builder(
+                  builder: (context) {
+                    final searchResultsList = _model.searchUserResults.toList();
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: searchResultsList.length,
+                      itemBuilder: (context, searchResultsListIndex) {
+                        final searchResultsListItem =
+                            searchResultsList[searchResultsListIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 5.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(3.0),
+                                child: Image.network(
+                                  searchResultsListItem.avatar,
+                                  width: 40.0,
+                                  height: 40.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      searchResultsListItem.nickname,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.network(
+                                            searchResultsListItem.flag,
+                                            width: 24.0,
+                                            height: 16.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        searchResultsListItem.countryName,
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelSmall,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                );
+              },
+            ),
           ],
         ),
       ),
