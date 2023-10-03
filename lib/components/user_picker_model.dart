@@ -29,13 +29,13 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
           int index, Function(SearchUserByEmailResultsStruct) updateFn) =>
       searchUserResults[index] = updateFn(searchUserResults[index]);
 
-  String? selectedUserAvatarVALUE;
+  String selectedUserAvatarVALUE = 'false';
 
-  String? selectedUserNicknameVALUE = '';
+  String selectedUserNicknameVALUE = 'не выбран';
 
-  String? selectedUserCountry = '';
+  String selectedUserCountry = 'не выбран';
 
-  String? selectedUserFlag = 'false';
+  String selectedUserFlag = 'false';
 
   bool searchVISIBILITY = false;
 

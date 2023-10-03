@@ -136,7 +136,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(3.0),
                             child: Image.network(
-                              _model.selectedUserAvatarVALUE!,
+                              _model.selectedUserAvatarVALUE,
                               width: 40.0,
                               height: 40.0,
                               fit: BoxFit.cover,
@@ -150,7 +150,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
-                                  _model.selectedUserNicknameVALUE!,
+                                  _model.selectedUserNicknameVALUE,
                                   style:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
@@ -164,7 +164,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: Image.network(
-                                        _model.selectedUserFlag!,
+                                        _model.selectedUserFlag,
                                         width: 24.0,
                                         height: 16.0,
                                         fit: BoxFit.cover,
@@ -172,7 +172,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     ),
                                   ),
                                   Text(
-                                    _model.selectedUserCountry!,
+                                    _model.selectedUserCountry,
                                     style:
                                         FlutterFlowTheme.of(context).labelSmall,
                                   ),
