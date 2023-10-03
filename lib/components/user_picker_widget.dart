@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -36,8 +35,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UserPickerModel());
-
-    _model.textController ??= TextEditingController(text: '2@2.ru');
   }
 
   @override
@@ -118,10 +115,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                 final squadGetTeamMembersListResponse = snapshot.data!;
                 return Builder(
                   builder: (context) {
-                    final teamMembersList = getJsonField(
-                      squadGetTeamMembersListResponse.jsonBody,
-                      r'''$.list''',
-                    ).toList();
+                    final teamMembersList = FFAppState().teamMembers.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -139,10 +133,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(3.0),
                                 child: Image.network(
-                                  getJsonField(
-                                    teamMembersListItem,
-                                    r'''$.Avatar''',
-                                  ),
+                                  teamMembersListItem.avatar,
                                   width: 40.0,
                                   height: 40.0,
                                   fit: BoxFit.cover,
@@ -150,21 +141,40 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Text(
-                                      valueOrDefault<String>(
-                                        getJsonField(
-                                          teamMembersListItem,
-                                          r'''$.Nickname''',
-                                        ).toString(),
-                                        '0',
-                                      ),
+                                      teamMembersListItem.nickname,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.network(
+                                            teamMembersListItem.flag,
+                                            width: 24.0,
+                                            height: 16.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        teamMembersListItem.countryName,
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelSmall,
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -176,117 +186,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                   },
                 );
               },
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                    child: TextFormField(
-                      controller: _model.textController,
-                      onFieldSubmitted: (_) async {
-                        _model.apiResultxw1 = await GetUserByEmailCall.call(
-                          email: _model.textController.text,
-                        );
-                        if ((_model.apiResultxw1?.succeeded ?? true)) {
-                          setState(() {
-                            FFAppState().updateSearchUserResultITemStruct(
-                              (e) => e
-                                ..email = GetUserByEmailCall.email(
-                                  (_model.apiResultxw1?.jsonBody ?? ''),
-                                ).toString()
-                                ..nickname = GetUserByEmailCall.nickname(
-                                  (_model.apiResultxw1?.jsonBody ?? ''),
-                                ).toString()
-                                ..avatar = GetUserByEmailCall.avatar(
-                                  (_model.apiResultxw1?.jsonBody ?? ''),
-                                )
-                                ..countryName = GetUserByEmailCall.countryName(
-                                  (_model.apiResultxw1?.jsonBody ?? ''),
-                                ).toString()
-                                ..flag = GetUserByEmailCall.flag(
-                                  (_model.apiResultxw1?.jsonBody ?? ''),
-                                )
-                                ..id = GetUserByEmailCall.id(
-                                  (_model.apiResultxw1?.jsonBody ?? ''),
-                                ),
-                            );
-                          });
-                        }
-
-                        setState(() {});
-                      },
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Label here...',
-                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                      validator:
-                          _model.textControllerValidator.asValidator(context),
-                    ),
-                  ),
-                  ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(5.0),
-                            child: Image.network(
-                              FFAppState().searchUserResultITem.avatar,
-                              width: 40.0,
-                              height: 40.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(
-                            FFAppState().searchUserResultITem.nickname,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
             ),
           ],
         ),

@@ -54,16 +54,6 @@ class FFAppState extends ChangeNotifier {
     _teams.insert(_index, _value);
   }
 
-  TeamStruct _Team = TeamStruct();
-  TeamStruct get Team => _Team;
-  set Team(TeamStruct _value) {
-    _Team = _value;
-  }
-
-  void updateTeamStruct(Function(TeamStruct) updateFn) {
-    updateFn(_Team);
-  }
-
   List<TournamentStruct> _tournaments = [];
   List<TournamentStruct> get tournaments => _tournaments;
   set tournaments(List<TournamentStruct> _value) {
@@ -149,47 +139,6 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInTeamMembers(int _index, TeamMemberStruct _value) {
     _teamMembers.insert(_index, _value);
-  }
-
-  List<TeamMemberIdStruct> _teamMemberIds = [];
-  List<TeamMemberIdStruct> get teamMemberIds => _teamMemberIds;
-  set teamMemberIds(List<TeamMemberIdStruct> _value) {
-    _teamMemberIds = _value;
-  }
-
-  void addToTeamMemberIds(TeamMemberIdStruct _value) {
-    _teamMemberIds.add(_value);
-  }
-
-  void removeFromTeamMemberIds(TeamMemberIdStruct _value) {
-    _teamMemberIds.remove(_value);
-  }
-
-  void removeAtIndexFromTeamMemberIds(int _index) {
-    _teamMemberIds.removeAt(_index);
-  }
-
-  void updateTeamMemberIdsAtIndex(
-    int _index,
-    TeamMemberIdStruct Function(TeamMemberIdStruct) updateFn,
-  ) {
-    _teamMemberIds[_index] = updateFn(_teamMemberIds[_index]);
-  }
-
-  void insertAtIndexInTeamMemberIds(int _index, TeamMemberIdStruct _value) {
-    _teamMemberIds.insert(_index, _value);
-  }
-
-  SearchUserResultItemStruct _searchUserResultITem =
-      SearchUserResultItemStruct();
-  SearchUserResultItemStruct get searchUserResultITem => _searchUserResultITem;
-  set searchUserResultITem(SearchUserResultItemStruct _value) {
-    _searchUserResultITem = _value;
-  }
-
-  void updateSearchUserResultITemStruct(
-      Function(SearchUserResultItemStruct) updateFn) {
-    updateFn(_searchUserResultITem);
   }
 }
 

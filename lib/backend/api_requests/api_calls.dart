@@ -93,36 +93,6 @@ class GetTeamCall {
       );
 }
 
-class GetTeamMembersIDsCall {
-  static Future<ApiCallResponse> call({
-    int? id = 8,
-  }) {
-    return ApiManager.instance.makeApiCall(
-      callName: 'getTeamMembersIDs',
-      apiUrl:
-          'http://37.139.36.167/api/v1/db/data/v1/database/Team/views/Team?fields=nc_5zcs___nc_m2m_2dsukws9lvs&nested%5Bnc_5zcs___nc_m2m_zslrtav602s%5D%5Boffset%5D=0&nested%5Bnc_5zcs___nc_m2m_zslrtav602s%5D%5Blimit%5D=25&nested%5Bnc_5zcs___nc_m2m_2dsukws9lvs%5D%5Boffset%5D=0&nested%5Bnc_5zcs___nc_m2m_2dsukws9lvs%5D%5Blimit%5D=25',
-      callType: ApiCallType.GET,
-      headers: {
-        'accept': 'application/json',
-        'xc-token': 'vdgJ3Duiy5c4nCQ2uvxqmffYmHK4GNAMr5RXdAmK',
-      },
-      params: {
-        'ID': "5",
-      },
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  static dynamic list(dynamic response) => getJsonField(
-        response,
-        r'''$.list''',
-        true,
-      );
-}
-
 class AddTeamCall {
   static Future<ApiCallResponse> call({
     String? name = '',

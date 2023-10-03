@@ -18,8 +18,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
     String? countryName,
     String? flag,
     int? id,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    String? createdAt,
+    String? updatedAt,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _teams = teams,
         _email = email,
@@ -84,15 +84,15 @@ class TeamMemberStruct extends FFFirebaseStruct {
   bool hasId() => _id != null;
 
   // "CreatedAt" field.
-  DateTime? _createdAt;
-  DateTime? get createdAt => _createdAt;
-  set createdAt(DateTime? val) => _createdAt = val;
+  String? _createdAt;
+  String get createdAt => _createdAt ?? '';
+  set createdAt(String? val) => _createdAt = val;
   bool hasCreatedAt() => _createdAt != null;
 
   // "UpdatedAt" field.
-  DateTime? _updatedAt;
-  DateTime? get updatedAt => _updatedAt;
-  set updatedAt(DateTime? val) => _updatedAt = val;
+  String? _updatedAt;
+  String get updatedAt => _updatedAt ?? '';
+  set updatedAt(String? val) => _updatedAt = val;
   bool hasUpdatedAt() => _updatedAt != null;
 
   static TeamMemberStruct fromMap(Map<String, dynamic> data) =>
@@ -105,8 +105,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
         countryName: data['CountryName'] as String?,
         flag: data['Flag'] as String?,
         id: castToType<int>(data['Id']),
-        createdAt: data['CreatedAt'] as DateTime?,
-        updatedAt: data['UpdatedAt'] as DateTime?,
+        createdAt: data['CreatedAt'] as String?,
+        updatedAt: data['UpdatedAt'] as String?,
       );
 
   static TeamMemberStruct? maybeFromMap(dynamic data) =>
@@ -161,11 +161,11 @@ class TeamMemberStruct extends FFFirebaseStruct {
         ),
         'CreatedAt': serializeParam(
           _createdAt,
-          ParamType.DateTime,
+          ParamType.String,
         ),
         'UpdatedAt': serializeParam(
           _updatedAt,
-          ParamType.DateTime,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -213,12 +213,12 @@ class TeamMemberStruct extends FFFirebaseStruct {
         ),
         createdAt: deserializeParam(
           data['CreatedAt'],
-          ParamType.DateTime,
+          ParamType.String,
           false,
         ),
         updatedAt: deserializeParam(
           data['UpdatedAt'],
-          ParamType.DateTime,
+          ParamType.String,
           false,
         ),
       );
@@ -265,8 +265,8 @@ TeamMemberStruct createTeamMemberStruct({
   String? countryName,
   String? flag,
   int? id,
-  DateTime? createdAt,
-  DateTime? updatedAt,
+  String? createdAt,
+  String? updatedAt,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
