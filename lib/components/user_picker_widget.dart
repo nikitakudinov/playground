@@ -97,6 +97,216 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                 ),
               ],
             ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 15.0, 0.0, 15.0),
+                        child: TextFormField(
+                          controller: _model.textController,
+                          onChanged: (_) => EasyDebounce.debounce(
+                            '_model.textController',
+                            Duration(milliseconds: 2000),
+                            () async {
+                              _model.apiResultp2tCopy =
+                                  await GetUserByEmailCall.call(
+                                id: int.tryParse(_model.textController.text),
+                              );
+                              if ((_model.apiResultp2tCopy?.succeeded ??
+                                  true)) {
+                                _model.searchResultsCopy =
+                                    await actions.jsonToDataTypeSearchByEmail(
+                                  getJsonField(
+                                    (_model.apiResultp2tCopy?.jsonBody ?? ''),
+                                    r'''$.list''',
+                                    true,
+                                  ),
+                                );
+                                setState(() {
+                                  _model.searchUserResults = _model
+                                      .searchResultsCopy!
+                                      .toList()
+                                      .cast<SearchUserByEmailResultsStruct>();
+                                });
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('1'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+
+                              setState(() {});
+                            },
+                          ),
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: '#UID пользователя',
+                            labelStyle:
+                                FlutterFlowTheme.of(context).labelMedium,
+                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          validator: _model.textControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                      FutureBuilder<ApiCallResponse>(
+                        future: GetTeamMembersListCall.call(
+                          teamID: valueOrDefault<int>(
+                            widget.docId,
+                            0,
+                          ),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitChasingDots(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 50.0,
+                                ),
+                              ),
+                            );
+                          }
+                          final searchResultsListGetTeamMembersListResponse =
+                              snapshot.data!;
+                          return Builder(
+                            builder: (context) {
+                              final searchResultsList =
+                                  _model.searchUserResults.toList();
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: searchResultsList.length,
+                                itemBuilder: (context, searchResultsListIndex) {
+                                  final searchResultsListItem =
+                                      searchResultsList[searchResultsListIndex];
+                                  return Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
+                                          child: Image.network(
+                                            searchResultsListItem.avatar,
+                                            width: 40.0,
+                                            height: 40.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                searchResultsListItem.nickname,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            0.0),
+                                                    child: Image.network(
+                                                      searchResultsListItem
+                                                          .flag,
+                                                      width: 24.0,
+                                                      height: 16.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  searchResultsListItem
+                                                      .countryName,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelSmall,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             FutureBuilder<ApiCallResponse>(
               future: GetTeamMembersListCall.call(
                 teamID: valueOrDefault<int>(
@@ -177,196 +387,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       ),
                                       Text(
                                         teamMembersListItem.countryName,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                );
-              },
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                    child: TextFormField(
-                      controller: _model.textController,
-                      onChanged: (_) => EasyDebounce.debounce(
-                        '_model.textController',
-                        Duration(milliseconds: 2000),
-                        () async {
-                          _model.apiResultp2tCopy =
-                              await GetUserByEmailCall.call(
-                            id: int.tryParse(_model.textController.text),
-                          );
-                          if ((_model.apiResultp2tCopy?.succeeded ?? true)) {
-                            _model.searchResultsCopy =
-                                await actions.jsonToDataTypeSearchByEmail(
-                              getJsonField(
-                                (_model.apiResultp2tCopy?.jsonBody ?? ''),
-                                r'''$.list''',
-                                true,
-                              ),
-                            );
-                            setState(() {
-                              _model.searchUserResults = _model
-                                  .searchResultsCopy!
-                                  .toList()
-                                  .cast<SearchUserByEmailResultsStruct>();
-                            });
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('1'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
-
-                          setState(() {});
-                        },
-                      ),
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Label here...',
-                        labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                        hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).alternate,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).error,
-                            width: 2.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                      validator:
-                          _model.textControllerValidator.asValidator(context),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            FutureBuilder<ApiCallResponse>(
-              future: GetTeamMembersListCall.call(
-                teamID: valueOrDefault<int>(
-                  widget.docId,
-                  0,
-                ),
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
-                      child: SpinKitChasingDots(
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 50.0,
-                      ),
-                    ),
-                  );
-                }
-                final squadGetTeamMembersListResponse = snapshot.data!;
-                return Builder(
-                  builder: (context) {
-                    final searchResultsList = _model.searchUserResults.toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: searchResultsList.length,
-                      itemBuilder: (context, searchResultsListIndex) {
-                        final searchResultsListItem =
-                            searchResultsList[searchResultsListIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(3.0),
-                                child: Image.network(
-                                  searchResultsListItem.avatar,
-                                  width: 40.0,
-                                  height: 40.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      searchResultsListItem.nickname,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 0.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.network(
-                                            searchResultsListItem.flag,
-                                            width: 24.0,
-                                            height: 16.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        searchResultsListItem.countryName,
                                         style: FlutterFlowTheme.of(context)
                                             .labelSmall,
                                       ),
