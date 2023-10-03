@@ -424,12 +424,12 @@ class GetUserCall {
 
 class GetUserByEmailCall {
   static Future<ApiCallResponse> call({
-    String? email = '',
+    int? id,
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getUserByEmail',
       apiUrl:
-          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user?fields=Email%2CNickname%2CFbUserRef%2CAvatar%2CCountryName%2CFlag%2CId&where=%28Email%2Ceq%2C${email}%29&limit=25&shuffle=0&offset=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Boffset%5D=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Blimit%5D=25',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user?fields=Email%2CNickname%2CFbUserRef%2CAvatar%2CCountryName%2CFlag%2CId&where=%28Id%2Ceq%2C${id}%29&limit=25&shuffle=0&offset=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Boffset%5D=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Blimit%5D=25',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
@@ -437,7 +437,7 @@ class GetUserByEmailCall {
         'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
       },
       params: {
-        'email': email,
+        'id': id,
       },
       returnBody: true,
       encodeBodyUtf8: false,

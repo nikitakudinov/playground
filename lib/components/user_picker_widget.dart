@@ -207,7 +207,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                         () async {
                           _model.apiResultp2tCopy =
                               await GetUserByEmailCall.call(
-                            email: _model.textController.text,
+                            id: int.tryParse(_model.textController.text),
                           );
                           if ((_model.apiResultp2tCopy?.succeeded ?? true)) {
                             _model.searchResultsCopy =
