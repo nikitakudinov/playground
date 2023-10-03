@@ -73,32 +73,35 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                     style: FlutterFlowTheme.of(context).titleMedium,
                   ),
                 ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    setState(() {
-                      _model.searchVISIBILITY = true;
-                      _model.callToTeamButtonVISIBILITY = false;
-                      _model.squadVISIBILITY = false;
-                    });
-                  },
-                  text: 'Пригласить',
-                  options: FFButtonOptions(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
-                    iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    textStyle: FlutterFlowTheme.of(context).labelSmall.override(
-                          fontFamily: 'Saira Semi Condensed',
-                          color: FlutterFlowTheme.of(context).primaryText,
-                        ),
-                    elevation: 0.0,
-                    borderSide: BorderSide(
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      width: 1.0,
+                if (_model.callToTeamButtonVISIBILITY)
+                  FFButtonWidget(
+                    onPressed: () async {
+                      setState(() {
+                        _model.searchVISIBILITY = true;
+                        _model.callToTeamButtonVISIBILITY = false;
+                        _model.squadVISIBILITY = false;
+                      });
+                    },
+                    text: 'Пригласить',
+                    options: FFButtonOptions(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      textStyle:
+                          FlutterFlowTheme.of(context).labelSmall.override(
+                                fontFamily: 'Saira Semi Condensed',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                      elevation: 0.0,
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(3.0),
                     ),
-                    borderRadius: BorderRadius.circular(3.0),
                   ),
-                ),
               ],
             ),
             Padding(
@@ -110,106 +113,106 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                 ),
                 child: Visibility(
                   visible: _model.messageVISIBILITY,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 10.0, 10.0, 10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Container(
-                              width: MediaQuery.sizeOf(context).width * 0.7,
-                              decoration: BoxDecoration(),
-                              child: Wrap(
-                                spacing: 0.0,
-                                runSpacing: 0.0,
-                                alignment: WrapAlignment.start,
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                direction: Axis.horizontal,
-                                runAlignment: WrapAlignment.start,
-                                verticalDirection: VerticalDirection.down,
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Text(
-                                    'Отправить приглашение вступить в команду этому пользователю?',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 15.0, 15.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(3.0),
-                              child: Image.network(
-                                _model.selectedUserAvatarVALUE,
-                                width: 40.0,
-                                height: 40.0,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    _model.selectedUserNicknameVALUE,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 10.0, 10.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 0.7,
+                                decoration: BoxDecoration(),
+                                child: Wrap(
+                                  spacing: 0.0,
+                                  runSpacing: 0.0,
+                                  alignment: WrapAlignment.start,
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  direction: Axis.horizontal,
+                                  runAlignment: WrapAlignment.start,
+                                  verticalDirection: VerticalDirection.down,
+                                  clipBehavior: Clip.none,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 0.0, 0.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.network(
-                                          _model.selectedUserFlag,
-                                          width: 24.0,
-                                          height: 16.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
                                     Text(
-                                      _model.selectedUserCountry,
+                                      'Отправить приглашение вступить в команду этому пользователю?',
                                       style: FlutterFlowTheme.of(context)
-                                          .labelSmall,
+                                          .bodyMedium,
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 15.0, 0.0, 15.0),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 15.0, 15.0, 15.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(3.0),
+                                child: Image.network(
+                                  _model.selectedUserAvatarVALUE,
+                                  width: 40.0,
+                                  height: 40.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      _model.selectedUserNicknameVALUE,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.network(
+                                            _model.selectedUserFlag,
+                                            width: 24.0,
+                                            height: 16.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        _model.selectedUserCountry,
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelSmall,
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () {
                                     print('Button pressed ...');
@@ -239,11 +242,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   ),
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 15.0, 0.0, 15.0),
+                              Expanded(
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     setState(() {
@@ -276,11 +275,11 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   ),
                                 ),
                               ),
-                            ),
-                          ].divide(SizedBox(width: 15.0)),
+                            ].divide(SizedBox(width: 15.0)),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
