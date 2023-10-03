@@ -45,7 +45,7 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   bool squadVISIBILITY = true;
 
-  int? selectedUserIdVALUE;
+  String? selectedUserIdVALUE;
 
   ///  State fields for stateful widgets in this component.
 

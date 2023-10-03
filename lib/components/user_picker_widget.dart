@@ -253,8 +253,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       createdAt: getCurrentTimestamp.toString(),
                                       updatedAt: getCurrentTimestamp.toString(),
                                       fromTeam: widget.teamName,
-                                      toUser: _model.selectedUserIdVALUE
-                                          ?.toString(),
+                                      toUser: _model.selectedUserIdVALUE,
                                     );
                                     setState(() {
                                       _model.squadVISIBILITY = true;
@@ -449,7 +448,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               _model.messageVISIBILITY = true;
                                               _model.searchVISIBILITY = false;
                                               _model.selectedUserIdVALUE =
-                                                  searchResultsListItem.id;
+                                                  searchResultsListItem.id
+                                                      .toString();
                                             });
                                           },
                                           child: Row(
