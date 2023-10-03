@@ -481,6 +481,92 @@ class GetUserByEmailCall {
       );
 }
 
+class AddRequestCall {
+  static Future<ApiCallResponse> call({
+    String? type = '',
+    String? createdAt = '',
+    String? updatedAt = '',
+    String? from = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "Type": "${type}",
+  "CreatedAt": "${createdAt}",
+  "UpdatedAt": "${updatedAt}",
+  "from": "${from}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addRequest',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Request',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class AddRelationsCall {
+  static Future<ApiCallResponse> call({
+    String? dataTypeForUpdate = '',
+    int? idOfDataForUpdate,
+    String? fildName = '',
+    int? fieldId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'addRelations',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/${dataTypeForUpdate}/${idOfDataForUpdate}/mm/${fildName}/${fieldId}?limit=25&shuffle=0&offset=0',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetCreatedRequesIdCall {
+  static Future<ApiCallResponse> call({
+    int? userId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getCreatedRequesId',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Request?fields=Id&where=%28forom%2Ceq%2C${userId}%29&limit=25&shuffle=0&offset=0&nested%5BFromTeamRef%5D%5Boffset%5D=0&nested%5BFromTeamRef%5D%5Blimit%5D=25&nested%5BToUserRef%5D%5Boffset%5D=0&nested%5BToUserRef%5D%5Blimit%5D=25',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

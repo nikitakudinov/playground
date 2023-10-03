@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -250,6 +251,33 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       _model.messageVISIBILITY = false;
                                       _model.callToTeamButtonVISIBILITY = true;
                                     });
+                                    _model.apiResulto2t =
+                                        await AddRequestCall.call(
+                                      type: 'Приглашение в  команду',
+                                      createdAt: getCurrentTimestamp.toString(),
+                                      updatedAt: getCurrentTimestamp.toString(),
+                                      from: currentUserUid,
+                                    );
+                                    if ((_model.apiResulto2t?.succeeded ??
+                                        true)) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('1'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: Text('Ok'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
+
+                                    setState(() {});
                                   },
                                   text: 'Отправить',
                                   options: FFButtonOptions(
