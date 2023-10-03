@@ -487,13 +487,15 @@ class AddRequestCall {
     String? createdAt = '',
     String? updatedAt = '',
     String? from = '',
+    String? fromTeamName = '',
   }) {
     final ffApiRequestBody = '''
 {
   "Type": "${type}",
   "CreatedAt": "${createdAt}",
   "UpdatedAt": "${updatedAt}",
-  "from": "${from}"
+  "from": "${from}",
+  "fromTeamName": "${fromTeamName}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addRequest',
@@ -547,11 +549,12 @@ class AddRelationsCall {
 class GetCreatedRequesIdCall {
   static Future<ApiCallResponse> call({
     String? userId = '',
+    String? fromTeamName = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getCreatedRequesId',
       apiUrl:
-          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Request?fields=Id&where=%28forom%2Ceq%2C${userId}%29&limit=25&shuffle=0&offset=0&nested%5BFromTeamRef%5D%5Boffset%5D=0&nested%5BFromTeamRef%5D%5Blimit%5D=25&nested%5BToUserRef%5D%5Boffset%5D=0&nested%5BToUserRef%5D%5Blimit%5D=25',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Request?fields=Id&where=%28from%2Ceq%2C${userId}%29~and%28fromTeamName%2Ceq%2C${fromTeamName}%29&limit=25&shuffle=0&offset=0&nested%5BFromTeamRef%5D%5Boffset%5D=0&nested%5BFromTeamRef%5D%5Blimit%5D=25&nested%5BToUserRef%5D%5Boffset%5D=0&nested%5BToUserRef%5D%5Blimit%5D=25',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',

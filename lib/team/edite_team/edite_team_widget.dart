@@ -544,6 +544,7 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                     updateCallback: () => setState(() {}),
                     child: UserPickerWidget(
                       docId: widget.id!,
+                      teamName: widget.name!,
                     ),
                   ),
                 ),
