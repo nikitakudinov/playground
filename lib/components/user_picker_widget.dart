@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -200,43 +201,49 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                     child: TextFormField(
                       controller: _model.textController,
-                      onFieldSubmitted: (_) async {
-                        _model.apiResultp2t = await GetUserByEmailCall.call(
-                          email: _model.textController.text,
-                        );
-                        if ((_model.apiResultp2t?.succeeded ?? true)) {
-                          _model.searchResults =
-                              await actions.jsonToDataTypeSearchByEmail(
-                            getJsonField(
-                              (_model.apiResultp2t?.jsonBody ?? ''),
-                              r'''$.list''',
-                              true,
-                            ),
+                      onChanged: (_) => EasyDebounce.debounce(
+                        '_model.textController',
+                        Duration(milliseconds: 2000),
+                        () async {
+                          _model.apiResultp2tCopy =
+                              await GetUserByEmailCall.call(
+                            email: _model.textController.text,
                           );
-                          setState(() {
-                            _model.searchUserResults = _model.searchResults!
-                                .toList()
-                                .cast<SearchUserByEmailResultsStruct>();
-                          });
-                          await showDialog(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('1'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext),
-                                    child: Text('Ok'),
-                                  ),
-                                ],
-                              );
-                            },
-                          );
-                        }
+                          if ((_model.apiResultp2tCopy?.succeeded ?? true)) {
+                            _model.searchResultsCopy =
+                                await actions.jsonToDataTypeSearchByEmail(
+                              getJsonField(
+                                (_model.apiResultp2tCopy?.jsonBody ?? ''),
+                                r'''$.list''',
+                                true,
+                              ),
+                            );
+                            setState(() {
+                              _model.searchUserResults = _model
+                                  .searchResultsCopy!
+                                  .toList()
+                                  .cast<SearchUserByEmailResultsStruct>();
+                            });
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('1'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
 
-                        setState(() {});
-                      },
+                          setState(() {});
+                        },
+                      ),
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
