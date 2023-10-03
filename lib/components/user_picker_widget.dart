@@ -78,6 +78,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                     setState(() {
                       _model.searchVISIBILITY = true;
                       _model.callToTeamButtonVISIBILITY = false;
+                      _model.squadVISIBILITY = false;
                     });
                   },
                   text: 'Пригласить',
@@ -119,7 +120,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
-                              width: MediaQuery.sizeOf(context).width * 0.8,
+                              width: MediaQuery.sizeOf(context).width * 0.7,
                               decoration: BoxDecoration(),
                               child: Text(
                                 'Отправить приглашение вступить в команду этому пользователю?',
@@ -231,8 +232,11 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 15.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    setState(() {
+                                      _model.squadVISIBILITY = false;
+                                      _model.messageVISIBILITY = false;
+                                    });
                                   },
                                   text: 'Отправить',
                                   options: FFButtonOptions(
@@ -506,102 +510,104 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                   ),
                 ],
               ),
-            FutureBuilder<ApiCallResponse>(
-              future: GetTeamMembersListCall.call(
-                teamID: valueOrDefault<int>(
-                  widget.docId,
-                  0,
+            if (_model.squadVISIBILITY)
+              FutureBuilder<ApiCallResponse>(
+                future: GetTeamMembersListCall.call(
+                  teamID: valueOrDefault<int>(
+                    widget.docId,
+                    0,
+                  ),
                 ),
-              ),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
-                      child: SpinKitChasingDots(
-                        color: FlutterFlowTheme.of(context).primary,
-                        size: 50.0,
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: SpinKitChasingDots(
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 50.0,
+                        ),
                       ),
-                    ),
-                  );
-                }
-                final squadGetTeamMembersListResponse = snapshot.data!;
-                return Builder(
-                  builder: (context) {
-                    final teamMembersList = FFAppState().teamMembers.toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: teamMembersList.length,
-                      itemBuilder: (context, teamMembersListIndex) {
-                        final teamMembersListItem =
-                            teamMembersList[teamMembersListIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(3.0),
-                                child: Image.network(
-                                  teamMembersListItem.avatar,
-                                  width: 40.0,
-                                  height: 40.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      teamMembersListItem.nickname,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
+                    );
+                  }
+                  final squadGetTeamMembersListResponse = snapshot.data!;
+                  return Builder(
+                    builder: (context) {
+                      final teamMembersList = FFAppState().teamMembers.toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: teamMembersList.length,
+                        itemBuilder: (context, teamMembersListIndex) {
+                          final teamMembersListItem =
+                              teamMembersList[teamMembersListIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 5.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(3.0),
+                                  child: Image.network(
+                                    teamMembersListItem.avatar,
+                                    width: 40.0,
+                                    height: 40.0,
+                                    fit: BoxFit.cover,
                                   ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 0.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.network(
-                                            teamMembersListItem.flag,
-                                            width: 24.0,
-                                            height: 16.0,
-                                            fit: BoxFit.cover,
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        teamMembersListItem.nickname,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              teamMembersListItem.flag,
+                                              width: 24.0,
+                                              height: 16.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Text(
-                                        teamMembersListItem.countryName,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelSmall,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    );
-                  },
-                );
-              },
-            ),
+                                        Text(
+                                          teamMembersListItem.countryName,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
           ],
         ),
       ),

@@ -43,6 +43,8 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   bool messageVISIBILITY = false;
 
+  bool squadVISIBILITY = true;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.
