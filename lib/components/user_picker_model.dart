@@ -29,6 +29,20 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
           int index, Function(SearchUserByEmailResultsStruct) updateFn) =>
       searchUserResults[index] = updateFn(searchUserResults[index]);
 
+  String? selectedUserAvatarVALUE;
+
+  String? selectedUserNicknameVALUE = '';
+
+  String? selectedUserCountry = '';
+
+  String? selectedUserFlag = 'false';
+
+  bool searchVISIBILITY = false;
+
+  bool callToTeamButtonVISIBILITY = true;
+
+  bool messageVISIBILITY = false;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.

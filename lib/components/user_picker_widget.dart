@@ -74,8 +74,11 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                   ),
                 ),
                 FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    setState(() {
+                      _model.searchVISIBILITY = true;
+                      _model.callToTeamButtonVISIBILITY = false;
+                    });
                   },
                   text: 'Пригласить',
                   options: FFButtonOptions(
@@ -97,256 +100,404 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                 ),
               ],
             ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 15.0, 0.0, 15.0),
-                        child: TextFormField(
-                          controller: _model.textController,
-                          onChanged: (_) => EasyDebounce.debounce(
-                            '_model.textController',
-                            Duration(milliseconds: 2000),
-                            () async {
-                              _model.apiResultp2tCopy =
-                                  await GetUserByEmailCall.call(
-                                id: int.tryParse(_model.textController.text),
-                              );
-                              if ((_model.apiResultp2tCopy?.succeeded ??
-                                  true)) {
-                                _model.searchResultsCopy =
-                                    await actions.jsonToDataTypeSearchByEmail(
-                                  getJsonField(
-                                    (_model.apiResultp2tCopy?.jsonBody ?? ''),
-                                    r'''$.list''',
-                                    true,
-                                  ),
-                                );
-                                setState(() {
-                                  _model.searchUserResults = _model
-                                      .searchResultsCopy!
-                                      .toList()
-                                      .cast<SearchUserByEmailResultsStruct>();
-                                });
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('1'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              }
-
-                              setState(() {});
-                            },
-                          ),
-                          autofocus: true,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: '#UID пользователя',
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
-                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(0.0),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).primary,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(0.0),
-                            ),
-                            errorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(0.0),
-                            ),
-                            focusedErrorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).error,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(0.0),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).tertiary,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: MediaQuery.sizeOf(context).width * 0.8,
+                            decoration: BoxDecoration(),
+                            child: Text(
+                              'Отправить приглашение вступить в команду этому пользователю?',
+                              style: FlutterFlowTheme.of(context).bodyMedium,
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                          validator: _model.textControllerValidator
-                              .asValidator(context),
-                        ),
+                        ],
                       ),
-                      FutureBuilder<ApiCallResponse>(
-                        future: GetTeamMembersListCall.call(
-                          teamID: valueOrDefault<int>(
-                            widget.docId,
-                            0,
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          15.0, 15.0, 15.0, 15.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(3.0),
+                            child: Image.network(
+                              _model.selectedUserAvatarVALUE!,
+                              width: 40.0,
+                              height: 40.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: SpinKitChasingDots(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 50.0,
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  _model.selectedUserNicknameVALUE!,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ),
-                            );
-                          }
-                          final searchResultsListGetTeamMembersListResponse =
-                              snapshot.data!;
-                          return Builder(
-                            builder: (context) {
-                              final searchResultsList =
-                                  _model.searchUserResults.toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: searchResultsList.length,
-                                itemBuilder: (context, searchResultsListIndex) {
-                                  final searchResultsListItem =
-                                      searchResultsList[searchResultsListIndex];
-                                  return Padding(
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 5.0, 0.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text('12'),
-                                                      content:
-                                                          Text('2221223123'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child: Text('Cancel'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Confirm'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                ) ??
-                                                false;
-                                      },
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                            child: Image.network(
-                                              searchResultsListItem.avatar,
-                                              width: 40.0,
-                                              height: 40.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.network(
+                                        _model.selectedUserFlag!,
+                                        width: 24.0,
+                                        height: 16.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    _model.selectedUserCountry!,
+                                    style:
+                                        FlutterFlowTheme.of(context).labelSmall,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 15.0),
+                              child: FFButtonWidget(
+                                onPressed: () {
+                                  print('Button pressed ...');
+                                },
+                                text: 'Отмена',
+                                options: FFButtonOptions(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Saira Semi Condensed',
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).accent1,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(3.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 15.0),
+                              child: FFButtonWidget(
+                                onPressed: () {
+                                  print('Button pressed ...');
+                                },
+                                text: 'Отправить',
+                                options: FFButtonOptions(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Saira Semi Condensed',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(3.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ].divide(SizedBox(width: 15.0)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (_model.searchVISIBILITY)
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 15.0),
+                          child: TextFormField(
+                            controller: _model.textController,
+                            onChanged: (_) => EasyDebounce.debounce(
+                              '_model.textController',
+                              Duration(milliseconds: 2000),
+                              () async {
+                                _model.apiResultp2tCopy =
+                                    await GetUserByEmailCall.call(
+                                  id: int.tryParse(_model.textController.text),
+                                );
+                                if ((_model.apiResultp2tCopy?.succeeded ??
+                                    true)) {
+                                  _model.searchResultsCopy =
+                                      await actions.jsonToDataTypeSearchByEmail(
+                                    getJsonField(
+                                      (_model.apiResultp2tCopy?.jsonBody ?? ''),
+                                      r'''$.list''',
+                                      true,
+                                    ),
+                                  );
+                                  setState(() {
+                                    _model.searchUserResults = _model
+                                        .searchResultsCopy!
+                                        .toList()
+                                        .cast<SearchUserByEmailResultsStruct>();
+                                  });
+                                }
+
+                                setState(() {});
+                              },
+                            ),
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: '#UID пользователя',
+                              labelStyle:
+                                  FlutterFlowTheme.of(context).labelMedium,
+                              hintStyle:
+                                  FlutterFlowTheme.of(context).labelMedium,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(0.0),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(0.0),
+                              ),
+                              errorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(0.0),
+                              ),
+                              focusedErrorBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(0.0),
+                              ),
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            validator: _model.textControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: FutureBuilder<ApiCallResponse>(
+                            future: GetTeamMembersListCall.call(
+                              teamID: valueOrDefault<int>(
+                                widget.docId,
+                                0,
+                              ),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitChasingDots(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              final searchResultsListGetTeamMembersListResponse =
+                                  snapshot.data!;
+                              return Builder(
+                                builder: (context) {
+                                  final searchResultsList =
+                                      _model.searchUserResults.toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: searchResultsList.length,
+                                    itemBuilder:
+                                        (context, searchResultsListIndex) {
+                                      final searchResultsListItem =
+                                          searchResultsList[
+                                              searchResultsListIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 10.0, 10.0, 10.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            setState(() {
+                                              _model.selectedUserAvatarVALUE =
+                                                  searchResultsListItem.avatar;
+                                              _model.selectedUserNicknameVALUE =
                                                   searchResultsListItem
-                                                      .nickname,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                      .nickname;
+                                              _model.selectedUserCountry =
+                                                  searchResultsListItem
+                                                      .countryName;
+                                              _model.selectedUserFlag =
+                                                  searchResultsListItem.flag;
+                                              _model.messageVISIBILITY = true;
+                                              _model.searchVISIBILITY = false;
+                                            });
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(3.0),
+                                                child: Image.network(
+                                                  searchResultsListItem.avatar,
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
-                                              Row(
+                                              Column(
                                                 mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        searchResultsListItem
-                                                            .flag,
-                                                        width: 24.0,
-                                                        height: 16.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
+                                                    child: Text(
+                                                      searchResultsListItem
+                                                          .nickname,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
                                                     ),
                                                   ),
-                                                  Text(
-                                                    searchResultsListItem
-                                                        .countryName,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelSmall,
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                          child: Image.network(
+                                                            searchResultsListItem
+                                                                .flag,
+                                                            width: 24.0,
+                                                            height: 16.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        searchResultsListItem
+                                                            .countryName,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                    ),
+                                        ),
+                                      );
+                                    },
                                   );
                                 },
                               );
                             },
-                          );
-                        },
-                      ),
-                    ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
             FutureBuilder<ApiCallResponse>(
               future: GetTeamMembersListCall.call(
                 teamID: valueOrDefault<int>(
