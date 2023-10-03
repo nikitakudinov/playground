@@ -150,7 +150,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'LIST_REQUEST',
           path: '/listRequest',
-          builder: (context, params) => ListRequestWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'LIST_REQUEST')
+              : ListRequestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

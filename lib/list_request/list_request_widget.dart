@@ -100,7 +100,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            'Hello World',
+                            '${requestsListItem.fromTeam}tzsx${requestsListItem.toUser}',
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ],

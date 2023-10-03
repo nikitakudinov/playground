@@ -121,6 +121,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'LIST_TEAM': ListTeamWidget(),
       'LIST_TOURNAMENT': ListTournamentWidget(),
+      'LIST_REQUEST': ListRequestWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -153,6 +154,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Home',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_alert,
+              size: 24.0,
+            ),
+            label: 'Уведомления',
             tooltip: '',
           )
         ],
