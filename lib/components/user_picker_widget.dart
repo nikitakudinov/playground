@@ -255,21 +255,43 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     );
                                     if ((_model.apiResulto2t?.succeeded ??
                                         true)) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: Text('1'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: Text('Ok'),
-                                              ),
-                                            ],
-                                          );
-                                        },
+                                      _model.apiResultjqx =
+                                          await GetCreatedRequesIdCall.call(
+                                        userId: currentUserUid,
                                       );
+                                      if ((_model.apiResultjqx?.succeeded ??
+                                          true)) {
+                                        _model.apiResultvog =
+                                            await AddRelationsCall.call(
+                                          dataTypeForUpdate: 'Request',
+                                          idOfDataForUpdate: getJsonField(
+                                            (_model.apiResultjqx?.jsonBody ??
+                                                ''),
+                                            r'''$.Id''',
+                                          ),
+                                          fildName: 'FromTeam',
+                                          fieldId: widget.docId,
+                                        );
+                                        if ((_model.apiResultvog?.succeeded ??
+                                            true)) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('1'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+                                      }
                                     }
                                     setState(() {
                                       _model.squadVISIBILITY = true;
@@ -463,6 +485,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                   searchResultsListItem.flag;
                                               _model.messageVISIBILITY = true;
                                               _model.searchVISIBILITY = false;
+                                              _model.selectedUserIdVALUE =
+                                                  searchResultsListItem.id;
                                             });
                                           },
                                           child: Row(

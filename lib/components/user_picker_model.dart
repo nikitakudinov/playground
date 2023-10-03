@@ -46,10 +46,16 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   bool squadVISIBILITY = true;
 
+  int? selectedUserIdVALUE;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - API (addRequest)] action in Button widget.
   ApiCallResponse? apiResulto2t;
+  // Stores action output result for [Backend Call - API (getCreatedRequesId)] action in Button widget.
+  ApiCallResponse? apiResultjqx;
+  // Stores action output result for [Backend Call - API (addRelations)] action in Button widget.
+  ApiCallResponse? apiResultvog;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;

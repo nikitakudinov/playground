@@ -546,7 +546,7 @@ class AddRelationsCall {
 
 class GetCreatedRequesIdCall {
   static Future<ApiCallResponse> call({
-    int? userId,
+    String? userId = '',
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'getCreatedRequesId',
