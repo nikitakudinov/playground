@@ -107,156 +107,164 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                   color: FlutterFlowTheme.of(context).tertiary,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            width: MediaQuery.sizeOf(context).width * 0.8,
-                            decoration: BoxDecoration(),
-                            child: Text(
-                              'Отправить приглашение вступить в команду этому пользователю?',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(3.0),
-                            child: Image.network(
-                              _model.selectedUserAvatarVALUE,
-                              width: 40.0,
-                              height: 40.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  _model.selectedUserNicknameVALUE,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                ),
+                child: Visibility(
+                  visible: _model.messageVISIBILITY,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: MediaQuery.sizeOf(context).width * 0.8,
+                              decoration: BoxDecoration(),
+                              child: Text(
+                                'Отправить приглашение вступить в команду этому пользователю?',
+                                style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0.0),
-                                      child: Image.network(
-                                        _model.selectedUserFlag,
-                                        width: 24.0,
-                                        height: 16.0,
-                                        fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            15.0, 15.0, 15.0, 15.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(3.0),
+                              child: Image.network(
+                                _model.selectedUserAvatarVALUE,
+                                width: 40.0,
+                                height: 40.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    _model.selectedUserNicknameVALUE,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: Image.network(
+                                          _model.selectedUserFlag,
+                                          width: 24.0,
+                                          height: 16.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Text(
-                                    _model.selectedUserCountry,
-                                    style:
-                                        FlutterFlowTheme.of(context).labelSmall,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
+                                    Text(
+                                      _model.selectedUserCountry,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 15.0),
-                              child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
-                                },
-                                text: 'Отмена',
-                                options: FFButtonOptions(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Saira Semi Condensed',
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).accent1,
-                                    width: 1.0,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 15.0),
+                                child: FFButtonWidget(
+                                  onPressed: () {
+                                    print('Button pressed ...');
+                                  },
+                                  text: 'Отмена',
+                                  options: FFButtonOptions(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Saira Semi Condensed',
+                                          color: FlutterFlowTheme.of(context)
+                                              .accent1,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).accent1,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(3.0),
                                   ),
-                                  borderRadius: BorderRadius.circular(3.0),
                                 ),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 15.0),
-                              child: FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
-                                },
-                                text: 'Отправить',
-                                options: FFButtonOptions(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 0.0, 15.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Saira Semi Condensed',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                      ),
-                                  elevation: 3.0,
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    width: 1.0,
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 15.0),
+                                child: FFButtonWidget(
+                                  onPressed: () {
+                                    print('Button pressed ...');
+                                  },
+                                  text: 'Отправить',
+                                  options: FFButtonOptions(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Saira Semi Condensed',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(3.0),
                                   ),
-                                  borderRadius: BorderRadius.circular(3.0),
                                 ),
                               ),
                             ),
-                          ),
-                        ].divide(SizedBox(width: 15.0)),
+                          ].divide(SizedBox(width: 15.0)),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
