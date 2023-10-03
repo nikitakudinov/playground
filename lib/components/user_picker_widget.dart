@@ -122,9 +122,22 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                             Container(
                               width: MediaQuery.sizeOf(context).width * 0.7,
                               decoration: BoxDecoration(),
-                              child: Text(
-                                'Отправить приглашение вступить в команду этому пользователю?',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              child: Wrap(
+                                spacing: 0.0,
+                                runSpacing: 0.0,
+                                alignment: WrapAlignment.start,
+                                crossAxisAlignment: WrapCrossAlignment.start,
+                                direction: Axis.horizontal,
+                                runAlignment: WrapAlignment.start,
+                                verticalDirection: VerticalDirection.down,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  Text(
+                                    'Отправить приглашение вступить в команду этому пользователю?',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                  ),
+                                ],
                               ),
                             ),
                           ],
