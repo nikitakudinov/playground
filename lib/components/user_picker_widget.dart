@@ -247,7 +247,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 child: FFButtonWidget(
                                   onPressed: () async {
                                     setState(() {
-                                      _model.squadVISIBILITY = false;
+                                      _model.squadVISIBILITY = true;
                                       _model.messageVISIBILITY = false;
                                     });
                                   },
