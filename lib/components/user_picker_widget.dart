@@ -448,8 +448,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               _model.messageVISIBILITY = true;
                                               _model.searchVISIBILITY = false;
                                               _model.selectedUserIdVALUE =
-                                                  searchResultsListItem.id
-                                                      .toString();
+                                                  searchResultsListItem
+                                                      .fbUserRef;
                                             });
                                           },
                                           child: Row(
