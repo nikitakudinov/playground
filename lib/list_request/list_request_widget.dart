@@ -189,10 +189,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Команда ${getJsonField(
-                                                          requestsListItem,
-                                                          r'''$.name''',
-                                                        ).toString()}предлагает вступить в ее ряды. ',
+                                                        'Команда предлагает вступить в ее ряды. ',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
