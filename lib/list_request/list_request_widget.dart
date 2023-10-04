@@ -161,22 +161,17 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          5.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    '[${GetTeamCall.tag(
-                                                      listViewGetTeamResponse
-                                                          .jsonBody,
-                                                    ).toString()}] ${GetTeamCall.name(
-                                                      listViewGetTeamResponse
-                                                          .jsonBody,
-                                                    ).toString()}',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge,
-                                                  ),
+                                                Text(
+                                                  '[${GetTeamCall.tag(
+                                                    listViewGetTeamResponse
+                                                        .jsonBody,
+                                                  ).toString()}] ${GetTeamCall.name(
+                                                    listViewGetTeamResponse
+                                                        .jsonBody,
+                                                  ).toString()}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyLarge,
                                                 ),
                                                 Row(
                                                   mainAxisSize:
@@ -309,8 +304,69 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                           ),
                                           Expanded(
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                _model.userData =
+                                                    await GetUserByFbUserRefCall
+                                                        .call(
+                                                  fbUserRef:
+                                                      requestsItem.toUser,
+                                                );
+                                                _model.apiResulta5c =
+                                                    await AddRelationsCall.call(
+                                                  dataTypeForUpdate: 'Team',
+                                                  idOfDataForUpdate:
+                                                      requestsItem.fromTeam,
+                                                  fildName: 'members',
+                                                  fieldId:
+                                                      GetUserByFbUserRefCall
+                                                          .listId(
+                                                    (_model.userData
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  ),
+                                                );
+                                                if ((_model.apiResulta5c
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  _model.apiResultjyo =
+                                                      await UpdateUserTagAndRoleCall
+                                                          .call(
+                                                    id: GetUserByFbUserRefCall
+                                                        .listId(
+                                                      (_model.userData
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ),
+                                                    tag: GetTeamCall.tag(
+                                                      listViewGetTeamResponse
+                                                          .jsonBody,
+                                                    ).toString(),
+                                                    teamRole: 'Игрок команды',
+                                                  );
+                                                  if ((_model.apiResultjyo
+                                                          ?.succeeded ??
+                                                      true)) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text('1'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+                                                }
+
+                                                setState(() {});
                                               },
                                               text: 'Вступить',
                                               options: FFButtonOptions(
