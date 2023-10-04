@@ -393,6 +393,22 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                           tag: _model.tagController.text,
                                           teamRole: 'Основатель',
                                         );
+                                        _model.teamData =
+                                            await GetTeamByFbUserRefCall.call(
+                                          fbUserRef: currentUserUid,
+                                        );
+                                        await AddRelationsCall.call(
+                                          dataTypeForUpdate: 'Team',
+                                          idOfDataForUpdate:
+                                              GetTeamByFbUserRefCall.listId(
+                                            (_model.teamData?.jsonBody ?? ''),
+                                          ),
+                                          fildName: 'members',
+                                          fieldId:
+                                              GetUserByFbUserRefCall.listId(
+                                            (_model.userData?.jsonBody ?? ''),
+                                          ),
+                                        );
                                         if ((_model.apiResultp5p?.succeeded ??
                                             true)) {
                                           await showDialog(

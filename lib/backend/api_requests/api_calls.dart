@@ -185,6 +185,77 @@ class GetTeamCall {
       );
 }
 
+class GetTeamByFbUserRefCall {
+  static Future<ApiCallResponse> call({
+    String? fbUserRef = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getTeamByFbUserRef',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team?where=%28owner%2Ceq%2C${fbUserRef}%29&limit=25&shuffle=0&offset=0&nested%5BmembersRefs%5D%5Boffset%5D=0&nested%5BmembersRefs%5D%5Blimit%5D=25',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {
+        'FbUserRef': fbUserRef,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  static dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+      );
+  static dynamic listname(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].name''',
+      );
+  static dynamic listCreatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CreatedAt''',
+      );
+  static dynamic listUpdatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].UpdatedAt''',
+      );
+  static dynamic listtag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].tag''',
+      );
+  static dynamic listowner(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].owner''',
+      );
+  static dynamic listmembers(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].members''',
+      );
+  static dynamic listlogo(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].logo''',
+      );
+  static dynamic listcountry(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].country''',
+      );
+  static dynamic listflag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].flag''',
+      );
+}
+
 class DeliteRequestCall {
   static Future<ApiCallResponse> call({
     int? id,
