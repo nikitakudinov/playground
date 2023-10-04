@@ -101,17 +101,40 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                     itemCount: requestsList.length,
                     itemBuilder: (context, requestsListIndex) {
                       final requestsListItem = requestsList[requestsListIndex];
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            valueOrDefault<String>(
-                              _model.teamData?.name,
-                              '0',
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
+                      return FutureBuilder<ApiCallResponse>(
+                        future: GetTeamCall.call(
+                          id: requestsListItem.fromTeam,
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitChasingDots(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 50.0,
+                                ),
+                              ),
+                            );
+                          }
+                          final requestToJoinfromTeamToUserGetTeamResponse =
+                              snapshot.data!;
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                getJsonField(
+                                  requestToJoinfromTeamToUserGetTeamResponse
+                                      .jsonBody,
+                                  r'''$.name''',
+                                ).toString(),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   );
