@@ -256,7 +256,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                             child: FFButtonWidget(
                                               onPressed: () async {
                                                 _model.userIdByUserRef =
-                                                    await GetUserIdByFbUserRefCall
+                                                    await GetUserByFbUserRefCall
                                                         .call(
                                                   fbUserRef: currentUserUid,
                                                 );
@@ -284,23 +284,95 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   if ((_model.apiResult0l3
                                                           ?.succeeded ??
                                                       true)) {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text('1'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: Text('Ok'),
-                                                            ),
-                                                          ],
-                                                        );
-                                                      },
+                                                    _model.apiResultg82 =
+                                                        await UpdateUserCall
+                                                            .call(
+                                                      id: getJsonField(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.list[:].id''',
+                                                      ),
+                                                      email:
+                                                          GetUserByFbUserRefCall
+                                                              .listEmail(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString(),
+                                                      nickname:
+                                                          GetUserByFbUserRefCall
+                                                              .listNickname(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString(),
+                                                      fbUserRef:
+                                                          GetUserByFbUserRefCall
+                                                              .listFbUserRef(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString(),
+                                                      avatar:
+                                                          GetUserByFbUserRefCall
+                                                              .listAvatar(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ),
+                                                      countryName:
+                                                          GetUserByFbUserRefCall
+                                                              .listCountryName(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString(),
+                                                      createdAt:
+                                                          GetUserByFbUserRefCall
+                                                              .listCreatedAt(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ).toString(),
+                                                      updatedAt:
+                                                          getCurrentTimestamp
+                                                              .toString(),
+                                                      tag: GetTeamCall.tag(
+                                                        requestToJoinfromTeamToUserGetTeamResponse
+                                                            .jsonBody,
+                                                      ).toString(),
+                                                      teamRole: 'Игрок команды',
+                                                      flag:
+                                                          GetUserByFbUserRefCall
+                                                              .listFlag(
+                                                        (_model.userIdByUserRef
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                      ),
                                                     );
+                                                    if ((_model.apiResultg82
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text('1'),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                    }
                                                   }
                                                 }
 
