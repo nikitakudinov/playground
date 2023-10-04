@@ -273,7 +273,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                           (_model.userIdByUserRef
                                                                   ?.jsonBody ??
                                                               ''),
-                                                          r'''$.list''',
+                                                          r'''$.list[:].Id''',
                                                         ).toString()),
                                                         actions: [
                                                           TextButton(
