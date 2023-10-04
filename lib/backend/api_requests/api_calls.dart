@@ -860,6 +860,42 @@ class GetRequestsCall {
       cache: false,
     );
   }
+
+  static dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  static dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+        true,
+      );
+  static dynamic listType(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Type''',
+        true,
+      );
+  static dynamic listCreatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CreatedAt''',
+        true,
+      );
+  static dynamic listUpdatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].UpdatedAt''',
+        true,
+      );
+  static dynamic listfromTeam(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].fromTeam''',
+        true,
+      );
+  static dynamic listtoUser(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].toUser''',
+        true,
+      );
 }
 
 class ApiPagingParams {

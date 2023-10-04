@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -21,14 +20,6 @@ class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (getUserByFbUserRef)] action in Button widget.
-  ApiCallResponse? userIdByUserRef;
-  // Stores action output result for [Backend Call - API (addRelations)] action in Button widget.
-  ApiCallResponse? apiResult0l3;
-  // Stores action output result for [Backend Call - API (updateUser)] action in Button widget.
-  ApiCallResponse? apiResultg82;
-  // Stores action output result for [Backend Call - API (deliteRequest)] action in Button widget.
-  ApiCallResponse? apiResult503;
 
   /// Initialization and disposal methods.
 

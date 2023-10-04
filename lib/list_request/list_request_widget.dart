@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -87,10 +86,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                   final listViewGetRequestsResponse = snapshot.data!;
                   return Builder(
                     builder: (context) {
-                      final requestsList = getJsonField(
-                        listViewGetRequestsResponse.jsonBody,
-                        r'''$.list''',
-                      ).toList();
+                      final requestsList = GetRequestsCall.list(
+                            listViewGetRequestsResponse.jsonBody,
+                          )?.toList() ??
+                          [];
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
@@ -110,331 +109,165 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 10.0, 10.0),
-                                child: FutureBuilder<ApiCallResponse>(
-                                  future: GetTeamCall.call(
-                                    id: getJsonField(
-                                      requestsListItem,
-                                      r'''$.Id''',
-                                    ),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: SpinKitChasingDots(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 50.0,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    final requestToJoinfromTeamToUserGetTeamResponse =
-                                        snapshot.data!;
-                                    return Column(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.network(
-                                                      GetTeamCall.logo(
-                                                        requestToJoinfromTeamToUserGetTeamResponse
-                                                            .jsonBody,
-                                                      ),
-                                                      width: 30.0,
-                                                      height: 30.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Text(
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 5.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.network(
                                                   getJsonField(
-                                                    requestToJoinfromTeamToUserGetTeamResponse
-                                                        .jsonBody,
-                                                    r'''$.name''',
-                                                  ).toString(),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ],
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        1.0,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Команда ${getJsonField(
-                                                          requestToJoinfromTeamToUserGetTeamResponse
-                                                              .jsonBody,
-                                                          r'''$.name''',
-                                                        ).toString()}предлагает вступить в ее ряды. ',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                    ),
+                                                    requestsListItem,
+                                                    r'''$.logo''',
                                                   ),
-                                                ],
+                                                  width: 30.0,
+                                                  height: 30.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
+                                            ),
+                                            Text(
+                                              getJsonField(
+                                                requestsListItem,
+                                                r'''$.name''',
+                                              ).toString(),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
                                             ),
                                           ],
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 0.0),
-                                          child: Row(
+                                        Expanded(
+                                          child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Expanded(
-                                                child: FFButtonWidget(
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
-                                                  },
-                                                  text: 'Отказаться',
-                                                  options: FFButtonOptions(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Команда ${getJsonField(
+                                                      requestsListItem,
+                                                      r'''$.name''',
+                                                    ).toString()}предлагает вступить в ее ряды. ',
+                                                    style: FlutterFlowTheme.of(
                                                             context)
-                                                        .tertiary,
-                                                    textStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Saira Semi Condensed',
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent1,
-                                                            ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent1,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            3.0),
+                                                        .bodyMedium,
                                                   ),
                                                 ),
                                               ),
-                                              Expanded(
-                                                child: FFButtonWidget(
-                                                  onPressed: () async {
-                                                    _model.userIdByUserRef =
-                                                        await GetUserByFbUserRefCall
-                                                            .call(
-                                                      fbUserRef: currentUserUid,
-                                                    );
-                                                    if ((_model.userIdByUserRef
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      _model.apiResult0l3 =
-                                                          await AddRelationsCall
-                                                              .call(
-                                                        dataTypeForUpdate:
-                                                            'Team',
-                                                        idOfDataForUpdate:
-                                                            getJsonField(
-                                                          requestToJoinfromTeamToUserGetTeamResponse
-                                                              .jsonBody,
-                                                          r'''$.Id''',
-                                                        ),
-                                                        fildName: 'members',
-                                                        fieldId: getJsonField(
-                                                          (_model.userIdByUserRef
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                          r'''$.list[:].Id''',
-                                                        ),
-                                                      );
-                                                      if ((_model.apiResult0l3
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        _model.apiResultg82 =
-                                                            await UpdateUserCall
-                                                                .call(
-                                                          id: GetUserByFbUserRefCall
-                                                              .listId(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ),
-                                                          email:
-                                                              GetUserByFbUserRefCall
-                                                                  .listEmail(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ).toString(),
-                                                          nickname:
-                                                              GetUserByFbUserRefCall
-                                                                  .listNickname(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ).toString(),
-                                                          fbUserRef:
-                                                              GetUserByFbUserRefCall
-                                                                  .listFbUserRef(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ).toString(),
-                                                          avatar:
-                                                              GetUserByFbUserRefCall
-                                                                  .listAvatar(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ),
-                                                          countryName:
-                                                              GetUserByFbUserRefCall
-                                                                  .listCountryName(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ).toString(),
-                                                          createdAt:
-                                                              GetUserByFbUserRefCall
-                                                                  .listCreatedAt(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ).toString(),
-                                                          updatedAt:
-                                                              getCurrentTimestamp
-                                                                  .toString(),
-                                                          tag: GetTeamCall.tag(
-                                                            requestToJoinfromTeamToUserGetTeamResponse
-                                                                .jsonBody,
-                                                          ).toString(),
-                                                          teamRole:
-                                                              'Игрок команды',
-                                                          flag:
-                                                              GetUserByFbUserRefCall
-                                                                  .listFlag(
-                                                            (_model.userIdByUserRef
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          ),
-                                                        );
-                                                        if ((_model.apiResultg82
-                                                                ?.succeeded ??
-                                                            true)) {
-                                                          _model.apiResult503 =
-                                                              await DeliteRequestCall
-                                                                  .call(
-                                                            id: getJsonField(
-                                                              requestsListItem,
-                                                              r'''$.Id''',
-                                                            ),
-                                                          );
-                                                          if ((_model
-                                                                  .apiResult503
-                                                                  ?.succeeded ??
-                                                              true)) {
-                                                            setState(() {
-                                                              FFAppState()
-                                                                  .requests = [];
-                                                            });
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-
-                                                    setState(() {});
-                                                  },
-                                                  text: 'Вступить',
-                                                  options: FFButtonOptions(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                15.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .tertiary,
-                                                    textStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Saira Semi Condensed',
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                            ),
-                                                    elevation: 3.0,
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            3.0),
-                                                  ),
-                                                ),
-                                              ),
-                                            ].divide(SizedBox(width: 15.0)),
+                                            ],
                                           ),
                                         ),
                                       ],
-                                    );
-                                  },
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: 'Отказаться',
+                                              options: FFButtonOptions(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Saira Semi Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent1,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent1,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(3.0),
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: 'Вступить',
+                                              options: FFButtonOptions(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        15.0, 0.0, 15.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Saira Semi Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(3.0),
+                                              ),
+                                            ),
+                                          ),
+                                        ].divide(SizedBox(width: 15.0)),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
