@@ -149,7 +149,11 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/245/600',
+                                                  getJsonField(
+                                                    requestToJoinfromTeamToUserGetTeamResponse
+                                                        .jsonBody,
+                                                    r'''$.logo''',
+                                                  ),
                                                   width: 30.0,
                                                   height: 30.0,
                                                   fit: BoxFit.cover,
