@@ -638,7 +638,12 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                           child: Text(
                                             teamMembersListItem.countryName,
                                             style: FlutterFlowTheme.of(context)
-                                                .labelSmall,
+                                                .labelSmall
+                                                .override(
+                                                  fontFamily:
+                                                      'Saira Semi Condensed',
+                                                  lineHeight: 0.8,
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -653,7 +658,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             .override(
                                               fontFamily:
                                                   'Saira Semi Condensed',
-                                              lineHeight: 0.5,
+                                              lineHeight: 0.6,
                                             ),
                                       ),
                                     ),
