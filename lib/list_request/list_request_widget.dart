@@ -138,14 +138,34 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              GetTeamCall.name(
-                                                listViewGetTeamResponse
-                                                    .jsonBody,
-                                              ).toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: Image.network(
+                                                GetTeamCall.logo(
+                                                  listViewGetTeamResponse
+                                                      .jsonBody,
+                                                ),
+                                                width: 40.0,
+                                                height: 40.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                '[${GetTeamCall.tag(
+                                                  listViewGetTeamResponse
+                                                      .jsonBody,
+                                                ).toString()}] ${GetTeamCall.name(
+                                                  listViewGetTeamResponse
+                                                      .jsonBody,
+                                                ).toString()}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
                                             ),
                                           ],
                                         ),
