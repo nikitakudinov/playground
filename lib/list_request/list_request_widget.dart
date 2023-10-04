@@ -143,7 +143,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  'Hello World',
+                                                  GetTeamCall.name(
+                                                    requestToJoinfromTeamToUserGetTeamResponse
+                                                        .jsonBody,
+                                                  ).toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
