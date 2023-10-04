@@ -142,22 +142,6 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 5.0, 0.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.network(
-                                                      'https://picsum.photos/seed/245/600',
-                                                      width: 30.0,
-                                                      height: 30.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
                                                 Text(
                                                   'Hello World',
                                                   style: FlutterFlowTheme.of(
