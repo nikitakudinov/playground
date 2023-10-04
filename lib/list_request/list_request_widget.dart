@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,6 +46,20 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
           FFAppState().requests =
               _model.requestsData!.toList().cast<RequestStruct>();
         });
+        _model.apiResult394 = await GetTeamCall.call(
+          id: FFAppState().requests.last.id,
+        );
+        if ((_model.apiResult394?.succeeded ?? true)) {
+          setState(() {
+            _model.updateTeamDataStruct(
+              (e) => e
+                ..id = getJsonField(
+                  (_model.apiResult394?.jsonBody ?? ''),
+                  r'''$.name''',
+                ),
+            );
+          });
+        }
       }
     });
   }
@@ -104,7 +119,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            '${requestsListItem.fromTeam}tzsx${requestsListItem.toUser}',
+                            valueOrDefault<String>(
+                              _model.teamData?.name,
+                              '0',
+                            ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ],

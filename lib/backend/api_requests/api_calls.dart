@@ -60,11 +60,12 @@ class GetTeamCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getTeam',
       apiUrl:
-          'http://37.139.36.167/api/v1/db/data/v1/database/Team/views/Team/${id}',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Team/${id}?fields=Id%2Cname%2CCreatedAt%2CUpdatedAt%2Ctag%2Cowner%2Cmembers%2Clogo%2Ccountry%2Cflag',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
-        'xc-token': 'vdgJ3Duiy5c4nCQ2uvxqmffYmHK4GNAMr5RXdAmK',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
       },
       params: {
         'ID': "5",

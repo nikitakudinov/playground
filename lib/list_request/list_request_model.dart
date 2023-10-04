@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -13,6 +14,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
+  ///  Local state fields for this page.
+
+  TeamStruct? teamData;
+  void updateTeamDataStruct(Function(TeamStruct) updateFn) =>
+      updateFn(teamData ??= TeamStruct());
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -20,6 +27,8 @@ class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
   ApiCallResponse? apiResulte66;
   // Stores action output result for [Custom Action - jsonToDataTypeRequest] action in LIST_REQUEST widget.
   List<RequestStruct>? requestsData;
+  // Stores action output result for [Backend Call - API (getTeam)] action in LIST_REQUEST widget.
+  ApiCallResponse? apiResult394;
 
   /// Initialization and disposal methods.
 
