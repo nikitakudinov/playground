@@ -187,13 +187,13 @@ class GetTeamCall {
 
 class DeliteRequestCall {
   static Future<ApiCallResponse> call({
-    int? id = 8,
+    int? id,
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'deliteRequest',
       apiUrl:
           'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Request/${id}',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.DELETE,
       headers: {
         'accept': 'application/json',
         'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
