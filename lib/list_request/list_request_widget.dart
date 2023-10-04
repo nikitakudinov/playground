@@ -151,9 +151,12 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                     child: Image.network(
-                                                      GetTeamCall.logo(
-                                                        requestToJoinfromTeamToUserGetTeamResponse
-                                                            .jsonBody,
+                                                      valueOrDefault<String>(
+                                                        GetTeamCall.logo(
+                                                          requestToJoinfromTeamToUserGetTeamResponse
+                                                              .jsonBody,
+                                                        ),
+                                                        'false',
                                                       ),
                                                       width: 30.0,
                                                       height: 30.0,
@@ -162,10 +165,13 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  GetTeamCall.name(
-                                                    requestToJoinfromTeamToUserGetTeamResponse
-                                                        .jsonBody,
-                                                  ).toString(),
+                                                  valueOrDefault<String>(
+                                                    GetTeamCall.name(
+                                                      requestToJoinfromTeamToUserGetTeamResponse
+                                                          .jsonBody,
+                                                    ).toString(),
+                                                    'false',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
