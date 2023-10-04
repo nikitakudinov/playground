@@ -14,7 +14,7 @@ class RequestStruct extends FFFirebaseStruct {
     String? type,
     String? createdAt,
     String? updatedAt,
-    String? fromTeam,
+    int? fromTeam,
     String? toUser,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
@@ -51,9 +51,10 @@ class RequestStruct extends FFFirebaseStruct {
   bool hasUpdatedAt() => _updatedAt != null;
 
   // "fromTeam" field.
-  String? _fromTeam;
-  String get fromTeam => _fromTeam ?? '';
-  set fromTeam(String? val) => _fromTeam = val;
+  int? _fromTeam;
+  int get fromTeam => _fromTeam ?? 0;
+  set fromTeam(int? val) => _fromTeam = val;
+  void incrementFromTeam(int amount) => _fromTeam = fromTeam + amount;
   bool hasFromTeam() => _fromTeam != null;
 
   // "toUser" field.
@@ -67,7 +68,7 @@ class RequestStruct extends FFFirebaseStruct {
         type: data['Type'] as String?,
         createdAt: data['CreatedAt'] as String?,
         updatedAt: data['UpdatedAt'] as String?,
-        fromTeam: data['fromTeam'] as String?,
+        fromTeam: castToType<int>(data['fromTeam']),
         toUser: data['toUser'] as String?,
       );
 
@@ -103,7 +104,7 @@ class RequestStruct extends FFFirebaseStruct {
         ),
         'fromTeam': serializeParam(
           _fromTeam,
-          ParamType.String,
+          ParamType.int,
         ),
         'toUser': serializeParam(
           _toUser,
@@ -135,7 +136,7 @@ class RequestStruct extends FFFirebaseStruct {
         ),
         fromTeam: deserializeParam(
           data['fromTeam'],
-          ParamType.String,
+          ParamType.int,
           false,
         ),
         toUser: deserializeParam(
@@ -169,7 +170,7 @@ RequestStruct createRequestStruct({
   String? type,
   String? createdAt,
   String? updatedAt,
-  String? fromTeam,
+  int? fromTeam,
   String? toUser,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,

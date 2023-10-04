@@ -46,20 +46,6 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
           FFAppState().requests =
               _model.requestsData!.toList().cast<RequestStruct>();
         });
-        _model.apiResult394 = await GetTeamCall.call(
-          id: FFAppState().requests.last.id,
-        );
-        if ((_model.apiResult394?.succeeded ?? true)) {
-          setState(() {
-            _model.updateTeamDataStruct(
-              (e) => e
-                ..id = getJsonField(
-                  (_model.apiResult394?.jsonBody ?? ''),
-                  r'''$.name''',
-                ),
-            );
-          });
-        }
       }
     });
   }
