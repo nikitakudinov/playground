@@ -254,8 +254,41 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                           ),
                                           Expanded(
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                _model.userIdByUserRef =
+                                                    await GetUserIdByFbUserRefCall
+                                                        .call(
+                                                  fbUserRef: currentUserUid,
+                                                );
+                                                if ((_model.userIdByUserRef
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title:
+                                                            Text(getJsonField(
+                                                          (_model.userIdByUserRef
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.Id''',
+                                                        ).toString()),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                }
+
+                                                setState(() {});
                                               },
                                               text: 'Вступить',
                                               options: FFButtonOptions(

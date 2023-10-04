@@ -53,6 +53,51 @@ class GetTeamsCall {
       );
 }
 
+class GetUserIdByFbUserRefCall {
+  static Future<ApiCallResponse> call({
+    String? fbUserRef = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getUserIdByFbUserRef',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user?fields=Id&where=%28FbUserRef%2Ceq%2C${fbUserRef}%29&limit=25&shuffle=0&offset=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Boffset%5D=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Blimit%5D=25',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {
+        'FbUserRef': fbUserRef,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  static dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+        true,
+      );
+  static dynamic listname(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].name''',
+        true,
+      );
+  static dynamic listtag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].tag''',
+        true,
+      );
+}
+
 class GetTeamCall {
   static Future<ApiCallResponse> call({
     int? id = 8,
