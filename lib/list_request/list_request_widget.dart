@@ -46,6 +46,21 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
           FFAppState().requests =
               _model.requestsData!.toList().cast<RequestStruct>();
         });
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('2'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
       }
     });
   }
