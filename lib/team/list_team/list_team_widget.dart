@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -84,13 +85,36 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
-          title: Text(
-            'Teams',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto Condensed',
-                  color: Colors.white,
-                  fontSize: 22.0,
-                ),
+          title: FutureBuilder<ApiCallResponse>(
+            future: GetUserByFbUserRefCall.call(
+              fbUserRef: currentUserUid,
+            ),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: SpinKitChasingDots(
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 50.0,
+                    ),
+                  ),
+                );
+              }
+              final textGetUserByFbUserRefResponse = snapshot.data!;
+              return Text(
+                GetUserByFbUserRefCall.listNickname(
+                  textGetUserByFbUserRefResponse.jsonBody,
+                ).toString(),
+                style: FlutterFlowTheme.of(context).headlineMedium.override(
+                      fontFamily: 'Roboto Condensed',
+                      color: Colors.white,
+                      fontSize: 22.0,
+                    ),
+              );
+            },
           ),
           actions: [
             Padding(
