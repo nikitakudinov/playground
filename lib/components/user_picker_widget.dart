@@ -658,7 +658,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             .override(
                                               fontFamily:
                                                   'Saira Semi Condensed',
-                                              lineHeight: 0.6,
+                                              lineHeight: 0.7,
                                             ),
                                       ),
                                     ),
