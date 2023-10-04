@@ -654,12 +654,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       child: Text(
                                         teamMembersListItem.teamRole,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily:
-                                                  'Saira Semi Condensed',
-                                              lineHeight: 0.7,
-                                            ),
+                                            .bodySmall,
                                       ),
                                     ),
                                   ],
