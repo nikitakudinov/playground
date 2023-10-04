@@ -258,7 +258,7 @@ class UpdateUserCall {
     return ApiManager.instance.makeApiCall(
       callName: 'updateUser',
       apiUrl:
-          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/User/${id}',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user/${id}',
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',
