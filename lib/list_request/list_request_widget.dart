@@ -151,7 +151,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                     child: Image.network(
-                                                      'https://picsum.photos/seed/245/600',
+                                                      GetTeamCall.logo(
+                                                        requestToJoinfromTeamToUserGetTeamResponse
+                                                            .jsonBody,
+                                                      ),
                                                       width: 30.0,
                                                       height: 30.0,
                                                       fit: BoxFit.cover,
@@ -159,7 +162,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  'Hello World',
+                                                  GetTeamCall.name(
+                                                    requestToJoinfromTeamToUserGetTeamResponse
+                                                        .jsonBody,
+                                                  ).toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
