@@ -46,21 +46,6 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
           FFAppState().requests =
               _model.requestsData!.toList().cast<RequestStruct>();
         });
-      } else {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('2'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
       }
     });
   }
@@ -105,7 +90,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final requestsList = FFAppState().requests.toList();
+                  final requestsList = FFAppState()
+                      .requests
+                      .where((e) => e.toUser == currentUserUid)
+                      .toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
