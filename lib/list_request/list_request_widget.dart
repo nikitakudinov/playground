@@ -125,10 +125,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 child: Image.network(
-                                                  getJsonField(
-                                                    requestsListItem,
-                                                    r'''$.logo''',
-                                                  ),
+                                                  'https://picsum.photos/seed/245/600',
                                                   width: 30.0,
                                                   height: 30.0,
                                                   fit: BoxFit.cover,
@@ -136,10 +133,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                               ),
                                             ),
                                             Text(
-                                              getJsonField(
-                                                requestsListItem,
-                                                r'''$.name''',
-                                              ).toString(),
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
