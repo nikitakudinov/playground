@@ -356,12 +356,13 @@ class CreatUserCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'creatUser',
-      apiUrl: 'http://37.139.36.167/api/v1/db/data/v1/database/user/views/user',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
-        'xc-token': 'vdgJ3Duiy5c4nCQ2uvxqmffYmHK4GNAMr5RXdAmK',
-        'Content-Type': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
       },
       params: {},
       body: ffApiRequestBody,

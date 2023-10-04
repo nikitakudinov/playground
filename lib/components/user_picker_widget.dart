@@ -252,7 +252,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       type: 'Приглашение в команду',
                                       createdAt: getCurrentTimestamp.toString(),
                                       updatedAt: getCurrentTimestamp.toString(),
-                                      fromTeam: widget.teamName,
+                                      fromTeam: widget.docId.toString(),
                                       toUser: _model.selectedUserIdVALUE,
                                     );
                                     setState(() {
