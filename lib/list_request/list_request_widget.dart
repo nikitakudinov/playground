@@ -287,11 +287,11 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                     _model.apiResultg82 =
                                                         await UpdateUserCall
                                                             .call(
-                                                      id: getJsonField(
+                                                      id: GetUserByFbUserRefCall
+                                                          .listId(
                                                         (_model.userIdByUserRef
                                                                 ?.jsonBody ??
                                                             ''),
-                                                        r'''$.list[:].id''',
                                                       ),
                                                       email:
                                                           GetUserByFbUserRefCall
