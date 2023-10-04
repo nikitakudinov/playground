@@ -380,6 +380,19 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                           flag: _model
                                               .countryPickerModel.selectedFlag,
                                         );
+                                        _model.userData =
+                                            await GetUserByFbUserRefCall.call(
+                                          fbUserRef: currentUserUid,
+                                        );
+                                        await UpdateUserTagAndRoleCall.call(
+                                          id: GetUserByFbUserRefCall.listId(
+                                            (_model.userData?.jsonBody ?? ''),
+                                          ),
+                                          updatedAt:
+                                              getCurrentTimestamp.toString(),
+                                          tag: _model.tagController.text,
+                                          teamRole: 'Основатель',
+                                        );
                                         if ((_model.apiResultp5p?.succeeded ??
                                             true)) {
                                           await showDialog(

@@ -33,6 +33,8 @@ class AddTeamModel extends FlutterFlowModel<AddTeamWidget> {
   late CountryPickerModel countryPickerModel;
   // Stores action output result for [Backend Call - API (addTeam)] action in Button widget.
   ApiCallResponse? apiResultp5p;
+  // Stores action output result for [Backend Call - API (getUserByFbUserRef)] action in Button widget.
+  ApiCallResponse? userData;
 
   /// Initialization and disposal methods.
 
