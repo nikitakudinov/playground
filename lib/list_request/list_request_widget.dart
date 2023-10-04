@@ -354,23 +354,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                     if ((_model.apiResultg82
                                                             ?.succeeded ??
                                                         true)) {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text('1'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
+                                                      _model.apiResult636 =
+                                                          await DeliteRequestCall
+                                                              .call(
+                                                        id: requestsListItem.id,
                                                       );
                                                     }
                                                   }

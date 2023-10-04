@@ -185,6 +185,31 @@ class GetTeamCall {
       );
 }
 
+class DeliteRequestCall {
+  static Future<ApiCallResponse> call({
+    int? id = 8,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'deliteRequest',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/Request/${id}',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {
+        'ID': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class AddTeamCall {
   static Future<ApiCallResponse> call({
     String? name = '',
