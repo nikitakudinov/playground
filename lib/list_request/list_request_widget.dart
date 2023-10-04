@@ -151,13 +151,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                     child: Image.network(
-                                                      valueOrDefault<String>(
-                                                        GetTeamCall.logo(
-                                                          requestToJoinfromTeamToUserGetTeamResponse
-                                                              .jsonBody,
-                                                        ),
-                                                        'false',
-                                                      ),
+                                                      'https://picsum.photos/seed/245/600',
                                                       width: 30.0,
                                                       height: 30.0,
                                                       fit: BoxFit.cover,
@@ -165,13 +159,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  valueOrDefault<String>(
-                                                    GetTeamCall.name(
-                                                      requestToJoinfromTeamToUserGetTeamResponse
-                                                          .jsonBody,
-                                                    ).toString(),
-                                                    'false',
-                                                  ),
+                                                  'Hello World',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium,
