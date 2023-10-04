@@ -271,7 +271,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                         getJsonField(
                                                       requestToJoinfromTeamToUserGetTeamResponse
                                                           .jsonBody,
-                                                      r'''$.list[:].Id''',
+                                                      r'''$.Id''',
                                                     ),
                                                     fildName: 'members',
                                                     fieldId: getJsonField(
