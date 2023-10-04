@@ -20,6 +20,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
     int? id,
     String? createdAt,
     String? updatedAt,
+    String? tag,
+    String? teamRole,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _teams = teams,
         _email = email,
@@ -31,6 +33,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
         _id = id,
         _createdAt = createdAt,
         _updatedAt = updatedAt,
+        _tag = tag,
+        _teamRole = teamRole,
         super(firestoreUtilData);
 
   // "Teams" field.
@@ -95,6 +99,18 @@ class TeamMemberStruct extends FFFirebaseStruct {
   set updatedAt(String? val) => _updatedAt = val;
   bool hasUpdatedAt() => _updatedAt != null;
 
+  // "Tag" field.
+  String? _tag;
+  String get tag => _tag ?? '';
+  set tag(String? val) => _tag = val;
+  bool hasTag() => _tag != null;
+
+  // "TeamRole" field.
+  String? _teamRole;
+  String get teamRole => _teamRole ?? '';
+  set teamRole(String? val) => _teamRole = val;
+  bool hasTeamRole() => _teamRole != null;
+
   static TeamMemberStruct fromMap(Map<String, dynamic> data) =>
       TeamMemberStruct(
         teams: castToType<int>(data['Teams']),
@@ -107,6 +123,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
         id: castToType<int>(data['Id']),
         createdAt: data['CreatedAt'] as String?,
         updatedAt: data['UpdatedAt'] as String?,
+        tag: data['Tag'] as String?,
+        teamRole: data['TeamRole'] as String?,
       );
 
   static TeamMemberStruct? maybeFromMap(dynamic data) =>
@@ -123,6 +141,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
         'Id': _id,
         'CreatedAt': _createdAt,
         'UpdatedAt': _updatedAt,
+        'Tag': _tag,
+        'TeamRole': _teamRole,
       }.withoutNulls;
 
   @override
@@ -165,6 +185,14 @@ class TeamMemberStruct extends FFFirebaseStruct {
         ),
         'UpdatedAt': serializeParam(
           _updatedAt,
+          ParamType.String,
+        ),
+        'Tag': serializeParam(
+          _tag,
+          ParamType.String,
+        ),
+        'TeamRole': serializeParam(
+          _teamRole,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -221,6 +249,16 @@ class TeamMemberStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        tag: deserializeParam(
+          data['Tag'],
+          ParamType.String,
+          false,
+        ),
+        teamRole: deserializeParam(
+          data['TeamRole'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -238,7 +276,9 @@ class TeamMemberStruct extends FFFirebaseStruct {
         flag == other.flag &&
         id == other.id &&
         createdAt == other.createdAt &&
-        updatedAt == other.updatedAt;
+        updatedAt == other.updatedAt &&
+        tag == other.tag &&
+        teamRole == other.teamRole;
   }
 
   @override
@@ -252,7 +292,9 @@ class TeamMemberStruct extends FFFirebaseStruct {
         flag,
         id,
         createdAt,
-        updatedAt
+        updatedAt,
+        tag,
+        teamRole
       ]);
 }
 
@@ -267,6 +309,8 @@ TeamMemberStruct createTeamMemberStruct({
   int? id,
   String? createdAt,
   String? updatedAt,
+  String? tag,
+  String? teamRole,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -283,6 +327,8 @@ TeamMemberStruct createTeamMemberStruct({
       id: id,
       createdAt: createdAt,
       updatedAt: updatedAt,
+      tag: tag,
+      teamRole: teamRole,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
