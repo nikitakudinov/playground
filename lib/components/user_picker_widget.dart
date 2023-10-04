@@ -582,8 +582,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   borderRadius: BorderRadius.circular(3.0),
                                   child: Image.network(
                                     teamMembersListItem.avatar,
-                                    width: 40.0,
-                                    height: 40.0,
+                                    width: 50.0,
+                                    height: 50.0,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -613,6 +613,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     ),
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Padding(
                                           padding:
@@ -636,10 +638,14 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         ),
                                       ],
                                     ),
-                                    Text(
-                                      teamMembersListItem.teamRole,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall,
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        teamMembersListItem.teamRole,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall,
+                                      ),
                                     ),
                                   ],
                                 ),
