@@ -83,204 +83,176 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Builder(
-                builder: (context) {
-                  final requestList = _model.requestsList
-                      .where((e) =>
-                          (e.toUser == currentUserUid) &&
-                          (e.type == 'Приглашение в команду'))
-                      .toList();
-                  return ListView.builder(
+          child: Builder(
+            builder: (context) {
+              final requests = _model.requestsList
+                  .where((e) =>
+                      (e.toUser == currentUserUid) &&
+                      (e.type == 'Приглашение в команду'))
+                  .toList();
+              return Column(
+                mainAxisSize: MainAxisSize.max,
+                children: List.generate(requests.length, (requestsIndex) {
+                  final requestsItem = requests[requestsIndex];
+                  return ListView(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: requestList.length,
-                    itemBuilder: (context, requestListIndex) {
-                      final requestListItem = requestList[requestListIndex];
-                      return Padding(
+                    children: [
+                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 15.0, 15.0, 15.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            _model.apiResult9zh = await GetTeamCall.call(
-                              id: requestListItem.fromTeam,
-                            );
-                            if ((_model.apiResult9zh?.succeeded ?? true)) {
-                              setState(() {
-                                _model.updateTeamDataStruct(
-                                  (e) => e
-                                    ..id = getJsonField(
-                                      (_model.apiResult9zh?.jsonBody ?? ''),
-                                      r'''$.Id''',
-                                    )
-                                    ..name = getJsonField(
-                                      (_model.apiResult9zh?.jsonBody ?? ''),
-                                      r'''$.name''',
-                                    ).toString(),
-                                );
-                              });
-                            }
-
-                            setState(() {});
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).tertiary,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 10.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          valueOrDefault<String>(
+                                            _model.teamData?.name,
+                                            '0',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    Expanded(
+                                      child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            valueOrDefault<String>(
-                                              _model.teamData?.name,
-                                              '0',
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                1.0,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Команда предлагает вступить в ее ряды. ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
                                       Expanded(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  1.0,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'Команда предлагает вступить в ее ряды. ',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ),
+                                        child: FFButtonWidget(
+                                          onPressed: () {
+                                            print('Button pressed ...');
+                                          },
+                                          text: 'Отказаться',
+                                          options: FFButtonOptions(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Saira Semi Condensed',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent1,
+                                              width: 1.0,
                                             ),
-                                          ],
+                                            borderRadius:
+                                                BorderRadius.circular(3.0),
+                                          ),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
-                                            },
-                                            text: 'Отказаться',
-                                            options: FFButtonOptions(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () {
+                                            print('Button pressed ...');
+                                          },
+                                          text: 'Вступить',
+                                          options: FFButtonOptions(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    15.0, 0.0, 15.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Saira Semi Condensed',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Saira Semi Condensed',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent1,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .accent1,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(3.0),
+                                                      .primary,
+                                              width: 1.0,
                                             ),
+                                            borderRadius:
+                                                BorderRadius.circular(3.0),
                                           ),
                                         ),
-                                        Expanded(
-                                          child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
-                                            },
-                                            text: 'Вступить',
-                                            options: FFButtonOptions(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 15.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Saira Semi Condensed',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                      ),
-                                              elevation: 3.0,
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(3.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ].divide(SizedBox(width: 15.0)),
-                                    ),
+                                      ),
+                                    ].divide(SizedBox(width: 15.0)),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   );
-                },
-              ),
-            ],
+                }),
+              );
+            },
           ),
         ),
       ),
