@@ -354,11 +354,19 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                     if ((_model.apiResultg82
                                                             ?.succeeded ??
                                                         true)) {
-                                                      _model.apiResult636 =
+                                                      _model.apiResult503 =
                                                           await DeliteRequestCall
                                                               .call(
                                                         id: requestsListItem.id,
                                                       );
+                                                      if ((_model.apiResult503
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .requests = [];
+                                                        });
+                                                      }
                                                     }
                                                   }
                                                 }
