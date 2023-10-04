@@ -631,10 +631,15 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             ),
                                           ),
                                         ),
-                                        Text(
-                                          teamMembersListItem.countryName,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelSmall,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            teamMembersListItem.countryName,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -644,7 +649,12 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       child: Text(
                                         teamMembersListItem.teamRole,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodySmall,
+                                            .bodySmall
+                                            .override(
+                                              fontFamily:
+                                                  'Saira Semi Condensed',
+                                              lineHeight: 0.1,
+                                            ),
                                       ),
                                     ),
                                   ],
