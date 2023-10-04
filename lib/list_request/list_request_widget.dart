@@ -351,6 +351,9 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                             .call(
                                                       id: requestsItem.id,
                                                     );
+                                                    setState(() {
+                                                      _model.requestsList = [];
+                                                    });
                                                   }
                                                 }
 
