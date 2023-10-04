@@ -263,29 +263,45 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                 if ((_model.userIdByUserRef
                                                         ?.succeeded ??
                                                     true)) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title:
-                                                            Text(getJsonField(
-                                                          (_model.userIdByUserRef
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                          r'''$.list[:].Id''',
-                                                        ).toString()),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
+                                                  _model.apiResult0l3 =
+                                                      await AddRelationsCall
+                                                          .call(
+                                                    dataTypeForUpdate: 'Team',
+                                                    idOfDataForUpdate:
+                                                        getJsonField(
+                                                      requestToJoinfromTeamToUserGetTeamResponse
+                                                          .jsonBody,
+                                                      r'''$.list[:].Id''',
+                                                    ),
+                                                    fildName: 'members',
+                                                    fieldId: getJsonField(
+                                                      (_model.userIdByUserRef
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.list[:].Id''',
+                                                    ),
                                                   );
+                                                  if ((_model.apiResult0l3
+                                                          ?.succeeded ??
+                                                      true)) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text('1'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                  }
                                                 }
 
                                                 setState(() {});
