@@ -105,10 +105,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final requestsList = FFAppState()
-                      .requests
-                      .where((e) => e.toUser == currentUserUid)
-                      .toList();
+                  final requestsList = FFAppState().requests.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
