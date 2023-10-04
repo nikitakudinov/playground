@@ -594,20 +594,20 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Text(
-                                          '[${teamMembersListItem.tag}] ',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            teamMembersListItem.nickname,
+                                            '[${teamMembersListItem.tag}] ',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
+                                        ),
+                                        Text(
+                                          teamMembersListItem.nickname,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
                                         ),
                                       ],
                                     ),
@@ -623,8 +623,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 BorderRadius.circular(0.0),
                                             child: Image.network(
                                               teamMembersListItem.flag,
-                                              width: 24.0,
-                                              height: 16.0,
+                                              width: 16.0,
+                                              height: 12.0,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
