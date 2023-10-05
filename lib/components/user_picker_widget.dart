@@ -106,197 +106,205 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                   ),
               ],
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).tertiary,
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: Visibility(
-                  visible: _model.messageVISIBILITY,
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 0.7,
-                                decoration: BoxDecoration(),
-                                child: Wrap(
-                                  spacing: 0.0,
-                                  runSpacing: 0.0,
-                                  alignment: WrapAlignment.start,
-                                  crossAxisAlignment: WrapCrossAlignment.start,
-                                  direction: Axis.horizontal,
-                                  runAlignment: WrapAlignment.start,
-                                  verticalDirection: VerticalDirection.down,
-                                  clipBehavior: Clip.none,
-                                  children: [
-                                    Text(
-                                      'Отправить приглашение вступить в команду этому пользователю?',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 15.0, 15.0, 15.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(3.0),
-                                child: Image.network(
-                                  _model.selectedUserAvatarVALUE,
-                                  width: 40.0,
-                                  height: 40.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      _model.selectedUserNicknameVALUE,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
+            if (_model.messageVISIBILITY)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Visibility(
+                    visible: _model.messageVISIBILITY,
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
+                                  width: MediaQuery.sizeOf(context).width * 0.7,
+                                  decoration: BoxDecoration(),
+                                  child: Wrap(
+                                    spacing: 0.0,
+                                    runSpacing: 0.0,
+                                    alignment: WrapAlignment.start,
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.start,
+                                    direction: Axis.horizontal,
+                                    runAlignment: WrapAlignment.start,
+                                    verticalDirection: VerticalDirection.down,
+                                    clipBehavior: Clip.none,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 0.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.network(
-                                            _model.selectedUserFlag,
-                                            width: 24.0,
-                                            height: 16.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
                                       Text(
-                                        _model.selectedUserCountry,
+                                        'Отправить приглашение вступить в команду этому пользователю?',
                                         style: FlutterFlowTheme.of(context)
-                                            .labelSmall,
+                                            .bodyMedium,
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: 'Отмена',
-                                  options: FFButtonOptions(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Saira Semi Condensed',
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).accent1,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(3.0),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 15.0, 15.0, 15.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(3.0),
+                                  child: Image.network(
+                                    _model.selectedUserAvatarVALUE,
+                                    width: 40.0,
+                                    height: 40.0,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                              ),
-                              Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    _model.apiResulto2t =
-                                        await AddRequestCall.call(
-                                      type: 'Приглашение в команду',
-                                      createdAt: getCurrentTimestamp.toString(),
-                                      updatedAt: getCurrentTimestamp.toString(),
-                                      fromTeam: widget.docId.toString(),
-                                      toUser: _model.selectedUserIdVALUE,
-                                    );
-                                    setState(() {
-                                      _model.squadVISIBILITY = true;
-                                      _model.messageVISIBILITY = false;
-                                      _model.callToTeamButtonVISIBILITY = true;
-                                    });
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        _model.selectedUserNicknameVALUE,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium,
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                            child: Image.network(
+                                              _model.selectedUserFlag,
+                                              width: 24.0,
+                                              height: 16.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Text(
+                                          _model.selectedUserCountry,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelSmall,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: FFButtonWidget(
+                                    onPressed: () {
+                                      print('Button pressed ...');
+                                    },
+                                    text: 'Отмена',
+                                    options: FFButtonOptions(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Saira Semi Condensed',
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent1,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(3.0),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      _model.apiResulto2t =
+                                          await AddRequestCall.call(
+                                        type: 'Приглашение в команду',
+                                        createdAt:
+                                            getCurrentTimestamp.toString(),
+                                        updatedAt:
+                                            getCurrentTimestamp.toString(),
+                                        fromTeam: widget.docId.toString(),
+                                        toUser: _model.selectedUserIdVALUE,
+                                      );
+                                      setState(() {
+                                        _model.squadVISIBILITY = true;
+                                        _model.messageVISIBILITY = false;
+                                        _model.callToTeamButtonVISIBILITY =
+                                            true;
+                                      });
 
-                                    setState(() {});
-                                  },
-                                  text: 'Отправить',
-                                  options: FFButtonOptions(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 15.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Saira Semi Condensed',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
+                                      setState(() {});
+                                    },
+                                    text: 'Отправить',
+                                    options: FFButtonOptions(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
                                       color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 1.0,
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Saira Semi Condensed',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(3.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(3.0),
                                   ),
                                 ),
-                              ),
-                            ].divide(SizedBox(width: 15.0)),
+                              ].divide(SizedBox(width: 15.0)),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
             if (_model.searchVISIBILITY)
               Row(
                 mainAxisSize: MainAxisSize.max,
