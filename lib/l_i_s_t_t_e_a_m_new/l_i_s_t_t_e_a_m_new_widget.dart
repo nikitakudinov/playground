@@ -4,6 +4,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -33,20 +34,16 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResultanr = await TeamGroup.dataTypeCall.call();
       if ((_model.apiResultanr?.succeeded ?? true)) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('1'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
+        _model.teamsData = await actions.jsonToDataTypeTeam1(
+          TeamGroup.dataTypeCall
+              .list(
+                (_model.apiResultanr?.jsonBody ?? ''),
+              )
+              ?.toList(),
         );
+        setState(() {
+          _model.teams = _model.teamsData!.toList().cast<Team1Struct>();
+        });
       } else {
         await showDialog(
           context: context,
@@ -104,21 +101,28 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Text(
-                        'Hello World',
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                    ],
-                  ),
-                ],
+              Builder(
+                builder: (context) {
+                  final teamsList = _model.teams.toList();
+                  return ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: teamsList.length,
+                    itemBuilder: (context, teamsListIndex) {
+                      final teamsListItem = teamsList[teamsListIndex];
+                      return Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Text(
+                            teamsListItem.name,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),
