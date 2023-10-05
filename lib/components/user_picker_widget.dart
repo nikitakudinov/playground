@@ -756,7 +756,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                         .call(
                                                   dataTypeForUpdate: 'Team',
                                                   idOfDataForUpdate:
-                                                      teamMembersListItem.teams,
+                                                      widget.docId,
                                                   fildName: 'members',
                                                   fieldId:
                                                       teamMembersListItem.id,
