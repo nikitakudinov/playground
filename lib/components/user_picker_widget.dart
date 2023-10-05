@@ -1137,6 +1137,15 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                         .removeFromTeamMembers(
                                                             teamMembersListItem);
                                                   });
+                                                  _model.apiResultu9i =
+                                                      await UpdateUserTagAndRoleCall
+                                                          .call(
+                                                    id: teamMembersListItem.id,
+                                                    updatedAt:
+                                                        getCurrentTimestamp
+                                                            .toString(),
+                                                    tag: 'false',
+                                                  );
                                                 }
 
                                                 setState(() {});

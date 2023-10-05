@@ -84,6 +84,8 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   ScrollController? squad;
   // Stores action output result for [Backend Call - API (deliteRelations)] action in IconButton widget.
   ApiCallResponse? apiResult3h9;
+  // Stores action output result for [Backend Call - API (updateUserTagAndRole)] action in IconButton widget.
+  ApiCallResponse? apiResultu9i;
 
   /// Initialization and disposal methods.
 
