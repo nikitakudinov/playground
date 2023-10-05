@@ -451,6 +451,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         options: ['Лидер', 'Игрок команды'],
                                         onChanged: (val) => setState(
                                             () => _model.dropDownValue = val),
+                                        height: 32.0,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                         hintText: 'Роль в команде',
@@ -481,6 +482,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       decoration: BoxDecoration(),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           Theme(
                                             data: ThemeData(
@@ -498,27 +501,39 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               ),
                                               unselectedWidgetColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .tertiary,
+                                                      .primaryText,
                                             ),
                                             child: Checkbox(
                                               value: _model.checkboxValue ??=
-                                                  true,
+                                                  false,
                                               onChanged: (newValue) async {
                                                 setState(() => _model
                                                     .checkboxValue = newValue!);
                                               },
                                               activeColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .primaryText,
                                               checkColor:
                                                   FlutterFlowTheme.of(context)
-                                                      .info,
+                                                      .tertiary,
                                             ),
                                           ),
-                                          Text(
-                                            'В основном составе',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 0.0, 0.0),
+                                            child: Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.2,
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                'В основном составе',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
