@@ -37,12 +37,22 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
         fields: 'Id,name,CreatedAt,UpdatedAt,tag,owner,logo,country,flag',
       );
       if ((_model.apiResultanr?.succeeded ?? true)) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('1'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
         _model.teamData = await actions.jsonToDataType(
-          getJsonField(
-            (_model.apiResultanr?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
+          (_model.apiResultanr?.jsonBody ?? ''),
         );
         setState(() {
           _model.teams = _model.teamData!.toList().cast<TeamStruct>();
