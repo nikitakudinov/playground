@@ -764,23 +764,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 if ((_model.apiResult3h9
                                                         ?.succeeded ??
                                                     true)) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('1'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
+                                                  _model.updatePage(() {});
                                                 }
 
                                                 setState(() {});
