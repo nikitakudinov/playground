@@ -569,8 +569,36 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   ),
                                   Expanded(
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        _model.apiResult6fl =
+                                            await UpdateUserRoleAndLineUpCall
+                                                .call(
+                                          id: _model.selectedUserIdINT,
+                                          updatedAt:
+                                              getCurrentTimestamp.toString(),
+                                          teamRole: _model.dropDownValue,
+                                          lineUp:
+                                              _model.checkboxValue?.toString(),
+                                        );
+                                        if ((_model.apiResult6fl?.succeeded ??
+                                            true)) {
+                                          setState(() {
+                                            _model.teamMemberSettingsVISIBILITY =
+                                                false;
+                                          });
+                                          setState(() {
+                                            FFAppState()
+                                                .updateTeamMembersAtIndex(
+                                              _model.selectedIndex!,
+                                              (e) => e
+                                                ..teamRole =
+                                                    _model.dropDownValue
+                                                ..lineUp = _model.checkboxValue,
+                                            );
+                                          });
+                                        }
+
+                                        setState(() {});
                                       },
                                       text: 'Отправить',
                                       options: FFButtonOptions(
@@ -1033,9 +1061,10 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 setState(() {
                                                   _model.teamMemberSettingsVISIBILITY =
                                                       true;
-                                                  _model.selectedUserIdVALUE =
-                                                      teamMembersListItem.id
-                                                          .toString();
+                                                  _model.selectedUserIdINT =
+                                                      teamMembersListItem.id;
+                                                  _model.selectedIndex =
+                                                      teamMembersListIndex;
                                                 });
                                               },
                                             ),

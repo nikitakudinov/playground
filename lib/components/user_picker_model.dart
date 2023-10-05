@@ -52,6 +52,10 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   bool teamMemberSettingsVISIBILITY = false;
 
+  int? selectedUserIdINT;
+
+  int? selectedIndex;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - API (addRequest)] action in Button widget.
@@ -61,6 +65,8 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   FormFieldController<String>? dropDownValueController;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (updateUserRoleAndLineUp)] action in Button widget.
+  ApiCallResponse? apiResult6fl;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
