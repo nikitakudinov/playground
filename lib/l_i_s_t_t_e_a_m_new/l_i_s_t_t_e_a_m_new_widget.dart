@@ -98,10 +98,12 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                   final listViewGetdataResponse = snapshot.data!;
                   return Builder(
                     builder: (context) {
-                      final asss = getJsonField(
-                        (_model.apiResultanr?.jsonBody ?? ''),
-                        r'''$.list''',
-                      ).toList();
+                      final asss = GetdataGroup.getdataCall
+                              .list(
+                                listViewGetdataResponse.jsonBody,
+                              )
+                              ?.toList() ??
+                          [];
                       return ListView.builder(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
