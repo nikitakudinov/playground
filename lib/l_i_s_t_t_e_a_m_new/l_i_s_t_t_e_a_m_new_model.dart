@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'l_i_s_t_t_e_a_m_new_widget.dart' show LISTTEAMNewWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -29,8 +28,6 @@ class LISTTEAMNewModel extends FlutterFlowModel<LISTTEAMNewWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (GETDATAFIELDS)] action in LIST_TEAM_new widget.
   ApiCallResponse? apiResultanr;
-  // Stores action output result for [Custom Action - jsonToDataType] action in LIST_TEAM_new widget.
-  List<TeamStruct>? teamData;
 
   /// Initialization and disposal methods.
 

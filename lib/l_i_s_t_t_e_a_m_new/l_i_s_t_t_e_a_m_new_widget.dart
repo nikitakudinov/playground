@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -37,18 +36,6 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
         fields:
             'Id,name,CreatedAt,UpdatedAt,tag,owner,members,logo,country,flag',
       );
-      if ((_model.apiResultanr?.succeeded ?? true)) {
-        _model.teamData = await actions.jsonToDataType(
-          getJsonField(
-            (_model.apiResultanr?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
-        );
-        setState(() {
-          _model.teams = _model.teamData!.toList().cast<TeamStruct>();
-        });
-      }
     });
   }
 
@@ -90,30 +77,52 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Builder(
-                builder: (context) {
-                  final asss = getJsonField(
-                    (_model.apiResultanr?.jsonBody ?? ''),
-                    r'''$.list''',
-                  ).toList();
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: asss.length,
-                    itemBuilder: (context, asssIndex) {
-                      final asssItem = asss[asssIndex];
-                      return Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            getJsonField(
-                              asssItem,
-                              r'''$.name''',
-                            ).toString(),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
+              FutureBuilder<ApiCallResponse>(
+                future: GetdataGroup.getdataCall.call(
+                  datatype: 'Team',
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: SpinKitChasingDots(
+                          color: FlutterFlowTheme.of(context).primary,
+                          size: 50.0,
+                        ),
+                      ),
+                    );
+                  }
+                  final listViewGetdataResponse = snapshot.data!;
+                  return Builder(
+                    builder: (context) {
+                      final asss = getJsonField(
+                        (_model.apiResultanr?.jsonBody ?? ''),
+                        r'''$.list''',
+                      ).toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: asss.length,
+                        itemBuilder: (context, asssIndex) {
+                          final asssItem = asss[asssIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                GetdataGroup.getdataCall
+                                    .name(
+                                      listViewGetdataResponse.jsonBody,
+                                    )
+                                    .toString(),
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   );
