@@ -26,7 +26,7 @@ class GetdataGroup {
 class GetdataCall {
   Future<ApiCallResponse> call({
     String? datatype = '',
-    int? dataid,
+    String? dataid = '',
     String? relationtype = '',
     String? relationfieldname = '',
   }) {
