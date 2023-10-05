@@ -66,6 +66,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
           child: SingleChildScrollView(
+            controller: _model.columnController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -343,6 +344,12 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   '_model.textController',
                                   Duration(milliseconds: 2000),
                                   () async {
+                                    await _model.columnController?.animateTo(
+                                      _model.columnController!.position
+                                          .maxScrollExtent,
+                                      duration: Duration(milliseconds: 100),
+                                      curve: Curves.ease,
+                                    );
                                     _model.apiResultp2tCopy =
                                         await GetUserByEmailCall.call(
                                       id: int.tryParse(
@@ -573,6 +580,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             ),
                                           );
                                         },
+                                        controller: _model.searchResultsList,
                                       );
                                     },
                                   );
@@ -714,6 +722,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 ),
                               );
                             },
+                            controller: _model.squad,
                           );
                         },
                       );
