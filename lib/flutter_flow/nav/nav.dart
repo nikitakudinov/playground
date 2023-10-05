@@ -153,13 +153,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'LIST_REQUEST')
               : ListRequestWidget(),
-        ),
-        FFRoute(
-          name: 'LIST_TEAM_new',
-          path: '/lISTTEAMNew',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'LIST_TEAM_new')
-              : LISTTEAMNewWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
