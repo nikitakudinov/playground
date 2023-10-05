@@ -18,13 +18,13 @@ class TeamGroup {
     'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
     'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
   };
-  static DataTypeCall dataTypeCall = DataTypeCall();
+  static TeamDataTypeCall teamDataTypeCall = TeamDataTypeCall();
 }
 
-class DataTypeCall {
+class TeamDataTypeCall {
   Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'DataType',
+      callName: 'TeamDataType',
       apiUrl: '${TeamGroup.baseUrl}Team/views/DataType',
       callType: ApiCallType.GET,
       headers: {
@@ -84,41 +84,35 @@ class DataTypeCall {
 
 /// End TEAM Group Code
 
-/// Start UPDATEDATA Group Code
+/// Start USER Group Code
 
-class UpdatedataGroup {
+class UserGroup {
   static String baseUrl =
-      'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29';
+      'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/';
   static Map<String, String> headers = {
     'accept': 'application/json',
     'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
     'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
   };
-  static UpdatedataCall updatedataCall = UpdatedataCall();
+  static UserDataTypeCall userDataTypeCall = UserDataTypeCall();
+  static UpdateUserTAGCall updateUserTAGCall = UpdateUserTAGCall();
+  static UpdateUserTEAMROLECall updateUserTEAMROLECall =
+      UpdateUserTEAMROLECall();
+  static UpdateUserLINEUPCall updateUserLINEUPCall = UpdateUserLINEUPCall();
 }
 
-class UpdatedataCall {
-  Future<ApiCallResponse> call({
-    String? datatype = '',
-    int? dataid,
-    dynamic? jsonJson,
-  }) {
-    final json = _serializeJson(jsonJson);
-    final ffApiRequestBody = '''
-${json}''';
+class UserDataTypeCall {
+  Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
-      callName: 'UPDATEDATA',
-      apiUrl: '${UpdatedataGroup.baseUrl}/${datatype}/${dataid}',
-      callType: ApiCallType.PATCH,
+      callName: 'UserDataType',
+      apiUrl: '${UserGroup.baseUrl}User/views/DataType',
+      callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
         'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
         'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
-        'Content-Type': 'application/json',
       },
       params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -141,16 +135,6 @@ ${json}''';
         r'''$.list[:].name''',
         true,
       );
-  dynamic listCreatedAt(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].CreatedAt''',
-        true,
-      );
-  dynamic listUpdatedAt(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].UpdatedAt''',
-        true,
-      );
   dynamic listtag(dynamic response) => getJsonField(
         response,
         r'''$.list[:].tag''',
@@ -159,11 +143,6 @@ ${json}''';
   dynamic listowner(dynamic response) => getJsonField(
         response,
         r'''$.list[:].owner''',
-        true,
-      );
-  dynamic listmembers(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].members''',
         true,
       );
   dynamic listlogo(dynamic response) => getJsonField(
@@ -181,101 +160,96 @@ ${json}''';
         r'''$.list[:].flag''',
         true,
       );
-  dynamic listmembersRefs(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].membersRefs''',
-        true,
-      );
-  dynamic listmembersRefstable2id(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].membersRefs[:].table2_id''',
-        true,
-      );
-  dynamic listmembersRefstable1id(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].membersRefs[:].table1_id''',
-        true,
-      );
-  dynamic id(dynamic response) => getJsonField(
-        response,
-        r'''$.Id''',
-      );
-  dynamic name(dynamic response) => getJsonField(
-        response,
-        r'''$.name''',
-      );
-  dynamic tag(dynamic response) => getJsonField(
-        response,
-        r'''$.tag''',
-      );
-  dynamic owner(dynamic response) => getJsonField(
-        response,
-        r'''$.owner''',
-      );
-  dynamic members(dynamic response) => getJsonField(
-        response,
-        r'''$.members''',
-      );
-  dynamic logo(dynamic response) => getJsonField(
-        response,
-        r'''$.logo''',
-      );
-  dynamic country(dynamic response) => getJsonField(
-        response,
-        r'''$.country''',
-      );
-  dynamic flag(dynamic response) => getJsonField(
-        response,
-        r'''$.flag''',
-      );
-  dynamic listEmail(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].Email''',
-        true,
-      );
-  dynamic listNickname(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].Nickname''',
-        true,
-      );
-  dynamic listFbUserRef(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].FbUserRef''',
-        true,
-      );
-  dynamic listAvatar(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].Avatar''',
-        true,
-      );
-  dynamic listCountryName(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].CountryName''',
-        true,
-      );
-  dynamic listFlag(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].Flag''',
-        true,
-      );
-  dynamic listTag(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].Tag''',
-        true,
-      );
-  dynamic listTeamRole(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].TeamRole''',
-        true,
-      );
-  dynamic listLineUp(dynamic response) => getJsonField(
-        response,
-        r'''$.list[:].LineUp''',
-        true,
-      );
 }
 
-/// End UPDATEDATA Group Code
+class UpdateUserTAGCall {
+  Future<ApiCallResponse> call({
+    int? id,
+    String? tag = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "Tag": "${tag}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateUserTAG',
+      apiUrl: '${UserGroup.baseUrl}user/${id}',
+      callType: ApiCallType.PATCH,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UpdateUserTEAMROLECall {
+  Future<ApiCallResponse> call({
+    int? id,
+    String? role = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "TeamRole": "${role}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateUserTEAMROLE',
+      apiUrl: '${UserGroup.baseUrl}user/${id}',
+      callType: ApiCallType.PATCH,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UpdateUserLINEUPCall {
+  Future<ApiCallResponse> call({
+    int? id,
+    String? lineUp = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "LineUp": "${lineUp}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateUserLINEUP',
+      apiUrl: '${UserGroup.baseUrl}user/${id}',
+      callType: ApiCallType.PATCH,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+/// End USER Group Code
 
 class GetTeamsCall {
   static Future<ApiCallResponse> call({

@@ -598,18 +598,55 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     Expanded(
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          _model.apiResult6fl =
-                                              await UpdateUserRoleAndLineUpCall
-                                                  .call(
+                                          _model.apiResult6fl = await UserGroup
+                                              .updateUserTEAMROLECall
+                                              .call(
+                                            role: _model.dropDownValue,
                                             id: _model.selectedUserIdINT,
-                                            updatedAt:
-                                                getCurrentTimestamp.toString(),
-                                            teamRole: _model.dropDownValue,
+                                          );
+                                          if ((_model.apiResult6fl?.succeeded ??
+                                              true)) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('1'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                          await UserGroup.updateUserLINEUPCall
+                                              .call(
+                                            id: _model.selectedUserIdINT,
                                             lineUp: _model.checkboxValue
                                                 ?.toString(),
                                           );
                                           if ((_model.apiResult6fl?.succeeded ??
                                               true)) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: Text('11'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
                                             setState(() {
                                               _model.teamMemberSettingsVISIBILITY =
                                                   false;

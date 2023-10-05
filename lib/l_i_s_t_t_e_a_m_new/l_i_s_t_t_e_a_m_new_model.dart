@@ -27,7 +27,7 @@ class LISTTEAMNewModel extends FlutterFlowModel<LISTTEAMNewWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (DataType)] action in LIST_TEAM_new widget.
+  // Stores action output result for [Backend Call - API (TeamDataType)] action in LIST_TEAM_new widget.
   ApiCallResponse? apiResultanr;
   // Stores action output result for [Custom Action - jsonToDataTypeTeam1] action in LIST_TEAM_new widget.
   List<Team1Struct>? teamsData;

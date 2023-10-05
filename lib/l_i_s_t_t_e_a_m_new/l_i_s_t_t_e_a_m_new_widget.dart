@@ -32,10 +32,10 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultanr = await TeamGroup.dataTypeCall.call();
+      _model.apiResultanr = await TeamGroup.teamDataTypeCall.call();
       if ((_model.apiResultanr?.succeeded ?? true)) {
         _model.teamsData = await actions.jsonToDataTypeTeam1(
-          TeamGroup.dataTypeCall
+          TeamGroup.teamDataTypeCall
               .list(
                 (_model.apiResultanr?.jsonBody ?? ''),
               )
