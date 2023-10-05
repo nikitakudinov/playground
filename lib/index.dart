@@ -9,3 +9,5 @@ export '/tournament/list_tournament/list_tournament_widget.dart'
 export '/auth/add_userinfo/add_userinfo_widget.dart' show AddUserinfoWidget;
 export '/team/edite_team/edite_team_widget.dart' show EditeTeamWidget;
 export '/list_request/list_request_widget.dart' show ListRequestWidget;
+export '/l_i_s_t_t_e_a_m_new/l_i_s_t_t_e_a_m_new_widget.dart'
+    show LISTTEAMNewWidget;

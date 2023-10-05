@@ -12,6 +12,8 @@ class TeamStruct extends FFFirebaseStruct {
   TeamStruct({
     int? id,
     String? name,
+    String? createdAt,
+    String? updatedAt,
     String? tag,
     String? owner,
     String? logo,
@@ -20,6 +22,8 @@ class TeamStruct extends FFFirebaseStruct {
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
+        _createdAt = createdAt,
+        _updatedAt = updatedAt,
         _tag = tag,
         _owner = owner,
         _logo = logo,
@@ -39,6 +43,18 @@ class TeamStruct extends FFFirebaseStruct {
   String get name => _name ?? '';
   set name(String? val) => _name = val;
   bool hasName() => _name != null;
+
+  // "CreatedAt" field.
+  String? _createdAt;
+  String get createdAt => _createdAt ?? '';
+  set createdAt(String? val) => _createdAt = val;
+  bool hasCreatedAt() => _createdAt != null;
+
+  // "UpdatedAt" field.
+  String? _updatedAt;
+  String get updatedAt => _updatedAt ?? '';
+  set updatedAt(String? val) => _updatedAt = val;
+  bool hasUpdatedAt() => _updatedAt != null;
 
   // "tag" field.
   String? _tag;
@@ -73,6 +89,8 @@ class TeamStruct extends FFFirebaseStruct {
   static TeamStruct fromMap(Map<String, dynamic> data) => TeamStruct(
         id: castToType<int>(data['Id']),
         name: data['name'] as String?,
+        createdAt: data['CreatedAt'] as String?,
+        updatedAt: data['UpdatedAt'] as String?,
         tag: data['tag'] as String?,
         owner: data['owner'] as String?,
         logo: data['logo'] as String?,
@@ -86,6 +104,8 @@ class TeamStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'Id': _id,
         'name': _name,
+        'CreatedAt': _createdAt,
+        'UpdatedAt': _updatedAt,
         'tag': _tag,
         'owner': _owner,
         'logo': _logo,
@@ -101,6 +121,14 @@ class TeamStruct extends FFFirebaseStruct {
         ),
         'name': serializeParam(
           _name,
+          ParamType.String,
+        ),
+        'CreatedAt': serializeParam(
+          _createdAt,
+          ParamType.String,
+        ),
+        'UpdatedAt': serializeParam(
+          _updatedAt,
           ParamType.String,
         ),
         'tag': serializeParam(
@@ -134,6 +162,16 @@ class TeamStruct extends FFFirebaseStruct {
         ),
         name: deserializeParam(
           data['name'],
+          ParamType.String,
+          false,
+        ),
+        createdAt: deserializeParam(
+          data['CreatedAt'],
+          ParamType.String,
+          false,
+        ),
+        updatedAt: deserializeParam(
+          data['UpdatedAt'],
           ParamType.String,
           false,
         ),
@@ -172,6 +210,8 @@ class TeamStruct extends FFFirebaseStruct {
     return other is TeamStruct &&
         id == other.id &&
         name == other.name &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt &&
         tag == other.tag &&
         owner == other.owner &&
         logo == other.logo &&
@@ -180,13 +220,15 @@ class TeamStruct extends FFFirebaseStruct {
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([id, name, tag, owner, logo, country, flag]);
+  int get hashCode => const ListEquality()
+      .hash([id, name, createdAt, updatedAt, tag, owner, logo, country, flag]);
 }
 
 TeamStruct createTeamStruct({
   int? id,
   String? name,
+  String? createdAt,
+  String? updatedAt,
   String? tag,
   String? owner,
   String? logo,
@@ -200,6 +242,8 @@ TeamStruct createTeamStruct({
     TeamStruct(
       id: id,
       name: name,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
       tag: tag,
       owner: owner,
       logo: logo,

@@ -8,9 +8,9 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-/// Start playground Group Code
+/// Start GETDATA Group Code
 
-class PlaygroundGroup {
+class GetdataGroup {
   static String baseUrl =
       'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29';
   static Map<String, String> headers = {
@@ -19,6 +19,7 @@ class PlaygroundGroup {
     'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
   };
   static GetdataCall getdataCall = GetdataCall();
+  static GetdatawhereCall getdatawhereCall = GetdatawhereCall();
   static GetdatafieldsCall getdatafieldsCall = GetdatafieldsCall();
 }
 
@@ -32,7 +33,7 @@ class GetdataCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GETDATA',
       apiUrl:
-          '${PlaygroundGroup.baseUrl}/${datatype}/${dataid}/${relationtype}/${relationfieldname}',
+          '${GetdataGroup.baseUrl}/${datatype}/${dataid}/${relationtype}/${relationfieldname}',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
@@ -51,6 +52,187 @@ class GetdataCall {
       cache: false,
     );
   }
+
+  dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+        true,
+      );
+  dynamic listname(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].name''',
+        true,
+      );
+  dynamic listCreatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CreatedAt''',
+        true,
+      );
+  dynamic listUpdatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].UpdatedAt''',
+        true,
+      );
+  dynamic listtag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].tag''',
+        true,
+      );
+  dynamic listowner(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].owner''',
+        true,
+      );
+  dynamic listmembers(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].members''',
+        true,
+      );
+  dynamic listlogo(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].logo''',
+        true,
+      );
+  dynamic listcountry(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].country''',
+        true,
+      );
+  dynamic listflag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].flag''',
+        true,
+      );
+  dynamic listmembersRefs(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].membersRefs''',
+        true,
+      );
+  dynamic listmembersRefstable2id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].membersRefs[:].table2_id''',
+        true,
+      );
+  dynamic listmembersRefstable1id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].membersRefs[:].table1_id''',
+        true,
+      );
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$.Id''',
+      );
+  dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$.name''',
+      );
+  dynamic tag(dynamic response) => getJsonField(
+        response,
+        r'''$.tag''',
+      );
+  dynamic owner(dynamic response) => getJsonField(
+        response,
+        r'''$.owner''',
+      );
+  dynamic members(dynamic response) => getJsonField(
+        response,
+        r'''$.members''',
+      );
+  dynamic logo(dynamic response) => getJsonField(
+        response,
+        r'''$.logo''',
+      );
+  dynamic country(dynamic response) => getJsonField(
+        response,
+        r'''$.country''',
+      );
+  dynamic flag(dynamic response) => getJsonField(
+        response,
+        r'''$.flag''',
+      );
+  dynamic listEmail(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Email''',
+        true,
+      );
+  dynamic listNickname(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Nickname''',
+        true,
+      );
+  dynamic listFbUserRef(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].FbUserRef''',
+        true,
+      );
+  dynamic listAvatar(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Avatar''',
+        true,
+      );
+  dynamic listCountryName(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CountryName''',
+        true,
+      );
+  dynamic listFlag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Flag''',
+        true,
+      );
+  dynamic listTag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Tag''',
+        true,
+      );
+  dynamic listTeamRole(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].TeamRole''',
+        true,
+      );
+  dynamic listLineUp(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].LineUp''',
+        true,
+      );
+}
+
+class GetdatawhereCall {
+  Future<ApiCallResponse> call({
+    String? datatype = '',
+    int? dataid,
+    String? value1 = '',
+    String? operator = '',
+    String? value2 = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETDATAWHERE',
+      apiUrl:
+          '${GetdataGroup.baseUrl}/${datatype}?where=%28${value1}%2C${operator}%2C${value2}%29',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {
+        'DATATYPE': datatype,
+        'DATAID': dataid,
+        'VALUE1': value1,
+        'OPERATOR': operator,
+        'VALUE2': value2,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
 }
 
 class GetdatafieldsCall {
@@ -61,8 +243,7 @@ class GetdatafieldsCall {
   }) {
     return ApiManager.instance.makeApiCall(
       callName: 'GETDATAFIELDS',
-      apiUrl:
-          '${PlaygroundGroup.baseUrl}/${datatype}/${dataid}?fields=${fields}',
+      apiUrl: '${GetdataGroup.baseUrl}/${datatype}/${dataid}?fields=${fields}',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
@@ -82,7 +263,200 @@ class GetdatafieldsCall {
   }
 }
 
-/// End playground Group Code
+/// End GETDATA Group Code
+
+/// Start UPDATEDATA Group Code
+
+class UpdatedataGroup {
+  static String baseUrl =
+      'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29';
+  static Map<String, String> headers = {
+    'accept': 'application/json',
+    'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+    'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+  };
+  static UpdatedataCall updatedataCall = UpdatedataCall();
+}
+
+class UpdatedataCall {
+  Future<ApiCallResponse> call({
+    String? datatype = '',
+    int? dataid,
+    dynamic? jsonJson,
+  }) {
+    final json = _serializeJson(jsonJson);
+    final ffApiRequestBody = '''
+${json}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UPDATEDATA',
+      apiUrl: '${UpdatedataGroup.baseUrl}/${datatype}/${dataid}',
+      callType: ApiCallType.PATCH,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+        true,
+      );
+  dynamic listname(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].name''',
+        true,
+      );
+  dynamic listCreatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CreatedAt''',
+        true,
+      );
+  dynamic listUpdatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].UpdatedAt''',
+        true,
+      );
+  dynamic listtag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].tag''',
+        true,
+      );
+  dynamic listowner(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].owner''',
+        true,
+      );
+  dynamic listmembers(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].members''',
+        true,
+      );
+  dynamic listlogo(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].logo''',
+        true,
+      );
+  dynamic listcountry(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].country''',
+        true,
+      );
+  dynamic listflag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].flag''',
+        true,
+      );
+  dynamic listmembersRefs(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].membersRefs''',
+        true,
+      );
+  dynamic listmembersRefstable2id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].membersRefs[:].table2_id''',
+        true,
+      );
+  dynamic listmembersRefstable1id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].membersRefs[:].table1_id''',
+        true,
+      );
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$.Id''',
+      );
+  dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$.name''',
+      );
+  dynamic tag(dynamic response) => getJsonField(
+        response,
+        r'''$.tag''',
+      );
+  dynamic owner(dynamic response) => getJsonField(
+        response,
+        r'''$.owner''',
+      );
+  dynamic members(dynamic response) => getJsonField(
+        response,
+        r'''$.members''',
+      );
+  dynamic logo(dynamic response) => getJsonField(
+        response,
+        r'''$.logo''',
+      );
+  dynamic country(dynamic response) => getJsonField(
+        response,
+        r'''$.country''',
+      );
+  dynamic flag(dynamic response) => getJsonField(
+        response,
+        r'''$.flag''',
+      );
+  dynamic listEmail(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Email''',
+        true,
+      );
+  dynamic listNickname(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Nickname''',
+        true,
+      );
+  dynamic listFbUserRef(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].FbUserRef''',
+        true,
+      );
+  dynamic listAvatar(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Avatar''',
+        true,
+      );
+  dynamic listCountryName(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CountryName''',
+        true,
+      );
+  dynamic listFlag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Flag''',
+        true,
+      );
+  dynamic listTag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Tag''',
+        true,
+      );
+  dynamic listTeamRole(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].TeamRole''',
+        true,
+      );
+  dynamic listLineUp(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].LineUp''',
+        true,
+      );
+}
+
+/// End UPDATEDATA Group Code
 
 class GetTeamsCall {
   static Future<ApiCallResponse> call({
