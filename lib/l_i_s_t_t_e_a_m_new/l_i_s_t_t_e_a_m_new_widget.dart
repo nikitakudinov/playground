@@ -31,10 +31,8 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultanr = await GetdataGroup.getdatafieldsCall.call(
+      _model.apiResultanr = await GetdataGroup.getdataCall.call(
         datatype: 'Team',
-        fields:
-            'Id,name,CreatedAt,UpdatedAt,tag,owner,members,logo,country,flag',
       );
       if ((_model.apiResultanr?.succeeded ?? true)) {
         await showDialog(
