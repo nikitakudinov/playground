@@ -34,25 +34,16 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResultanr = await GetdataGroup.getdatafieldsCall.call(
         datatype: 'Team',
-        fields: 'Id,name,CreatedAt,UpdatedAt,tag,owner,logo,country,flag',
+        fields:
+            'Id,name,CreatedAt,UpdatedAt,tag,owner,members,logo,country,flag',
       );
       if ((_model.apiResultanr?.succeeded ?? true)) {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('1'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
         _model.teamData = await actions.jsonToDataType(
-          (_model.apiResultanr?.jsonBody ?? ''),
+          getJsonField(
+            (_model.apiResultanr?.jsonBody ?? ''),
+            r'''$.list''',
+            true,
+          ),
         );
         setState(() {
           _model.teams = _model.teamData!.toList().cast<TeamStruct>();
@@ -101,152 +92,20 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final teamsList1 = _model.teams.toList();
+                  final asss = _model.teams.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
-                    primary: false,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: teamsList1.length,
-                    itemBuilder: (context, teamsList1Index) {
-                      final teamsList1Item = teamsList1[teamsList1Index];
-                      return Column(
+                    itemCount: asss.length,
+                    itemBuilder: (context, asssIndex) {
+                      final asssItem = asss[asssIndex];
+                      return Row(
                         mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 1.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'VIEW_TEAM',
-                                    queryParameters: {
-                                      'teamID': serializeParam(
-                                        teamsList1Item.id,
-                                        ParamType.int,
-                                      ),
-                                      'name': serializeParam(
-                                        teamsList1Item.name,
-                                        ParamType.String,
-                                      ),
-                                      'tag': serializeParam(
-                                        teamsList1Item.tag,
-                                        ParamType.String,
-                                      ),
-                                      'logo': serializeParam(
-                                        teamsList1Item.logo,
-                                        ParamType.String,
-                                      ),
-                                      'flag': serializeParam(
-                                        teamsList1Item.flag,
-                                        ParamType.String,
-                                      ),
-                                      'country': serializeParam(
-                                        teamsList1Item.country,
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                                onLongPress: () async {
-                                  context.pushNamed(
-                                    'EDITE_TEAM',
-                                    queryParameters: {
-                                      'name': serializeParam(
-                                        teamsList1Item.name,
-                                        ParamType.String,
-                                      ),
-                                      'logo': serializeParam(
-                                        teamsList1Item.logo,
-                                        ParamType.String,
-                                      ),
-                                      'id': serializeParam(
-                                        teamsList1Item.id,
-                                        ParamType.int,
-                                      ),
-                                      'tag': serializeParam(
-                                        teamsList1Item.tag,
-                                        ParamType.String,
-                                      ),
-                                      'country': serializeParam(
-                                        teamsList1Item.country,
-                                        ParamType.String,
-                                      ),
-                                      'flag': serializeParam(
-                                        teamsList1Item.flag,
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(3.0),
-                                        child: Image.network(
-                                          teamsList1Item.logo,
-                                          width: 50.0,
-                                          height: 50.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '[${teamsList1Item.tag}] ${teamsList1Item.name}',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium,
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(2.0),
-                                              child: Image.network(
-                                                teamsList1Item.flag,
-                                                width: 24.0,
-                                                height: 16.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                teamsList1Item.country,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                          Text(
+                            asssItem.name,
+                            style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ],
                       );
