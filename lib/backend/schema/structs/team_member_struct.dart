@@ -22,6 +22,7 @@ class TeamMemberStruct extends FFFirebaseStruct {
     String? updatedAt,
     String? tag,
     String? teamRole,
+    bool? lineUp,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _teams = teams,
         _email = email,
@@ -35,6 +36,7 @@ class TeamMemberStruct extends FFFirebaseStruct {
         _updatedAt = updatedAt,
         _tag = tag,
         _teamRole = teamRole,
+        _lineUp = lineUp,
         super(firestoreUtilData);
 
   // "Teams" field.
@@ -111,6 +113,12 @@ class TeamMemberStruct extends FFFirebaseStruct {
   set teamRole(String? val) => _teamRole = val;
   bool hasTeamRole() => _teamRole != null;
 
+  // "LineUp" field.
+  bool? _lineUp;
+  bool get lineUp => _lineUp ?? false;
+  set lineUp(bool? val) => _lineUp = val;
+  bool hasLineUp() => _lineUp != null;
+
   static TeamMemberStruct fromMap(Map<String, dynamic> data) =>
       TeamMemberStruct(
         teams: castToType<int>(data['Teams']),
@@ -125,6 +133,7 @@ class TeamMemberStruct extends FFFirebaseStruct {
         updatedAt: data['UpdatedAt'] as String?,
         tag: data['Tag'] as String?,
         teamRole: data['TeamRole'] as String?,
+        lineUp: data['LineUp'] as bool?,
       );
 
   static TeamMemberStruct? maybeFromMap(dynamic data) =>
@@ -143,6 +152,7 @@ class TeamMemberStruct extends FFFirebaseStruct {
         'UpdatedAt': _updatedAt,
         'Tag': _tag,
         'TeamRole': _teamRole,
+        'LineUp': _lineUp,
       }.withoutNulls;
 
   @override
@@ -194,6 +204,10 @@ class TeamMemberStruct extends FFFirebaseStruct {
         'TeamRole': serializeParam(
           _teamRole,
           ParamType.String,
+        ),
+        'LineUp': serializeParam(
+          _lineUp,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -259,6 +273,11 @@ class TeamMemberStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        lineUp: deserializeParam(
+          data['LineUp'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -278,7 +297,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
         tag == other.tag &&
-        teamRole == other.teamRole;
+        teamRole == other.teamRole &&
+        lineUp == other.lineUp;
   }
 
   @override
@@ -294,7 +314,8 @@ class TeamMemberStruct extends FFFirebaseStruct {
         createdAt,
         updatedAt,
         tag,
-        teamRole
+        teamRole,
+        lineUp
       ]);
 }
 
@@ -311,6 +332,7 @@ TeamMemberStruct createTeamMemberStruct({
   String? updatedAt,
   String? tag,
   String? teamRole,
+  bool? lineUp,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -329,6 +351,7 @@ TeamMemberStruct createTeamMemberStruct({
       updatedAt: updatedAt,
       tag: tag,
       teamRole: teamRole,
+      lineUp: lineUp,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

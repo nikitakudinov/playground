@@ -337,6 +337,7 @@ class UpdateUserCall {
     String? tag = '',
     String? teamRole = '',
     String? flag = '',
+    String? lineUp = '',
   }) {
     final ffApiRequestBody = '''
 {
@@ -349,7 +350,7 @@ class UpdateUserCall {
   "CreatedAt": "${createdAt}",
   "UpdatedAt": "${updatedAt}",
   "Tag": "${tag}",
-  "TeamRole": "${teamRole}"
+  "TeamRole": "${lineUp}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'updateUser',

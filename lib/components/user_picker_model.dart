@@ -1,10 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'user_picker_widget.dart' show UserPickerWidget;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -48,10 +50,17 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   String? selectedUserIdVALUE;
 
+  bool teamMemberSettingsVISIBILITY = false;
+
   ///  State fields for stateful widgets in this component.
 
   // Stores action output result for [Backend Call - API (addRequest)] action in Button widget.
   ApiCallResponse? apiResulto2t;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
