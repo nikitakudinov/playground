@@ -50,6 +50,21 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
             );
           },
         );
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('ХУЙ'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
       }
     });
   }
