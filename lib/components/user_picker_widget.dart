@@ -1024,18 +1024,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                       .bodySmall,
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              teamMembersListItem.lineUp
-                                                  .toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall,
-                                            ),
-                                          ),
                                         ],
                                       ),
                                     ),
@@ -1065,6 +1053,17 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                       teamMembersListItem.id;
                                                   _model.selectedIndex =
                                                       teamMembersListIndex;
+                                                  _model.selectedUserAvatarVALUE =
+                                                      teamMembersListItem
+                                                          .avatar;
+                                                  _model.selectedUserNicknameVALUE =
+                                                      teamMembersListItem
+                                                          .nickname;
+                                                  _model.selectedUserCountry =
+                                                      teamMembersListItem
+                                                          .countryName;
+                                                  _model.selectedUserFlag =
+                                                      teamMembersListItem.flag;
                                                 });
                                               },
                                             ),
