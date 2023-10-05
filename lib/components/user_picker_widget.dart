@@ -69,6 +69,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
           child: SingleChildScrollView(
+            controller: _model.columnController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -341,313 +342,329 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.7,
-                                    decoration: BoxDecoration(),
-                                    child: Wrap(
-                                      spacing: 0.0,
-                                      runSpacing: 0.0,
-                                      alignment: WrapAlignment.start,
+                        child: SingleChildScrollView(
+                          controller: _model.memberSettingsCol,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.7,
+                                      decoration: BoxDecoration(),
+                                      child: Wrap(
+                                        spacing: 0.0,
+                                        runSpacing: 0.0,
+                                        alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.start,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Text(
+                                            'Настройки члена команды',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 15.0, 15.0, 15.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(3.0),
+                                      child: Image.network(
+                                        _model.selectedUserAvatarVALUE,
+                                        width: 40.0,
+                                        height: 40.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
-                                          WrapCrossAlignment.start,
-                                      direction: Axis.horizontal,
-                                      runAlignment: WrapAlignment.start,
-                                      verticalDirection: VerticalDirection.down,
-                                      clipBehavior: Clip.none,
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          'Настройки члена команды',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            _model.selectedUserNicknameVALUE,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  _model.selectedUserFlag,
+                                                  width: 24.0,
+                                                  height: 16.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              _model.selectedUserCountry,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall,
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 15.0, 15.0, 15.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(3.0),
-                                    child: Image.network(
-                                      _model.selectedUserAvatarVALUE,
-                                      width: 40.0,
-                                      height: 40.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          _model.selectedUserNicknameVALUE,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(),
+                                        child: FlutterFlowDropDown<String>(
+                                          controller: _model
+                                                  .dropDownValueController ??=
+                                              FormFieldController<String>(null),
+                                          options: ['Лидер', 'Игрок команды'],
+                                          onChanged: (val) => setState(
+                                              () => _model.dropDownValue = val),
+                                          height: 32.0,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium,
+                                          hintText: 'Роль в команде',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 24.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .tertiary,
+                                          elevation: 2.0,
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryText,
+                                          borderWidth: 2.0,
+                                          borderRadius: 5.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 10.0, 0.0),
+                                          hidesUnderline: true,
+                                          isSearchable: false,
+                                          isMultiSelect: false,
                                         ),
                                       ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 0.0, 0.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              child: Image.network(
-                                                _model.selectedUserFlag,
-                                                width: 24.0,
-                                                height: 16.0,
-                                                fit: BoxFit.cover,
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Theme(
+                                              data: ThemeData(
+                                                checkboxTheme:
+                                                    CheckboxThemeData(
+                                                  visualDensity:
+                                                      VisualDensity.compact,
+                                                  materialTapTargetSize:
+                                                      MaterialTapTargetSize
+                                                          .shrinkWrap,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            3.0),
+                                                  ),
+                                                ),
+                                                unselectedWidgetColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                              child: Checkbox(
+                                                value: _model.checkboxValue ??=
+                                                    false,
+                                                onChanged: (newValue) async {
+                                                  setState(() =>
+                                                      _model.checkboxValue =
+                                                          newValue!);
+                                                },
+                                                activeColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                checkColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .tertiary,
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            _model.selectedUserCountry,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(),
-                                      child: FlutterFlowDropDown<String>(
-                                        controller: _model
-                                                .dropDownValueController ??=
-                                            FormFieldController<String>(null),
-                                        options: ['Лидер', 'Игрок команды'],
-                                        onChanged: (val) => setState(
-                                            () => _model.dropDownValue = val),
-                                        height: 32.0,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        hintText: 'Роль в команде',
-                                        icon: Icon(
-                                          Icons.keyboard_arrow_down_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 24.0,
-                                        ),
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        elevation: 2.0,
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                        borderWidth: 2.0,
-                                        borderRadius: 5.0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 0.0, 10.0, 0.0),
-                                        hidesUnderline: true,
-                                        isSearchable: false,
-                                        isMultiSelect: false,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      decoration: BoxDecoration(),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Theme(
-                                            data: ThemeData(
-                                              checkboxTheme: CheckboxThemeData(
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                materialTapTargetSize:
-                                                    MaterialTapTargetSize
-                                                        .shrinkWrap,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          3.0),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        0.2,
+                                                decoration: BoxDecoration(),
+                                                child: Text(
+                                                  'В основном составе',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
                                                 ),
                                               ),
-                                              unselectedWidgetColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
                                             ),
-                                            child: Checkbox(
-                                              value: _model.checkboxValue ??=
-                                                  false,
-                                              onChanged: (newValue) async {
-                                                setState(() => _model
-                                                    .checkboxValue = newValue!);
-                                              },
-                                              activeColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              checkColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.2,
-                                              decoration: BoxDecoration(),
-                                              child: Text(
-                                                'В основном составе',
-                                                style:
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(width: 10.0)),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 15.0, 10.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text: 'Отмена',
+                                        options: FFButtonOptions(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
+                                                    'Saira Semi Condensed',
+                                                color:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .accent1,
                                               ),
-                                            ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
+                                            width: 1.0,
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ].divide(SizedBox(width: 10.0)),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 15.0, 10.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
-                                      },
-                                      text: 'Отмена',
-                                      options: FFButtonOptions(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  'Saira Semi Condensed',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent1,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent1,
-                                          width: 1.0,
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(3.0),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        _model.apiResult6fl =
-                                            await UpdateUserRoleAndLineUpCall
-                                                .call(
-                                          id: _model.selectedUserIdINT,
-                                          updatedAt:
-                                              getCurrentTimestamp.toString(),
-                                          teamRole: _model.dropDownValue,
-                                          lineUp:
-                                              _model.checkboxValue?.toString(),
-                                        );
-                                        if ((_model.apiResult6fl?.succeeded ??
-                                            true)) {
-                                          setState(() {
-                                            _model.teamMemberSettingsVISIBILITY =
-                                                false;
-                                          });
-                                          setState(() {
-                                            FFAppState()
-                                                .updateTeamMembersAtIndex(
-                                              _model.selectedIndex!,
-                                              (e) => e
-                                                ..teamRole =
-                                                    _model.dropDownValue
-                                                ..lineUp = _model.checkboxValue,
-                                            );
-                                          });
-                                        }
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          _model.apiResult6fl =
+                                              await UpdateUserRoleAndLineUpCall
+                                                  .call(
+                                            id: _model.selectedUserIdINT,
+                                            updatedAt:
+                                                getCurrentTimestamp.toString(),
+                                            teamRole: _model.dropDownValue,
+                                            lineUp: _model.checkboxValue
+                                                ?.toString(),
+                                          );
+                                          if ((_model.apiResult6fl?.succeeded ??
+                                              true)) {
+                                            setState(() {
+                                              _model.teamMemberSettingsVISIBILITY =
+                                                  false;
+                                            });
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateTeamMembersAtIndex(
+                                                _model.selectedIndex!,
+                                                (e) => e
+                                                  ..teamRole =
+                                                      _model.dropDownValue
+                                                  ..lineUp =
+                                                      _model.checkboxValue,
+                                              );
+                                            });
+                                          }
 
-                                        setState(() {});
-                                      },
-                                      text: 'Отправить',
-                                      options: FFButtonOptions(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 0.0, 15.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  'Saira Semi Condensed',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
+                                          setState(() {});
+                                        },
+                                        text: 'Отправить',
+                                        options: FFButtonOptions(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 15.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 1.0,
+                                              .tertiary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
+                                                    'Saira Semi Condensed',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(3.0),
                                       ),
                                     ),
-                                  ),
-                                ].divide(SizedBox(width: 15.0)),
+                                  ].divide(SizedBox(width: 15.0)),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -899,6 +916,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             ),
                                           );
                                         },
+                                        controller: _model.searchResultsList,
                                       );
                                     },
                                   );
@@ -1080,6 +1098,13 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                   _model.selectedUserFlag =
                                                       teamMembersListItem.flag;
                                                 });
+                                                await _model.memberSettingsCol
+                                                    ?.animateTo(
+                                                  0,
+                                                  duration: Duration(
+                                                      milliseconds: 100),
+                                                  curve: Curves.ease,
+                                                );
                                               },
                                             ),
                                             FlutterFlowIconButton(
@@ -1125,6 +1150,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 ),
                               );
                             },
+                            controller: _model.squad,
                           );
                         },
                       );

@@ -58,8 +58,12 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  // State field(s) for Column widget.
+  ScrollController? columnController;
   // Stores action output result for [Backend Call - API (addRequest)] action in Button widget.
   ApiCallResponse? apiResulto2t;
+  // State field(s) for MemberSettingsCol widget.
+  ScrollController? memberSettingsCol;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -74,15 +78,28 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   ApiCallResponse? apiResultp2tCopy;
   // Stores action output result for [Custom Action - jsonToDataTypeSearchByEmail] action in TextField widget.
   List<SearchUserByEmailResultsStruct>? searchResultsCopy;
+  // State field(s) for searchResultsList widget.
+  ScrollController? searchResultsList;
+  // State field(s) for squad widget.
+  ScrollController? squad;
   // Stores action output result for [Backend Call - API (deliteRelations)] action in IconButton widget.
   ApiCallResponse? apiResult3h9;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    columnController = ScrollController();
+    memberSettingsCol = ScrollController();
+    searchResultsList = ScrollController();
+    squad = ScrollController();
+  }
 
   void dispose() {
+    columnController?.dispose();
+    memberSettingsCol?.dispose();
     textController?.dispose();
+    searchResultsList?.dispose();
+    squad?.dispose();
   }
 
   /// Action blocks are added here.
