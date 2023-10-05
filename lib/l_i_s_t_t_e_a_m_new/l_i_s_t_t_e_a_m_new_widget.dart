@@ -92,7 +92,10 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final asss = _model.teams.toList();
+                  final asss = getJsonField(
+                    (_model.apiResultanr?.jsonBody ?? ''),
+                    r'''$.list''',
+                  ).toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
@@ -104,7 +107,10 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            asssItem.name,
+                            getJsonField(
+                              asssItem,
+                              r'''$.name''',
+                            ).toString(),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
                         ],
