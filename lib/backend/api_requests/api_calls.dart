@@ -8,6 +8,82 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
+/// Start playground Group Code
+
+class PlaygroundGroup {
+  static String baseUrl =
+      'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29';
+  static Map<String, String> headers = {
+    'accept': 'application/json',
+    'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+    'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+  };
+  static GetdataCall getdataCall = GetdataCall();
+  static GetdatafieldsCall getdatafieldsCall = GetdatafieldsCall();
+}
+
+class GetdataCall {
+  Future<ApiCallResponse> call({
+    String? datatype = '',
+    int? dataid,
+    String? relationtype = '',
+    String? relationfieldname = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETDATA',
+      apiUrl:
+          '${PlaygroundGroup.baseUrl}/${datatype}/${dataid}/${relationtype}/${relationfieldname}',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {
+        'DATATYPE': datatype,
+        'DATAID': dataid,
+        'RELATIONTYPE': relationtype,
+        'RELATIONFIELDNAME': relationfieldname,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetdatafieldsCall {
+  Future<ApiCallResponse> call({
+    String? datatype = '',
+    int? dataid,
+    String? fields = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GETDATAFIELDS',
+      apiUrl:
+          '${PlaygroundGroup.baseUrl}/${datatype}/${dataid}?fields=${fields}',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {
+        'DATATYPE': datatype,
+        'DATAID': dataid,
+        'FIELDS': fields,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+/// End playground Group Code
+
 class GetTeamsCall {
   static Future<ApiCallResponse> call({
     int? id,
