@@ -817,6 +817,32 @@ class AddRelationsCall {
   }
 }
 
+class DeliteRelationsCall {
+  static Future<ApiCallResponse> call({
+    String? dataTypeForUpdate = '',
+    int? idOfDataForUpdate,
+    String? fildName = '',
+    int? fieldId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'deliteRelations',
+      apiUrl:
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/${dataTypeForUpdate}/${idOfDataForUpdate}/mm/${fildName}/${fieldId}?limit=25&shuffle=0&offset=0',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class GetCreatedRequesIdCall {
   static Future<ApiCallResponse> call({
     String? userId = '',

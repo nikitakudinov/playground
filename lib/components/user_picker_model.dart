@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -49,8 +50,6 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for Column widget.
-  ScrollController? columnController;
   // Stores action output result for [Backend Call - API (addRequest)] action in Button widget.
   ApiCallResponse? apiResulto2t;
   // State field(s) for TextField widget.
@@ -60,24 +59,15 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   ApiCallResponse? apiResultp2tCopy;
   // Stores action output result for [Custom Action - jsonToDataTypeSearchByEmail] action in TextField widget.
   List<SearchUserByEmailResultsStruct>? searchResultsCopy;
-  // State field(s) for searchResultsList widget.
-  ScrollController? searchResultsList;
-  // State field(s) for squad widget.
-  ScrollController? squad;
+  // Stores action output result for [Backend Call - API (deliteRelations)] action in IconButton widget.
+  ApiCallResponse? apiResult3h9;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    columnController = ScrollController();
-    searchResultsList = ScrollController();
-    squad = ScrollController();
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
-    columnController?.dispose();
     textController?.dispose();
-    searchResultsList?.dispose();
-    squad?.dispose();
   }
 
   /// Action blocks are added here.

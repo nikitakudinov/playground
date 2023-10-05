@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -66,7 +67,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
           child: SingleChildScrollView(
-            controller: _model.columnController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -344,12 +344,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   '_model.textController',
                                   Duration(milliseconds: 2000),
                                   () async {
-                                    await _model.columnController?.animateTo(
-                                      _model.columnController!.position
-                                          .maxScrollExtent,
-                                      duration: Duration(milliseconds: 100),
-                                      curve: Curves.ease,
-                                    );
                                     _model.apiResultp2tCopy =
                                         await GetUserByEmailCall.call(
                                       id: int.tryParse(
@@ -580,7 +574,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             ),
                                           );
                                         },
-                                        controller: _model.searchResultsList,
                                       );
                                     },
                                   );
@@ -642,79 +635,158 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                '[${teamMembersListItem.tag}] ',
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  '[${teamMembersListItem.tag}] ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                              Text(
+                                                teamMembersListItem.nickname,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
                                               ),
-                                            ),
-                                            Text(
-                                              teamMembersListItem.nickname,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 0.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
-                                                  teamMembersListItem.flag,
-                                                  width: 16.0,
-                                                  height: 12.0,
-                                                  fit: BoxFit.cover,
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          0.0),
+                                                  child: Image.network(
+                                                    teamMembersListItem.flag,
+                                                    width: 16.0,
+                                                    height: 12.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                teamMembersListItem.countryName,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Saira Semi Condensed',
-                                                          lineHeight: 0.8,
-                                                        ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  teamMembersListItem
+                                                      .countryName,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Saira Semi Condensed',
+                                                        lineHeight: 0.8,
+                                                      ),
+                                                ),
                                               ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              teamMembersListItem.teamRole,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 20.0,
+                                              borderWidth: 0.0,
+                                              buttonSize: 46.0,
+                                              icon: Icon(
+                                                Icons.manage_accounts,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 18.0,
+                                              ),
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
+                                            ),
+                                            FlutterFlowIconButton(
+                                              borderRadius: 20.0,
+                                              borderWidth: 0.0,
+                                              icon: Icon(
+                                                Icons
+                                                    .person_remove_alt_1_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 18.0,
+                                              ),
+                                              onPressed: () async {
+                                                _model.apiResult3h9 =
+                                                    await DeliteRelationsCall
+                                                        .call(
+                                                  dataTypeForUpdate: 'Team',
+                                                  idOfDataForUpdate:
+                                                      teamMembersListItem.teams,
+                                                  fildName: 'members',
+                                                  fieldId:
+                                                      teamMembersListItem.id,
+                                                );
+                                                if ((_model.apiResult3h9
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text('1'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                }
+
+                                                setState(() {});
+                                              },
                                             ),
                                           ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            teamMembersListItem.teamRole,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall,
-                                          ),
                                         ),
                                       ],
                                     ),
@@ -722,7 +794,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 ),
                               );
                             },
-                            controller: _model.squad,
                           );
                         },
                       );
