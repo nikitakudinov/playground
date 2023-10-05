@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'dart:async';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -588,15 +587,12 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                   ),
                 if (_model.squadVISIBILITY)
                   FutureBuilder<ApiCallResponse>(
-                    future: (_model.apiRequestCompleter ??=
-                            Completer<ApiCallResponse>()
-                              ..complete(GetTeamMembersListCall.call(
-                                teamID: valueOrDefault<int>(
-                                  widget.docId,
-                                  0,
-                                ),
-                              )))
-                        .future,
+                    future: GetTeamMembersListCall.call(
+                      teamID: valueOrDefault<int>(
+                        widget.docId,
+                        0,
+                      ),
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -768,9 +764,11 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 if ((_model.apiResult3h9
                                                         ?.succeeded ??
                                                     true)) {
-                                                  setState(() => _model
-                                                          .apiRequestCompleter =
-                                                      null);
+                                                  setState(() {
+                                                    FFAppState()
+                                                        .removeFromTeamMembers(
+                                                            teamMembersListItem);
+                                                  });
                                                 }
 
                                                 setState(() {});

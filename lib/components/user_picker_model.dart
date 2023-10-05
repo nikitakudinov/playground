@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'dart:async';
 import 'user_picker_widget.dart' show UserPickerWidget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +61,6 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   List<SearchUserByEmailResultsStruct>? searchResultsCopy;
   // Stores action output result for [Backend Call - API (deliteRelations)] action in IconButton widget.
   ApiCallResponse? apiResult3h9;
-  Completer<ApiCallResponse>? apiRequestCompleter;
 
   /// Initialization and disposal methods.
 
@@ -75,19 +73,4 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  Future waitForApiRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = apiRequestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
 }
