@@ -91,15 +91,15 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final teamsList = _model.teams.toList();
+                  final teamsList1 = _model.teams.toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     primary: false,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: teamsList.length,
-                    itemBuilder: (context, teamsListIndex) {
-                      final teamsListItem = teamsList[teamsListIndex];
+                    itemCount: teamsList1.length,
+                    itemBuilder: (context, teamsList1Index) {
+                      final teamsList1Item = teamsList1[teamsList1Index];
                       return Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,27 +122,27 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                                     'VIEW_TEAM',
                                     queryParameters: {
                                       'teamID': serializeParam(
-                                        teamsListItem.id,
+                                        teamsList1Item.id,
                                         ParamType.int,
                                       ),
                                       'name': serializeParam(
-                                        teamsListItem.name,
+                                        teamsList1Item.name,
                                         ParamType.String,
                                       ),
                                       'tag': serializeParam(
-                                        teamsListItem.tag,
+                                        teamsList1Item.tag,
                                         ParamType.String,
                                       ),
                                       'logo': serializeParam(
-                                        teamsListItem.logo,
+                                        teamsList1Item.logo,
                                         ParamType.String,
                                       ),
                                       'flag': serializeParam(
-                                        teamsListItem.flag,
+                                        teamsList1Item.flag,
                                         ParamType.String,
                                       ),
                                       'country': serializeParam(
-                                        teamsListItem.country,
+                                        teamsList1Item.country,
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -153,27 +153,27 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                                     'EDITE_TEAM',
                                     queryParameters: {
                                       'name': serializeParam(
-                                        teamsListItem.name,
+                                        teamsList1Item.name,
                                         ParamType.String,
                                       ),
                                       'logo': serializeParam(
-                                        teamsListItem.logo,
+                                        teamsList1Item.logo,
                                         ParamType.String,
                                       ),
                                       'id': serializeParam(
-                                        teamsListItem.id,
+                                        teamsList1Item.id,
                                         ParamType.int,
                                       ),
                                       'tag': serializeParam(
-                                        teamsListItem.tag,
+                                        teamsList1Item.tag,
                                         ParamType.String,
                                       ),
                                       'country': serializeParam(
-                                        teamsListItem.country,
+                                        teamsList1Item.country,
                                         ParamType.String,
                                       ),
                                       'flag': serializeParam(
-                                        teamsListItem.flag,
+                                        teamsList1Item.flag,
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
@@ -189,7 +189,7 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                                         borderRadius:
                                             BorderRadius.circular(3.0),
                                         child: Image.network(
-                                          teamsListItem.logo,
+                                          teamsList1Item.logo,
                                           width: 50.0,
                                           height: 50.0,
                                           fit: BoxFit.cover,
@@ -202,7 +202,7 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '[${teamsListItem.tag}] ${teamsListItem.name}',
+                                          '[${teamsList1Item.tag}] ${teamsList1Item.name}',
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium,
                                         ),
@@ -213,7 +213,7 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(2.0),
                                               child: Image.network(
-                                                teamsListItem.flag,
+                                                teamsList1Item.flag,
                                                 width: 24.0,
                                                 height: 16.0,
                                                 fit: BoxFit.cover,
@@ -223,7 +223,7 @@ class _LISTTEAMNewWidgetState extends State<LISTTEAMNewWidget> {
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 0.0, 0.0, 0.0),
                                               child: Text(
-                                                teamsListItem.country,
+                                                teamsList1Item.country,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium,
