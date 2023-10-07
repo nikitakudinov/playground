@@ -84,6 +84,60 @@ class TeamDataTypeCall {
 
 /// End TEAM Group Code
 
+/// Start TOURNAMENT Group Code
+
+class TournamentGroup {
+  static String baseUrl =
+      'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/';
+  static Map<String, String> headers = {
+    'accept': 'application/json',
+    'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+    'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+  };
+  static TournamentDataTypeCall tournamentDataTypeCall =
+      TournamentDataTypeCall();
+}
+
+class TournamentDataTypeCall {
+  Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TournamentDataType',
+      apiUrl: '${TournamentGroup.baseUrl}Tournament/views/DataType',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+      );
+  dynamic listName(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Name''',
+      );
+  dynamic listTag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Tag''',
+      );
+}
+
+/// End TOURNAMENT Group Code
+
 /// Start USER Group Code
 
 class UserGroup {

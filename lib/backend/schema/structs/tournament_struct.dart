@@ -12,15 +12,17 @@ class TournamentStruct extends FFFirebaseStruct {
   TournamentStruct({
     int? id,
     String? name,
-    int? teams,
-    List<String>? teamsName,
-    List<String>? teamsTag,
+    String? tag,
+    String? logo,
+    String? country,
+    String? flag,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
-        _teams = teams,
-        _teamsName = teamsName,
-        _teamsTag = teamsTag,
+        _tag = tag,
+        _logo = logo,
+        _country = country,
+        _flag = flag,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -36,36 +38,38 @@ class TournamentStruct extends FFFirebaseStruct {
   set name(String? val) => _name = val;
   bool hasName() => _name != null;
 
-  // "Teams" field.
-  int? _teams;
-  int get teams => _teams ?? 0;
-  set teams(int? val) => _teams = val;
-  void incrementTeams(int amount) => _teams = teams + amount;
-  bool hasTeams() => _teams != null;
+  // "Tag" field.
+  String? _tag;
+  String get tag => _tag ?? '';
+  set tag(String? val) => _tag = val;
+  bool hasTag() => _tag != null;
 
-  // "TeamsName" field.
-  List<String>? _teamsName;
-  List<String> get teamsName => _teamsName ?? const [];
-  set teamsName(List<String>? val) => _teamsName = val;
-  void updateTeamsName(Function(List<String>) updateFn) =>
-      updateFn(_teamsName ??= []);
-  bool hasTeamsName() => _teamsName != null;
+  // "Logo" field.
+  String? _logo;
+  String get logo => _logo ?? '';
+  set logo(String? val) => _logo = val;
+  bool hasLogo() => _logo != null;
 
-  // "TeamsTag" field.
-  List<String>? _teamsTag;
-  List<String> get teamsTag => _teamsTag ?? const [];
-  set teamsTag(List<String>? val) => _teamsTag = val;
-  void updateTeamsTag(Function(List<String>) updateFn) =>
-      updateFn(_teamsTag ??= []);
-  bool hasTeamsTag() => _teamsTag != null;
+  // "Country" field.
+  String? _country;
+  String get country => _country ?? '';
+  set country(String? val) => _country = val;
+  bool hasCountry() => _country != null;
+
+  // "Flag" field.
+  String? _flag;
+  String get flag => _flag ?? '';
+  set flag(String? val) => _flag = val;
+  bool hasFlag() => _flag != null;
 
   static TournamentStruct fromMap(Map<String, dynamic> data) =>
       TournamentStruct(
         id: castToType<int>(data['Id']),
         name: data['Name'] as String?,
-        teams: castToType<int>(data['Teams']),
-        teamsName: getDataList(data['TeamsName']),
-        teamsTag: getDataList(data['TeamsTag']),
+        tag: data['Tag'] as String?,
+        logo: data['Logo'] as String?,
+        country: data['Country'] as String?,
+        flag: data['Flag'] as String?,
       );
 
   static TournamentStruct? maybeFromMap(dynamic data) =>
@@ -74,9 +78,10 @@ class TournamentStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'Id': _id,
         'Name': _name,
-        'Teams': _teams,
-        'TeamsName': _teamsName,
-        'TeamsTag': _teamsTag,
+        'Tag': _tag,
+        'Logo': _logo,
+        'Country': _country,
+        'Flag': _flag,
       }.withoutNulls;
 
   @override
@@ -89,19 +94,21 @@ class TournamentStruct extends FFFirebaseStruct {
           _name,
           ParamType.String,
         ),
-        'Teams': serializeParam(
-          _teams,
-          ParamType.int,
-        ),
-        'TeamsName': serializeParam(
-          _teamsName,
+        'Tag': serializeParam(
+          _tag,
           ParamType.String,
-          true,
         ),
-        'TeamsTag': serializeParam(
-          _teamsTag,
+        'Logo': serializeParam(
+          _logo,
           ParamType.String,
-          true,
+        ),
+        'Country': serializeParam(
+          _country,
+          ParamType.String,
+        ),
+        'Flag': serializeParam(
+          _flag,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -117,20 +124,25 @@ class TournamentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        teams: deserializeParam(
-          data['Teams'],
-          ParamType.int,
+        tag: deserializeParam(
+          data['Tag'],
+          ParamType.String,
           false,
         ),
-        teamsName: deserializeParam<String>(
-          data['TeamsName'],
+        logo: deserializeParam(
+          data['Logo'],
           ParamType.String,
-          true,
+          false,
         ),
-        teamsTag: deserializeParam<String>(
-          data['TeamsTag'],
+        country: deserializeParam(
+          data['Country'],
           ParamType.String,
-          true,
+          false,
+        ),
+        flag: deserializeParam(
+          data['Flag'],
+          ParamType.String,
+          false,
         ),
       );
 
@@ -139,24 +151,27 @@ class TournamentStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
-    const listEquality = ListEquality();
     return other is TournamentStruct &&
         id == other.id &&
         name == other.name &&
-        teams == other.teams &&
-        listEquality.equals(teamsName, other.teamsName) &&
-        listEquality.equals(teamsTag, other.teamsTag);
+        tag == other.tag &&
+        logo == other.logo &&
+        country == other.country &&
+        flag == other.flag;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([id, name, teams, teamsName, teamsTag]);
+      const ListEquality().hash([id, name, tag, logo, country, flag]);
 }
 
 TournamentStruct createTournamentStruct({
   int? id,
   String? name,
-  int? teams,
+  String? tag,
+  String? logo,
+  String? country,
+  String? flag,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -165,7 +180,10 @@ TournamentStruct createTournamentStruct({
     TournamentStruct(
       id: id,
       name: name,
-      teams: teams,
+      tag: tag,
+      logo: logo,
+      country: country,
+      flag: flag,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

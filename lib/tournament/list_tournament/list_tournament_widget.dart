@@ -1,7 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -33,34 +33,19 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultw1n = await GetTournamentsCall.call();
-      if ((_model.apiResultw1n?.succeeded ?? true)) {
+      _model.apiResultcds = await TournamentGroup.tournamentDataTypeCall.call();
+      if ((_model.apiResultcds?.succeeded ?? true)) {
         _model.tournamentData = await actions.jsonToDataTypeTournament(
-          getJsonField(
-            (_model.apiResultw1n?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
+          TournamentGroup.tournamentDataTypeCall
+              .list(
+                (_model.apiResultcds?.jsonBody ?? ''),
+              )
+              ?.toList(),
         );
         setState(() {
-          FFAppState().tournaments =
+          _model.tournaments =
               _model.tournamentData!.toList().cast<TournamentStruct>();
         });
-      } else {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('2'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
       }
     });
   }
@@ -113,21 +98,6 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
                 size: 24.0,
               ),
             ),
-            FlutterFlowIconButton(
-              borderColor: FlutterFlowTheme.of(context).primary,
-              borderRadius: 20.0,
-              borderWidth: 1.0,
-              buttonSize: 40.0,
-              fillColor: FlutterFlowTheme.of(context).accent1,
-              icon: Icon(
-                Icons.add,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 24.0,
-              ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
-            ),
           ],
           centerTitle: false,
           elevation: 2.0,
@@ -140,8 +110,7 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
               children: [
                 Builder(
                   builder: (context) {
-                    final tournamentsList =
-                        FFAppState().tournaments.map((e) => e).toList();
+                    final tournamentsList = _model.tournaments.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,
@@ -151,18 +120,77 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
                       itemBuilder: (context, tournamentsListIndex) {
                         final tournamentsListItem =
                             tournamentsList[tournamentsListIndex];
-                        return Align(
-                          alignment: AlignmentDirectional(1.00, -1.00),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                tournamentsListItem.name,
-                                style:
-                                    FlutterFlowTheme.of(context).headlineMedium,
+                        return Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 0.0, 15.0, 1.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 10.0, 10.0, 10.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                        child: Image.network(
+                                          tournamentsListItem.logo,
+                                          width: 50.0,
+                                          height: 50.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '[${tournamentsListItem.tag}] ${tournamentsListItem.name}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleMedium,
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(2.0),
+                                              child: Image.network(
+                                                tournamentsListItem.flag,
+                                                width: 24.0,
+                                                height: 16.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                tournamentsListItem.country,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         );
                       },
                     );
