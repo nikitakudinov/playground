@@ -445,11 +445,15 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             await TournamentGroup
                                                 .addOrganizatorCall
                                                 .call(
-                                          tournamentId: TournamentGroup
-                                              .getTournamentByFbUserRefCall
-                                              .listId(
-                                            (_model.tournamentData?.jsonBody ??
-                                                ''),
+                                          tournamentId: valueOrDefault<int>(
+                                            TournamentGroup
+                                                .getTournamentByFbUserRefCall
+                                                .listId(
+                                              (_model.tournamentData
+                                                      ?.jsonBody ??
+                                                  ''),
+                                            ),
+                                            0,
                                           ),
                                           userId: GetUserByFbUserRefCall.listId(
                                             (_model.userData?.jsonBody ?? ''),
