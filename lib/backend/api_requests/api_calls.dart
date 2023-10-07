@@ -94,8 +94,63 @@ class TournamentGroup {
     'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
     'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
   };
+  static ADDTournamentCall aDDTournamentCall = ADDTournamentCall();
   static TournamentDataTypeCall tournamentDataTypeCall =
       TournamentDataTypeCall();
+  static GetTournamentByFbUserRefCall getTournamentByFbUserRefCall =
+      GetTournamentByFbUserRefCall();
+}
+
+class ADDTournamentCall {
+  Future<ApiCallResponse> call({
+    String? name = '',
+    String? tag = '',
+    String? logo = '',
+    String? owner = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "Name": "${name}",
+  "Tag": "${tag}",
+  "Logo": "${logo}",
+  "Owner": "${owner}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ADDTournament',
+      apiUrl: '${TournamentGroup.baseUrl}Tournament/views/DataType',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+      );
+  dynamic listName(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Name''',
+      );
+  dynamic listTag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Tag''',
+      );
 }
 
 class TournamentDataTypeCall {
@@ -133,6 +188,103 @@ class TournamentDataTypeCall {
   dynamic listTag(dynamic response) => getJsonField(
         response,
         r'''$.list[:].Tag''',
+      );
+}
+
+class GetTournamentByFbUserRefCall {
+  Future<ApiCallResponse> call({
+    String? fbUserRef = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getTournamentByFbUserRef',
+      apiUrl:
+          '${TournamentGroup.baseUrl}Tournament?where=%28owner%2Ceq%2C${fbUserRef}%29&limit=25&shuffle=0&offset=0&nested%5BmembersRefs%5D%5Boffset%5D=0&nested%5BmembersRefs%5D%5Blimit%5D=25',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {
+        'FbUserRef': fbUserRef,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$.list''',
+        true,
+      );
+  dynamic listId(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Id''',
+      );
+  dynamic listName(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Name''',
+      );
+  dynamic listCreatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].CreatedAt''',
+      );
+  dynamic listUpdatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].UpdatedAt''',
+      );
+  dynamic listTag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Tag''',
+      );
+  dynamic listOrganizators(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Organizators''',
+      );
+  dynamic listMembers(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Members''',
+      );
+  dynamic listLogo(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Logo''',
+      );
+  dynamic listCountry(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Country''',
+      );
+  dynamic listFlag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Flag''',
+      );
+  dynamic listOrganizatiorsID(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].OrganizatiorsID''',
+        true,
+      );
+  dynamic listOrganizatiorsIDtable2(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].OrganizatiorsID[:].table2_id''',
+      );
+  dynamic listOrganizatiorsIDtable1id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].OrganizatiorsID[:].table1_id''',
+      );
+  dynamic listMembersID(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].MembersID''',
+        true,
+      );
+  dynamic listMembersIDtable2id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].MembersID[:].table2_id''',
+      );
+  dynamic listMembersIDtable1id(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].MembersID[:].table1_id''',
       );
 }
 

@@ -33,10 +33,10 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultcds = await TournamentGroup.tournamentDataTypeCall.call();
+      _model.apiResultcds = await TournamentGroup.aDDTournamentCall.call();
       if ((_model.apiResultcds?.succeeded ?? true)) {
         _model.tournamentData = await actions.jsonToDataTypeTournament(
-          TournamentGroup.tournamentDataTypeCall
+          TournamentGroup.aDDTournamentCall
               .list(
                 (_model.apiResultcds?.jsonBody ?? ''),
               )

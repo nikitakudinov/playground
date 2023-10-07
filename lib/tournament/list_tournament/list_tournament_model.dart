@@ -33,7 +33,7 @@ class ListTournamentModel extends FlutterFlowModel<ListTournamentWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (TournamentDataType)] action in LIST_TOURNAMENT widget.
+  // Stores action output result for [Backend Call - API (ADDTournament)] action in LIST_TOURNAMENT widget.
   ApiCallResponse? apiResultcds;
   // Stores action output result for [Custom Action - jsonToDataTypeTournament] action in LIST_TOURNAMENT widget.
   List<TournamentStruct>? tournamentData;
