@@ -99,6 +99,7 @@ class TournamentGroup {
       TournamentDataTypeCall();
   static GetTournamentByFbUserRefCall getTournamentByFbUserRefCall =
       GetTournamentByFbUserRefCall();
+  static AddOrganizatorCall addOrganizatorCall = AddOrganizatorCall();
 }
 
 class ADDTournamentCall {
@@ -286,6 +287,31 @@ class GetTournamentByFbUserRefCall {
         response,
         r'''$.list[:].MembersID[:].table1_id''',
       );
+}
+
+class AddOrganizatorCall {
+  Future<ApiCallResponse> call({
+    int? tournamentId,
+    int? userId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'addOrganizator',
+      apiUrl:
+          '${TournamentGroup.baseUrl}/Tournament/${tournamentId}/mm/Organizators/${userId}?limit=25&shuffle=0&offset=0',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+        'xc-token': '0VJre1jJOTSXCI2tfKfR8JCvq9Pv7JuWyvCn8G-b',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
 }
 
 /// End TOURNAMENT Group Code

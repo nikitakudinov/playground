@@ -37,6 +37,8 @@ class AddTournamentModel extends FlutterFlowModel<AddTournamentWidget> {
   ApiCallResponse? userData;
   // Stores action output result for [Backend Call - API (getTournamentByFbUserRef)] action in Button widget.
   ApiCallResponse? tournamentData;
+  // Stores action output result for [Backend Call - API (addOrganizator)] action in Button widget.
+  ApiCallResponse? apiResult4ny;
 
   /// Initialization and disposal methods.
 

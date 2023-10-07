@@ -374,54 +374,13 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                           logo: _model.uploadedFileUrl,
                                           owner: currentUserUid,
                                         );
-                                        _model.userData =
-                                            await GetUserByFbUserRefCall.call(
-                                          fbUserRef: currentUserUid,
-                                        );
-                                        _model.tournamentData =
-                                            await TournamentGroup
-                                                .getTournamentByFbUserRefCall
-                                                .call(
-                                          fbUserRef: currentUserUid,
-                                        );
-                                        await AddRelationsCall.call(
-                                          dataTypeForUpdate: 'Tournament',
-                                          idOfDataForUpdate: TournamentGroup
-                                              .getTournamentByFbUserRefCall
-                                              .listId(
-                                            (_model.tournamentData?.jsonBody ??
-                                                ''),
-                                          ),
-                                          fildName: 'Organizators',
-                                          fieldId:
-                                              GetUserByFbUserRefCall.listId(
-                                            (_model.userData?.jsonBody ?? ''),
-                                          ),
-                                        );
                                         if ((_model.apiResultp5p?.succeeded ??
                                             true)) {
                                           await showDialog(
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('Work'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('DontWork'),
+                                                title: Text('1'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -434,8 +393,87 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             },
                                           );
                                         }
-
-                                        context.pushNamed('LIST_TOURNAMENT');
+                                        _model.userData =
+                                            await GetUserByFbUserRefCall.call(
+                                          fbUserRef: currentUserUid,
+                                        );
+                                        if ((_model.userData?.succeeded ??
+                                            true)) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('1'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+                                        _model.tournamentData =
+                                            await TournamentGroup
+                                                .getTournamentByFbUserRefCall
+                                                .call(
+                                          fbUserRef: currentUserUid,
+                                        );
+                                        if ((_model.tournamentData?.succeeded ??
+                                            true)) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('1'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+                                        _model.apiResult4ny =
+                                            await TournamentGroup
+                                                .addOrganizatorCall
+                                                .call(
+                                          tournamentId: TournamentGroup
+                                              .getTournamentByFbUserRefCall
+                                              .listId(
+                                            (_model.tournamentData?.jsonBody ??
+                                                ''),
+                                          ),
+                                          userId: GetUserByFbUserRefCall.listId(
+                                            (_model.userData?.jsonBody ?? ''),
+                                          ),
+                                        );
+                                        if ((_model.apiResult4ny?.succeeded ??
+                                            true)) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('1'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
 
                                         setState(() {});
                                       },
