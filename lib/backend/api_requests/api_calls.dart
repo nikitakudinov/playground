@@ -297,7 +297,7 @@ class AddOrganizatorCall {
     return ApiManager.instance.makeApiCall(
       callName: 'addOrganizator',
       apiUrl:
-          '${TournamentGroup.baseUrl}/Tournament/${tournamentId}/mm/Organizators/${userId}?limit=25&shuffle=0&offset=0',
+          '${TournamentGroup.baseUrl}Tournament/${tournamentId}/mm/Organizators/${userId}?limit=25&shuffle=0&offset=0',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
