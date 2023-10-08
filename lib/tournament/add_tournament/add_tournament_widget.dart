@@ -1,6 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -397,6 +399,26 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             await GetUserByFbUserRefCall.call(
                                           fbUserRef: currentUserUid,
                                         );
+                                        setState(() {
+                                          _model.user = UserStruct(
+                                            email: GetUserByFbUserRefCall
+                                                .listEmail(
+                                              (_model.userData?.jsonBody ?? ''),
+                                            ).toString(),
+                                            nickname: GetUserByFbUserRefCall
+                                                .listNickname(
+                                              (_model.userData?.jsonBody ?? ''),
+                                            ).toString(),
+                                            fbUserRef: GetUserByFbUserRefCall
+                                                .listFbUserRef(
+                                              (_model.userData?.jsonBody ?? ''),
+                                            ).toString(),
+                                            avatar: GetUserByFbUserRefCall
+                                                .listAvatar(
+                                              (_model.userData?.jsonBody ?? ''),
+                                            ),
+                                          );
+                                        });
                                         if ((_model.userData?.succeeded ??
                                             true)) {
                                           await showDialog(

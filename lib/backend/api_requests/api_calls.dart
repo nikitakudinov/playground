@@ -535,7 +535,7 @@ class GetUserByFbUserRefCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getUserByFbUserRef',
       apiUrl:
-          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user?where=%28FbUserRef%2Ceq%2C${fbUserRef}%29&limit=25&shuffle=0&offset=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Boffset%5D=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Blimit%5D=25',
+          'http://185.244.51.75:8181/api/v1/db/data/v1/phxxjzt5scpki29/user/views/DataType?where=%28FbUserRef%2Ceq%2C${fbUserRef}%29&limit=25&shuffle=0&offset=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Boffset%5D=0&nested%5Bnc_c5h0___nc_m2m_mg5tfnzlzzs%5D%5Blimit%5D=25',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
@@ -595,6 +595,10 @@ class GetUserByFbUserRefCall {
   static dynamic listMemberOfTeam(dynamic response) => getJsonField(
         response,
         r'''$.list[:].MemberOfTeam''',
+      );
+  static dynamic listTag(dynamic response) => getJsonField(
+        response,
+        r'''$.list[:].Tag''',
       );
 }
 
