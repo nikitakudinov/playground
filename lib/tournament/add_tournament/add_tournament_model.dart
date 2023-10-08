@@ -1,8 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -19,9 +17,9 @@ import 'package:provider/provider.dart';
 class AddTournamentModel extends FlutterFlowModel<AddTournamentWidget> {
   ///  Local state fields for this page.
 
-  UserStruct? user;
-  void updateUserStruct(Function(UserStruct) updateFn) =>
-      updateFn(user ??= UserStruct());
+  int? tournamentId;
+
+  int? userId;
 
   ///  State fields for stateful widgets in this page.
 

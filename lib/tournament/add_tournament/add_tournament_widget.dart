@@ -1,8 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -400,23 +398,9 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                           fbUserRef: currentUserUid,
                                         );
                                         setState(() {
-                                          _model.user = UserStruct(
-                                            email: GetUserByFbUserRefCall
-                                                .listEmail(
-                                              (_model.userData?.jsonBody ?? ''),
-                                            ).toString(),
-                                            nickname: GetUserByFbUserRefCall
-                                                .listNickname(
-                                              (_model.userData?.jsonBody ?? ''),
-                                            ).toString(),
-                                            fbUserRef: GetUserByFbUserRefCall
-                                                .listFbUserRef(
-                                              (_model.userData?.jsonBody ?? ''),
-                                            ).toString(),
-                                            avatar: GetUserByFbUserRefCall
-                                                .listAvatar(
-                                              (_model.userData?.jsonBody ?? ''),
-                                            ),
+                                          _model.userId =
+                                              GetUserByFbUserRefCall.listId(
+                                            (_model.userData?.jsonBody ?? ''),
                                           );
                                         });
                                         if ((_model.userData?.succeeded ??
@@ -444,6 +428,14 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                                 .call(
                                           fbUserRef: currentUserUid,
                                         );
+                                        setState(() {
+                                          _model.tournamentId = TournamentGroup
+                                              .getTournamentByFbUserRefCall
+                                              .listId(
+                                            (_model.tournamentData?.jsonBody ??
+                                                ''),
+                                          );
+                                        });
                                         if ((_model.tournamentData?.succeeded ??
                                             true)) {
                                           await showDialog(
@@ -467,15 +459,8 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             await TournamentGroup
                                                 .addOrganizatorCall
                                                 .call(
-                                          tournamentId: getJsonField(
-                                            (_model.tournamentData?.jsonBody ??
-                                                ''),
-                                            r'''$.Id''',
-                                          ),
-                                          userId: getJsonField(
-                                            (_model.userData?.jsonBody ?? ''),
-                                            r'''$.Id''',
-                                          ),
+                                          tournamentId: _model.tournamentId,
+                                          userId: _model.userId,
                                         );
                                         if ((_model.apiResult4ny?.succeeded ??
                                             true)) {
@@ -528,14 +513,6 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                       ),
                                     ),
                                   ),
-                                ),
-                                Text(
-                                  valueOrDefault<String>(
-                                    _model.user?.nickname,
-                                    '0',
-                                  ),
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                               ],
                             ),
