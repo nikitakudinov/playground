@@ -460,8 +460,14 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             await TournamentGroup
                                                 .addOrganizatorCall
                                                 .call(
-                                          tournamentId: _model.tournamentId,
-                                          userId: _model.userId,
+                                          tournamentId: valueOrDefault<int>(
+                                            _model.tournamentId,
+                                            0,
+                                          ),
+                                          userId: valueOrDefault<int>(
+                                            _model.userId,
+                                            0,
+                                          ),
                                         );
                                         if ((_model.apiResult4ny?.succeeded ??
                                             true)) {
