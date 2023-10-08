@@ -445,15 +445,11 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             await TournamentGroup
                                                 .addOrganizatorCall
                                                 .call(
-                                          tournamentId: valueOrDefault<int>(
-                                            TournamentGroup
-                                                .getTournamentByFbUserRefCall
-                                                .listId(
-                                              (_model.tournamentData
-                                                      ?.jsonBody ??
-                                                  ''),
-                                            ),
-                                            0,
+                                          tournamentId: TournamentGroup
+                                              .getTournamentByFbUserRefCall
+                                              .listId(
+                                            (_model.tournamentData?.jsonBody ??
+                                                ''),
                                           ),
                                           userId: GetUserByFbUserRefCall.listId(
                                             (_model.userData?.jsonBody ?? ''),
@@ -465,7 +461,7 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('1'),
+                                                title: Text('1111'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
