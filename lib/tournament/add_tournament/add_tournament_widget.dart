@@ -380,7 +380,7 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('1'),
+                                                title: Text('Турнир добавлен'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -409,7 +409,8 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('1'),
+                                                title:
+                                                    Text('Пользователь поучен'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
