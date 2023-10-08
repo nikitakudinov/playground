@@ -434,11 +434,10 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                           fbUserRef: currentUserUid,
                                         );
                                         setState(() {
-                                          _model.tournamentId = TournamentGroup
-                                              .getTournamentByFbUserRefCall
-                                              .listId(
+                                          _model.tournamentId = getJsonField(
                                             (_model.tournamentData?.jsonBody ??
                                                 ''),
+                                            r'''$.Id''',
                                           );
                                         });
                                         if ((_model.tournamentData?.succeeded ??
