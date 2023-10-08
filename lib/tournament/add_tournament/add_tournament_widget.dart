@@ -402,9 +402,9 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                           fbUserRef: currentUserUid,
                                         );
                                         setState(() {
-                                          _model.userId =
-                                              GetUserByFbUserRefCall.listId(
+                                          _model.userId = getJsonField(
                                             (_model.userData?.jsonBody ?? ''),
+                                            r'''$.Id''',
                                           );
                                         });
                                         if ((_model.userData?.succeeded ??
@@ -413,8 +413,8 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title:
-                                                    Text('Пользователь поучен'),
+                                                title: Text(
+                                                    _model.userId!.toString()),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -447,7 +447,8 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: Text('1'),
+                                                title: Text(_model.tournamentId!
+                                                    .toString()),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -468,10 +469,7 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                             _model.tournamentId,
                                             0,
                                           ),
-                                          userId: valueOrDefault<int>(
-                                            _model.userId,
-                                            0,
-                                          ),
+                                          userId: _model.userId,
                                         );
                                         if ((_model.apiResult4ny?.succeeded ??
                                             true)) {
