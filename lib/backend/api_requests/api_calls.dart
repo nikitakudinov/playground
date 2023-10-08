@@ -108,13 +108,17 @@ class ADDTournamentCall {
     String? tag = '',
     String? logo = '',
     String? owner = '',
+    String? country = '',
+    String? flag = '',
   }) {
     final ffApiRequestBody = '''
 {
   "Name": "${name}",
   "Tag": "${tag}",
   "Logo": "${logo}",
-  "Owner": "${owner}"
+  "Owner": "${owner}",
+  "Country": "${country}",
+  "Flag": "${flag}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'ADDTournament',
