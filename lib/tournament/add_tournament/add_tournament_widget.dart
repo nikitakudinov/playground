@@ -529,6 +529,14 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                     ),
                                   ),
                                 ),
+                                Text(
+                                  valueOrDefault<String>(
+                                    _model.user?.nickname,
+                                    '0',
+                                  ),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                               ],
                             ),
                           ),
