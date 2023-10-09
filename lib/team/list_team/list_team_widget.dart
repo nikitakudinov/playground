@@ -54,9 +54,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
         _model.teamData = await actions.jsonToDataTypeTeam(
           (_model.jsonTeamsList?.jsonBody ?? ''),
         );
-        setState(() {
-          FFAppState().teams = _model.teamData!.toList().cast<TeamStruct>();
-        });
+        setState(() {});
       }
     });
   }

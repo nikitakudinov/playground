@@ -13,10 +13,6 @@ import 'package:provider/provider.dart';
 class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
   ///  Local state fields for this page.
 
-  TeamStruct? teamData;
-  void updateTeamDataStruct(Function(TeamStruct) updateFn) =>
-      updateFn(teamData ??= TeamStruct());
-
   List<RequestStruct> requestsList = [];
   void addToRequestsList(RequestStruct item) => requestsList.add(item);
   void removeFromRequestsList(RequestStruct item) => requestsList.remove(item);
