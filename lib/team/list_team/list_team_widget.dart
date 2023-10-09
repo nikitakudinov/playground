@@ -37,6 +37,20 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
         viewName: 'DataType',
       );
       if ((_model.apiResultidj?.succeeded ?? true)) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('1'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
         _model.teamsData = await actions.jsonToDataType(
           getJsonField(
             (_model.apiResultidj?.jsonBody ?? ''),
