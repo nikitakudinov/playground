@@ -15,12 +15,14 @@ class TournamentStruct extends FFFirebaseStruct {
     String? tag,
     String? logo,
     String? owner,
+    String? headerLogo,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
         _tag = tag,
         _logo = logo,
         _owner = owner,
+        _headerLogo = headerLogo,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -54,6 +56,12 @@ class TournamentStruct extends FFFirebaseStruct {
   set owner(String? val) => _owner = val;
   bool hasOwner() => _owner != null;
 
+  // "HeaderLogo" field.
+  String? _headerLogo;
+  String get headerLogo => _headerLogo ?? '';
+  set headerLogo(String? val) => _headerLogo = val;
+  bool hasHeaderLogo() => _headerLogo != null;
+
   static TournamentStruct fromMap(Map<String, dynamic> data) =>
       TournamentStruct(
         id: castToType<int>(data['Id']),
@@ -61,6 +69,7 @@ class TournamentStruct extends FFFirebaseStruct {
         tag: data['Tag'] as String?,
         logo: data['Logo'] as String?,
         owner: data['Owner'] as String?,
+        headerLogo: data['HeaderLogo'] as String?,
       );
 
   static TournamentStruct? maybeFromMap(dynamic data) =>
@@ -72,6 +81,7 @@ class TournamentStruct extends FFFirebaseStruct {
         'Tag': _tag,
         'Logo': _logo,
         'Owner': _owner,
+        'HeaderLogo': _headerLogo,
       }.withoutNulls;
 
   @override
@@ -94,6 +104,10 @@ class TournamentStruct extends FFFirebaseStruct {
         ),
         'Owner': serializeParam(
           _owner,
+          ParamType.String,
+        ),
+        'HeaderLogo': serializeParam(
+          _headerLogo,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -125,6 +139,11 @@ class TournamentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        headerLogo: deserializeParam(
+          data['HeaderLogo'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -137,11 +156,13 @@ class TournamentStruct extends FFFirebaseStruct {
         name == other.name &&
         tag == other.tag &&
         logo == other.logo &&
-        owner == other.owner;
+        owner == other.owner &&
+        headerLogo == other.headerLogo;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([id, name, tag, logo, owner]);
+  int get hashCode =>
+      const ListEquality().hash([id, name, tag, logo, owner, headerLogo]);
 }
 
 TournamentStruct createTournamentStruct({
@@ -150,6 +171,7 @@ TournamentStruct createTournamentStruct({
   String? tag,
   String? logo,
   String? owner,
+  String? headerLogo,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -161,6 +183,7 @@ TournamentStruct createTournamentStruct({
       tag: tag,
       logo: logo,
       owner: owner,
+      headerLogo: headerLogo,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

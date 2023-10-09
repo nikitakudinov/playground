@@ -66,7 +66,7 @@ Future loadTournamentsToAppState(BuildContext context) async {
 
   jsonTournamentListData = await GetdataGroup.datalistCall.call(
     contentType: 'Tournament',
-    fields: 'Id,Name,Tag,Logo,Owner',
+    fields: 'Id,Name,Tag,Logo,Owner,HeaderLogo',
   );
   if ((jsonTournamentListData?.succeeded ?? true)) {
     tournamentData = await actions.jsonToDataTypeTournament(
