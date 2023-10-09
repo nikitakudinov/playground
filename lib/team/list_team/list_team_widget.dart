@@ -278,6 +278,21 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                     );
                   },
                 ),
+                Builder(
+                  builder: (context) {
+                    final aaa = FFAppState().teams.toList();
+                    return Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: List.generate(aaa.length, (aaaIndex) {
+                        final aaaItem = aaa[aaaIndex];
+                        return Text(
+                          aaaItem.name,
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        );
+                      }),
+                    );
+                  },
+                ),
               ],
             ),
           ),
