@@ -89,95 +89,100 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Builder(
-                  builder: (context) {
-                    final tournamentsList = FFAppState().tournaments.toList();
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: tournamentsList.length,
-                      itemBuilder: (context, tournamentsListIndex) {
-                        final tournamentsListItem =
-                            tournamentsList[tournamentsListIndex];
-                        return Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 0.0, 15.0, 1.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'VIEW_TOURNAMENT',
-                                    queryParameters: {
-                                      'tournamentId': serializeParam(
-                                        tournamentsListItem.id,
-                                        ParamType.int,
-                                      ),
-                                      'tournamentIndex': serializeParam(
-                                        tournamentsListIndex,
-                                        ParamType.int,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(3.0),
-                                          child: Image.network(
-                                            tournamentsListItem.logo,
-                                            width: 50.0,
-                                            height: 50.0,
-                                            fit: BoxFit.cover,
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Builder(
+                    builder: (context) {
+                      final tournamentsList = FFAppState().tournaments.toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        primary: false,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: tournamentsList.length,
+                        itemBuilder: (context, tournamentsListIndex) {
+                          final tournamentsListItem =
+                              tournamentsList[tournamentsListIndex];
+                          return Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 1.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'VIEW_TOURNAMENT',
+                                      queryParameters: {
+                                        'tournamentId': serializeParam(
+                                          tournamentsListItem.id,
+                                          ParamType.int,
+                                        ),
+                                        'tournamentIndex': serializeParam(
+                                          tournamentsListIndex,
+                                          ParamType.int,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 10.0, 10.0, 10.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(3.0),
+                                            child: Image.network(
+                                              tournamentsListItem.logo,
+                                              width: 50.0,
+                                              height: 50.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            tournamentsListItem.name,
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              tournamentsListItem.name,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                ),
-              ],
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
