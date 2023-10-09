@@ -51,10 +51,16 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
             );
           },
         );
-        _model.teamData = await actions.jsonToDataTypeTeam(
-          (_model.jsonTeamsList?.jsonBody ?? ''),
+        _model.aaa = await actions.jsonToDataTypeTeam(
+          getJsonField(
+            (_model.jsonTeamsList?.jsonBody ?? ''),
+            r'''$.list''',
+            true,
+          ),
         );
-        setState(() {});
+        setState(() {
+          FFAppState().teams = _model.aaa!.toList().cast<TeamStruct>();
+        });
       }
     });
   }

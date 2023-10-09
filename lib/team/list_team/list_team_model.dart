@@ -19,7 +19,7 @@ class ListTeamModel extends FlutterFlowModel<ListTeamWidget> {
   // Stores action output result for [Backend Call - API (DATALIST)] action in LIST_TEAM widget.
   ApiCallResponse? jsonTeamsList;
   // Stores action output result for [Custom Action - jsonToDataTypeTeam] action in LIST_TEAM widget.
-  List<TeamStruct>? teamData;
+  List<TeamStruct>? aaa;
 
   /// Initialization and disposal methods.
 
