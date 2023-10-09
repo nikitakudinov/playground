@@ -32,11 +32,11 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultidj = await GetdataGroup.dataviewCall.call(
+      _model.jsonTeamsList = await GetdataGroup.datalistCall.call(
         contentType: 'Team',
-        viewName: 'DataType',
+        fields: 'Id,Name,Tag,Country,Flag,Logo,Owner',
       );
-      if ((_model.apiResultidj?.succeeded ?? true)) {
+      if ((_model.jsonTeamsList?.succeeded ?? true)) {
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
@@ -53,7 +53,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
         );
         _model.teamsData = await actions.jsonToDataType(
           getJsonField(
-            (_model.apiResultidj?.jsonBody ?? ''),
+            (_model.jsonTeamsList?.jsonBody ?? ''),
             r'''$.list''',
             true,
           ),
