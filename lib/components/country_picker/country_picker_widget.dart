@@ -131,8 +131,8 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                                       _model.selectedFlag,
                                       '0',
                                     ),
-                                    width: 32.0,
-                                    height: 24.0,
+                                    width: 24.0,
+                                    height: 16.0,
                                     fit: BoxFit.fill,
                                   ),
                                 ),
@@ -187,7 +187,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                             setState(() {
                               _model.selectedName = countriesListItem.ruName;
                               _model.selectedFlag =
-                                  countriesListItem.flagLink48x36;
+                                  countriesListItem.flagLinkH24;
                               _model.countriesListVISIBILITY = false;
                             });
                           },
@@ -205,10 +205,10 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                                     fadeInDuration: Duration(milliseconds: 500),
                                     fadeOutDuration:
                                         Duration(milliseconds: 500),
-                                    imageUrl: countriesListItem.flagLink48x36,
-                                    width: 32.0,
-                                    height: 24.0,
-                                    fit: BoxFit.cover,
+                                    imageUrl: countriesListItem.flagLinkH24,
+                                    width: 24.0,
+                                    height: 16.0,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                               ),

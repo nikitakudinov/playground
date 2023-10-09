@@ -39,7 +39,7 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResult2f6 = await GetdataGroup.datalistCall.call(
         contentType: 'Country',
-        fields: 'RuName,FlagLink48x36',
+        fields: 'RuName,FlagLinkH24',
       );
       if ((_model.apiResult2f6?.succeeded ?? true)) {
         _model.countryData = await actions.jsonToDataTypeCountrie(

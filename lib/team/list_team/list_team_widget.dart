@@ -1,8 +1,12 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +29,26 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ListTeamModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultidj = await GetdataGroup.dataviewCall.call(
+        contentType: 'Team',
+        viewName: 'DataType',
+      );
+      if ((_model.apiResultidj?.succeeded ?? true)) {
+        _model.teamsData = await actions.jsonToDataType(
+          getJsonField(
+            (_model.apiResultidj?.jsonBody ?? ''),
+            r'''$.list''',
+            true,
+          ),
+        );
+        setState(() {
+          FFAppState().teams = _model.teamsData!.toList().cast<TeamStruct>();
+        });
+      }
+    });
   }
 
   @override
@@ -86,7 +110,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
               children: [
                 Builder(
                   builder: (context) {
-                    final teamsList = FFAppState().teams.map((e) => e).toList();
+                    final teamsList = FFAppState().teams.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,

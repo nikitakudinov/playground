@@ -31,30 +31,48 @@ class _HomeWidgetState extends State<HomeWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultnzr = await GetdataGroup.datalistCall.call(
-        contentType: 'User',
-        fields: 'Id,FBUserId,Nickname',
-        field1: 'FBUserId',
-        field2: currentUserUid,
-      );
-      if ((_model.apiResultnzr?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().updateAuthenticatedUserStruct(
-            (e) => e
-              ..id = getJsonField(
-                (_model.apiResultnzr?.jsonBody ?? ''),
-                r'''$.list[:].Id''',
-              )
-              ..nickname = getJsonField(
-                (_model.apiResultnzr?.jsonBody ?? ''),
-                r'''$.list[:].Nickname''',
-              ).toString().toString()
-              ..fBUserId = getJsonField(
-                (_model.apiResultnzr?.jsonBody ?? ''),
-                r'''$.list[:].FBUserId''',
-              ).toString().toString(),
-          );
-        });
+      if (FFAppState().AuthenticatedUser.nickname == null ||
+          FFAppState().AuthenticatedUser.nickname == '') {
+        _model.apiResultnzr = await GetdataGroup.datalistCall.call(
+          contentType: 'User',
+          fields: 'Id,FBUserId,Nickname',
+          field1: 'FBUserId',
+          field2: currentUserUid,
+        );
+        if ((_model.apiResultnzr?.succeeded ?? true)) {
+          setState(() {
+            FFAppState().updateAuthenticatedUserStruct(
+              (e) => e
+                ..id = getJsonField(
+                  (_model.apiResultnzr?.jsonBody ?? ''),
+                  r'''$.list[:].Id''',
+                )
+                ..nickname = getJsonField(
+                  (_model.apiResultnzr?.jsonBody ?? ''),
+                  r'''$.list[:].Nickname''',
+                ).toString().toString()
+                ..fBUserId = getJsonField(
+                  (_model.apiResultnzr?.jsonBody ?? ''),
+                  r'''$.list[:].FBUserId''',
+                ).toString().toString(),
+            );
+          });
+        }
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Alreadyt Updated'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
       }
     });
   }
@@ -184,6 +202,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                   ),
                 ],
+              ),
+              Text(
+                currentUserUid,
+                style: FlutterFlowTheme.of(context).bodyMedium,
               ),
             ],
           ),

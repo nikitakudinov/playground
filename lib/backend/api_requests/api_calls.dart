@@ -21,6 +21,7 @@ class GetdataGroup {
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJsaW5uYWZlZ0BnbWFpbC5jb20iLCJpZCI6InVzcjA4bzRlY2ZjNzduaDAiLCJyb2xlcyI6Im9yZy1sZXZlbC1jcmVhdG9yLHN1cGVyIiwidG9rZW5fdmVyc2lvbiI6IjBjMGVhM2MyNDY5NjBkODRjMDc1MzhiNDA2NTU0ZWY1ZjMxYmJkOTU4ZThlZDU2YmZjMjNmYjliZTk3YmE2YTEyM2U3ZjBkMGZhYmJjMTYxIiwiaWF0IjoxNjk2ODM5Njc5LCJleHAiOjE2OTY4NzU2Nzl9.igwfqvDfyaAnrDLjZl6gRQRyvlIgKzWhiHc2jFy0R4c',
   };
   static DatalistCall datalistCall = DatalistCall();
+  static DataviewCall dataviewCall = DataviewCall();
   static DataitemCall dataitemCall = DataitemCall();
 }
 
@@ -48,6 +49,41 @@ class DatalistCall {
         'Fields': fields,
         'Field1': field1,
         'Field2': field2,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class DataviewCall {
+  Future<ApiCallResponse> call({
+    String? contentType = '',
+    String? fields = '',
+    String? field1 = '',
+    String? field2 = '',
+    String? viewName = '',
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'DATAVIEW',
+      apiUrl:
+          '${GetdataGroup.baseUrl}${contentType}/Views/${viewName}?fields=${fields}&where=%28${field1}%2Ceq%2C${field2}%29&limit=25&shuffle=0&offset=0&nested%5BOrganizatorOfTournamentsID%5D%5Boffset%5D=0&nested%5BOrganizatorOfTournamentsID%5D%5Blimit%5D=300',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJsaW5uYWZlZ0BnbWFpbC5jb20iLCJpZCI6InVzcjA4bzRlY2ZjNzduaDAiLCJyb2xlcyI6Im9yZy1sZXZlbC1jcmVhdG9yLHN1cGVyIiwidG9rZW5fdmVyc2lvbiI6IjBjMGVhM2MyNDY5NjBkODRjMDc1MzhiNDA2NTU0ZWY1ZjMxYmJkOTU4ZThlZDU2YmZjMjNmYjliZTk3YmE2YTEyM2U3ZjBkMGZhYmJjMTYxIiwiaWF0IjoxNjk2ODM5Njc5LCJleHAiOjE2OTY4NzU2Nzl9.igwfqvDfyaAnrDLjZl6gRQRyvlIgKzWhiHc2jFy0R4c',
+        'xc-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJsaW5uYWZlZ0BnbWFpbC5jb20iLCJpZCI6InVzcjA4bzRlY2ZjNzduaDAiLCJyb2xlcyI6Im9yZy1sZXZlbC1jcmVhdG9yLHN1cGVyIiwidG9rZW5fdmVyc2lvbiI6IjBjMGVhM2MyNDY5NjBkODRjMDc1MzhiNDA2NTU0ZWY1ZjMxYmJkOTU4ZThlZDU2YmZjMjNmYjliZTk3YmE2YTEyM2U3ZjBkMGZhYmJjMTYxIiwiaWF0IjoxNjk2ODM5Njc5LCJleHAiOjE2OTY4NzU2Nzl9.igwfqvDfyaAnrDLjZl6gRQRyvlIgKzWhiHc2jFy0R4c',
+      },
+      params: {
+        'ContentType': contentType,
+        'Fields': fields,
+        'Field1': field1,
+        'Field2': field2,
+        'ViewName': viewName,
       },
       returnBody: true,
       encodeBodyUtf8: false,
