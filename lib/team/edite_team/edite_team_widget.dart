@@ -282,7 +282,7 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 15.0, 0.0),
+                                    15.0, 15.0, 15.0, 5.0),
                                 child: TextFormField(
                                   controller: _model.nameController,
                                   obscureText: false,
@@ -293,7 +293,7 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                         .override(
                                           fontFamily: 'Saira Semi Condensed',
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                              .primary,
                                         ),
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .labelMedium,
@@ -329,9 +329,6 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                       ),
                                       borderRadius: BorderRadius.circular(0.0),
                                     ),
-                                    contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 15.0, 0.0, 10.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -346,7 +343,7 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 0.0, 15.0, 0.0),
+                                    15.0, 0.0, 15.0, 5.0),
                                 child: TextFormField(
                                   controller: _model.tagController,
                                   obscureText: false,
@@ -388,9 +385,6 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                       ),
                                       borderRadius: BorderRadius.circular(0.0),
                                     ),
-                                    contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 15.0, 0.0, 10.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
