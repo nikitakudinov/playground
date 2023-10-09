@@ -57,7 +57,6 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
           automaticallyImplyLeading: true,
           actions: [],
           centerTitle: false,
-          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
@@ -120,28 +119,9 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                     ),
                                   ),
                                   collapsed: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 40.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
-                                      child: Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing...',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  'Saira Semi Condensed',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                      ),
                                     ),
                                   ),
                                   expanded: Column(
@@ -154,24 +134,10 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                             .override(
                                               fontFamily:
                                                   'Saira Semi Condensed',
-                                              color: Color(0x8A000000),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/274/600',
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                1.0,
-                                            height: 200.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
                                       ),
                                     ],
                                   ),
