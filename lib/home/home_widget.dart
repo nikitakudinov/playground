@@ -32,6 +32,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       // UpdateAppStateAuthUserData
       await action_blocks.updateAppStateAuthUser(context);
+      await action_blocks.loadCountriesToAppState(context);
     });
   }
 
