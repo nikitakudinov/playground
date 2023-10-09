@@ -13,6 +13,7 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
@@ -121,8 +122,8 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'LIST_TEAM': ListTeamWidget(),
       'LIST_TOURNAMENT': ListTournamentWidget(),
-      'LIST_REQUEST': ListRequestWidget(),
       'HOME': HomeWidget(),
+      'LIST_REQUEST': ListRequestWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -143,10 +144,18 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.groups_2_rounded,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Команды',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.medal,
+              size: 24.0,
+            ),
+            label: 'Турниры',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -154,7 +163,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home_outlined,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Главная',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -163,14 +172,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Уведомления',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24.0,
-            ),
-            label: 'Home',
             tooltip: '',
           )
         ],
