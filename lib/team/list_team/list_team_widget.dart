@@ -52,11 +52,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
           },
         );
         _model.teamData = await actions.jsonToDataTypeTeam(
-          getJsonField(
-            (_model.jsonTeamsList?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
+          (_model.jsonTeamsList?.jsonBody ?? ''),
         );
         setState(() {
           FFAppState().teams = _model.teamData!.toList().cast<TeamStruct>();
@@ -275,27 +271,6 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                           ],
                         );
                       },
-                    );
-                  },
-                ),
-                Builder(
-                  builder: (context) {
-                    final aaa = getJsonField(
-                      (_model.jsonTeamsList?.jsonBody ?? ''),
-                      r'''$.list''',
-                    ).toList();
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: List.generate(aaa.length, (aaaIndex) {
-                        final aaaItem = aaa[aaaIndex];
-                        return Text(
-                          getJsonField(
-                            aaaItem,
-                            r'''$.list[:].Name''',
-                          ).toString(),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                        );
-                      }),
                     );
                   },
                 ),
