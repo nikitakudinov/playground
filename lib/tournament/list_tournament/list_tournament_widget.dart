@@ -140,7 +140,7 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '[${tournamentsListItem.tag}] ${tournamentsListItem.name}',
+                                          tournamentsListItem.name,
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium,
                                         ),
