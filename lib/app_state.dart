@@ -180,6 +180,35 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInTeams(int _index, TeamStruct _value) {
     _teams.insert(_index, _value);
   }
+
+  List<OrganizatorStruct> _Organizators = [];
+  List<OrganizatorStruct> get Organizators => _Organizators;
+  set Organizators(List<OrganizatorStruct> _value) {
+    _Organizators = _value;
+  }
+
+  void addToOrganizators(OrganizatorStruct _value) {
+    _Organizators.add(_value);
+  }
+
+  void removeFromOrganizators(OrganizatorStruct _value) {
+    _Organizators.remove(_value);
+  }
+
+  void removeAtIndexFromOrganizators(int _index) {
+    _Organizators.removeAt(_index);
+  }
+
+  void updateOrganizatorsAtIndex(
+    int _index,
+    OrganizatorStruct Function(OrganizatorStruct) updateFn,
+  ) {
+    _Organizators[_index] = updateFn(_Organizators[_index]);
+  }
+
+  void insertAtIndexInOrganizators(int _index, OrganizatorStruct _value) {
+    _Organizators.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

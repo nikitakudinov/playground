@@ -96,3 +96,58 @@ Future loadTournamentsToAppState(BuildContext context) async {
     );
   }
 }
+
+Future loadOrganizators(
+  BuildContext context, {
+  required int? tournamentId,
+}) async {
+  ApiCallResponse? jsonOrganizatorsDataList;
+  List<OrganizatorStruct>? organizatorData;
+
+  jsonOrganizatorsDataList = await RelationGroup.letationslistCall.call(
+    contentType: 'Tournament',
+    contentId: tournamentId,
+    relationField: 'OrganizatorsCount',
+  );
+  if ((jsonOrganizatorsDataList?.succeeded ?? true)) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('1'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+    organizatorData = await actions.jsonToDataTypeOrganizator(
+      getJsonField(
+        (jsonOrganizatorsDataList?.jsonBody ?? ''),
+        r'''$.list''',
+        true,
+      ),
+    );
+    FFAppState().update(() {
+      FFAppState().Organizators =
+          organizatorData!.toList().cast<OrganizatorStruct>();
+    });
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('11'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}

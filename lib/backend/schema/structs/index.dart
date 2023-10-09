@@ -2,6 +2,7 @@ export '/backend/schema/util/schema_util.dart';
 
 export 'authenticated_user_struct.dart';
 export 'countrie_struct.dart';
+export 'organizator_struct.dart';
 export 'request_struct.dart';
 export 'team_struct.dart';
 export 'tournament_struct.dart';
