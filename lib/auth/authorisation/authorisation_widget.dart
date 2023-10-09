@@ -234,7 +234,7 @@ class _AuthorisationWidgetState extends State<AuthorisationWidget> {
                                         }
 
                                         context.goNamedAuth(
-                                            'LIST_TEAM', context.mounted);
+                                            'HOME', context.mounted);
                                       },
                                       text: 'Войти',
                                       options: FFButtonOptions(
