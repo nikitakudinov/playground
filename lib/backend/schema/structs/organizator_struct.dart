@@ -16,7 +16,6 @@ class OrganizatorStruct extends FFFirebaseStruct {
     int? id,
     String? nickname,
     DateTime? createdAt,
-    String? updatedAt,
     String? fBUserId,
     String? tag,
     String? country,
@@ -24,6 +23,7 @@ class OrganizatorStruct extends FFFirebaseStruct {
     String? teamRole,
     String? lineUp,
     String? avatar,
+    DateTime? updatedAt,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _organizator = organizator,
         _memberOfTeamCount = memberOfTeamCount,
@@ -31,7 +31,6 @@ class OrganizatorStruct extends FFFirebaseStruct {
         _id = id,
         _nickname = nickname,
         _createdAt = createdAt,
-        _updatedAt = updatedAt,
         _fBUserId = fBUserId,
         _tag = tag,
         _country = country,
@@ -39,6 +38,7 @@ class OrganizatorStruct extends FFFirebaseStruct {
         _teamRole = teamRole,
         _lineUp = lineUp,
         _avatar = avatar,
+        _updatedAt = updatedAt,
         super(firestoreUtilData);
 
   // "Organizator" field.
@@ -77,12 +77,6 @@ class OrganizatorStruct extends FFFirebaseStruct {
   DateTime? get createdAt => _createdAt;
   set createdAt(DateTime? val) => _createdAt = val;
   bool hasCreatedAt() => _createdAt != null;
-
-  // "UpdatedAt" field.
-  String? _updatedAt;
-  String get updatedAt => _updatedAt ?? '';
-  set updatedAt(String? val) => _updatedAt = val;
-  bool hasUpdatedAt() => _updatedAt != null;
 
   // "FBUserId" field.
   String? _fBUserId;
@@ -126,6 +120,12 @@ class OrganizatorStruct extends FFFirebaseStruct {
   set avatar(String? val) => _avatar = val;
   bool hasAvatar() => _avatar != null;
 
+  // "UpdatedAt" field.
+  DateTime? _updatedAt;
+  DateTime? get updatedAt => _updatedAt;
+  set updatedAt(DateTime? val) => _updatedAt = val;
+  bool hasUpdatedAt() => _updatedAt != null;
+
   static OrganizatorStruct fromMap(Map<String, dynamic> data) =>
       OrganizatorStruct(
         organizator: data['Organizator'] as String?,
@@ -134,7 +134,6 @@ class OrganizatorStruct extends FFFirebaseStruct {
         id: castToType<int>(data['Id']),
         nickname: data['Nickname'] as String?,
         createdAt: data['CreatedAt'] as DateTime?,
-        updatedAt: data['UpdatedAt'] as String?,
         fBUserId: data['FBUserId'] as String?,
         tag: data['Tag'] as String?,
         country: data['Country'] as String?,
@@ -142,6 +141,7 @@ class OrganizatorStruct extends FFFirebaseStruct {
         teamRole: data['TeamRole'] as String?,
         lineUp: data['LineUp'] as String?,
         avatar: data['Avatar'] as String?,
+        updatedAt: data['UpdatedAt'] as DateTime?,
       );
 
   static OrganizatorStruct? maybeFromMap(dynamic data) =>
@@ -154,7 +154,6 @@ class OrganizatorStruct extends FFFirebaseStruct {
         'Id': _id,
         'Nickname': _nickname,
         'CreatedAt': _createdAt,
-        'UpdatedAt': _updatedAt,
         'FBUserId': _fBUserId,
         'Tag': _tag,
         'Country': _country,
@@ -162,6 +161,7 @@ class OrganizatorStruct extends FFFirebaseStruct {
         'TeamRole': _teamRole,
         'LineUp': _lineUp,
         'Avatar': _avatar,
+        'UpdatedAt': _updatedAt,
       }.withoutNulls;
 
   @override
@@ -190,10 +190,6 @@ class OrganizatorStruct extends FFFirebaseStruct {
           _createdAt,
           ParamType.DateTime,
         ),
-        'UpdatedAt': serializeParam(
-          _updatedAt,
-          ParamType.String,
-        ),
         'FBUserId': serializeParam(
           _fBUserId,
           ParamType.String,
@@ -221,6 +217,10 @@ class OrganizatorStruct extends FFFirebaseStruct {
         'Avatar': serializeParam(
           _avatar,
           ParamType.String,
+        ),
+        'UpdatedAt': serializeParam(
+          _updatedAt,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -254,11 +254,6 @@ class OrganizatorStruct extends FFFirebaseStruct {
         createdAt: deserializeParam(
           data['CreatedAt'],
           ParamType.DateTime,
-          false,
-        ),
-        updatedAt: deserializeParam(
-          data['UpdatedAt'],
-          ParamType.String,
           false,
         ),
         fBUserId: deserializeParam(
@@ -296,6 +291,11 @@ class OrganizatorStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        updatedAt: deserializeParam(
+          data['UpdatedAt'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -310,14 +310,14 @@ class OrganizatorStruct extends FFFirebaseStruct {
         id == other.id &&
         nickname == other.nickname &&
         createdAt == other.createdAt &&
-        updatedAt == other.updatedAt &&
         fBUserId == other.fBUserId &&
         tag == other.tag &&
         country == other.country &&
         flag == other.flag &&
         teamRole == other.teamRole &&
         lineUp == other.lineUp &&
-        avatar == other.avatar;
+        avatar == other.avatar &&
+        updatedAt == other.updatedAt;
   }
 
   @override
@@ -328,14 +328,14 @@ class OrganizatorStruct extends FFFirebaseStruct {
         id,
         nickname,
         createdAt,
-        updatedAt,
         fBUserId,
         tag,
         country,
         flag,
         teamRole,
         lineUp,
-        avatar
+        avatar,
+        updatedAt
       ]);
 }
 
@@ -346,7 +346,6 @@ OrganizatorStruct createOrganizatorStruct({
   int? id,
   String? nickname,
   DateTime? createdAt,
-  String? updatedAt,
   String? fBUserId,
   String? tag,
   String? country,
@@ -354,6 +353,7 @@ OrganizatorStruct createOrganizatorStruct({
   String? teamRole,
   String? lineUp,
   String? avatar,
+  DateTime? updatedAt,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -366,7 +366,6 @@ OrganizatorStruct createOrganizatorStruct({
       id: id,
       nickname: nickname,
       createdAt: createdAt,
-      updatedAt: updatedAt,
       fBUserId: fBUserId,
       tag: tag,
       country: country,
@@ -374,6 +373,7 @@ OrganizatorStruct createOrganizatorStruct({
       teamRole: teamRole,
       lineUp: lineUp,
       avatar: avatar,
+      updatedAt: updatedAt,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
