@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +47,13 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditeTeamModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.imagePath = widget.logo;
+      });
+    });
 
     _model.nameController ??= TextEditingController(text: widget.name);
     _model.tagController ??= TextEditingController(text: widget.tag);
