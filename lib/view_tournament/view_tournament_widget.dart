@@ -13,9 +13,11 @@ class ViewTournamentWidget extends StatefulWidget {
   const ViewTournamentWidget({
     Key? key,
     required this.tournamentId,
+    required this.tournamentIndex,
   }) : super(key: key);
 
   final int? tournamentId;
+  final int? tournamentIndex;
 
   @override
   _ViewTournamentWidgetState createState() => _ViewTournamentWidgetState();
@@ -74,7 +76,9 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.network(
-                        'https://picsum.photos/seed/831/600',
+                        FFAppState()
+                            .tournaments[widget.tournamentIndex!]
+                            .headerLogo,
                         fit: BoxFit.cover,
                       ),
                     ),

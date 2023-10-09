@@ -170,6 +170,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/viewTournament',
           builder: (context, params) => ViewTournamentWidget(
             tournamentId: params.getParam('tournamentId', ParamType.int),
+            tournamentIndex: params.getParam('tournamentIndex', ParamType.int),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
