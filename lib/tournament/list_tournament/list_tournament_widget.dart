@@ -59,7 +59,7 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Teams',
+            'Турниры',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto Condensed',
                   color: Colors.white,
@@ -95,7 +95,7 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
               children: [
                 Builder(
                   builder: (context) {
-                    final tournamentsList = _model.tournaments.toList();
+                    final tournamentsList = FFAppState().tournaments.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,
