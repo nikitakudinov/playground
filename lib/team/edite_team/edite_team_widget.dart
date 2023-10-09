@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/components/user_picker_widget.dart';
@@ -421,8 +422,29 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 15.0),
                                         child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
+                                          onPressed: () async {
+                                            _model.apiResultt3s =
+                                                await UpdatedataGroup.teamCall
+                                                    .call(
+                                              contentType: 'Team',
+                                              contentId: widget.id,
+                                              name: _model.nameController.text,
+                                              updatedAt: getCurrentTimestamp
+                                                  .toString(),
+                                              tag: _model.tagController.text,
+                                              country: _model.countryPickerModel
+                                                  .selectedName,
+                                              flag: _model.countryPickerModel
+                                                  .selectedFlag,
+                                              logo: _model.imagePath,
+                                            );
+                                            if ((_model
+                                                    .apiResultt3s?.succeeded ??
+                                                true)) {
+                                              context.safePop();
+                                            }
+
+                                            setState(() {});
                                           },
                                           text: 'сохранить',
                                           options: FFButtonOptions(

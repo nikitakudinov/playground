@@ -188,6 +188,7 @@ class UpdatedataGroup {
     'Content-Type': 'application/json',
   };
   static NicknameCall nicknameCall = NicknameCall();
+  static TeamCall teamCall = TeamCall();
 }
 
 class NicknameCall {
@@ -204,6 +205,47 @@ class NicknameCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'NICKNAME',
+      apiUrl: '${UpdatedataGroup.baseUrl}${contentType}/${contentId}',
+      callType: ApiCallType.PATCH,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': 'NTiqwUKR7XoOQhjVo38-3USDmbJpyUleOujj21Ip',
+        'xc-token': 'NTiqwUKR7XoOQhjVo38-3USDmbJpyUleOujj21Ip',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class TeamCall {
+  Future<ApiCallResponse> call({
+    String? contentType = '',
+    String? name = '',
+    String? updatedAt = '',
+    int? contentId,
+    String? tag = '',
+    String? country = '',
+    String? flag = '',
+    String? logo = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "Name": "${name}",
+  "UpdatedAt": "${updatedAt}",
+  "Tag": "${tag}",
+  "Country": "${country}",
+  "Flag": "${flag}",
+  "Logo": "${logo}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'TEAM',
       apiUrl: '${UpdatedataGroup.baseUrl}${contentType}/${contentId}',
       callType: ApiCallType.PATCH,
       headers: {

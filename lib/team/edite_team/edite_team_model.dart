@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/components/user_picker_widget.dart';
@@ -35,6 +36,8 @@ class EditeTeamModel extends FlutterFlowModel<EditeTeamWidget> {
   String? Function(BuildContext, String?)? tagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
+  // Stores action output result for [Backend Call - API (TEAM)] action in Button widget.
+  ApiCallResponse? apiResultt3s;
   // Model for userPicker component.
   late UserPickerModel userPickerModel;
 
