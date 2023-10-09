@@ -1,9 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -31,31 +30,8 @@ class _HomeWidgetState extends State<HomeWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultnzr = await GetdataGroup.datalistCall.call(
-        contentType: 'User',
-        fields: 'Id,FBUserId,Nickname',
-        field1: 'FBUserId',
-        field2: currentUserUid,
-      );
-      if ((_model.apiResultnzr?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().updateAuthenticatedUserStruct(
-            (e) => e
-              ..id = getJsonField(
-                (_model.apiResultnzr?.jsonBody ?? ''),
-                r'''$.list[:].Id''',
-              )
-              ..nickname = getJsonField(
-                (_model.apiResultnzr?.jsonBody ?? ''),
-                r'''$.list[:].Nickname''',
-              ).toString().toString()
-              ..fBUserId = getJsonField(
-                (_model.apiResultnzr?.jsonBody ?? ''),
-                r'''$.list[:].FBUserId''',
-              ).toString().toString(),
-          );
-        });
-      }
+      // UpdateAppStateAuthUserData
+      await action_blocks.updateAppStateAuthUser(context);
     });
   }
 

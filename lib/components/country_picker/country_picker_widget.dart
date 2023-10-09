@@ -84,91 +84,88 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            if (_model.countryButtonVISIBILITY)
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  setState(() {
-                    _model.countriesListVISIBILITY = true;
-                  });
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 15.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 5.0, 0.0, 10.0),
-                                child: Text(
-                                  'Страна',
-                                  style:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
+            InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                setState(() {
+                  _model.countriesListVISIBILITY = true;
+                });
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 10.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            15.0, 0.0, 15.0, 0.0),
+                        child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            if (_model.selectedFlag != 'false')
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    30.0, 0.0, 0.0, 0.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                  child: Image.network(
-                                    valueOrDefault<String>(
-                                      _model.selectedFlag,
-                                      '0',
-                                    ),
-                                    width: 24.0,
-                                    height: 16.0,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 0.0, 0.0, 0.0),
+                                  15.0, 5.0, 0.0, 10.0),
                               child: Text(
-                                _model.selectedName.maybeHandleOverflow(
-                                  maxChars: 25,
-                                  replacement: '…',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .labelLarge
-                                    .override(
-                                      fontFamily: 'Saira Semi Condensed',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
+                                'Страна',
+                                style: FlutterFlowTheme.of(context).labelMedium,
                               ),
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          if (_model.selectedFlag != 'false')
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  30.0, 0.0, 0.0, 0.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: Image.network(
+                                  valueOrDefault<String>(
+                                    _model.selectedFlag,
+                                    '0',
+                                  ),
+                                  width: 24.0,
+                                  height: 16.0,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              _model.selectedName.maybeHandleOverflow(
+                                maxChars: 25,
+                                replacement: '…',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
+                                    fontFamily: 'Saira Semi Condensed',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
+            ),
             if (_model.countriesListVISIBILITY)
               Builder(
                 builder: (context) {
