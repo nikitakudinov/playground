@@ -42,34 +42,36 @@ Future loadCountriesToAppState(BuildContext context) async {
   ApiCallResponse? jsonCountryList;
   List<CountrieStruct>? countrieData;
 
-  jsonCountryList = await GetdataGroup.datalistCall.call(
-    contentType: 'Country',
-    fields: 'RuName,FlagLinkH24',
-  );
-  if ((jsonCountryList?.succeeded ?? true)) {
-    countrieData = await actions.jsonToDataTypeCountrie(
-      getJsonField(
-        (jsonCountryList?.jsonBody ?? ''),
-        r'''$.list''',
-        true,
-      ),
+  if (FFAppState().countries.last == null) {
+    jsonCountryList = await GetdataGroup.datalistCall.call(
+      contentType: 'Country',
+      fields: 'RuName,FlagLinkH24',
     );
-    FFAppState().update(() {
-      FFAppState().countries = countrieData!.toList().cast<CountrieStruct>();
-    });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('1'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
+    if ((jsonCountryList?.succeeded ?? true)) {
+      countrieData = await actions.jsonToDataTypeCountrie(
+        getJsonField(
+          (jsonCountryList?.jsonBody ?? ''),
+          r'''$.list''',
+          true,
+        ),
+      );
+      FFAppState().update(() {
+        FFAppState().countries = countrieData!.toList().cast<CountrieStruct>();
+      });
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('1'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }
