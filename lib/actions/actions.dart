@@ -42,43 +42,26 @@ Future loadCountriesToAppState(BuildContext context) async {
   ApiCallResponse? jsonCountryList;
   List<CountrieStruct>? countrieData;
 
-  if (FFAppState().countries.first == null) {
-    jsonCountryList = await GetdataGroup.datalistCall.call(
-      contentType: 'Country',
-      fields: 'RuName,FlagLinkH24',
+  jsonCountryList = await GetdataGroup.datalistCall.call(
+    contentType: 'Country',
+    fields: 'RuName,FlagLinkH24',
+  );
+  if ((jsonCountryList?.succeeded ?? true)) {
+    countrieData = await actions.jsonToDataTypeCountrie(
+      getJsonField(
+        (jsonCountryList?.jsonBody ?? ''),
+        r'''$.list''',
+        true,
+      ),
     );
-    if ((jsonCountryList?.succeeded ?? true)) {
-      countrieData = await actions.jsonToDataTypeCountrie(
-        getJsonField(
-          (jsonCountryList?.jsonBody ?? ''),
-          r'''$.list''',
-          true,
-        ),
-      );
-      FFAppState().update(() {
-        FFAppState().countries = countrieData!.toList().cast<CountrieStruct>();
-      });
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('1'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  } else {
+    FFAppState().update(() {
+      FFAppState().countries = countrieData!.toList().cast<CountrieStruct>();
+    });
     await showDialog(
       context: context,
       builder: (alertDialogContext) {
         return AlertDialog(
-          title: Text('2'),
+          title: Text('1'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
