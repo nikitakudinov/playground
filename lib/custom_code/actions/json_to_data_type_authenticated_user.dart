@@ -8,11 +8,12 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<List<Team1Struct>?> jsonToDataTypeTeam1(List<dynamic>? jsonArray) async {
+Future<List<AuthenticatedUserStruct>?> jsonToDataTypeAuthenticatedUser(
+    List<dynamic>? jsonArray) async {
   // Add your function code here!
-  List<Team1Struct> listOfStruct = [];
+  List<AuthenticatedUserStruct> listOfStruct = [];
   for (var item in jsonArray!) {
-    listOfStruct.add(Team1Struct.fromMap(item));
+    listOfStruct.add(AuthenticatedUserStruct.fromMap(item));
   }
   return listOfStruct;
 }

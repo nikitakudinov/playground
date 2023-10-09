@@ -1,13 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,38 +25,6 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ListTeamModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultq6m = await GetTeamsCall.call();
-      if ((_model.apiResultq6m?.succeeded ?? true)) {
-        _model.listDataType = await actions.jsonToDataType(
-          getJsonField(
-            (_model.apiResultq6m?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
-        );
-        setState(() {
-          FFAppState().teams = _model.listDataType!.toList().cast<TeamStruct>();
-        });
-      } else {
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('no'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
-      }
-    });
   }
 
   @override
@@ -85,36 +48,13 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondary,
           automaticallyImplyLeading: false,
-          title: FutureBuilder<ApiCallResponse>(
-            future: GetUserByFbUserRefCall.call(
-              fbUserRef: currentUserUid,
-            ),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitChasingDots(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
-                    ),
-                  ),
-                );
-              }
-              final textGetUserByFbUserRefResponse = snapshot.data!;
-              return Text(
-                GetUserByFbUserRefCall.listNickname(
-                  textGetUserByFbUserRefResponse.jsonBody,
-                ).toString(),
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Roboto Condensed',
-                      color: Colors.white,
-                      fontSize: 22.0,
-                    ),
-              );
-            },
+          title: Text(
+            'Teams',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Roboto Condensed',
+                  color: Colors.white,
+                  fontSize: 22.0,
+                ),
           ),
           actions: [
             Padding(

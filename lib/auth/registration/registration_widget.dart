@@ -136,8 +136,6 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
@@ -197,8 +195,6 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
                                 suffixIcon: InkWell(
                                   onTap: () => setState(
                                     () => _model.passwordVisibility =
@@ -268,8 +264,6 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
                                 suffixIcon: InkWell(
                                   onTap: () => setState(
                                     () => _model.repasswordVisibility =

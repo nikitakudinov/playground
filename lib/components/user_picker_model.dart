@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -7,9 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'user_picker_widget.dart' show UserPickerWidget;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,8 +57,6 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   // State field(s) for Column widget.
   ScrollController? columnController;
-  // Stores action output result for [Backend Call - API (addRequest)] action in Button widget.
-  ApiCallResponse? apiResulto2t;
   // State field(s) for MemberSettingsCol widget.
   ScrollController? memberSettingsCol;
   // State field(s) for DropDown widget.
@@ -69,23 +64,13 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   FormFieldController<String>? dropDownValueController;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  // Stores action output result for [Backend Call - API (UpdateUserTEAMROLE)] action in Button widget.
-  ApiCallResponse? apiResult6fl;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Backend Call - API (getUserByEmail)] action in TextField widget.
-  ApiCallResponse? apiResultp2tCopy;
-  // Stores action output result for [Custom Action - jsonToDataTypeSearchByEmail] action in TextField widget.
-  List<SearchUserByEmailResultsStruct>? searchResultsCopy;
   // State field(s) for searchResultsList widget.
   ScrollController? searchResultsList;
   // State field(s) for squad widget.
   ScrollController? squad;
-  // Stores action output result for [Backend Call - API (deliteRelations)] action in IconButton widget.
-  ApiCallResponse? apiResult3h9;
-  // Stores action output result for [Backend Call - API (updateUserTagAndRole)] action in IconButton widget.
-  ApiCallResponse? apiResultu9i;
 
   /// Initialization and disposal methods.
 

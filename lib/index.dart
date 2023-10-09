@@ -11,3 +11,4 @@ export '/team/edite_team/edite_team_widget.dart' show EditeTeamWidget;
 export '/list_request/list_request_widget.dart' show ListRequestWidget;
 export '/tournament/add_tournament/add_tournament_widget.dart'
     show AddTournamentWidget;
+export '/home/home_widget.dart' show HomeWidget;

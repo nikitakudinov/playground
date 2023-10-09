@@ -158,6 +158,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ADD_TOURNAMENT',
           path: '/addTournament',
           builder: (context, params) => AddTournamentWidget(),
+        ),
+        FFRoute(
+          name: 'HOME',
+          path: '/home',
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'HOME') : HomeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

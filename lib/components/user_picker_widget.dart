@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -7,8 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/custom_code/actions/index.dart' as actions;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -270,25 +267,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     ),
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () async {
-                                          _model.apiResulto2t =
-                                              await AddRequestCall.call(
-                                            type: 'Приглашение в команду',
-                                            createdAt:
-                                                getCurrentTimestamp.toString(),
-                                            updatedAt:
-                                                getCurrentTimestamp.toString(),
-                                            fromTeam: widget.docId.toString(),
-                                            toUser: _model.selectedUserIdVALUE,
-                                          );
-                                          setState(() {
-                                            _model.squadVISIBILITY = true;
-                                            _model.messageVISIBILITY = false;
-                                            _model.callToTeamButtonVISIBILITY =
-                                                true;
-                                          });
-
-                                          setState(() {});
+                                        onPressed: () {
+                                          print('Button pressed ...');
                                         },
                                         text: 'Отправить',
                                         options: FFButtonOptions(
@@ -597,74 +577,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     ),
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () async {
-                                          _model.apiResult6fl = await UserGroup
-                                              .updateUserTEAMROLECall
-                                              .call(
-                                            role: _model.dropDownValue,
-                                            id: _model.selectedUserIdINT,
-                                          );
-                                          if ((_model.apiResult6fl?.succeeded ??
-                                              true)) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('1'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                          }
-                                          await UserGroup.updateUserLINEUPCall
-                                              .call(
-                                            id: _model.selectedUserIdINT,
-                                            lineUp: _model.checkboxValue
-                                                ?.toString(),
-                                          );
-                                          if ((_model.apiResult6fl?.succeeded ??
-                                              true)) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('11'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
-                                            setState(() {
-                                              _model.teamMemberSettingsVISIBILITY =
-                                                  false;
-                                            });
-                                            setState(() {
-                                              FFAppState()
-                                                  .updateTeamMembersAtIndex(
-                                                _model.selectedIndex!,
-                                                (e) => e
-                                                  ..teamRole =
-                                                      _model.dropDownValue
-                                                  ..lineUp =
-                                                      _model.checkboxValue,
-                                              );
-                                            });
-                                          }
-
-                                          setState(() {});
+                                        onPressed: () {
+                                          print('Button pressed ...');
                                         },
                                         text: 'Отправить',
                                         options: FFButtonOptions(
@@ -719,38 +633,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   0.0, 15.0, 0.0, 15.0),
                               child: TextFormField(
                                 controller: _model.textController,
-                                onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.textController',
-                                  Duration(milliseconds: 2000),
-                                  () async {
-                                    _model.apiResultp2tCopy =
-                                        await GetUserByEmailCall.call(
-                                      id: int.tryParse(
-                                          _model.textController.text),
-                                    );
-                                    if ((_model.apiResultp2tCopy?.succeeded ??
-                                        true)) {
-                                      _model.searchResultsCopy = await actions
-                                          .jsonToDataTypeSearchByEmail(
-                                        getJsonField(
-                                          (_model.apiResultp2tCopy?.jsonBody ??
-                                              ''),
-                                          r'''$.list''',
-                                          true,
-                                        ),
-                                      );
-                                      setState(() {
-                                        _model.searchUserResults = _model
-                                            .searchResultsCopy!
-                                            .toList()
-                                            .cast<
-                                                SearchUserByEmailResultsStruct>();
-                                      });
-                                    }
-
-                                    setState(() {});
-                                  },
-                                ),
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
@@ -800,98 +682,82 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
-                              child: FutureBuilder<ApiCallResponse>(
-                                future: GetTeamMembersListCall.call(
-                                  teamID: valueOrDefault<int>(
-                                    widget.docId,
-                                    0,
-                                  ),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitChasingDots(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 50.0,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  final searchResultsListGetTeamMembersListResponse =
-                                      snapshot.data!;
-                                  return Builder(
-                                    builder: (context) {
-                                      final searchResultsList =
-                                          _model.searchUserResults.toList();
-                                      return ListView.builder(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: searchResultsList.length,
-                                        itemBuilder:
-                                            (context, searchResultsListIndex) {
-                                          final searchResultsListItem =
-                                              searchResultsList[
-                                                  searchResultsListIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                setState(() {
-                                                  _model.selectedUserAvatarVALUE =
-                                                      searchResultsListItem
-                                                          .avatar;
-                                                  _model.selectedUserNicknameVALUE =
-                                                      searchResultsListItem
-                                                          .nickname;
-                                                  _model.selectedUserCountry =
-                                                      searchResultsListItem
-                                                          .countryName;
-                                                  _model.selectedUserFlag =
-                                                      searchResultsListItem
-                                                          .flag;
-                                                  _model.messageVISIBILITY =
-                                                      true;
-                                                  _model.searchVISIBILITY =
-                                                      false;
-                                                  _model.selectedUserIdVALUE =
-                                                      searchResultsListItem
-                                                          .fbUserRef;
-                                                });
-                                              },
-                                              child: Row(
+                              child: Builder(
+                                builder: (context) {
+                                  final searchResultsList =
+                                      _model.searchUserResults.toList();
+                                  return ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: searchResultsList.length,
+                                    itemBuilder:
+                                        (context, searchResultsListIndex) {
+                                      final searchResultsListItem =
+                                          searchResultsList[
+                                              searchResultsListIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 10.0, 10.0, 10.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            setState(() {
+                                              _model.selectedUserAvatarVALUE =
+                                                  searchResultsListItem.avatar;
+                                              _model.selectedUserNicknameVALUE =
+                                                  searchResultsListItem
+                                                      .nickname;
+                                              _model.selectedUserCountry =
+                                                  searchResultsListItem
+                                                      .countryName;
+                                              _model.selectedUserFlag =
+                                                  searchResultsListItem.flag;
+                                              _model.messageVISIBILITY = true;
+                                              _model.searchVISIBILITY = false;
+                                              _model.selectedUserIdVALUE =
+                                                  searchResultsListItem
+                                                      .fbUserRef;
+                                            });
+                                          },
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(3.0),
+                                                child: Image.network(
+                                                  searchResultsListItem.avatar,
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              Column(
                                                 mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            3.0),
-                                                    child: Image.network(
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
                                                       searchResultsListItem
-                                                          .avatar,
-                                                      width: 40.0,
-                                                      height: 40.0,
-                                                      fit: BoxFit.cover,
+                                                          .nickname,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
                                                     ),
                                                   ),
-                                                  Column(
+                                                  Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
                                                     children: [
                                                       Padding(
                                                         padding:
@@ -901,61 +767,38 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
-                                                        child: Text(
-                                                          searchResultsListItem
-                                                              .nickname,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                          child: Image.network(
+                                                            searchResultsListItem
+                                                                .flag,
+                                                            width: 24.0,
+                                                            height: 16.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
                                                         ),
                                                       ),
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          0.0),
-                                                              child:
-                                                                  Image.network(
-                                                                searchResultsListItem
-                                                                    .flag,
-                                                                width: 24.0,
-                                                                height: 16.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            searchResultsListItem
-                                                                .countryName,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
+                                                      Text(
+                                                        searchResultsListItem
+                                                            .countryName,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .labelSmall,
-                                                          ),
-                                                        ],
                                                       ),
                                                     ],
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                          );
-                                        },
-                                        controller: _model.searchResultsList,
+                                            ],
+                                          ),
+                                        ),
                                       );
                                     },
+                                    controller: _model.searchResultsList,
                                   );
                                 },
                               ),
@@ -966,294 +809,221 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                     ],
                   ),
                 if (_model.squadVISIBILITY)
-                  FutureBuilder<ApiCallResponse>(
-                    future: GetTeamMembersListCall.call(
-                      teamID: valueOrDefault<int>(
-                        widget.docId,
-                        0,
-                      ),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: SpinKitChasingDots(
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 50.0,
-                            ),
-                          ),
-                        );
-                      }
-                      final squadGetTeamMembersListResponse = snapshot.data!;
-                      return Builder(
-                        builder: (context) {
-                          final teamMembersList =
-                              FFAppState().teamMembers.toList();
-                          return ListView.builder(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: teamMembersList.length,
-                            itemBuilder: (context, teamMembersListIndex) {
-                              final teamMembersListItem =
-                                  teamMembersList[teamMembersListIndex];
-                              return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 5.0, 0.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(3.0),
-                                      child: Image.network(
-                                        teamMembersListItem.avatar,
-                                        width: 50.0,
-                                        height: 50.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
+                  Builder(
+                    builder: (context) {
+                      final teamMembersList = FFAppState().teamMembers.toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: teamMembersList.length,
+                        itemBuilder: (context, teamMembersListIndex) {
+                          final teamMembersListItem =
+                              teamMembersList[teamMembersListIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 5.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(3.0),
+                                  child: Image.network(
+                                    teamMembersListItem.avatar,
+                                    width: 50.0,
+                                    height: 50.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
                                         children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  '[${teamMembersListItem.tag}] ',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              '[${teamMembersListItem.tag}] ',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
                                                       .bodyMedium,
-                                                ),
-                                              ),
-                                              Text(
-                                                teamMembersListItem.nickname,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                              if (teamMembersListItem.lineUp ==
-                                                  true)
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.00, -1.00),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0),
-                                                        child: Icon(
-                                                          Icons
-                                                              .local_fire_department,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent1,
-                                                          size: 16.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  12.0),
-                                                      child: Text(
-                                                        'LINEUP',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodySmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Saira Semi Condensed',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                  fontSize:
-                                                                      10.0,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                            ],
+                                            ),
                                           ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          0.0),
-                                                  child: Image.network(
-                                                    teamMembersListItem.flag,
-                                                    width: 16.0,
-                                                    height: 12.0,
-                                                    fit: BoxFit.cover,
+                                          Text(
+                                            teamMembersListItem.nickname,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                          if (teamMembersListItem.lineUp ==
+                                              true)
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.00, -1.00),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 12.0),
+                                                    child: Icon(
+                                                      Icons
+                                                          .local_fire_department,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      size: 16.0,
+                                                    ),
                                                   ),
                                                 ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: Text(
+                                                    'LINEUP',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Saira Semi Condensed',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          fontSize: 10.0,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                              child: Image.network(
+                                                teamMembersListItem.flag,
+                                                width: 16.0,
+                                                height: 12.0,
+                                                fit: BoxFit.cover,
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  teamMembersListItem
-                                                      .countryName,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              teamMembersListItem.countryName,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
                                                       .labelSmall
                                                       .override(
                                                         fontFamily:
                                                             'Saira Semi Condensed',
                                                         lineHeight: 0.8,
                                                       ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              teamMembersListItem.teamRole,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall,
                                             ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    Column(
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          teamMembersListItem.teamRole,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 20.0,
-                                              borderWidth: 0.0,
-                                              buttonSize: 46.0,
-                                              icon: Icon(
-                                                Icons.manage_accounts,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 18.0,
-                                              ),
-                                              onPressed: () async {
-                                                setState(() {
-                                                  _model.teamMemberSettingsVISIBILITY =
-                                                      true;
-                                                  _model.selectedUserIdINT =
-                                                      teamMembersListItem.id;
-                                                  _model.selectedIndex =
-                                                      teamMembersListIndex;
-                                                  _model.selectedUserAvatarVALUE =
-                                                      teamMembersListItem
-                                                          .avatar;
-                                                  _model.selectedUserNicknameVALUE =
-                                                      teamMembersListItem
-                                                          .nickname;
-                                                  _model.selectedUserCountry =
-                                                      teamMembersListItem
-                                                          .countryName;
-                                                  _model.selectedUserFlag =
-                                                      teamMembersListItem.flag;
-                                                });
-                                                await _model.memberSettingsCol
-                                                    ?.animateTo(
-                                                  0,
-                                                  duration: Duration(
-                                                      milliseconds: 100),
-                                                  curve: Curves.ease,
-                                                );
-                                              },
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderRadius: 20.0,
-                                              borderWidth: 0.0,
-                                              icon: Icon(
-                                                Icons
-                                                    .person_remove_alt_1_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 18.0,
-                                              ),
-                                              onPressed: () async {
-                                                _model.apiResult3h9 =
-                                                    await DeliteRelationsCall
-                                                        .call(
-                                                  dataTypeForUpdate: 'Team',
-                                                  idOfDataForUpdate:
-                                                      widget.docId,
-                                                  fildName: 'members',
-                                                  fieldId:
-                                                      teamMembersListItem.id,
-                                                );
-                                                if ((_model.apiResult3h9
-                                                        ?.succeeded ??
-                                                    true)) {
-                                                  setState(() {
-                                                    FFAppState()
-                                                        .removeFromTeamMembers(
-                                                            teamMembersListItem);
-                                                  });
-                                                  _model.apiResultu9i =
-                                                      await UpdateUserTagAndRoleCall
-                                                          .call(
-                                                    id: teamMembersListItem.id,
-                                                    updatedAt:
-                                                        getCurrentTimestamp
-                                                            .toString(),
-                                                    tag: 'false',
-                                                  );
-                                                }
-
-                                                setState(() {});
-                                              },
-                                            ),
-                                          ],
+                                        FlutterFlowIconButton(
+                                          borderColor: Colors.transparent,
+                                          borderRadius: 20.0,
+                                          borderWidth: 0.0,
+                                          buttonSize: 46.0,
+                                          icon: Icon(
+                                            Icons.manage_accounts,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 18.0,
+                                          ),
+                                          onPressed: () async {
+                                            setState(() {
+                                              _model.teamMemberSettingsVISIBILITY =
+                                                  true;
+                                              _model.selectedUserIdINT =
+                                                  teamMembersListItem.id;
+                                              _model.selectedIndex =
+                                                  teamMembersListIndex;
+                                              _model.selectedUserAvatarVALUE =
+                                                  teamMembersListItem.avatar;
+                                              _model.selectedUserNicknameVALUE =
+                                                  teamMembersListItem.nickname;
+                                              _model.selectedUserCountry =
+                                                  teamMembersListItem
+                                                      .countryName;
+                                              _model.selectedUserFlag =
+                                                  teamMembersListItem.flag;
+                                            });
+                                            await _model.memberSettingsCol
+                                                ?.animateTo(
+                                              0,
+                                              duration:
+                                                  Duration(milliseconds: 100),
+                                              curve: Curves.ease,
+                                            );
+                                          },
+                                        ),
+                                        FlutterFlowIconButton(
+                                          borderRadius: 20.0,
+                                          borderWidth: 0.0,
+                                          icon: Icon(
+                                            Icons.person_remove_alt_1_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 18.0,
+                                          ),
+                                          onPressed: () {
+                                            print('IconButton pressed ...');
+                                          },
                                         ),
                                       ],
                                     ),
                                   ],
                                 ),
-                              );
-                            },
-                            controller: _model.squad,
+                              ],
+                            ),
                           );
                         },
+                        controller: _model.squad,
                       );
                     },
                   ),

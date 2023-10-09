@@ -1,5 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -364,91 +362,8 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 15.0, 0.0, 15.0),
                                     child: FFButtonWidget(
-                                      onPressed: () async {
-                                        _model.apiResultp5p =
-                                            await AddTeamCall.call(
-                                          name: _model.nameController.text,
-                                          tag: _model.tagController.text,
-                                          createdAt:
-                                              getCurrentTimestamp.toString(),
-                                          updatedAt:
-                                              getCurrentTimestamp.toString(),
-                                          logo: _model.uploadedFileUrl,
-                                          owner: currentUserUid,
-                                          country: _model
-                                              .countryPickerModel.selectedName,
-                                          flag: _model
-                                              .countryPickerModel.selectedFlag,
-                                        );
-                                        _model.userData =
-                                            await GetUserByFbUserRefCall.call(
-                                          fbUserRef: currentUserUid,
-                                        );
-                                        await UpdateUserTagAndRoleCall.call(
-                                          id: GetUserByFbUserRefCall.listId(
-                                            (_model.userData?.jsonBody ?? ''),
-                                          ),
-                                          updatedAt:
-                                              getCurrentTimestamp.toString(),
-                                          tag: _model.tagController.text,
-                                          teamRole: 'Основатель',
-                                        );
-                                        _model.teamData =
-                                            await GetTeamByFbUserRefCall.call(
-                                          fbUserRef: currentUserUid,
-                                        );
-                                        await AddRelationsCall.call(
-                                          dataTypeForUpdate: 'Team',
-                                          idOfDataForUpdate:
-                                              GetTeamByFbUserRefCall.listId(
-                                            (_model.teamData?.jsonBody ?? ''),
-                                          ),
-                                          fildName: 'members',
-                                          fieldId:
-                                              GetUserByFbUserRefCall.listId(
-                                            (_model.userData?.jsonBody ?? ''),
-                                          ),
-                                        );
-                                        if ((_model.apiResultp5p?.succeeded ??
-                                            true)) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('Work'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        } else {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('DontWork'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
-                                        }
-
-                                        context.pushNamed('LIST_TEAM');
-
-                                        setState(() {});
+                                      onPressed: () {
+                                        print('Button pressed ...');
                                       },
                                       text: 'Создать',
                                       options: FFButtonOptions(

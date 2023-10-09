@@ -1,6 +1,4 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/components/user_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -8,10 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -50,29 +46,6 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditeTeamModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResult3zq = await GetTeamMembersListCall.call(
-        teamID: widget.id,
-      );
-      if ((_model.apiResult3zq?.succeeded ?? true)) {
-        _model.teamMembersData = await actions.jsonteamMembers(
-          getJsonField(
-            (_model.apiResult3zq?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
-        );
-        setState(() {
-          FFAppState().teamMembers =
-              _model.teamMembersData!.toList().cast<TeamMemberStruct>();
-        });
-        setState(() {
-          _model.imagePath = widget.logo;
-        });
-      }
-    });
 
     _model.nameController ??= TextEditingController(text: widget.name);
     _model.tagController ??= TextEditingController(text: widget.tag);
@@ -439,59 +412,8 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 15.0),
                                         child: FFButtonWidget(
-                                          onPressed: () async {
-                                            _model.apiResultp5p =
-                                                await UpdateTeamCall.call(
-                                              name: _model.nameController.text,
-                                              tag: _model.tagController.text,
-                                              logo: _model.imagePath,
-                                              flag: _model.countryPickerModel
-                                                  .selectedFlag,
-                                              country: _model.countryPickerModel
-                                                  .selectedName,
-                                              iD: widget.id,
-                                            );
-                                            if ((_model
-                                                    .apiResultp5p?.succeeded ??
-                                                true)) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('Work'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            } else {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('DontWork'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            }
-
-                                            context.pushNamed('LIST_TEAM');
-
-                                            setState(() {});
+                                          onPressed: () {
+                                            print('Button pressed ...');
                                           },
                                           text: 'сохранить',
                                           options: FFButtonOptions(

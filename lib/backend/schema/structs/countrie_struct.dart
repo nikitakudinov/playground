@@ -11,10 +11,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 class CountrieStruct extends FFFirebaseStruct {
   CountrieStruct({
     String? ruName,
-    String? flagLinkH24,
+    String? flagLink48x36,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _ruName = ruName,
-        _flagLinkH24 = flagLinkH24,
+        _flagLink48x36 = flagLink48x36,
         super(firestoreUtilData);
 
   // "RuName" field.
@@ -23,15 +23,15 @@ class CountrieStruct extends FFFirebaseStruct {
   set ruName(String? val) => _ruName = val;
   bool hasRuName() => _ruName != null;
 
-  // "FlagLinkH24" field.
-  String? _flagLinkH24;
-  String get flagLinkH24 => _flagLinkH24 ?? '';
-  set flagLinkH24(String? val) => _flagLinkH24 = val;
-  bool hasFlagLinkH24() => _flagLinkH24 != null;
+  // "FlagLink48x36" field.
+  String? _flagLink48x36;
+  String get flagLink48x36 => _flagLink48x36 ?? '';
+  set flagLink48x36(String? val) => _flagLink48x36 = val;
+  bool hasFlagLink48x36() => _flagLink48x36 != null;
 
   static CountrieStruct fromMap(Map<String, dynamic> data) => CountrieStruct(
         ruName: data['RuName'] as String?,
-        flagLinkH24: data['FlagLinkH24'] as String?,
+        flagLink48x36: data['FlagLink48x36'] as String?,
       );
 
   static CountrieStruct? maybeFromMap(dynamic data) =>
@@ -39,7 +39,7 @@ class CountrieStruct extends FFFirebaseStruct {
 
   Map<String, dynamic> toMap() => {
         'RuName': _ruName,
-        'FlagLinkH24': _flagLinkH24,
+        'FlagLink48x36': _flagLink48x36,
       }.withoutNulls;
 
   @override
@@ -48,8 +48,8 @@ class CountrieStruct extends FFFirebaseStruct {
           _ruName,
           ParamType.String,
         ),
-        'FlagLinkH24': serializeParam(
-          _flagLinkH24,
+        'FlagLink48x36': serializeParam(
+          _flagLink48x36,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -61,8 +61,8 @@ class CountrieStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        flagLinkH24: deserializeParam(
-          data['FlagLinkH24'],
+        flagLink48x36: deserializeParam(
+          data['FlagLink48x36'],
           ParamType.String,
           false,
         ),
@@ -75,16 +75,16 @@ class CountrieStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     return other is CountrieStruct &&
         ruName == other.ruName &&
-        flagLinkH24 == other.flagLinkH24;
+        flagLink48x36 == other.flagLink48x36;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([ruName, flagLinkH24]);
+  int get hashCode => const ListEquality().hash([ruName, flagLink48x36]);
 }
 
 CountrieStruct createCountrieStruct({
   String? ruName,
-  String? flagLinkH24,
+  String? flagLink48x36,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -92,7 +92,7 @@ CountrieStruct createCountrieStruct({
 }) =>
     CountrieStruct(
       ruName: ruName,
-      flagLinkH24: flagLinkH24,
+      flagLink48x36: flagLink48x36,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

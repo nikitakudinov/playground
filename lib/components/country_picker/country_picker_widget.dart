@@ -1,9 +1,6 @@
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -57,28 +54,6 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CountryPickerModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResultn46 = await GetCountriesCall.call();
-      if ((_model.apiResultn46?.succeeded ?? true)) {
-        _model.countriesDataList = await actions.jsonToDataTypeCountrie(
-          getJsonField(
-            (_model.apiResultn46?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
-        );
-        setState(() {
-          FFAppState().countries =
-              _model.countriesDataList!.toList().cast<CountrieStruct>();
-        });
-        setState(() {
-          _model.selectedName = widget.name!;
-          _model.selectedFlag = widget.flag!;
-        });
-      }
-    });
   }
 
   @override
@@ -212,7 +187,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                             setState(() {
                               _model.selectedName = countriesListItem.ruName;
                               _model.selectedFlag =
-                                  countriesListItem.flagLinkH24;
+                                  countriesListItem.flagLink48x36;
                               _model.countriesListVISIBILITY = false;
                             });
                           },
@@ -230,7 +205,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                                     fadeInDuration: Duration(milliseconds: 500),
                                     fadeOutDuration:
                                         Duration(milliseconds: 500),
-                                    imageUrl: countriesListItem.flagLinkH24,
+                                    imageUrl: countriesListItem.flagLink48x36,
                                     width: 32.0,
                                     height: 24.0,
                                     fit: BoxFit.cover,

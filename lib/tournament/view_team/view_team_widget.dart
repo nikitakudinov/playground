@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -103,68 +102,30 @@ class _ViewTeamWidgetState extends State<ViewTeamWidget> {
                   ),
                 ],
               ),
-              FutureBuilder<ApiCallResponse>(
-                future: GetTeamMembersListCall.call(
-                  teamID: widget.teamID,
-                ),
-                builder: (context, snapshot) {
-                  // Customize what your widget looks like when it's loading.
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: SizedBox(
-                        width: 50.0,
-                        height: 50.0,
-                        child: SpinKitChasingDots(
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 50.0,
+              ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(3.0),
+                        child: Image.network(
+                          'https://picsum.photos/seed/733/600',
+                          width: 40.0,
+                          height: 40.0,
+                          fit: BoxFit.cover,
                         ),
                       ),
-                    );
-                  }
-                  final listViewGetTeamMembersListResponse = snapshot.data!;
-                  return Builder(
-                    builder: (context) {
-                      final teamMembersList = getJsonField(
-                        listViewGetTeamMembersListResponse.jsonBody,
-                        r'''$.list''',
-                      ).toList();
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: teamMembersList.length,
-                        itemBuilder: (context, teamMembersListIndex) {
-                          final teamMembersListItem =
-                              teamMembersList[teamMembersListIndex];
-                          return Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(3.0),
-                                child: Image.network(
-                                  getJsonField(
-                                    teamMembersListItem,
-                                    r'''$.Avatar''',
-                                  ),
-                                  width: 40.0,
-                                  height: 40.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Text(
-                                getJsonField(
-                                  teamMembersListItem,
-                                  r'''$.Nickname''',
-                                ).toString(),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                  );
-                },
+                      Text(
+                        'Hello World',
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

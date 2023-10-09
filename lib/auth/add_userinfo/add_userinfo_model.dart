@@ -21,10 +21,10 @@ class AddUserinfoModel extends FlutterFlowModel<AddUserinfoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (getCountries)] action in ADD_USERINFO widget.
-  ApiCallResponse? apiResult2o0;
+  // Stores action output result for [Backend Call - API (DATALIST)] action in ADD_USERINFO widget.
+  ApiCallResponse? apiResult2f6;
   // Stores action output result for [Custom Action - jsonToDataTypeCountrie] action in ADD_USERINFO widget.
-  List<CountrieStruct>? countrieData;
+  List<CountrieStruct>? countryData;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -35,8 +35,8 @@ class AddUserinfoModel extends FlutterFlowModel<AddUserinfoWidget> {
   String? Function(BuildContext, String?)? nicknameControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
-  // Stores action output result for [Backend Call - API (creatUser)] action in Button widget.
-  ApiCallResponse? apiResultu3y;
+  // Stores action output result for [Backend Call - API (USER)] action in Button widget.
+  ApiCallResponse? apiResultvqb;
 
   /// Initialization and disposal methods.
 

@@ -93,7 +93,6 @@ class _AuthorisationWidgetState extends State<AuthorisationWidget> {
                                 15.0, 0.0, 15.0, 0.0),
                             child: TextFormField(
                               controller: _model.emailController,
-                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Электронная почта',
@@ -130,8 +129,6 @@ class _AuthorisationWidgetState extends State<AuthorisationWidget> {
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
@@ -149,7 +146,6 @@ class _AuthorisationWidgetState extends State<AuthorisationWidget> {
                                 15.0, 0.0, 15.0, 30.0),
                             child: TextFormField(
                               controller: _model.passwordController,
-                              autofocus: true,
                               obscureText: !_model.passwordVisibility,
                               decoration: InputDecoration(
                                 labelText: 'Пароль',
@@ -186,8 +182,6 @@ class _AuthorisationWidgetState extends State<AuthorisationWidget> {
                                   ),
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
                                 suffixIcon: InkWell(
                                   onTap: () => setState(
                                     () => _model.passwordVisibility =

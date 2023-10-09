@@ -169,6 +169,17 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInRequests(int _index, RequestStruct _value) {
     _requests.insert(_index, _value);
   }
+
+  AuthenticatedUserStruct _AuthenticatedUser = AuthenticatedUserStruct();
+  AuthenticatedUserStruct get AuthenticatedUser => _AuthenticatedUser;
+  set AuthenticatedUser(AuthenticatedUserStruct _value) {
+    _AuthenticatedUser = _value;
+  }
+
+  void updateAuthenticatedUserStruct(
+      Function(AuthenticatedUserStruct) updateFn) {
+    updateFn(_AuthenticatedUser);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

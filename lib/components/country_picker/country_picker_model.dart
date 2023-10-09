@@ -1,9 +1,6 @@
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'country_picker_widget.dart' show CountryPickerWidget;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -23,13 +20,6 @@ class CountryPickerModel extends FlutterFlowModel<CountryPickerWidget> {
   String selectedName = '      Выбрать страну...';
 
   String selectedFlag = 'false';
-
-  ///  State fields for stateful widgets in this component.
-
-  // Stores action output result for [Backend Call - API (getCountries)] action in countryPicker widget.
-  ApiCallResponse? apiResultn46;
-  // Stores action output result for [Custom Action - jsonToDataTypeCountrie] action in countryPicker widget.
-  List<CountrieStruct>? countriesDataList;
 
   /// Initialization and disposal methods.
 

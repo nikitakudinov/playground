@@ -37,18 +37,21 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResult2o0 = await GetCountriesCall.call();
-      if ((_model.apiResult2o0?.succeeded ?? true)) {
-        _model.countrieData = await actions.jsonToDataTypeCountrie(
+      _model.apiResult2f6 = await GetdataGroup.datalistCall.call(
+        contentType: 'Country',
+        fields: 'RuName,FlagLink48x36',
+      );
+      if ((_model.apiResult2f6?.succeeded ?? true)) {
+        _model.countryData = await actions.jsonToDataTypeCountrie(
           getJsonField(
-            (_model.apiResult2o0?.jsonBody ?? ''),
+            (_model.apiResult2f6?.jsonBody ?? ''),
             r'''$.list''',
             true,
           ),
         );
         setState(() {
           FFAppState().countries =
-              _model.countrieData!.toList().cast<CountrieStruct>();
+              _model.countryData!.toList().cast<CountrieStruct>();
         });
       }
     });
@@ -329,9 +332,6 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
                                           borderRadius:
                                               BorderRadius.circular(0.0),
                                         ),
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                15.0, 15.0, 0.0, 10.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
@@ -360,66 +360,32 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        context.pushNamed('LIST_TEAM');
-                                      },
-                                      text: 'Заполнить потом',
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 0.0, 15.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  'Saira Semi Condensed',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(3.0),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 15.0, 0.0, 15.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          _model.apiResultu3y =
-                                              await CreatUserCall.call(
-                                            email: currentUserEmail,
+                                          _model.apiResultvqb =
+                                              await CreatdataGroup.userCall
+                                                  .call(
+                                            nickname:
+                                                _model.nicknameController.text,
                                             createdAt:
                                                 getCurrentTimestamp.toString(),
                                             updatedAt:
                                                 getCurrentTimestamp.toString(),
-                                            nickname:
-                                                _model.nicknameController.text,
-                                            fbUserRef: currentUserUid,
-                                            avatar: _model.uploadedFileUrl,
-                                            countryName: _model
-                                                .countryPickerModel
+                                            fBUserId: currentUserUid,
+                                            country: _model.countryPickerModel
                                                 .selectedName,
                                             flag: _model.countryPickerModel
                                                 .selectedFlag,
+                                            avatar: _model.uploadedFileUrl,
                                           );
-                                          if ((_model.apiResultu3y?.succeeded ??
+                                          if ((_model.apiResultvqb?.succeeded ??
                                               true)) {
-                                            context.pushNamed('LIST_TEAM');
+                                            setState(() {});
+
+                                            context.pushNamed('HOME');
                                           }
 
                                           setState(() {});

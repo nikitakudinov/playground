@@ -1,14 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'list_request_widget.dart' show ListRequestWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -32,18 +29,6 @@ class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (getRequests)] action in LIST_REQUEST widget.
-  ApiCallResponse? requestsDataList;
-  // Stores action output result for [Custom Action - jsonToDataTypeRequest] action in LIST_REQUEST widget.
-  List<RequestStruct>? requestsLikeDataTypeList;
-  // Stores action output result for [Backend Call - API (getUserByFbUserRef)] action in Button widget.
-  ApiCallResponse? userData;
-  // Stores action output result for [Backend Call - API (addRelations)] action in Button widget.
-  ApiCallResponse? apiResulta5c;
-  // Stores action output result for [Backend Call - API (updateUserTagAndRole)] action in Button widget.
-  ApiCallResponse? apiResultjyo;
-  // Stores action output result for [Backend Call - API (deliteRequest)] action in Button widget.
-  ApiCallResponse? apiResult5bz;
 
   /// Initialization and disposal methods.
 
