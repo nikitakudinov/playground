@@ -18,8 +18,8 @@ class ListTeamModel extends FlutterFlowModel<ListTeamWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (DATALIST)] action in LIST_TEAM widget.
   ApiCallResponse? jsonTeamsList;
-  // Stores action output result for [Custom Action - jsonToDataType] action in LIST_TEAM widget.
-  List<TeamStruct>? teamsData;
+  // Stores action output result for [Custom Action - jsonToDataTypeTeam] action in LIST_TEAM widget.
+  List<TeamStruct>? teamData;
 
   /// Initialization and disposal methods.
 

@@ -51,7 +51,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
             );
           },
         );
-        _model.teamsData = await actions.jsonToDataType(
+        _model.teamData = await actions.jsonToDataTypeTeam(
           getJsonField(
             (_model.jsonTeamsList?.jsonBody ?? ''),
             r'''$.list''',
@@ -59,22 +59,8 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
           ),
         );
         setState(() {
-          FFAppState().teams = _model.teamsData!.toList().cast<TeamStruct>();
+          FFAppState().teams = _model.teamData!.toList().cast<TeamStruct>();
         });
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('2'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
       }
     });
   }
