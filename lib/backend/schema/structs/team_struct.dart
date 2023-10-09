@@ -16,7 +16,6 @@ class TeamStruct extends FFFirebaseStruct {
     String? country,
     String? flag,
     String? logo,
-    String? owner,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
@@ -24,7 +23,6 @@ class TeamStruct extends FFFirebaseStruct {
         _country = country,
         _flag = flag,
         _logo = logo,
-        _owner = owner,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -64,12 +62,6 @@ class TeamStruct extends FFFirebaseStruct {
   set logo(String? val) => _logo = val;
   bool hasLogo() => _logo != null;
 
-  // "Owner" field.
-  String? _owner;
-  String get owner => _owner ?? '';
-  set owner(String? val) => _owner = val;
-  bool hasOwner() => _owner != null;
-
   static TeamStruct fromMap(Map<String, dynamic> data) => TeamStruct(
         id: castToType<int>(data['Id']),
         name: data['Name'] as String?,
@@ -77,7 +69,6 @@ class TeamStruct extends FFFirebaseStruct {
         country: data['Country'] as String?,
         flag: data['Flag'] as String?,
         logo: data['Logo'] as String?,
-        owner: data['Owner'] as String?,
       );
 
   static TeamStruct? maybeFromMap(dynamic data) =>
@@ -90,7 +81,6 @@ class TeamStruct extends FFFirebaseStruct {
         'Country': _country,
         'Flag': _flag,
         'Logo': _logo,
-        'Owner': _owner,
       }.withoutNulls;
 
   @override
@@ -117,10 +107,6 @@ class TeamStruct extends FFFirebaseStruct {
         ),
         'Logo': serializeParam(
           _logo,
-          ParamType.String,
-        ),
-        'Owner': serializeParam(
-          _owner,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -157,11 +143,6 @@ class TeamStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        owner: deserializeParam(
-          data['Owner'],
-          ParamType.String,
-          false,
-        ),
       );
 
   @override
@@ -175,13 +156,12 @@ class TeamStruct extends FFFirebaseStruct {
         tag == other.tag &&
         country == other.country &&
         flag == other.flag &&
-        logo == other.logo &&
-        owner == other.owner;
+        logo == other.logo;
   }
 
   @override
   int get hashCode =>
-      const ListEquality().hash([id, name, tag, country, flag, logo, owner]);
+      const ListEquality().hash([id, name, tag, country, flag, logo]);
 }
 
 TeamStruct createTeamStruct({
@@ -191,7 +171,6 @@ TeamStruct createTeamStruct({
   String? country,
   String? flag,
   String? logo,
-  String? owner,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -204,7 +183,6 @@ TeamStruct createTeamStruct({
       country: country,
       flag: flag,
       logo: logo,
-      owner: owner,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
