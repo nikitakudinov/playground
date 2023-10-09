@@ -435,7 +435,7 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                             if ((_model
                                                     .apiResultt3s?.succeeded ??
                                                 true)) {
-                                              context.safePop();
+                                              context.pushNamed('LIST_TEAM');
                                             }
 
                                             setState(() {});
