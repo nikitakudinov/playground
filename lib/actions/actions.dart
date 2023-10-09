@@ -30,7 +30,7 @@ Future updateAppStateAuthUser(BuildContext context) async {
           ).toString().toString()
           ..fBUserId = getJsonField(
             (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].DBUserId''',
+            r'''$.list[:].FBUserId''',
           ).toString().toString(),
       );
     });
