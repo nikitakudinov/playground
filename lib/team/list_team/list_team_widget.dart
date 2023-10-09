@@ -280,13 +280,19 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                 ),
                 Builder(
                   builder: (context) {
-                    final aaa = FFAppState().teams.toList();
+                    final aaa = getJsonField(
+                      (_model.jsonTeamsList?.jsonBody ?? ''),
+                      r'''$.list''',
+                    ).toList();
                     return Column(
                       mainAxisSize: MainAxisSize.max,
                       children: List.generate(aaa.length, (aaaIndex) {
                         final aaaItem = aaa[aaaIndex];
                         return Text(
-                          aaaItem.name,
+                          getJsonField(
+                            aaaItem,
+                            r'''$.list[:].Name''',
+                          ).toString(),
                           style: FlutterFlowTheme.of(context).bodyMedium,
                         );
                       }),
