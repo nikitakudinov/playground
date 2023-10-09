@@ -72,7 +72,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(0.00, -100.00),
+                    alignment: AlignmentDirectional(0.00, 0.00),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.network(
