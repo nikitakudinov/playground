@@ -65,24 +65,28 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 200.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(0.0),
-                      child: Image.network(
-                        FFAppState()
-                            .tournaments[widget.tournamentIndex!]
-                            .headerLogo,
-                        fit: BoxFit.fill,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: Image.network(
+                            FFAppState()
+                                .tournaments[widget.tournamentIndex!]
+                                .headerLogo,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
                 Padding(
                   padding:
