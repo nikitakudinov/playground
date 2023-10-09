@@ -74,12 +74,12 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                   child: Align(
                     alignment: AlignmentDirectional(0.00, 0.00),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
+                      borderRadius: BorderRadius.circular(0.0),
                       child: Image.network(
                         FFAppState()
                             .tournaments[widget.tournamentIndex!]
                             .headerLogo,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
