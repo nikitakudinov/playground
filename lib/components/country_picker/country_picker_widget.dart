@@ -54,6 +54,14 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CountryPickerModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.selectedName = widget.name!;
+        _model.selectedFlag = widget.flag!;
+      });
+    });
   }
 
   @override

@@ -53,6 +53,7 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
       setState(() {
         _model.imagePath = widget.logo;
       });
+      setState(() {});
     });
 
     _model.nameController ??= TextEditingController(text: widget.name);
