@@ -67,6 +67,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
           automaticallyImplyLeading: true,
           actions: [],
           centerTitle: false,
+          elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
@@ -264,7 +265,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                                             '[${organizatorsListItem.tag}] ${organizatorsListItem.nickname}',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium,
+                                                                .titleSmall,
                                                           ),
                                                         ),
                                                         Row(
