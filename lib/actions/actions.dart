@@ -57,6 +57,29 @@ Future loadCountriesToAppState(BuildContext context) async {
     FFAppState().update(() {
       FFAppState().countries = countrieData!.toList().cast<CountrieStruct>();
     });
+  }
+}
+
+Future loadTournamentsToAppState(BuildContext context) async {
+  ApiCallResponse? jsonTournamentListData;
+  List<TournamentStruct>? tournamentData;
+
+  jsonTournamentListData = await GetdataGroup.datalistCall.call(
+    contentType: 'Tournament',
+    fields: 'Id,Name,Tag,Logo,Owner',
+  );
+  if ((jsonTournamentListData?.succeeded ?? true)) {
+    tournamentData = await actions.jsonToDataTypeTournament(
+      getJsonField(
+        (jsonTournamentListData?.jsonBody ?? ''),
+        r'''$.list''',
+        true,
+      ),
+    );
+    FFAppState().update(() {
+      FFAppState().tournaments =
+          tournamentData!.toList().cast<TournamentStruct>();
+    });
     await showDialog(
       context: context,
       builder: (alertDialogContext) {

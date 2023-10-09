@@ -1,6 +1,6 @@
 // Export pages
 export '/team/list_team/list_team_widget.dart' show ListTeamWidget;
-export '/tournament/view_team/view_team_widget.dart' show ViewTeamWidget;
+export '/team/view_team/view_team_widget.dart' show ViewTeamWidget;
 export '/team/add_team/add_team_widget.dart' show AddTeamWidget;
 export '/auth/authorisation/authorisation_widget.dart' show AuthorisationWidget;
 export '/auth/registration/registration_widget.dart' show RegistrationWidget;

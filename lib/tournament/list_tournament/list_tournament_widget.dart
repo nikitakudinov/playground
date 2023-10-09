@@ -155,31 +155,6 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .titleMedium,
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(2.0),
-                                              child: Image.network(
-                                                tournamentsListItem.flag,
-                                                width: 24.0,
-                                                height: 16.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
-                                              child: Text(
-                                                tournamentsListItem.country,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
                                       ],
                                     ),
                                   ],
