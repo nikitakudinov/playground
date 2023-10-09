@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -61,38 +60,21 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
                 ),
           ),
           actions: [
-            InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                GoRouter.of(context).prepareAuthEvent();
-                await authManager.signOut();
-                GoRouter.of(context).clearRedirectLocation();
-
-                context.goNamedAuth('AUTHORISATION', context.mounted);
-              },
-              child: Icon(
-                Icons.settings_outlined,
-                color: FlutterFlowTheme.of(context).secondaryText,
-                size: 24.0,
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 30.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderRadius: 20.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  Icons.add,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+                onPressed: () async {
+                  context.pushNamed('ADD_TOURNAMENT');
+                },
               ),
-            ),
-            FlutterFlowIconButton(
-              borderColor: FlutterFlowTheme.of(context).primary,
-              borderRadius: 20.0,
-              borderWidth: 1.0,
-              buttonSize: 40.0,
-              fillColor: FlutterFlowTheme.of(context).accent1,
-              icon: Icon(
-                Icons.add,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 24.0,
-              ),
-              onPressed: () async {
-                context.pushNamed('ADD_TOURNAMENT');
-              },
             ),
           ],
           centerTitle: false,
