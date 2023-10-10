@@ -41,6 +41,10 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
         context,
         tournamentId: widget.tournamentId,
       );
+      await action_blocks.loadTournamentMembers(
+        context,
+        tournamentId: widget.tournamentId,
+      );
     });
   }
 
