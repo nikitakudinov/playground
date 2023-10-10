@@ -209,6 +209,35 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInOrganizators(int _index, OrganizatorStruct _value) {
     _Organizators.insert(_index, _value);
   }
+
+  List<TeamStruct> _tournamentMembers = [];
+  List<TeamStruct> get tournamentMembers => _tournamentMembers;
+  set tournamentMembers(List<TeamStruct> _value) {
+    _tournamentMembers = _value;
+  }
+
+  void addToTournamentMembers(TeamStruct _value) {
+    _tournamentMembers.add(_value);
+  }
+
+  void removeFromTournamentMembers(TeamStruct _value) {
+    _tournamentMembers.remove(_value);
+  }
+
+  void removeAtIndexFromTournamentMembers(int _index) {
+    _tournamentMembers.removeAt(_index);
+  }
+
+  void updateTournamentMembersAtIndex(
+    int _index,
+    TeamStruct Function(TeamStruct) updateFn,
+  ) {
+    _tournamentMembers[_index] = updateFn(_tournamentMembers[_index]);
+  }
+
+  void insertAtIndexInTournamentMembers(int _index, TeamStruct _value) {
+    _tournamentMembers.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -151,3 +151,54 @@ Future loadOrganizators(
     );
   }
 }
+
+Future loadTournamentMembers(BuildContext context) async {
+  ApiCallResponse? jsonMembersDataList;
+  List<TeamStruct>? membersData;
+
+  jsonMembersDataList = await RelationGroup.letationslistCall.call(
+    contentType: 'Tournament',
+    contentId: tournamentId,
+    relationField: 'MembersCount',
+  );
+  if ((jsonMembersDataList?.succeeded ?? true)) {
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('1'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+    membersData = await actions.jsonToDataTypeTeam(
+      getJsonField(
+        (jsonMembersDataList?.jsonBody ?? ''),
+        r'''$.list''',
+        true,
+      ),
+    );
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('11'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
+    FFAppState().update(() {
+      FFAppState().tournamentMembers = membersData!.toList().cast<TeamStruct>();
+    });
+  }
+}

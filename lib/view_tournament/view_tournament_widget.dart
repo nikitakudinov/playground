@@ -120,14 +120,10 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                               child: ExpandableNotifier(
                                 initialExpanded: false,
                                 child: ExpandablePanel(
-                                  header: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
-                                    child: Text(
-                                      'Правила и условия',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
-                                    ),
+                                  header: Text(
+                                    'Правила и условия',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium,
                                   ),
                                   collapsed: Container(
                                     decoration: BoxDecoration(
@@ -193,14 +189,10 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                               child: ExpandableNotifier(
                                 initialExpanded: false,
                                 child: ExpandablePanel(
-                                  header: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
-                                    child: Text(
-                                      'Команда организаторов',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium,
-                                    ),
+                                  header: Text(
+                                    'Команда организаторов',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium,
                                   ),
                                   collapsed: Container(
                                     decoration: BoxDecoration(
@@ -234,16 +226,25 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                      child: Image.network(
-                                                        organizatorsListItem
-                                                            .avatar,
-                                                        width: 45.0,
-                                                        height: 45.0,
-                                                        fit: BoxFit.cover,
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                        child: Image.network(
+                                                          organizatorsListItem
+                                                              .avatar,
+                                                          width: 45.0,
+                                                          height: 45.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
                                                     Column(
@@ -306,6 +307,182 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                                                           0.0),
                                                               child: Text(
                                                                 organizatorsListItem
+                                                                    .country,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                  theme: ExpandableThemeData(
+                                    tapHeaderToExpand: true,
+                                    tapBodyToExpand: false,
+                                    tapBodyToCollapse: false,
+                                    headerAlignment:
+                                        ExpandablePanelHeaderAlignment.center,
+                                    hasIcon: true,
+                                    iconColor: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          15.0, 15.0, 15.0, 15.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              width: double.infinity,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              child: ExpandableNotifier(
+                                initialExpanded: false,
+                                child: ExpandablePanel(
+                                  header: Text(
+                                    'Участники турнира',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium,
+                                  ),
+                                  collapsed: Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                  ),
+                                  expanded: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Builder(
+                                        builder: (context) {
+                                          final membersList = FFAppState()
+                                              .tournamentMembers
+                                              .toList();
+                                          return ListView.builder(
+                                            padding: EdgeInsets.zero,
+                                            shrinkWrap: true,
+                                            scrollDirection: Axis.vertical,
+                                            itemCount: membersList.length,
+                                            itemBuilder:
+                                                (context, membersListIndex) {
+                                              final membersListItem =
+                                                  membersList[membersListIndex];
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 10.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                        child: Image.network(
+                                                          membersListItem.logo,
+                                                          width: 45.0,
+                                                          height: 45.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      5.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            '[${membersListItem.tag}] ${membersListItem.name}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleSmall,
+                                                          ),
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            0.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  membersListItem
+                                                                      .flag,
+                                                                  width: 24.0,
+                                                                  height: 16.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                membersListItem
                                                                     .country,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
