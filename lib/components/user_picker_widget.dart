@@ -737,9 +737,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                       Expanded(
                         child: FFButtonWidget(
                           onPressed: () async {
-                            setState(() {
-                              _model.messageVISIBILITY = true;
-                            });
                             _model.apiResult8em =
                                 await GetdataGroup.datalistCall.call(
                               contentType: 'User',
@@ -762,21 +759,9 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     .toList()
                                     .cast<UserStruct>();
                               });
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('1'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
+                              setState(() {
+                                _model.messageVISIBILITY = true;
+                              });
                             }
 
                             setState(() {});
