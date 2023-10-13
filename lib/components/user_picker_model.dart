@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'user_picker_widget.dart' show UserPickerWidget;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,8 +78,6 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Backend Call - API (DATALIST)] action in TextField widget.
-  ApiCallResponse? apiResultv9j;
   // Stores action output result for [Backend Call - API (DATALIST)] action in Button widget.
   ApiCallResponse? apiResult8em;
   // Stores action output result for [Custom Action - jsonToDataTypeUser] action in Button widget.

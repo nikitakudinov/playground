@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -648,39 +647,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     0.0, 15.0, 0.0, 15.0),
                                 child: TextFormField(
                                   controller: _model.textController,
-                                  onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.textController',
-                                    Duration(milliseconds: 2000),
-                                    () async {
-                                      _model.apiResultv9j =
-                                          await GetdataGroup.datalistCall.call(
-                                        contentType: 'User',
-                                        field1: 'Id',
-                                        field2: _model.textController.text,
-                                      );
-                                      if ((_model.apiResultv9j?.succeeded ??
-                                          true)) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('1'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                      }
-
-                                      setState(() {});
-                                    },
-                                  ),
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
