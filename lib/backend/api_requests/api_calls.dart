@@ -141,6 +141,7 @@ class CreatdataGroup {
   };
   static CreatuserCall creatuserCall = CreatuserCall();
   static CreatteamCall creatteamCall = CreatteamCall();
+  static CreatrequestCall creatrequestCall = CreatrequestCall();
 }
 
 class CreatuserCall {
@@ -212,6 +213,44 @@ class CreatteamCall {
     return ApiManager.instance.makeApiCall(
       callName: 'CREATTEAM',
       apiUrl: '${CreatdataGroup.baseUrl}Team',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyMDgwMjEsImV4cCI6MTY5NzI0NDAyMX0.BYsvTY-kPcReiBdh4tQsdHh03E-dgC66965MyeMkF94',
+        'xc-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyMDgwMjEsImV4cCI6MTY5NzI0NDAyMX0.BYsvTY-kPcReiBdh4tQsdHh03E-dgC66965MyeMkF94',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CreatrequestCall {
+  Future<ApiCallResponse> call({
+    String? type = '',
+    String? createdAt = '',
+    String? updatedAt = '',
+    int? creatorId,
+  }) {
+    final ffApiRequestBody = '''
+{
+  "Type": "${type}",
+  "CreatedAt": "${createdAt}",
+  "UpdatedAt": "${updatedAt}",
+  "CreatorId": ${creatorId}
+
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'CREATREQUEST',
+      apiUrl: '${CreatdataGroup.baseUrl}Request',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',

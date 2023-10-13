@@ -274,8 +274,42 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     ),
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          _model.apiResultbms =
+                                              await CreatdataGroup
+                                                  .creatrequestCall
+                                                  .call(
+                                            type: 'Приглашение в команду',
+                                            createdAt:
+                                                getCurrentTimestamp.toString(),
+                                            updatedAt:
+                                                getCurrentTimestamp.toString(),
+                                            creatorId: FFAppState()
+                                                .AuthenticatedUser
+                                                .id,
+                                          );
+                                          if ((_model.apiResultbms?.succeeded ??
+                                              true)) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title:
+                                                      Text('REQUEST CREATED'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          setState(() {});
                                         },
                                         text: 'Да',
                                         options: FFButtonOptions(
