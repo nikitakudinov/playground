@@ -385,22 +385,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                         );
                                         if ((_model.apiResult21b?.succeeded ??
                                             true)) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text('TeamCreated'),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text('Ok'),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
                                           // Get Id of created team
                                           _model.apiResultmar =
                                               await GetdataGroup.datalistCall
@@ -414,33 +398,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                           );
                                           if ((_model.apiResultmar?.succeeded ??
                                               true)) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title:
-                                                      Text('GetTeamId Done!'),
-                                                  content: Text(
-                                                      valueOrDefault<String>(
-                                                    getJsonField(
-                                                      (_model.apiResultmar
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                      r'''$.list[:].Id''',
-                                                    ).toString(),
-                                                    '\$.list[:].Id',
-                                                  )),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
-                                            );
                                             // Update User Info TAG,TEAMROLE,LINEUP
                                             _model.apiResults46 =
                                                 await UpdatedataGroup
@@ -459,23 +416,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                             if ((_model
                                                     .apiResults46?.succeeded ??
                                                 true)) {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        'USERTEAM INFO UPDATED'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
                                               // ADD REALATION CREATOR
                                               _model.apiResultcjp =
                                                   await RelationGroup.addCall
@@ -495,24 +435,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                               if ((_model.apiResultcjp
                                                       ?.succeeded ??
                                                   true)) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'CREATOR REALATION ADDED'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    );
-                                                  },
-                                                );
                                                 // ADD REALATION MEMBERS
                                                 _model.apiResultcjps =
                                                     await RelationGroup.addCall
@@ -532,24 +454,8 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                 if ((_model.apiResultcjps
                                                         ?.succeeded ??
                                                     true)) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            'MEMBERS REALATION ADDED'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
+                                                  context
+                                                      .pushNamed('LIST_TEAM');
                                                 }
                                               }
                                             }
