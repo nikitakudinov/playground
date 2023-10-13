@@ -392,23 +392,13 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 if ((_model.apiResultsnps
                                                         ?.succeeded ??
                                                     true)) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text('111'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
+                                                  setState(() {
+                                                    _model.messageVISIBILITY =
+                                                        false;
+                                                    _model.searchedUser = [];
+                                                    _model.callToTeamButtonVISIBILITY =
+                                                        true;
+                                                  });
                                                 }
                                               }
                                             }
