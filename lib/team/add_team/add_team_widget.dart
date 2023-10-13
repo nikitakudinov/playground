@@ -437,6 +437,42 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                 );
                                               },
                                             );
+                                            // Update User Info TAG,TEAMROLE,LINEUP
+                                            _model.apiResults46 =
+                                                await UpdatedataGroup
+                                                    .userteamCall
+                                                    .call(
+                                              contentType: 'User',
+                                              contentId: FFAppState()
+                                                  .AuthenticatedUser
+                                                  .id,
+                                              tag: _model.tagController.text,
+                                              updatedAt: getCurrentTimestamp
+                                                  .toString(),
+                                              teamRole: 'Основатель, Лидер',
+                                              lineUp: 'true',
+                                            );
+                                            if ((_model
+                                                    .apiResults46?.succeeded ??
+                                                true)) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'USERTEAM INFO UPDATED'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
                                           }
                                         }
 
