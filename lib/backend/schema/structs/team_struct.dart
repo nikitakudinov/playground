@@ -12,17 +12,21 @@ class TeamStruct extends FFFirebaseStruct {
   TeamStruct({
     int? id,
     String? name,
+    DateTime? createdAt,
+    DateTime? updatedAt,
     String? tag,
+    String? logo,
     String? country,
     String? flag,
-    String? logo,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
+        _createdAt = createdAt,
+        _updatedAt = updatedAt,
         _tag = tag,
+        _logo = logo,
         _country = country,
         _flag = flag,
-        _logo = logo,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -38,11 +42,29 @@ class TeamStruct extends FFFirebaseStruct {
   set name(String? val) => _name = val;
   bool hasName() => _name != null;
 
+  // "CreatedAt" field.
+  DateTime? _createdAt;
+  DateTime? get createdAt => _createdAt;
+  set createdAt(DateTime? val) => _createdAt = val;
+  bool hasCreatedAt() => _createdAt != null;
+
+  // "UpdatedAt" field.
+  DateTime? _updatedAt;
+  DateTime? get updatedAt => _updatedAt;
+  set updatedAt(DateTime? val) => _updatedAt = val;
+  bool hasUpdatedAt() => _updatedAt != null;
+
   // "Tag" field.
   String? _tag;
   String get tag => _tag ?? '';
   set tag(String? val) => _tag = val;
   bool hasTag() => _tag != null;
+
+  // "Logo" field.
+  String? _logo;
+  String get logo => _logo ?? '';
+  set logo(String? val) => _logo = val;
+  bool hasLogo() => _logo != null;
 
   // "Country" field.
   String? _country;
@@ -56,19 +78,15 @@ class TeamStruct extends FFFirebaseStruct {
   set flag(String? val) => _flag = val;
   bool hasFlag() => _flag != null;
 
-  // "Logo" field.
-  String? _logo;
-  String get logo => _logo ?? '';
-  set logo(String? val) => _logo = val;
-  bool hasLogo() => _logo != null;
-
   static TeamStruct fromMap(Map<String, dynamic> data) => TeamStruct(
         id: castToType<int>(data['Id']),
         name: data['Name'] as String?,
+        createdAt: data['CreatedAt'] as DateTime?,
+        updatedAt: data['UpdatedAt'] as DateTime?,
         tag: data['Tag'] as String?,
+        logo: data['Logo'] as String?,
         country: data['Country'] as String?,
         flag: data['Flag'] as String?,
-        logo: data['Logo'] as String?,
       );
 
   static TeamStruct? maybeFromMap(dynamic data) =>
@@ -77,10 +95,12 @@ class TeamStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'Id': _id,
         'Name': _name,
+        'CreatedAt': _createdAt,
+        'UpdatedAt': _updatedAt,
         'Tag': _tag,
+        'Logo': _logo,
         'Country': _country,
         'Flag': _flag,
-        'Logo': _logo,
       }.withoutNulls;
 
   @override
@@ -93,8 +113,20 @@ class TeamStruct extends FFFirebaseStruct {
           _name,
           ParamType.String,
         ),
+        'CreatedAt': serializeParam(
+          _createdAt,
+          ParamType.DateTime,
+        ),
+        'UpdatedAt': serializeParam(
+          _updatedAt,
+          ParamType.DateTime,
+        ),
         'Tag': serializeParam(
           _tag,
+          ParamType.String,
+        ),
+        'Logo': serializeParam(
+          _logo,
           ParamType.String,
         ),
         'Country': serializeParam(
@@ -103,10 +135,6 @@ class TeamStruct extends FFFirebaseStruct {
         ),
         'Flag': serializeParam(
           _flag,
-          ParamType.String,
-        ),
-        'Logo': serializeParam(
-          _logo,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -123,8 +151,23 @@ class TeamStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        createdAt: deserializeParam(
+          data['CreatedAt'],
+          ParamType.DateTime,
+          false,
+        ),
+        updatedAt: deserializeParam(
+          data['UpdatedAt'],
+          ParamType.DateTime,
+          false,
+        ),
         tag: deserializeParam(
           data['Tag'],
+          ParamType.String,
+          false,
+        ),
+        logo: deserializeParam(
+          data['Logo'],
           ParamType.String,
           false,
         ),
@@ -138,11 +181,6 @@ class TeamStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        logo: deserializeParam(
-          data['Logo'],
-          ParamType.String,
-          false,
-        ),
       );
 
   @override
@@ -153,24 +191,28 @@ class TeamStruct extends FFFirebaseStruct {
     return other is TeamStruct &&
         id == other.id &&
         name == other.name &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt &&
         tag == other.tag &&
+        logo == other.logo &&
         country == other.country &&
-        flag == other.flag &&
-        logo == other.logo;
+        flag == other.flag;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([id, name, tag, country, flag, logo]);
+  int get hashCode => const ListEquality()
+      .hash([id, name, createdAt, updatedAt, tag, logo, country, flag]);
 }
 
 TeamStruct createTeamStruct({
   int? id,
   String? name,
+  DateTime? createdAt,
+  DateTime? updatedAt,
   String? tag,
+  String? logo,
   String? country,
   String? flag,
-  String? logo,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -179,10 +221,12 @@ TeamStruct createTeamStruct({
     TeamStruct(
       id: id,
       name: name,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
       tag: tag,
+      logo: logo,
       country: country,
       flag: flag,
-      logo: logo,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

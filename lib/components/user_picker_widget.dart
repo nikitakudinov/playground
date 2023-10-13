@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -625,185 +627,134 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 15.0),
-                              child: TextFormField(
-                                controller: _model.textController,
-                                autofocus: true,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText: '#UID пользователя',
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  hintStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
-                                  errorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
-                                  focusedErrorBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                  ),
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.textControllerValidator
-                                    .asValidator(context),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: Builder(
-                                builder: (context) {
-                                  final searchResultsList =
-                                      _model.searchUserResults.toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: searchResultsList.length,
-                                    itemBuilder:
-                                        (context, searchResultsListIndex) {
-                                      final searchResultsListItem =
-                                          searchResultsList[
-                                              searchResultsListIndex];
-                                      return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 10.0, 10.0, 10.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            setState(() {
-                                              _model.selectedUserAvatarVALUE =
-                                                  searchResultsListItem.avatar;
-                                              _model.selectedUserNicknameVALUE =
-                                                  searchResultsListItem
-                                                      .nickname;
-                                              _model.selectedUserCountry =
-                                                  searchResultsListItem
-                                                      .countryName;
-                                              _model.selectedUserFlag =
-                                                  searchResultsListItem.flag;
-                                              _model.messageVISIBILITY = true;
-                                              _model.searchVISIBILITY = false;
-                                              _model.selectedUserIdVALUE =
-                                                  searchResultsListItem
-                                                      .fbUserRef;
-                                            });
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                                child: Image.network(
-                                                  searchResultsListItem.avatar,
-                                                  width: 40.0,
-                                                  height: 40.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      searchResultsListItem
-                                                          .nickname,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                          child: Image.network(
-                                                            searchResultsListItem
-                                                                .flag,
-                                                            width: 24.0,
-                                                            height: 16.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        searchResultsListItem
-                                                            .countryName,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
+                        child: Container(
+                          width: 100.0,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 15.0),
+                                child: TextFormField(
+                                  controller: _model.textController,
+                                  onChanged: (_) => EasyDebounce.debounce(
+                                    '_model.textController',
+                                    Duration(milliseconds: 2000),
+                                    () async {
+                                      _model.apiResultv9j =
+                                          await GetdataGroup.datalistCall.call(
+                                        contentType: 'User',
+                                        field1: 'Id',
+                                        field2: _model.textController.text,
                                       );
+                                      if ((_model.apiResultv9j?.succeeded ??
+                                          true)) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('1'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+
+                                      setState(() {});
                                     },
-                                    controller: _model.searchResultsList,
-                                  );
-                                },
+                                  ),
+                                  autofocus: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: '#UID пользователя',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
+                                    ),
+                                    errorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
+                                    ),
+                                    focusedErrorBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
+                                    ),
+                                  ),
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  validator: _model.textControllerValidator
+                                      .asValidator(context),
+                                ),
                               ),
-                            ),
-                          ],
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: 'Button',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Saira Semi Condensed',
+                                    color: Colors.white,
+                                  ),
+                          elevation: 3.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ],

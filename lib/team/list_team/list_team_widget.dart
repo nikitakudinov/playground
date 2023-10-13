@@ -34,7 +34,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.jsonTeamsList = await GetdataGroup.datalistCall.call(
         contentType: 'Team',
-        fields: 'Id,Name,Tag,Country,Flag,Logo',
+        fields: 'Id,Name,CreatedAt,UpdatedAt,Tag,Logo,Country,Flag',
       );
       if ((_model.jsonTeamsList?.succeeded ?? true)) {
         _model.aaa = await actions.jsonToDataTypeTeam(

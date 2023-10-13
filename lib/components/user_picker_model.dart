@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'user_picker_widget.dart' show UserPickerWidget;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -67,8 +69,8 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // State field(s) for searchResultsList widget.
-  ScrollController? searchResultsList;
+  // Stores action output result for [Backend Call - API (DATALIST)] action in TextField widget.
+  ApiCallResponse? apiResultv9j;
   // State field(s) for squad widget.
   ScrollController? squad;
 
@@ -77,7 +79,6 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   void initState(BuildContext context) {
     columnController = ScrollController();
     memberSettingsCol = ScrollController();
-    searchResultsList = ScrollController();
     squad = ScrollController();
   }
 
@@ -85,7 +86,6 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
     columnController?.dispose();
     memberSettingsCol?.dispose();
     textController?.dispose();
-    searchResultsList?.dispose();
     squad?.dispose();
   }
 
