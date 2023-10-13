@@ -72,6 +72,8 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   ApiCallResponse? apiResultbms;
   // Stores action output result for [Backend Call - API (DATALIST)] action in Button widget.
   ApiCallResponse? apiResultzzv;
+  // Stores action output result for [Backend Call - API (ADD)] action in Button widget.
+  ApiCallResponse? apiResultsnp;
   // State field(s) for MemberSettingsCol widget.
   ScrollController? memberSettingsCol;
   // State field(s) for DropDown widget.

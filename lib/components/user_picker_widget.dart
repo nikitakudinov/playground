@@ -342,6 +342,40 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                   );
                                                 },
                                               );
+                                              _model.apiResultsnp =
+                                                  await RelationGroup.addCall
+                                                      .call(
+                                                contentType: 'Request',
+                                                contentId: getJsonField(
+                                                  (_model.apiResultzzv
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.list[:].Id''',
+                                                ),
+                                                retionField: 'FromTeamCount',
+                                                relationId: widget.docId,
+                                              );
+                                              if ((_model.apiResultsnp
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text('1'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              }
                                             }
                                           }
 
