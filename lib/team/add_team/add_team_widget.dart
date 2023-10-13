@@ -412,13 +412,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                 .AuthenticatedUser
                                                 .fBUserId,
                                           );
-                                          setState(() {
-                                            _model.createdTeamId = getJsonField(
-                                              (_model.apiResultmar?.jsonBody ??
-                                                  ''),
-                                              r'''$.list[:].Id''',
-                                            );
-                                          });
                                           if ((_model.apiResultmar?.succeeded ??
                                               true)) {
                                             await showDialog(
@@ -427,9 +420,16 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                 return AlertDialog(
                                                   title:
                                                       Text('GetTeamId Done!'),
-                                                  content: Text(_model
-                                                      .createdTeamId!
-                                                      .toString()),
+                                                  content: Text(
+                                                      valueOrDefault<String>(
+                                                    getJsonField(
+                                                      (_model.apiResultmar
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.list[:].Id''',
+                                                    ).toString(),
+                                                    '\$.list[:].Id',
+                                                  )),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
@@ -478,10 +478,16 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                               );
                                               // ADD REALATION CREATOR
                                               _model.apiResultcjp =
-                                                  await RelationGroup
-                                                      .addteammemberCall
+                                                  await RelationGroup.addCall
                                                       .call(
-                                                contentId: _model.createdTeamId,
+                                                contentType: 'Team',
+                                                contentId: getJsonField(
+                                                  (_model.apiResultmar
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.list[:].Id''',
+                                                ),
+                                                retionField: 'CreatorCount',
                                                 relationId: FFAppState()
                                                     .AuthenticatedUser
                                                     .id,
