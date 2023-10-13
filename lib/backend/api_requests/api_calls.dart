@@ -385,6 +385,7 @@ class RelationGroup {
   };
   static LetationslistCall letationslistCall = LetationslistCall();
   static AddCall addCall = AddCall();
+  static AddteammemberCall addteammemberCall = AddteammemberCall();
   static RemoveCall removeCall = RemoveCall();
 }
 
@@ -430,6 +431,33 @@ class AddCall {
       callName: 'ADD',
       apiUrl:
           '${RelationGroup.baseUrl}/${contentType}/${contentId}/mm/${retionField}/${relationId}?limit=25&shuffle=0&offset=0',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyMDgwMjEsImV4cCI6MTY5NzI0NDAyMX0.BYsvTY-kPcReiBdh4tQsdHh03E-dgC66965MyeMkF94',
+        'xc-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyMDgwMjEsImV4cCI6MTY5NzI0NDAyMX0.BYsvTY-kPcReiBdh4tQsdHh03E-dgC66965MyeMkF94',
+      },
+      params: {},
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class AddteammemberCall {
+  Future<ApiCallResponse> call({
+    int? contentId,
+    int? relationId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'ADDTEAMMEMBER',
+      apiUrl:
+          '${RelationGroup.baseUrl}/Team/${contentId}/mm/CreatorCount/${relationId}?limit=25&shuffle=0&offset=0',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',

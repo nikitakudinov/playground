@@ -478,11 +478,10 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                               );
                                               // ADD REALATION CREATOR
                                               _model.apiResultcjp =
-                                                  await RelationGroup.addCall
+                                                  await RelationGroup
+                                                      .addteammemberCall
                                                       .call(
-                                                contentType: 'Team',
                                                 contentId: _model.createdTeamId,
-                                                retionField: 'CreatorCount',
                                                 relationId: FFAppState()
                                                     .AuthenticatedUser
                                                     .id,
