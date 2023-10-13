@@ -546,6 +546,9 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                       );
                                                     },
                                                   );
+
+                                                  context
+                                                      .pushNamed('LIST_TEAM');
                                                 }
                                               }
                                             }
