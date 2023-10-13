@@ -235,10 +235,13 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                   children: [
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          setState(() {
+                                            _model.messageVISIBILITY = false;
+                                            _model.searchedUser = [];
+                                          });
                                         },
-                                        text: 'Отмена',
+                                        text: 'Нет',
                                         options: FFButtonOptions(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -274,7 +277,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         onPressed: () {
                                           print('Button pressed ...');
                                         },
-                                        text: 'Отправить',
+                                        text: 'Да',
                                         options: FFButtonOptions(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
