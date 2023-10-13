@@ -366,7 +366,7 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           _model.apiResultvqb =
-                                              await CreatdataGroup.userCall
+                                              await CreatdataGroup.creatuserCall
                                                   .call(
                                             nickname:
                                                 _model.nicknameController.text,

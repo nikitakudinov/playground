@@ -35,7 +35,7 @@ class AddUserinfoModel extends FlutterFlowModel<AddUserinfoWidget> {
   String? Function(BuildContext, String?)? nicknameControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
-  // Stores action output result for [Backend Call - API (USER)] action in Button widget.
+  // Stores action output result for [Backend Call - API (CREATUSER)] action in Button widget.
   ApiCallResponse? apiResultvqb;
 
   /// Initialization and disposal methods.

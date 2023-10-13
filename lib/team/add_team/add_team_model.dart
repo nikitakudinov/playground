@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -29,6 +30,10 @@ class AddTeamModel extends FlutterFlowModel<AddTeamWidget> {
   String? Function(BuildContext, String?)? tagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
+  // Stores action output result for [Backend Call - API (CREATTEAM)] action in Button widget.
+  ApiCallResponse? apiResult21b;
+  // Stores action output result for [Backend Call - API (DATALIST)] action in Button widget.
+  ApiCallResponse? apiResultmar;
 
   /// Initialization and disposal methods.
 

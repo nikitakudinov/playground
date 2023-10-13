@@ -139,10 +139,11 @@ class CreatdataGroup {
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyMDgwMjEsImV4cCI6MTY5NzI0NDAyMX0.BYsvTY-kPcReiBdh4tQsdHh03E-dgC66965MyeMkF94',
     'Content-Type': 'application/json',
   };
-  static UserCall userCall = UserCall();
+  static CreatuserCall creatuserCall = CreatuserCall();
+  static CreatteamCall creatteamCall = CreatteamCall();
 }
 
-class UserCall {
+class CreatuserCall {
   Future<ApiCallResponse> call({
     String? nickname = '',
     String? createdAt = '',
@@ -164,8 +165,53 @@ class UserCall {
   "Avatar": "${avatar}"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'USER',
+      callName: 'CREATUSER',
       apiUrl: '${CreatdataGroup.baseUrl}User',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyMDgwMjEsImV4cCI6MTY5NzI0NDAyMX0.BYsvTY-kPcReiBdh4tQsdHh03E-dgC66965MyeMkF94',
+        'xc-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyMDgwMjEsImV4cCI6MTY5NzI0NDAyMX0.BYsvTY-kPcReiBdh4tQsdHh03E-dgC66965MyeMkF94',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CreatteamCall {
+  Future<ApiCallResponse> call({
+    String? name = '',
+    String? createdAt = '',
+    String? updatedAt = '',
+    String? tag = '',
+    String? country = '',
+    String? flag = '',
+    String? logo = '',
+    String? creatorFBUserId = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "Name": "${name}",
+  "CreatedAt": "${createdAt}",
+  "UpdatedAt": "${updatedAt}",
+  "Tag": "${tag}",
+  "Country": "${country}",
+  "Flag": "${flag}",
+  "CreatorFBUserId": "${creatorFBUserId}",
+  "Logo": "${logo}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'CREATTEAM',
+      apiUrl: '${CreatdataGroup.baseUrl}Team',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',

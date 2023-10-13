@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -362,8 +363,84 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 15.0, 0.0, 15.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        // Creat Team Data
+                                        _model.apiResult21b =
+                                            await CreatdataGroup.creatteamCall
+                                                .call(
+                                          name: _model.nameController.text,
+                                          createdAt:
+                                              getCurrentTimestamp.toString(),
+                                          updatedAt:
+                                              getCurrentTimestamp.toString(),
+                                          tag: _model.tagController.text,
+                                          country: _model
+                                              .countryPickerModel.selectedName,
+                                          flag: _model
+                                              .countryPickerModel.selectedFlag,
+                                          logo: _model.uploadedFileUrl,
+                                          creatorFBUserId: FFAppState()
+                                              .AuthenticatedUser
+                                              .fBUserId,
+                                        );
+                                        if ((_model.apiResult21b?.succeeded ??
+                                            true)) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('TeamCreated'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          // Get Id of created team
+                                          _model.apiResultmar =
+                                              await GetdataGroup.datalistCall
+                                                  .call(
+                                            contentType: 'Team',
+                                            fields: 'Id',
+                                            field1: 'CreatorFBUserId',
+                                            field2: FFAppState()
+                                                .AuthenticatedUser
+                                                .fBUserId,
+                                          );
+                                          if ((_model.apiResultmar?.succeeded ??
+                                              true)) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title:
+                                                      Text('GetTeamId Done!'),
+                                                  content: Text(getJsonField(
+                                                    (_model.apiResultmar
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.list[:].Id''',
+                                                  ).toString()),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: Text('Ok'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        }
+
+                                        setState(() {});
                                       },
                                       text: 'Создать',
                                       options: FFButtonOptions(
