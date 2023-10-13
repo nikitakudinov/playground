@@ -10,66 +10,26 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class UserStruct extends FFFirebaseStruct {
   UserStruct({
-    String? email,
-    String? nickname,
-    String? fbUserRef,
-    String? avatar,
-    String? countryName,
-    String? flag,
     int? id,
-    int? memberOfTeam,
+    String? nickname,
+    String? createdAt,
+    String? updatedAt,
     String? tag,
-    String? teamRole,
-    String? lineUp,
+    String? country,
+    String? flag,
+    String? fBUserId,
+    String? avatar,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
-  })  : _email = email,
+  })  : _id = id,
         _nickname = nickname,
-        _fbUserRef = fbUserRef,
-        _avatar = avatar,
-        _countryName = countryName,
-        _flag = flag,
-        _id = id,
-        _memberOfTeam = memberOfTeam,
+        _createdAt = createdAt,
+        _updatedAt = updatedAt,
         _tag = tag,
-        _teamRole = teamRole,
-        _lineUp = lineUp,
+        _country = country,
+        _flag = flag,
+        _fBUserId = fBUserId,
+        _avatar = avatar,
         super(firestoreUtilData);
-
-  // "Email" field.
-  String? _email;
-  String get email => _email ?? '';
-  set email(String? val) => _email = val;
-  bool hasEmail() => _email != null;
-
-  // "Nickname" field.
-  String? _nickname;
-  String get nickname => _nickname ?? '';
-  set nickname(String? val) => _nickname = val;
-  bool hasNickname() => _nickname != null;
-
-  // "FbUserRef" field.
-  String? _fbUserRef;
-  String get fbUserRef => _fbUserRef ?? '';
-  set fbUserRef(String? val) => _fbUserRef = val;
-  bool hasFbUserRef() => _fbUserRef != null;
-
-  // "Avatar" field.
-  String? _avatar;
-  String get avatar => _avatar ?? '';
-  set avatar(String? val) => _avatar = val;
-  bool hasAvatar() => _avatar != null;
-
-  // "CountryName" field.
-  String? _countryName;
-  String get countryName => _countryName ?? '';
-  set countryName(String? val) => _countryName = val;
-  bool hasCountryName() => _countryName != null;
-
-  // "Flag" field.
-  String? _flag;
-  String get flag => _flag ?? '';
-  set flag(String? val) => _flag = val;
-  bool hasFlag() => _flag != null;
 
   // "Id" field.
   int? _id;
@@ -78,13 +38,23 @@ class UserStruct extends FFFirebaseStruct {
   void incrementId(int amount) => _id = id + amount;
   bool hasId() => _id != null;
 
-  // "MemberOfTeam" field.
-  int? _memberOfTeam;
-  int get memberOfTeam => _memberOfTeam ?? 0;
-  set memberOfTeam(int? val) => _memberOfTeam = val;
-  void incrementMemberOfTeam(int amount) =>
-      _memberOfTeam = memberOfTeam + amount;
-  bool hasMemberOfTeam() => _memberOfTeam != null;
+  // "Nickname" field.
+  String? _nickname;
+  String get nickname => _nickname ?? '';
+  set nickname(String? val) => _nickname = val;
+  bool hasNickname() => _nickname != null;
+
+  // "CreatedAt" field.
+  String? _createdAt;
+  String get createdAt => _createdAt ?? '';
+  set createdAt(String? val) => _createdAt = val;
+  bool hasCreatedAt() => _createdAt != null;
+
+  // "UpdatedAt" field.
+  String? _updatedAt;
+  String get updatedAt => _updatedAt ?? '';
+  set updatedAt(String? val) => _updatedAt = val;
+  bool hasUpdatedAt() => _updatedAt != null;
 
   // "Tag" field.
   String? _tag;
@@ -92,102 +62,102 @@ class UserStruct extends FFFirebaseStruct {
   set tag(String? val) => _tag = val;
   bool hasTag() => _tag != null;
 
-  // "TeamRole" field.
-  String? _teamRole;
-  String get teamRole => _teamRole ?? '';
-  set teamRole(String? val) => _teamRole = val;
-  bool hasTeamRole() => _teamRole != null;
+  // "Country" field.
+  String? _country;
+  String get country => _country ?? '';
+  set country(String? val) => _country = val;
+  bool hasCountry() => _country != null;
 
-  // "LineUp" field.
-  String? _lineUp;
-  String get lineUp => _lineUp ?? '';
-  set lineUp(String? val) => _lineUp = val;
-  bool hasLineUp() => _lineUp != null;
+  // "Flag" field.
+  String? _flag;
+  String get flag => _flag ?? '';
+  set flag(String? val) => _flag = val;
+  bool hasFlag() => _flag != null;
+
+  // "FBUserId" field.
+  String? _fBUserId;
+  String get fBUserId => _fBUserId ?? '';
+  set fBUserId(String? val) => _fBUserId = val;
+  bool hasFBUserId() => _fBUserId != null;
+
+  // "Avatar" field.
+  String? _avatar;
+  String get avatar => _avatar ?? '';
+  set avatar(String? val) => _avatar = val;
+  bool hasAvatar() => _avatar != null;
 
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
-        email: data['Email'] as String?,
-        nickname: data['Nickname'] as String?,
-        fbUserRef: data['FbUserRef'] as String?,
-        avatar: data['Avatar'] as String?,
-        countryName: data['CountryName'] as String?,
-        flag: data['Flag'] as String?,
         id: castToType<int>(data['Id']),
-        memberOfTeam: castToType<int>(data['MemberOfTeam']),
+        nickname: data['Nickname'] as String?,
+        createdAt: data['CreatedAt'] as String?,
+        updatedAt: data['UpdatedAt'] as String?,
         tag: data['Tag'] as String?,
-        teamRole: data['TeamRole'] as String?,
-        lineUp: data['LineUp'] as String?,
+        country: data['Country'] as String?,
+        flag: data['Flag'] as String?,
+        fBUserId: data['FBUserId'] as String?,
+        avatar: data['Avatar'] as String?,
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
       data is Map<String, dynamic> ? UserStruct.fromMap(data) : null;
 
   Map<String, dynamic> toMap() => {
-        'Email': _email,
-        'Nickname': _nickname,
-        'FbUserRef': _fbUserRef,
-        'Avatar': _avatar,
-        'CountryName': _countryName,
-        'Flag': _flag,
         'Id': _id,
-        'MemberOfTeam': _memberOfTeam,
+        'Nickname': _nickname,
+        'CreatedAt': _createdAt,
+        'UpdatedAt': _updatedAt,
         'Tag': _tag,
-        'TeamRole': _teamRole,
-        'LineUp': _lineUp,
+        'Country': _country,
+        'Flag': _flag,
+        'FBUserId': _fBUserId,
+        'Avatar': _avatar,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'Email': serializeParam(
-          _email,
-          ParamType.String,
+        'Id': serializeParam(
+          _id,
+          ParamType.int,
         ),
         'Nickname': serializeParam(
           _nickname,
           ParamType.String,
         ),
-        'FbUserRef': serializeParam(
-          _fbUserRef,
+        'CreatedAt': serializeParam(
+          _createdAt,
           ParamType.String,
         ),
-        'Avatar': serializeParam(
-          _avatar,
+        'UpdatedAt': serializeParam(
+          _updatedAt,
           ParamType.String,
         ),
-        'CountryName': serializeParam(
-          _countryName,
+        'Tag': serializeParam(
+          _tag,
+          ParamType.String,
+        ),
+        'Country': serializeParam(
+          _country,
           ParamType.String,
         ),
         'Flag': serializeParam(
           _flag,
           ParamType.String,
         ),
-        'Id': serializeParam(
-          _id,
-          ParamType.int,
-        ),
-        'MemberOfTeam': serializeParam(
-          _memberOfTeam,
-          ParamType.int,
-        ),
-        'Tag': serializeParam(
-          _tag,
+        'FBUserId': serializeParam(
+          _fBUserId,
           ParamType.String,
         ),
-        'TeamRole': serializeParam(
-          _teamRole,
-          ParamType.String,
-        ),
-        'LineUp': serializeParam(
-          _lineUp,
+        'Avatar': serializeParam(
+          _avatar,
           ParamType.String,
         ),
       }.withoutNulls;
 
   static UserStruct fromSerializableMap(Map<String, dynamic> data) =>
       UserStruct(
-        email: deserializeParam(
-          data['Email'],
-          ParamType.String,
+        id: deserializeParam(
+          data['Id'],
+          ParamType.int,
           false,
         ),
         nickname: deserializeParam(
@@ -195,18 +165,23 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        fbUserRef: deserializeParam(
-          data['FbUserRef'],
+        createdAt: deserializeParam(
+          data['CreatedAt'],
           ParamType.String,
           false,
         ),
-        avatar: deserializeParam(
-          data['Avatar'],
+        updatedAt: deserializeParam(
+          data['UpdatedAt'],
           ParamType.String,
           false,
         ),
-        countryName: deserializeParam(
-          data['CountryName'],
+        tag: deserializeParam(
+          data['Tag'],
+          ParamType.String,
+          false,
+        ),
+        country: deserializeParam(
+          data['Country'],
           ParamType.String,
           false,
         ),
@@ -215,28 +190,13 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        id: deserializeParam(
-          data['Id'],
-          ParamType.int,
-          false,
-        ),
-        memberOfTeam: deserializeParam(
-          data['MemberOfTeam'],
-          ParamType.int,
-          false,
-        ),
-        tag: deserializeParam(
-          data['Tag'],
+        fBUserId: deserializeParam(
+          data['FBUserId'],
           ParamType.String,
           false,
         ),
-        teamRole: deserializeParam(
-          data['TeamRole'],
-          ParamType.String,
-          false,
-        ),
-        lineUp: deserializeParam(
-          data['LineUp'],
+        avatar: deserializeParam(
+          data['Avatar'],
           ParamType.String,
           false,
         ),
@@ -248,64 +208,56 @@ class UserStruct extends FFFirebaseStruct {
   @override
   bool operator ==(Object other) {
     return other is UserStruct &&
-        email == other.email &&
-        nickname == other.nickname &&
-        fbUserRef == other.fbUserRef &&
-        avatar == other.avatar &&
-        countryName == other.countryName &&
-        flag == other.flag &&
         id == other.id &&
-        memberOfTeam == other.memberOfTeam &&
+        nickname == other.nickname &&
+        createdAt == other.createdAt &&
+        updatedAt == other.updatedAt &&
         tag == other.tag &&
-        teamRole == other.teamRole &&
-        lineUp == other.lineUp;
+        country == other.country &&
+        flag == other.flag &&
+        fBUserId == other.fBUserId &&
+        avatar == other.avatar;
   }
 
   @override
   int get hashCode => const ListEquality().hash([
-        email,
-        nickname,
-        fbUserRef,
-        avatar,
-        countryName,
-        flag,
         id,
-        memberOfTeam,
+        nickname,
+        createdAt,
+        updatedAt,
         tag,
-        teamRole,
-        lineUp
+        country,
+        flag,
+        fBUserId,
+        avatar
       ]);
 }
 
 UserStruct createUserStruct({
-  String? email,
-  String? nickname,
-  String? fbUserRef,
-  String? avatar,
-  String? countryName,
-  String? flag,
   int? id,
-  int? memberOfTeam,
+  String? nickname,
+  String? createdAt,
+  String? updatedAt,
   String? tag,
-  String? teamRole,
-  String? lineUp,
+  String? country,
+  String? flag,
+  String? fBUserId,
+  String? avatar,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
   bool delete = false,
 }) =>
     UserStruct(
-      email: email,
-      nickname: nickname,
-      fbUserRef: fbUserRef,
-      avatar: avatar,
-      countryName: countryName,
-      flag: flag,
       id: id,
-      memberOfTeam: memberOfTeam,
+      nickname: nickname,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
       tag: tag,
-      teamRole: teamRole,
-      lineUp: lineUp,
+      country: country,
+      flag: flag,
+      fBUserId: fBUserId,
+      avatar: avatar,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

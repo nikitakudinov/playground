@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'user_picker_widget.dart' show UserPickerWidget;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,15 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   int? selectedIndex;
 
+  List<UserStruct> searchedUser = [];
+  void addToSearchedUser(UserStruct item) => searchedUser.add(item);
+  void removeFromSearchedUser(UserStruct item) => searchedUser.remove(item);
+  void removeAtIndexFromSearchedUser(int index) => searchedUser.removeAt(index);
+  void insertAtIndexInSearchedUser(int index, UserStruct item) =>
+      searchedUser.insert(index, item);
+  void updateSearchedUserAtIndex(int index, Function(UserStruct) updateFn) =>
+      searchedUser[index] = updateFn(searchedUser[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Column widget.
@@ -71,6 +81,10 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Backend Call - API (DATALIST)] action in TextField widget.
   ApiCallResponse? apiResultv9j;
+  // Stores action output result for [Backend Call - API (DATALIST)] action in Button widget.
+  ApiCallResponse? apiResult8em;
+  // Stores action output result for [Custom Action - jsonToDataTypeUser] action in Button widget.
+  List<UserStruct>? usersdata;
   // State field(s) for squad widget.
   ScrollController? squad;
 

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -173,7 +174,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(3.0),
                                       child: Image.network(
-                                        _model.selectedUserAvatarVALUE,
+                                        _model.searchedUser.first.avatar,
                                         width: 40.0,
                                         height: 40.0,
                                         fit: BoxFit.cover,
@@ -189,7 +190,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            _model.selectedUserNicknameVALUE,
+                                            _model.searchedUser.first.nickname,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
@@ -205,7 +206,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
                                                 child: Image.network(
-                                                  _model.selectedUserFlag,
+                                                  _model
+                                                      .searchedUser.first.flag,
                                                   width: 24.0,
                                                   height: 16.0,
                                                   fit: BoxFit.cover,
@@ -213,7 +215,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               ),
                                             ),
                                             Text(
-                                              _model.selectedUserCountry,
+                                              _model.searchedUser.first.country,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall,
@@ -732,32 +734,78 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                           ),
                         ),
                       ),
-                      FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Button',
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Saira Semi Condensed',
-                                    color: Colors.white,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                      Expanded(
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            setState(() {
+                              _model.messageVISIBILITY = true;
+                            });
+                            _model.apiResult8em =
+                                await GetdataGroup.datalistCall.call(
+                              contentType: 'User',
+                              fields:
+                                  'Id,Nickname,CreatedAt,UpdatedAt,Tag,Country,Flag,FBUserId,Avatar',
+                              field1: 'Id',
+                              field2: _model.textController.text,
+                            );
+                            if ((_model.apiResult8em?.succeeded ?? true)) {
+                              _model.usersdata =
+                                  await actions.jsonToDataTypeUser(
+                                getJsonField(
+                                  (_model.apiResult8em?.jsonBody ?? ''),
+                                  r'''$.list''',
+                                  true,
+                                ),
+                              );
+                              setState(() {
+                                _model.searchedUser = _model.usersdata!
+                                    .toList()
+                                    .cast<UserStruct>();
+                              });
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('1'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }
+
+                            setState(() {});
+                          },
+                          text: 'Найти',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Saira Semi Condensed',
+                                  color: Colors.white,
+                                ),
+                            elevation: 0.0,
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                    ],
+                    ].divide(SizedBox(width: 15.0)),
                   ),
                 if (_model.squadVISIBILITY)
                   Builder(
