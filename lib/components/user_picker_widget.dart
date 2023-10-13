@@ -307,6 +307,42 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 );
                                               },
                                             );
+                                            _model.apiResultzzv =
+                                                await GetdataGroup.datalistCall
+                                                    .call(
+                                              contentType: 'Request',
+                                              fields: 'Id',
+                                              field1: 'CreatorId',
+                                              field2: FFAppState()
+                                                  .AuthenticatedUser
+                                                  .id
+                                                  .toString(),
+                                            );
+                                            if ((_model
+                                                    .apiResultzzv?.succeeded ??
+                                                true)) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(getJsonField(
+                                                      (_model.apiResultzzv
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.list[:].Id''',
+                                                    ).toString()),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text('Ok'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                            }
                                           }
 
                                           setState(() {});
