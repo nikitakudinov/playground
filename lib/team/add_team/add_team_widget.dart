@@ -454,7 +454,7 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                               updatedAt: getCurrentTimestamp
                                                   .toString(),
                                               teamRole: 'Основатель, Лидер',
-                                              lineUp: 'true',
+                                              lineUp: 'True',
                                             );
                                             if ((_model
                                                     .apiResults46?.succeeded ??
@@ -481,12 +481,7 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                   await RelationGroup.addCall
                                                       .call(
                                                 contentType: 'Team',
-                                                contentId: getJsonField(
-                                                  (_model.apiResultmar
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.list[:].Id''',
-                                                ),
+                                                contentId: _model.createdTeamId,
                                                 retionField: 'CreatorCount',
                                                 relationId: FFAppState()
                                                     .AuthenticatedUser
