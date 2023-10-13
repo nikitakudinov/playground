@@ -239,6 +239,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                           setState(() {
                                             _model.messageVISIBILITY = false;
                                             _model.searchedUser = [];
+                                            _model.searchVISIBILITY = true;
                                           });
                                         },
                                         text: 'Нет',
@@ -761,9 +762,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 _model.searchedUser = _model.usersdata!
                                     .toList()
                                     .cast<UserStruct>();
-                              });
-                              setState(() {
                                 _model.messageVISIBILITY = true;
+                                _model.searchVISIBILITY = false;
                               });
                             }
 
@@ -789,7 +789,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                               color: FlutterFlowTheme.of(context).primaryText,
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                       ),
