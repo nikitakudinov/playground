@@ -14,6 +14,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AddTeamModel extends FlutterFlowModel<AddTeamWidget> {
+  ///  Local state fields for this page.
+
+  int? createdTeamId;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
