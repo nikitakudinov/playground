@@ -509,47 +509,6 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                     );
                                                   },
                                                 );
-                                                // ADD RELATION MEMBER
-                                                _model.apiResultjw1 =
-                                                    await RelationGroup.addCall
-                                                        .call(
-                                                  contentType: 'Team',
-                                                  contentId: getJsonField(
-                                                    (_model.apiResultmar
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.list[:].Id''',
-                                                  ),
-                                                  retionField: 'MembersCount',
-                                                  relationId: FFAppState()
-                                                      .AuthenticatedUser
-                                                      .id,
-                                                );
-                                                if ((_model.apiResultjw1
-                                                        ?.succeeded ??
-                                                    true)) {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title:
-                                                            Text('ALL WORKS'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  );
-
-                                                  context
-                                                      .pushNamed('LIST_TEAM');
-                                                }
                                               }
                                             }
                                           }
