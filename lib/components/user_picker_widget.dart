@@ -375,7 +375,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                     );
                                                   },
                                                 );
-                                                _model.apiResultsnp =
+                                                _model.apiResultsnps =
                                                     await RelationGroup.addCall
                                                         .call(
                                                   contentType: 'Request',
@@ -389,7 +389,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                   relationId: _model
                                                       .searchedUser.first.id,
                                                 );
-                                                if ((_model.apiResultsnp
+                                                if ((_model.apiResultsnps
                                                         ?.succeeded ??
                                                     true)) {
                                                   await showDialog(
