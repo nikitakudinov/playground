@@ -111,7 +111,7 @@ class _CountryPickerWidgetState extends State<CountryPickerWidget>
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 5.0, 0.0, 10.0),
+                                  0.0, 5.0, 0.0, 10.0),
                               child: Text(
                                 'Страна',
                                 style: FlutterFlowTheme.of(context).labelMedium,

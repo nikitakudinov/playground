@@ -278,7 +278,7 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
+                                    0.0, 15.0, 0.0, 10.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
@@ -334,7 +334,7 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
+                                    0.0, 15.0, 0.0, 10.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
