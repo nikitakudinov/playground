@@ -513,6 +513,44 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                     );
                                                   },
                                                 );
+                                                // ADD REALATION MEMBERS
+                                                _model.apiResultcjps =
+                                                    await RelationGroup.addCall
+                                                        .call(
+                                                  contentType: 'Team',
+                                                  contentId: getJsonField(
+                                                    (_model.apiResultmar
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.list[:].Id''',
+                                                  ),
+                                                  retionField: 'MembersCount',
+                                                  relationId: FFAppState()
+                                                      .AuthenticatedUser
+                                                      .id,
+                                                );
+                                                if ((_model.apiResultcjps
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            'MEMBERS REALATION ADDED'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                }
                                               }
                                             }
                                           }

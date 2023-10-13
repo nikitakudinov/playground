@@ -42,6 +42,8 @@ class AddTeamModel extends FlutterFlowModel<AddTeamWidget> {
   ApiCallResponse? apiResults46;
   // Stores action output result for [Backend Call - API (ADD)] action in Button widget.
   ApiCallResponse? apiResultcjp;
+  // Stores action output result for [Backend Call - API (ADD)] action in Button widget.
+  ApiCallResponse? apiResultcjps;
 
   /// Initialization and disposal methods.
 
