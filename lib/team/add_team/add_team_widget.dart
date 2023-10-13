@@ -453,7 +453,7 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                               tag: _model.tagController.text,
                                               updatedAt: getCurrentTimestamp
                                                   .toString(),
-                                              teamRole: 'Основатель, Лидер',
+                                              teamRole: 'Основатель',
                                               lineUp: 'True',
                                             );
                                             if ((_model
