@@ -457,7 +457,7 @@ class AddteammemberCall {
     return ApiManager.instance.makeApiCall(
       callName: 'ADDTEAMMEMBER',
       apiUrl:
-          '${RelationGroup.baseUrl}/Team/${contentId}/mm/CreatorCount/${relationId}?limit=25&shuffle=0&offset=0',
+          '${RelationGroup.baseUrl}Team/${contentId}/mm/CreatorCount/${relationId}?limit=25&shuffle=0&offset=0',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
