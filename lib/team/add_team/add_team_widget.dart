@@ -472,6 +472,82 @@ class _AddTeamWidgetState extends State<AddTeamWidget> {
                                                   );
                                                 },
                                               );
+                                              // ADD REALATION CREATOR
+                                              _model.apiResultcjp =
+                                                  await RelationGroup.addCall
+                                                      .call(
+                                                contentType: 'Team',
+                                                contentId: getJsonField(
+                                                  (_model.apiResultmar
+                                                          ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.list[:].Id''',
+                                                ),
+                                                retionField: 'CreatorCount',
+                                                relationId: FFAppState()
+                                                    .AuthenticatedUser
+                                                    .id,
+                                              );
+                                              if ((_model.apiResultcjp
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          'CREATOR REALATION ADDED'),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text('Ok'),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                                // ADD RELATION MEMBER
+                                                _model.apiResultjw1 =
+                                                    await RelationGroup.addCall
+                                                        .call(
+                                                  contentType: 'Team',
+                                                  contentId: getJsonField(
+                                                    (_model.apiResultmar
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.list[:].Id''',
+                                                  ),
+                                                  retionField: 'MembersCount',
+                                                  relationId: FFAppState()
+                                                      .AuthenticatedUser
+                                                      .id,
+                                                );
+                                                if ((_model.apiResultjw1
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title:
+                                                            Text('ALL WORKS'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
+                                                }
+                                              }
                                             }
                                           }
                                         }
