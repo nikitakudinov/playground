@@ -94,7 +94,9 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
             children: [
               Builder(
                 builder: (context) {
-                  final requestList = _model.requestsList.toList();
+                  final requestList = _model.requestsList
+                      .where((e) => e.type == 'Приглашение в команду')
+                      .toList();
                   return ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
