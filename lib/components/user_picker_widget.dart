@@ -820,10 +820,16 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Text(
-                                            '[${teamMembersListItem.tag}] ${teamMembersListItem.nickname}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              '[${teamMembersListItem.tag}] ${teamMembersListItem.nickname}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge,
+                                            ),
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
