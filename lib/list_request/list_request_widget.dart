@@ -79,6 +79,27 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
               );
             },
           );
+          _model.apiResult7q5 = await GetdataGroup.dataitemCall.call(
+            contentType: 'Team',
+            contentId: _model.requestsList.last.fromTeamIdRAW,
+            fields: ' Id,Name,Tag,Logo,Country,Flag,CreatedAt,UpdatedAt',
+          );
+          if ((_model.apiResult7q5?.succeeded ?? true)) {
+            await showDialog(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  title: Text('SUKA'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text('Ok'),
+                    ),
+                  ],
+                );
+              },
+            );
+          }
         } else {
           await showDialog(
             context: context,
