@@ -820,19 +820,8 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Hello World',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                          ),
                                           Text(
-                                            'Hello World',
+                                            '[${teamMembersListItem.tag}] ${teamMembersListItem.nickname}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
@@ -892,7 +881,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(0.0),
                                               child: Image.network(
-                                                'https://picsum.photos/seed/118/600',
+                                                teamMembersListItem.flag,
                                                 width: 16.0,
                                                 height: 12.0,
                                                 fit: BoxFit.cover,
@@ -904,7 +893,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Hello World',
+                                              teamMembersListItem.country,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall
@@ -921,7 +910,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          'Hello World',
+                                          teamMembersListItem.teamRole,
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall,
                                         ),
