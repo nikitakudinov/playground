@@ -48,6 +48,10 @@ class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
           int index, Function(RelationStruct) updateFn) =>
       relationToUser[index] = updateFn(relationToUser[index]);
 
+  TeamStruct? team;
+  void updateTeamStruct(Function(TeamStruct) updateFn) =>
+      updateFn(team ??= TeamStruct());
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

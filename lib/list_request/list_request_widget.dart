@@ -99,6 +99,35 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                 );
               },
             );
+            setState(() {
+              _model.updateTeamStruct(
+                (e) => e
+                  ..id = getJsonField(
+                    (_model.apiResult7q5?.jsonBody ?? ''),
+                    r'''$.list[:].Id''',
+                  )
+                  ..name = getJsonField(
+                    (_model.apiResult7q5?.jsonBody ?? ''),
+                    r'''$.list[:].Name''',
+                  ).toString().toString()
+                  ..tag = getJsonField(
+                    (_model.apiResult7q5?.jsonBody ?? ''),
+                    r'''$.list[:].Tag''',
+                  ).toString().toString()
+                  ..logo = getJsonField(
+                    (_model.apiResult7q5?.jsonBody ?? ''),
+                    r'''$.list[:].Logo''',
+                  )
+                  ..country = getJsonField(
+                    (_model.apiResult7q5?.jsonBody ?? ''),
+                    r'''$.list[:].Country''',
+                  ).toString().toString()
+                  ..flag = getJsonField(
+                    (_model.apiResult7q5?.jsonBody ?? ''),
+                    r'''$.list[:].Flag''',
+                  ),
+              );
+            });
           }
         } else {
           await showDialog(
@@ -196,7 +225,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                             child: Image.network(
-                                              'https://picsum.photos/seed/686/600',
+                                              _model.team!.logo,
                                               width: 40.0,
                                               height: 40.0,
                                               fit: BoxFit.cover,
@@ -209,7 +238,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Hello World',
+                                              '[${_model.team?.tag}] ${_model.team?.name}',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge,
@@ -226,7 +255,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                         BorderRadius.circular(
                                                             0.0),
                                                     child: Image.network(
-                                                      'https://picsum.photos/seed/610/600',
+                                                      _model.team!.flag,
                                                       width: 16.0,
                                                       height: 12.0,
                                                       fit: BoxFit.cover,
@@ -234,7 +263,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  'Hello World',
+                                                  valueOrDefault<String>(
+                                                    _model.team?.country,
+                                                    '0',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelMedium,
