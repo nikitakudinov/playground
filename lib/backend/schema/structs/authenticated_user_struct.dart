@@ -13,10 +13,12 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
     int? id,
     String? nickname,
     String? fBUserId,
+    String? tag,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nickname = nickname,
         _fBUserId = fBUserId,
+        _tag = tag,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -38,11 +40,18 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
   set fBUserId(String? val) => _fBUserId = val;
   bool hasFBUserId() => _fBUserId != null;
 
+  // "Tag" field.
+  String? _tag;
+  String get tag => _tag ?? '';
+  set tag(String? val) => _tag = val;
+  bool hasTag() => _tag != null;
+
   static AuthenticatedUserStruct fromMap(Map<String, dynamic> data) =>
       AuthenticatedUserStruct(
         id: castToType<int>(data['Id']),
         nickname: data['Nickname'] as String?,
         fBUserId: data['FBUserId'] as String?,
+        tag: data['Tag'] as String?,
       );
 
   static AuthenticatedUserStruct? maybeFromMap(dynamic data) =>
@@ -54,6 +63,7 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
         'Id': _id,
         'Nickname': _nickname,
         'FBUserId': _fBUserId,
+        'Tag': _tag,
       }.withoutNulls;
 
   @override
@@ -68,6 +78,10 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
         ),
         'FBUserId': serializeParam(
           _fBUserId,
+          ParamType.String,
+        ),
+        'Tag': serializeParam(
+          _tag,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -90,6 +104,11 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        tag: deserializeParam(
+          data['Tag'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -100,17 +119,19 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
     return other is AuthenticatedUserStruct &&
         id == other.id &&
         nickname == other.nickname &&
-        fBUserId == other.fBUserId;
+        fBUserId == other.fBUserId &&
+        tag == other.tag;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([id, nickname, fBUserId]);
+  int get hashCode => const ListEquality().hash([id, nickname, fBUserId, tag]);
 }
 
 AuthenticatedUserStruct createAuthenticatedUserStruct({
   int? id,
   String? nickname,
   String? fBUserId,
+  String? tag,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -120,6 +141,7 @@ AuthenticatedUserStruct createAuthenticatedUserStruct({
       id: id,
       nickname: nickname,
       fBUserId: fBUserId,
+      tag: tag,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
