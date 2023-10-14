@@ -77,6 +77,8 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   FormFieldController<String>? dropDownValueController;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (USERTEAMSETTINGS)] action in Button widget.
+  ApiCallResponse? apiResultuxe;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;

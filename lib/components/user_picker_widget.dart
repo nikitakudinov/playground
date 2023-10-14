@@ -607,8 +607,40 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                     ),
                                     Expanded(
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          _model.apiResultuxe =
+                                              await UpdatedataGroup
+                                                  .userteamsettingsCall
+                                                  .call(
+                                            contentType: 'User',
+                                            updatedAt:
+                                                getCurrentTimestamp.toString(),
+                                            contentId: _model.selectedUserIdINT,
+                                            teamRole: _model.dropDownValue,
+                                            lineUp: _model.checkboxValue
+                                                ?.toString(),
+                                          );
+                                          if ((_model.apiResultuxe?.succeeded ??
+                                              true)) {
+                                            setState(() {
+                                              FFAppState()
+                                                  .updateTeamMembersAtIndex(
+                                                _model.selectedIndex!,
+                                                (e) => e
+                                                  ..teamRole =
+                                                      _model.dropDownValue
+                                                  ..lineUp = _model
+                                                      .checkboxValue
+                                                      ?.toString(),
+                                              );
+                                            });
+                                            setState(() {
+                                              _model.teamMemberSettingsVISIBILITY =
+                                                  false;
+                                            });
+                                          }
+
+                                          setState(() {});
                                         },
                                         text: 'Отправить',
                                         options: FFButtonOptions(

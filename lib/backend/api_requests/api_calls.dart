@@ -335,6 +335,7 @@ class UpdatedataGroup {
   };
   static NicknameCall nicknameCall = NicknameCall();
   static UserteamCall userteamCall = UserteamCall();
+  static UserteamsettingsCall userteamsettingsCall = UserteamsettingsCall();
   static TeamCall teamCall = TeamCall();
 }
 
@@ -391,6 +392,43 @@ class UserteamCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'USERTEAM',
+      apiUrl: '${UpdatedataGroup.baseUrl}${contentType}/${contentId}',
+      callType: ApiCallType.PATCH,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyNjkzMjksImV4cCI6MTY5NzMwNTMyOX0.13v3cCxxupwTVgQ3dPOaGnz3EZINFALbIGnaeEp6Ku4',
+        'xc-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyNjkzMjksImV4cCI6MTY5NzMwNTMyOX0.13v3cCxxupwTVgQ3dPOaGnz3EZINFALbIGnaeEp6Ku4',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UserteamsettingsCall {
+  Future<ApiCallResponse> call({
+    String? contentType = '',
+    String? updatedAt = '',
+    int? contentId,
+    String? teamRole = '',
+    String? lineUp = '',
+  }) {
+    final ffApiRequestBody = '''
+{
+  "TeamRole": "${teamRole}",
+  "LineUp": "${lineUp}",
+  "UpdatedAt": "${updatedAt}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'USERTEAMSETTINGS',
       apiUrl: '${UpdatedataGroup.baseUrl}${contentType}/${contentId}',
       callType: ApiCallType.PATCH,
       headers: {
