@@ -1,8 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -33,6 +36,39 @@ class _HomeWidgetState extends State<HomeWidget> {
       // UpdateAppStateAuthUserData
       await action_blocks.updateAppStateAuthUser(context);
       await action_blocks.loadCountriesToAppState(context);
+      _model.apiResultnps1 = await GetdataGroup.datalistCall.call(
+        contentType: 'Request',
+        fields: 'Type,Id,CreatorId,FromTeamId,ToUserId,CreatedAt,UpdatedAt',
+        field1: 'ToUserId',
+        field2: FFAppState().AuthenticatedUser.id.toString(),
+      );
+      if ((_model.apiResultnps1?.succeeded ?? true)) {
+        _model.requestData1 = await actions.jsonToDataTypeRequest(
+          getJsonField(
+            (_model.apiResultnps1?.jsonBody ?? ''),
+            r'''$.list''',
+            true,
+          ),
+        );
+        setState(() {
+          FFAppState().requests =
+              _model.requestData1!.toList().cast<RequestStruct>();
+        });
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('1'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
     });
   }
 
