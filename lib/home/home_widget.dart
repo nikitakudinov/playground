@@ -83,7 +83,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Text(
-                FFAppState().AuthenticatedUser.tag,
+                FFAppState().AuthenticatedUser.teamRole,
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Row(
