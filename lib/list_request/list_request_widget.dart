@@ -211,7 +211,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                                         0.0),
                                                             child:
                                                                 Image.network(
-                                                              'https://picsum.photos/seed/610/600',
+                                                              getJsonField(
+                                                                teamDataItem,
+                                                                r'''$.Flag''',
+                                                              ),
                                                               width: 16.0,
                                                               height: 12.0,
                                                               fit: BoxFit.cover,
@@ -219,7 +222,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                           ),
                                                         ),
                                                         Text(
-                                                          'Hello World',
+                                                          getJsonField(
+                                                            teamDataItem,
+                                                            r'''$.Country''',
+                                                          ).toString(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelMedium,
