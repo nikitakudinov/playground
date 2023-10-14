@@ -610,7 +610,7 @@ class RemoveCall {
     return ApiManager.instance.makeApiCall(
       callName: 'REMOVE',
       apiUrl:
-          '${RelationGroup.baseUrl}/${contentType}/${contentId}/mm/${retionField}/${relationId}?limit=25&shuffle=0&offset=0',
+          '${RelationGroup.baseUrl}${contentType}/${contentId}/mm/${retionField}/${relationId}?limit=25&shuffle=0&offset=0',
       callType: ApiCallType.DELETE,
       headers: {
         'accept': 'application/json',
