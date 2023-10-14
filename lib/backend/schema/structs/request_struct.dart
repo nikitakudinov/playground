@@ -14,15 +14,13 @@ class RequestStruct extends FFFirebaseStruct {
     String? type,
     String? createdAt,
     String? updatedAt,
-    RelationStruct? fromTeamID,
-    RelationStruct? toUserID,
+    String? toUserRAW,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _type = type,
         _createdAt = createdAt,
         _updatedAt = updatedAt,
-        _fromTeamID = fromTeamID,
-        _toUserID = toUserID,
+        _toUserRAW = toUserRAW,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -50,29 +48,18 @@ class RequestStruct extends FFFirebaseStruct {
   set updatedAt(String? val) => _updatedAt = val;
   bool hasUpdatedAt() => _updatedAt != null;
 
-  // "FromTeamID" field.
-  RelationStruct? _fromTeamID;
-  RelationStruct get fromTeamID => _fromTeamID ?? RelationStruct();
-  set fromTeamID(RelationStruct? val) => _fromTeamID = val;
-  void updateFromTeamID(Function(RelationStruct) updateFn) =>
-      updateFn(_fromTeamID ??= RelationStruct());
-  bool hasFromTeamID() => _fromTeamID != null;
-
-  // "ToUserID" field.
-  RelationStruct? _toUserID;
-  RelationStruct get toUserID => _toUserID ?? RelationStruct();
-  set toUserID(RelationStruct? val) => _toUserID = val;
-  void updateToUserID(Function(RelationStruct) updateFn) =>
-      updateFn(_toUserID ??= RelationStruct());
-  bool hasToUserID() => _toUserID != null;
+  // "ToUserRAW" field.
+  String? _toUserRAW;
+  String get toUserRAW => _toUserRAW ?? '';
+  set toUserRAW(String? val) => _toUserRAW = val;
+  bool hasToUserRAW() => _toUserRAW != null;
 
   static RequestStruct fromMap(Map<String, dynamic> data) => RequestStruct(
         id: castToType<int>(data['Id']),
         type: data['Type'] as String?,
         createdAt: data['CreatedAt'] as String?,
         updatedAt: data['UpdatedAt'] as String?,
-        fromTeamID: RelationStruct.maybeFromMap(data['FromTeamID']),
-        toUserID: RelationStruct.maybeFromMap(data['ToUserID']),
+        toUserRAW: data['ToUserRAW'] as String?,
       );
 
   static RequestStruct? maybeFromMap(dynamic data) =>
@@ -83,8 +70,7 @@ class RequestStruct extends FFFirebaseStruct {
         'Type': _type,
         'CreatedAt': _createdAt,
         'UpdatedAt': _updatedAt,
-        'FromTeamID': _fromTeamID?.toMap(),
-        'ToUserID': _toUserID?.toMap(),
+        'ToUserRAW': _toUserRAW,
       }.withoutNulls;
 
   @override
@@ -105,13 +91,9 @@ class RequestStruct extends FFFirebaseStruct {
           _updatedAt,
           ParamType.String,
         ),
-        'FromTeamID': serializeParam(
-          _fromTeamID,
-          ParamType.DataStruct,
-        ),
-        'ToUserID': serializeParam(
-          _toUserID,
-          ParamType.DataStruct,
+        'ToUserRAW': serializeParam(
+          _toUserRAW,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -137,17 +119,10 @@ class RequestStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        fromTeamID: deserializeStructParam(
-          data['FromTeamID'],
-          ParamType.DataStruct,
+        toUserRAW: deserializeParam(
+          data['ToUserRAW'],
+          ParamType.String,
           false,
-          structBuilder: RelationStruct.fromSerializableMap,
-        ),
-        toUserID: deserializeStructParam(
-          data['ToUserID'],
-          ParamType.DataStruct,
-          false,
-          structBuilder: RelationStruct.fromSerializableMap,
         ),
       );
 
@@ -161,13 +136,12 @@ class RequestStruct extends FFFirebaseStruct {
         type == other.type &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
-        fromTeamID == other.fromTeamID &&
-        toUserID == other.toUserID;
+        toUserRAW == other.toUserRAW;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([id, type, createdAt, updatedAt, fromTeamID, toUserID]);
+  int get hashCode =>
+      const ListEquality().hash([id, type, createdAt, updatedAt, toUserRAW]);
 }
 
 RequestStruct createRequestStruct({
@@ -175,8 +149,7 @@ RequestStruct createRequestStruct({
   String? type,
   String? createdAt,
   String? updatedAt,
-  RelationStruct? fromTeamID,
-  RelationStruct? toUserID,
+  String? toUserRAW,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -187,8 +160,7 @@ RequestStruct createRequestStruct({
       type: type,
       createdAt: createdAt,
       updatedAt: updatedAt,
-      fromTeamID: fromTeamID ?? (clearUnsetFields ? RelationStruct() : null),
-      toUserID: toUserID ?? (clearUnsetFields ? RelationStruct() : null),
+      toUserRAW: toUserRAW,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -243,22 +215,6 @@ Map<String, dynamic> getRequestFirestoreData(
     return {};
   }
   final firestoreData = mapToFirestore(request.toMap());
-
-  // Handle nested data for "FromTeamID" field.
-  addRelationStructData(
-    firestoreData,
-    request.hasFromTeamID() ? request.fromTeamID : null,
-    'FromTeamID',
-    forFieldValue,
-  );
-
-  // Handle nested data for "ToUserID" field.
-  addRelationStructData(
-    firestoreData,
-    request.hasToUserID() ? request.toUserID : null,
-    'ToUserID',
-    forFieldValue,
-  );
 
   // Add any Firestore field values
   request.firestoreUtilData.fieldValues.forEach((k, v) => firestoreData[k] = v);
