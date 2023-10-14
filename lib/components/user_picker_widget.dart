@@ -291,6 +291,12 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             toUserId: int.tryParse(
                                                 _model.textController.text),
                                           );
+                                          setState(() {
+                                            _model.searchedUser = [];
+                                            _model.messageVISIBILITY = false;
+                                            _model.callToTeamButtonVISIBILITY =
+                                                true;
+                                          });
 
                                           setState(() {});
                                         },
