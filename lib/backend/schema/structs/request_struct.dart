@@ -14,7 +14,7 @@ class RequestStruct extends FFFirebaseStruct {
     String? type,
     String? createdAt,
     String? updatedAt,
-    String? toUserRAW,
+    List<String>? toUserRAW,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _type = type,
@@ -49,9 +49,11 @@ class RequestStruct extends FFFirebaseStruct {
   bool hasUpdatedAt() => _updatedAt != null;
 
   // "ToUserRAW" field.
-  String? _toUserRAW;
-  String get toUserRAW => _toUserRAW ?? '';
-  set toUserRAW(String? val) => _toUserRAW = val;
+  List<String>? _toUserRAW;
+  List<String> get toUserRAW => _toUserRAW ?? const [];
+  set toUserRAW(List<String>? val) => _toUserRAW = val;
+  void updateToUserRAW(Function(List<String>) updateFn) =>
+      updateFn(_toUserRAW ??= []);
   bool hasToUserRAW() => _toUserRAW != null;
 
   static RequestStruct fromMap(Map<String, dynamic> data) => RequestStruct(
@@ -59,7 +61,7 @@ class RequestStruct extends FFFirebaseStruct {
         type: data['Type'] as String?,
         createdAt: data['CreatedAt'] as String?,
         updatedAt: data['UpdatedAt'] as String?,
-        toUserRAW: data['ToUserRAW'] as String?,
+        toUserRAW: getDataList(data['ToUserRAW']),
       );
 
   static RequestStruct? maybeFromMap(dynamic data) =>
@@ -94,6 +96,7 @@ class RequestStruct extends FFFirebaseStruct {
         'ToUserRAW': serializeParam(
           _toUserRAW,
           ParamType.String,
+          true,
         ),
       }.withoutNulls;
 
@@ -119,10 +122,10 @@ class RequestStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
-        toUserRAW: deserializeParam(
+        toUserRAW: deserializeParam<String>(
           data['ToUserRAW'],
           ParamType.String,
-          false,
+          true,
         ),
       );
 
@@ -131,12 +134,13 @@ class RequestStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is RequestStruct &&
         id == other.id &&
         type == other.type &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
-        toUserRAW == other.toUserRAW;
+        listEquality.equals(toUserRAW, other.toUserRAW);
   }
 
   @override
@@ -149,7 +153,6 @@ RequestStruct createRequestStruct({
   String? type,
   String? createdAt,
   String? updatedAt,
-  String? toUserRAW,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -160,7 +163,6 @@ RequestStruct createRequestStruct({
       type: type,
       createdAt: createdAt,
       updatedAt: updatedAt,
-      toUserRAW: toUserRAW,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
