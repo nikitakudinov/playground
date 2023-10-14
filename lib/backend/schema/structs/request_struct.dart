@@ -16,6 +16,11 @@ class RequestStruct extends FFFirebaseStruct {
     String? updatedAt,
     List<String>? toUserRAW,
     int? fromTeamIdRAW,
+    List<String>? fromTeamTag,
+    List<String>? fromTeamName,
+    List<String>? fromTeamLogo,
+    List<String>? fromTeamCountry,
+    List<String>? fromTeamFlag,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _type = type,
@@ -23,6 +28,11 @@ class RequestStruct extends FFFirebaseStruct {
         _updatedAt = updatedAt,
         _toUserRAW = toUserRAW,
         _fromTeamIdRAW = fromTeamIdRAW,
+        _fromTeamTag = fromTeamTag,
+        _fromTeamName = fromTeamName,
+        _fromTeamLogo = fromTeamLogo,
+        _fromTeamCountry = fromTeamCountry,
+        _fromTeamFlag = fromTeamFlag,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -66,6 +76,46 @@ class RequestStruct extends FFFirebaseStruct {
       _fromTeamIdRAW = fromTeamIdRAW + amount;
   bool hasFromTeamIdRAW() => _fromTeamIdRAW != null;
 
+  // "FromTeamTag" field.
+  List<String>? _fromTeamTag;
+  List<String> get fromTeamTag => _fromTeamTag ?? const [];
+  set fromTeamTag(List<String>? val) => _fromTeamTag = val;
+  void updateFromTeamTag(Function(List<String>) updateFn) =>
+      updateFn(_fromTeamTag ??= []);
+  bool hasFromTeamTag() => _fromTeamTag != null;
+
+  // "FromTeamName" field.
+  List<String>? _fromTeamName;
+  List<String> get fromTeamName => _fromTeamName ?? const [];
+  set fromTeamName(List<String>? val) => _fromTeamName = val;
+  void updateFromTeamName(Function(List<String>) updateFn) =>
+      updateFn(_fromTeamName ??= []);
+  bool hasFromTeamName() => _fromTeamName != null;
+
+  // "FromTeamLogo" field.
+  List<String>? _fromTeamLogo;
+  List<String> get fromTeamLogo => _fromTeamLogo ?? const [];
+  set fromTeamLogo(List<String>? val) => _fromTeamLogo = val;
+  void updateFromTeamLogo(Function(List<String>) updateFn) =>
+      updateFn(_fromTeamLogo ??= []);
+  bool hasFromTeamLogo() => _fromTeamLogo != null;
+
+  // "FromTeamCountry" field.
+  List<String>? _fromTeamCountry;
+  List<String> get fromTeamCountry => _fromTeamCountry ?? const [];
+  set fromTeamCountry(List<String>? val) => _fromTeamCountry = val;
+  void updateFromTeamCountry(Function(List<String>) updateFn) =>
+      updateFn(_fromTeamCountry ??= []);
+  bool hasFromTeamCountry() => _fromTeamCountry != null;
+
+  // "FromTeamFlag" field.
+  List<String>? _fromTeamFlag;
+  List<String> get fromTeamFlag => _fromTeamFlag ?? const [];
+  set fromTeamFlag(List<String>? val) => _fromTeamFlag = val;
+  void updateFromTeamFlag(Function(List<String>) updateFn) =>
+      updateFn(_fromTeamFlag ??= []);
+  bool hasFromTeamFlag() => _fromTeamFlag != null;
+
   static RequestStruct fromMap(Map<String, dynamic> data) => RequestStruct(
         id: castToType<int>(data['Id']),
         type: data['Type'] as String?,
@@ -73,6 +123,11 @@ class RequestStruct extends FFFirebaseStruct {
         updatedAt: data['UpdatedAt'] as String?,
         toUserRAW: getDataList(data['ToUserRAW']),
         fromTeamIdRAW: castToType<int>(data['FromTeamIdRAW']),
+        fromTeamTag: getDataList(data['FromTeamTag']),
+        fromTeamName: getDataList(data['FromTeamName']),
+        fromTeamLogo: getDataList(data['FromTeamLogo']),
+        fromTeamCountry: getDataList(data['FromTeamCountry']),
+        fromTeamFlag: getDataList(data['FromTeamFlag']),
       );
 
   static RequestStruct? maybeFromMap(dynamic data) =>
@@ -85,6 +140,11 @@ class RequestStruct extends FFFirebaseStruct {
         'UpdatedAt': _updatedAt,
         'ToUserRAW': _toUserRAW,
         'FromTeamIdRAW': _fromTeamIdRAW,
+        'FromTeamTag': _fromTeamTag,
+        'FromTeamName': _fromTeamName,
+        'FromTeamLogo': _fromTeamLogo,
+        'FromTeamCountry': _fromTeamCountry,
+        'FromTeamFlag': _fromTeamFlag,
       }.withoutNulls;
 
   @override
@@ -113,6 +173,31 @@ class RequestStruct extends FFFirebaseStruct {
         'FromTeamIdRAW': serializeParam(
           _fromTeamIdRAW,
           ParamType.int,
+        ),
+        'FromTeamTag': serializeParam(
+          _fromTeamTag,
+          ParamType.String,
+          true,
+        ),
+        'FromTeamName': serializeParam(
+          _fromTeamName,
+          ParamType.String,
+          true,
+        ),
+        'FromTeamLogo': serializeParam(
+          _fromTeamLogo,
+          ParamType.String,
+          true,
+        ),
+        'FromTeamCountry': serializeParam(
+          _fromTeamCountry,
+          ParamType.String,
+          true,
+        ),
+        'FromTeamFlag': serializeParam(
+          _fromTeamFlag,
+          ParamType.String,
+          true,
         ),
       }.withoutNulls;
 
@@ -148,6 +233,31 @@ class RequestStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        fromTeamTag: deserializeParam<String>(
+          data['FromTeamTag'],
+          ParamType.String,
+          true,
+        ),
+        fromTeamName: deserializeParam<String>(
+          data['FromTeamName'],
+          ParamType.String,
+          true,
+        ),
+        fromTeamLogo: deserializeParam<String>(
+          data['FromTeamLogo'],
+          ParamType.String,
+          true,
+        ),
+        fromTeamCountry: deserializeParam<String>(
+          data['FromTeamCountry'],
+          ParamType.String,
+          true,
+        ),
+        fromTeamFlag: deserializeParam<String>(
+          data['FromTeamFlag'],
+          ParamType.String,
+          true,
+        ),
       );
 
   @override
@@ -162,12 +272,28 @@ class RequestStruct extends FFFirebaseStruct {
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
         listEquality.equals(toUserRAW, other.toUserRAW) &&
-        fromTeamIdRAW == other.fromTeamIdRAW;
+        fromTeamIdRAW == other.fromTeamIdRAW &&
+        listEquality.equals(fromTeamTag, other.fromTeamTag) &&
+        listEquality.equals(fromTeamName, other.fromTeamName) &&
+        listEquality.equals(fromTeamLogo, other.fromTeamLogo) &&
+        listEquality.equals(fromTeamCountry, other.fromTeamCountry) &&
+        listEquality.equals(fromTeamFlag, other.fromTeamFlag);
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([id, type, createdAt, updatedAt, toUserRAW, fromTeamIdRAW]);
+  int get hashCode => const ListEquality().hash([
+        id,
+        type,
+        createdAt,
+        updatedAt,
+        toUserRAW,
+        fromTeamIdRAW,
+        fromTeamTag,
+        fromTeamName,
+        fromTeamLogo,
+        fromTeamCountry,
+        fromTeamFlag
+      ]);
 }
 
 RequestStruct createRequestStruct({
