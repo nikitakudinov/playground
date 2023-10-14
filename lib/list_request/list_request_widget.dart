@@ -136,22 +136,22 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 10.0, 10.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Builder(
-                                      builder: (context) {
-                                        final teamList = getJsonField(
-                                          containerDatalistResponse.jsonBody,
-                                          r'''$.list''',
-                                        ).toList();
+                                child: Builder(
+                                  builder: (context) {
+                                    final teamData = getJsonField(
+                                      containerDatalistResponse.jsonBody,
+                                      r'''$.list''',
+                                    ).toList();
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate(teamData.length,
+                                          (teamDataIndex) {
+                                        final teamDataItem =
+                                            teamData[teamDataIndex];
                                         return Column(
                                           mainAxisSize: MainAxisSize.max,
-                                          children: List.generate(
-                                              teamList.length, (teamListIndex) {
-                                            final teamListItem =
-                                                teamList[teamListIndex];
-                                            return Row(
+                                          children: [
+                                            Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
@@ -164,7 +164,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                             5.0),
                                                     child: Image.network(
                                                       getJsonField(
-                                                        teamListItem,
+                                                        teamDataItem,
                                                         r'''$.Logo''',
                                                       ),
                                                       width: 40.0,
@@ -181,10 +181,10 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   children: [
                                                     Text(
                                                       '[${getJsonField(
-                                                        teamListItem,
+                                                        teamDataItem,
                                                         r'''$.Tag''',
                                                       ).toString()}] ${getJsonField(
-                                                        teamListItem,
+                                                        teamDataItem,
                                                         r'''$.Name''',
                                                       ).toString()}',
                                                       style:
@@ -229,12 +229,164 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   ],
                                                 ),
                                               ],
-                                            );
-                                          }),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Expanded(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                1.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Команда предлагает вступить в ее ряды. ',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: FFButtonWidget(
+                                                      onPressed: () {
+                                                        print(
+                                                            'Button pressed ...');
+                                                      },
+                                                      text: 'Отказаться',
+                                                      options: FFButtonOptions(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Saira Semi Condensed',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                                ),
+                                                        elevation: 3.0,
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent1,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(3.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: FFButtonWidget(
+                                                      onPressed: () {
+                                                        print(
+                                                            'Button pressed ...');
+                                                      },
+                                                      text: 'Вступить',
+                                                      options: FFButtonOptions(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    0.0,
+                                                                    15.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Saira Semi Condensed',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
+                                                        elevation: 3.0,
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(3.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ].divide(SizedBox(width: 15.0)),
+                                              ),
+                                            ),
+                                          ],
                                         );
-                                      },
-                                    ),
-                                  ],
+                                      }),
+                                    );
+                                  },
                                 ),
                               ),
                             );
