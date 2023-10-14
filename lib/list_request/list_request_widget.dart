@@ -135,7 +135,6 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                   future: GetdataGroup.dataitemCall.call(
                                     contentType: 'Team',
                                     contentId: requestListItem.fromTeamIdRAW,
-                                    fields: 'Name',
                                   ),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
@@ -168,7 +167,11 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
                                                 child: Image.network(
-                                                  'https://picsum.photos/seed/686/600',
+                                                  getJsonField(
+                                                    columnDataitemResponse
+                                                        .jsonBody,
+                                                    r'''$.list[:].Logo''',
+                                                  ),
                                                   width: 40.0,
                                                   height: 40.0,
                                                   fit: BoxFit.cover,
