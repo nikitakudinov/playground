@@ -145,7 +145,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                             child: Image.network(
-                                              _model.team!.logo,
+                                              'https://picsum.photos/seed/686/600',
                                               width: 40.0,
                                               height: 40.0,
                                               fit: BoxFit.cover,
@@ -158,7 +158,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '[${_model.team?.tag}] ${_model.team?.name}',
+                                              '[] ${_model.team?.name}',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge,
@@ -175,7 +175,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                         BorderRadius.circular(
                                                             0.0),
                                                     child: Image.network(
-                                                      _model.team!.flag,
+                                                      'https://picsum.photos/seed/610/600',
                                                       width: 16.0,
                                                       height: 12.0,
                                                       fit: BoxFit.cover,
@@ -183,10 +183,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  valueOrDefault<String>(
-                                                    _model.team?.country,
-                                                    '0',
-                                                  ),
+                                                  'Hello World',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelMedium,
