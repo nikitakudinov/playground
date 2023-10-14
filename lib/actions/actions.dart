@@ -32,6 +32,18 @@ Future updateAppStateAuthUser(BuildContext context) async {
           ..fBUserId = getJsonField(
             (apiResultnzr?.jsonBody ?? ''),
             r'''$.list[:].FBUserId''',
+          ).toString().toString()
+          ..tag = getJsonField(
+            (apiResultnzr?.jsonBody ?? ''),
+            r'''$.list[:].Tag''',
+          ).toString().toString()
+          ..teamRole = getJsonField(
+            (apiResultnzr?.jsonBody ?? ''),
+            r'''$.list[:].TeamRole''',
+          ).toString().toString()
+          ..lineUp = getJsonField(
+            (apiResultnzr?.jsonBody ?? ''),
+            r'''$.list[:].LineUp''',
           ).toString().toString(),
       );
     });
