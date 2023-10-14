@@ -15,12 +15,14 @@ class RequestStruct extends FFFirebaseStruct {
     String? createdAt,
     String? updatedAt,
     List<String>? toUserRAW,
+    int? fromTeamIdRAW,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _type = type,
         _createdAt = createdAt,
         _updatedAt = updatedAt,
         _toUserRAW = toUserRAW,
+        _fromTeamIdRAW = fromTeamIdRAW,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -56,12 +58,21 @@ class RequestStruct extends FFFirebaseStruct {
       updateFn(_toUserRAW ??= []);
   bool hasToUserRAW() => _toUserRAW != null;
 
+  // "FromTeamIdRAW" field.
+  int? _fromTeamIdRAW;
+  int get fromTeamIdRAW => _fromTeamIdRAW ?? 0;
+  set fromTeamIdRAW(int? val) => _fromTeamIdRAW = val;
+  void incrementFromTeamIdRAW(int amount) =>
+      _fromTeamIdRAW = fromTeamIdRAW + amount;
+  bool hasFromTeamIdRAW() => _fromTeamIdRAW != null;
+
   static RequestStruct fromMap(Map<String, dynamic> data) => RequestStruct(
         id: castToType<int>(data['Id']),
         type: data['Type'] as String?,
         createdAt: data['CreatedAt'] as String?,
         updatedAt: data['UpdatedAt'] as String?,
         toUserRAW: getDataList(data['ToUserRAW']),
+        fromTeamIdRAW: castToType<int>(data['FromTeamIdRAW']),
       );
 
   static RequestStruct? maybeFromMap(dynamic data) =>
@@ -73,6 +84,7 @@ class RequestStruct extends FFFirebaseStruct {
         'CreatedAt': _createdAt,
         'UpdatedAt': _updatedAt,
         'ToUserRAW': _toUserRAW,
+        'FromTeamIdRAW': _fromTeamIdRAW,
       }.withoutNulls;
 
   @override
@@ -97,6 +109,10 @@ class RequestStruct extends FFFirebaseStruct {
           _toUserRAW,
           ParamType.String,
           true,
+        ),
+        'FromTeamIdRAW': serializeParam(
+          _fromTeamIdRAW,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -127,6 +143,11 @@ class RequestStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
+        fromTeamIdRAW: deserializeParam(
+          data['FromTeamIdRAW'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -140,12 +161,13 @@ class RequestStruct extends FFFirebaseStruct {
         type == other.type &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
-        listEquality.equals(toUserRAW, other.toUserRAW);
+        listEquality.equals(toUserRAW, other.toUserRAW) &&
+        fromTeamIdRAW == other.fromTeamIdRAW;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([id, type, createdAt, updatedAt, toUserRAW]);
+  int get hashCode => const ListEquality()
+      .hash([id, type, createdAt, updatedAt, toUserRAW, fromTeamIdRAW]);
 }
 
 RequestStruct createRequestStruct({
@@ -153,6 +175,7 @@ RequestStruct createRequestStruct({
   String? type,
   String? createdAt,
   String? updatedAt,
+  int? fromTeamIdRAW,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -163,6 +186,7 @@ RequestStruct createRequestStruct({
       type: type,
       createdAt: createdAt,
       updatedAt: updatedAt,
+      fromTeamIdRAW: fromTeamIdRAW,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
