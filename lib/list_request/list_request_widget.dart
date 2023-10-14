@@ -34,7 +34,8 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResult7g6 = await GetdataGroup.datalistCall.call(
         contentType: 'Request',
-        fields: 'Id,Type,CreatedAt,UpdatedAt,ToUserRAW,FromTeamIdRAW',
+        fields:
+            'Id,Type,CreatedAt,UpdatedAt,ToUserRAW,FromTeamIdRAW,FromTeamTag,FromTeamName,FromTeamLogo,FromTeamCountry,FromTeamFlag',
         field1: 'ToUserRAW',
         field2: FFAppState().AuthenticatedUser.nickname,
       );
