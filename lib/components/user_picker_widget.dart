@@ -805,7 +805,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(3.0),
                                   child: Image.network(
-                                    'https://picsum.photos/seed/146/600',
+                                    teamMembersListItem.avatar,
                                     width: 50.0,
                                     height: 50.0,
                                     fit: BoxFit.cover,
