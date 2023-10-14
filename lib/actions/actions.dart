@@ -205,3 +205,5 @@ Future loadTournamentMembers(
     });
   }
 }
+
+Future loadTeams(BuildContext context) async {}

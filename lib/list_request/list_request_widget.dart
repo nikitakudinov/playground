@@ -50,31 +50,6 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
           _model.requestsList =
               _model.requestData!.toList().cast<RequestStruct>();
         });
-        if (_model.requestsList.last != null) {
-          _model.apiResult0by = await GetdataGroup.dataitemCall.call(
-            contentType: 'Tean',
-            contentId: getJsonField(
-              (_model.apiResultnps?.jsonBody ?? ''),
-              r'''$.list[:].FromTeamId''',
-            ),
-          );
-          if ((_model.apiResult0by?.succeeded ?? true)) {
-            await showDialog(
-              context: context,
-              builder: (alertDialogContext) {
-                return AlertDialog(
-                  title: Text('111111'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext),
-                      child: Text('Ok'),
-                    ),
-                  ],
-                );
-              },
-            );
-          }
-        }
       }
     });
   }
@@ -164,71 +139,105 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 10.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.0),
-                                                child: Image.network(
-                                                  'https://picsum.photos/seed/686/600',
-                                                  width: 40.0,
-                                                  height: 40.0,
-                                                  fit: BoxFit.cover,
+                                        FutureBuilder<ApiCallResponse>(
+                                          future:
+                                              GetdataGroup.datalistCall.call(
+                                            contentType: 'Team',
+                                            fields:
+                                                'Id,Name,Tag,Logo,Country,Flag,CreatedAt,UpdatedAt',
+                                            field1: 'Id',
+                                            field2: requestListItem.fromTeamId
+                                                .toString(),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child: SpinKitChasingDots(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    size: 50.0,
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                            Column(
+                                              );
+                                            }
+                                            final rowDatalistResponse =
+                                                snapshot.data!;
+                                            return Row(
                                               mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  '[] ${_model.team?.name}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyLarge,
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                    child: Image.network(
+                                                      'https://picsum.photos/seed/686/600',
+                                                      width: 40.0,
+                                                      height: 40.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
                                                 ),
-                                                Row(
+                                                Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.network(
-                                                          'https://picsum.photos/seed/610/600',
-                                                          width: 16.0,
-                                                          height: 12.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    ),
                                                     Text(
-                                                      'Hello World',
+                                                      '[] ${_model.team?.name}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
+                                                              .bodyLarge,
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0),
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        0.0),
+                                                            child:
+                                                                Image.network(
+                                                              'https://picsum.photos/seed/610/600',
+                                                              width: 16.0,
+                                                              height: 12.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          'Hello World',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .labelMedium,
+                                                        ),
+                                                      ],
                                                     ),
                                                   ],
                                                 ),
                                               ],
-                                            ),
-                                          ],
+                                            );
+                                          },
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
