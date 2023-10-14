@@ -831,51 +831,47 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                       .bodyLarge,
                                             ),
                                           ),
-                                          if (teamMembersListItem.lineUp)
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.00, -1.00),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 12.0),
-                                                    child: Icon(
-                                                      Icons
-                                                          .local_fire_department,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent1,
-                                                      size: 16.0,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.00, -1.00),
+                                                child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 12.0),
-                                                  child: Text(
-                                                    'LINEUP',
-                                                    style: FlutterFlowTheme.of(
+                                                  child: Icon(
+                                                    Icons.local_fire_department,
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Saira Semi Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          fontSize: 10.0,
-                                                        ),
+                                                        .accent1,
+                                                    size: 16.0,
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 12.0),
+                                                child: Text(
+                                                  'LINEUP',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Saira Semi Condensed',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        fontSize: 10.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ],
                                       ),
                                       Row(
