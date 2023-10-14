@@ -54,7 +54,27 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
       setState(() {
         _model.imagePath = widget.logo;
       });
-      setState(() {});
+      _model.apiResultiha = await RelationGroup.letationslistCall.call(
+        contentType: 'Team',
+        contentId: widget.id,
+        relationField: 'MembersCount',
+      );
+      if ((_model.apiResultiha?.succeeded ?? true)) {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('1'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+      }
     });
 
     _model.nameController ??= TextEditingController(text: widget.name);
