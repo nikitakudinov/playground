@@ -37,11 +37,22 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
         fields: 'Id,Type,CreatedAt,UpdatedAt,ToUserRAW',
       );
       if ((_model.apiResult7g6?.succeeded ?? true)) {
+        _model.requestData = await actions.jsonToDataTypeRequest(
+          getJsonField(
+            (_model.apiResult7g6?.jsonBody ?? ''),
+            r'''$.list''',
+            true,
+          ),
+        );
+        setState(() {
+          _model.requestsList =
+              _model.requestData!.toList().cast<RequestStruct>();
+        });
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
             return AlertDialog(
-              title: Text('1'),
+              title: Text('2'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),
@@ -51,17 +62,6 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
             );
           },
         );
-        _model.requestDaata = await actions.jsonToDataTypeRequest(
-          getJsonField(
-            (_model.apiResult7g6?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
-        );
-        setState(() {
-          _model.requestsList =
-              _model.requestDaata!.toList().cast<RequestStruct>();
-        });
       }
     });
   }
