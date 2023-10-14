@@ -276,6 +276,50 @@ class CreatrequestCall {
 
 /// End CREATDATA Group Code
 
+/// Start DELITEDATA Group Code
+
+class DelitedataGroup {
+  static String baseUrl =
+      'http://31.28.27.82:8080/api/v1/db/data/v1/pef1y2sb3hqy3yy/';
+  static Map<String, String> headers = {
+    'accept': 'application/json',
+    'xc-auth':
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyNjkzMjksImV4cCI6MTY5NzMwNTMyOX0.13v3cCxxupwTVgQ3dPOaGnz3EZINFALbIGnaeEp6Ku4',
+    'xc-token':
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyNjkzMjksImV4cCI6MTY5NzMwNTMyOX0.13v3cCxxupwTVgQ3dPOaGnz3EZINFALbIGnaeEp6Ku4',
+    'Content-Type': 'application/json',
+  };
+  static DelitedataCall delitedataCall = DelitedataCall();
+}
+
+class DelitedataCall {
+  Future<ApiCallResponse> call({
+    String? contentType = '',
+    int? contentId,
+  }) {
+    return ApiManager.instance.makeApiCall(
+      callName: 'DELITEDATA',
+      apiUrl: '${DelitedataGroup.baseUrl}${contentType}/${contentId}',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyNjkzMjksImV4cCI6MTY5NzMwNTMyOX0.13v3cCxxupwTVgQ3dPOaGnz3EZINFALbIGnaeEp6Ku4',
+        'xc-token':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTcyNjkzMjksImV4cCI6MTY5NzMwNTMyOX0.13v3cCxxupwTVgQ3dPOaGnz3EZINFALbIGnaeEp6Ku4',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+/// End DELITEDATA Group Code
+
 /// Start UPDATEDATA Group Code
 
 class UpdatedataGroup {

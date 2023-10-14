@@ -63,6 +63,8 @@ class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
   ApiCallResponse? apiResulttta;
   // Stores action output result for [Backend Call - API (ADD)] action in Button widget.
   ApiCallResponse? apiResultlnz;
+  // Stores action output result for [Backend Call - API (DELITEDATA)] action in Button widget.
+  ApiCallResponse? apiResultuxo;
 
   /// Initialization and disposal methods.
 

@@ -399,6 +399,23 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                                 );
                                                               },
                                                             );
+                                                            _model.apiResultuxo =
+                                                                await DelitedataGroup
+                                                                    .delitedataCall
+                                                                    .call(
+                                                              contentType:
+                                                                  'Request',
+                                                              contentId:
+                                                                  requestListItem
+                                                                      .id,
+                                                            );
+                                                            if ((_model
+                                                                    .apiResultuxo
+                                                                    ?.succeeded ??
+                                                                true)) {
+                                                              context.pushNamed(
+                                                                  'LIST_TEAM');
+                                                            }
                                                           }
                                                         }
 
