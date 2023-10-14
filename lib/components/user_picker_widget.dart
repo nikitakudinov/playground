@@ -849,21 +849,16 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                           );
                                           if ((_model.apiResultvoz?.succeeded ??
                                               true)) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return AlertDialog(
-                                                  title: Text('1'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext),
-                                                      child: Text('Ok'),
-                                                    ),
-                                                  ],
-                                                );
-                                              },
+                                            await UpdatedataGroup.userteamCall
+                                                .call(
+                                              contentType: 'User',
+                                              tag: 'false',
+                                              teamRole: 'Вне команды',
+                                              updatedAt: getCurrentTimestamp
+                                                  .toString(),
+                                              contentId:
+                                                  _model.selectedUserIdINT,
+                                              lineUp: 'false',
                                             );
                                             setState(() {
                                               FFAppState()
