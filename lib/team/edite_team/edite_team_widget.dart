@@ -73,20 +73,6 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
           FFAppState().teamMembers =
               _model.teamMembersData!.toList().cast<UserStruct>();
         });
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('11'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
       }
     });
 

@@ -68,7 +68,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
           child: SingleChildScrollView(
-            controller: _model.columnController,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -353,7 +352,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                         child: SingleChildScrollView(
-                          controller: _model.memberSettingsCol,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -646,6 +644,245 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                           setState(() {});
                                         },
                                         text: 'Отправить',
+                                        options: FFButtonOptions(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 15.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
+                                                    'Saira Semi Condensed',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
+                                        ),
+                                      ),
+                                    ),
+                                  ].divide(SizedBox(width: 15.0)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                if (_model.deliteMemberMessageVISIBILITY)
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).tertiary,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.7,
+                                      decoration: BoxDecoration(),
+                                      child: Wrap(
+                                        spacing: 0.0,
+                                        runSpacing: 0.0,
+                                        alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.start,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: [
+                                          Text(
+                                            'Исключить игрока из состава команды?',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 15.0, 15.0, 15.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(3.0),
+                                      child: Image.network(
+                                        _model.selectedUserAvatarVALUE,
+                                        width: 40.0,
+                                        height: 40.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            _model.selectedUserNicknameVALUE,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                          ),
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  _model.selectedUserFlag,
+                                                  width: 24.0,
+                                                  height: 16.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              _model.selectedUserCountry,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 15.0, 10.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () {
+                                          print('Button pressed ...');
+                                        },
+                                        text: 'Нет',
+                                        options: FFButtonOptions(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
+                                                    'Saira Semi Condensed',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          _model.apiResultvoz =
+                                              await RelationGroup.removeCall
+                                                  .call(
+                                            contentType: 'Team',
+                                            contentId: widget.docId,
+                                            retionField: 'MembersCount',
+                                            relationId:
+                                                _model.selectedUserIdINT,
+                                          );
+                                          if ((_model.apiResultvoz?.succeeded ??
+                                              true)) {
+                                            setState(() {
+                                              FFAppState()
+                                                  .removeAtIndexFromTeamMembers(
+                                                      _model.selectedIndex!);
+                                            });
+                                            _model.apiResult287 =
+                                                await CreatdataGroup
+                                                    .creatrequestCall
+                                                    .call(
+                                              type: 'Исключение из команды',
+                                              createdAt: getCurrentTimestamp
+                                                  .toString(),
+                                              updatedAt: getCurrentTimestamp
+                                                  .toString(),
+                                              creatorId: FFAppState()
+                                                  .AuthenticatedUser
+                                                  .id,
+                                              fromTeamId: widget.docId,
+                                              toUserId:
+                                                  _model.selectedUserIdINT,
+                                            );
+                                            if ((_model
+                                                    .apiResult287?.succeeded ??
+                                                true)) {
+                                              setState(() {
+                                                _model.deliteMemberMessageVISIBILITY =
+                                                    false;
+                                              });
+                                            }
+                                          }
+
+                                          setState(() {});
+                                        },
+                                        text: 'Да',
                                         options: FFButtonOptions(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -1001,13 +1238,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                   teamMembersListItem.teamRole;
                                               _model.selectedUserLineUp = true;
                                             });
-                                            await _model.memberSettingsCol
-                                                ?.animateTo(
-                                              0,
-                                              duration:
-                                                  Duration(milliseconds: 100),
-                                              curve: Curves.ease,
-                                            );
                                           },
                                         ),
                                         FlutterFlowIconButton(
@@ -1019,8 +1249,26 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 .primaryText,
                                             size: 18.0,
                                           ),
-                                          onPressed: () {
-                                            print('IconButton pressed ...');
+                                          onPressed: () async {
+                                            setState(() {
+                                              _model.selectedUserIdINT =
+                                                  teamMembersListItem.id;
+                                              _model.selectedIndex =
+                                                  teamMembersListIndex;
+                                              _model.selectedUserAvatarVALUE =
+                                                  teamMembersListItem.avatar;
+                                              _model.selectedUserNicknameVALUE =
+                                                  teamMembersListItem.nickname;
+                                              _model.selectedUserCountry =
+                                                  teamMembersListItem.country;
+                                              _model.selectedUserFlag =
+                                                  teamMembersListItem.flag;
+                                              _model.selectedUserTeamRole =
+                                                  teamMembersListItem.teamRole;
+                                              _model.selectedUserLineUp = true;
+                                              _model.deliteMemberMessageVISIBILITY =
+                                                  true;
+                                            });
                                           },
                                         ),
                                       ],
@@ -1031,7 +1279,6 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                             ),
                           );
                         },
-                        controller: _model.squad,
                       );
                     },
                   ),

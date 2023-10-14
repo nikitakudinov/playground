@@ -68,14 +68,12 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
 
   bool? selectedUserLineUp;
 
+  bool deliteMemberMessageVISIBILITY = false;
+
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for Column widget.
-  ScrollController? columnController;
   // Stores action output result for [Backend Call - API (CREATREQUEST)] action in Button widget.
   ApiCallResponse? apiResultbms;
-  // State field(s) for MemberSettingsCol widget.
-  ScrollController? memberSettingsCol;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -83,6 +81,10 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   bool? checkboxValue;
   // Stores action output result for [Backend Call - API (USERTEAMSETTINGS)] action in Button widget.
   ApiCallResponse? apiResultuxe;
+  // Stores action output result for [Backend Call - API (REMOVE)] action in Button widget.
+  ApiCallResponse? apiResultvoz;
+  // Stores action output result for [Backend Call - API (CREATREQUEST)] action in Button widget.
+  ApiCallResponse? apiResult287;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
@@ -90,22 +92,13 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   ApiCallResponse? apiResult8em;
   // Stores action output result for [Custom Action - jsonToDataTypeUser] action in Button widget.
   List<UserStruct>? usersdata;
-  // State field(s) for squad widget.
-  ScrollController? squad;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    columnController = ScrollController();
-    memberSettingsCol = ScrollController();
-    squad = ScrollController();
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
-    columnController?.dispose();
-    memberSettingsCol?.dispose();
     textController?.dispose();
-    squad?.dispose();
   }
 
   /// Action blocks are added here.
