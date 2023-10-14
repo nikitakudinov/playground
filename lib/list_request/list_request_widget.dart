@@ -337,9 +337,72 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                   ),
                                                   Expanded(
                                                     child: FFButtonWidget(
-                                                      onPressed: () {
-                                                        print(
-                                                            'Button pressed ...');
+                                                      onPressed: () async {
+                                                        _model.apiResulttta =
+                                                            await UpdatedataGroup
+                                                                .userteamCall
+                                                                .call(
+                                                          contentType: 'User',
+                                                          contentId: FFAppState()
+                                                              .AuthenticatedUser
+                                                              .id,
+                                                          tag: getJsonField(
+                                                            teamDataItem,
+                                                            r'''$.Tag''',
+                                                          ).toString(),
+                                                          updatedAt:
+                                                              getCurrentTimestamp
+                                                                  .toString(),
+                                                          teamRole:
+                                                              'Игрок команды',
+                                                          lineUp: 'false',
+                                                        );
+                                                        if ((_model.apiResulttta
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          _model.apiResultlnz =
+                                                              await RelationGroup
+                                                                  .addCall
+                                                                  .call(
+                                                            contentType: 'Team',
+                                                            contentId:
+                                                                getJsonField(
+                                                              teamDataItem,
+                                                              r'''$.Id''',
+                                                            ),
+                                                            retionField:
+                                                                'MembersCount',
+                                                            relationId: FFAppState()
+                                                                .AuthenticatedUser
+                                                                .id,
+                                                          );
+                                                          if ((_model
+                                                                  .apiResultlnz
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title:
+                                                                      Text('1'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                          }
+                                                        }
+
+                                                        setState(() {});
                                                       },
                                                       text: 'Вступить',
                                                       options: FFButtonOptions(
