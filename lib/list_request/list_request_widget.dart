@@ -106,9 +106,12 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 15.0, 15.0, 15.0),
                         child: FutureBuilder<ApiCallResponse>(
-                          future: GetdataGroup.dataitemCall.call(
+                          future: GetdataGroup.datalistCall.call(
                             contentType: 'Team',
-                            contentId: requestListItem.fromTeamId,
+                            fields:
+                                'Id,Name,Tag,Logo,Country,Flag,CreatedAt,UpdatedAt',
+                            field1: 'Id',
+                            field2: requestListItem.fromTeamId.toString(),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -124,7 +127,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                 ),
                               );
                             }
-                            final containerDataitemResponse = snapshot.data!;
+                            final containerDatalistResponse = snapshot.data!;
                             return Container(
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).tertiary,
@@ -136,207 +139,100 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        FutureBuilder<ApiCallResponse>(
-                                          future:
-                                              GetdataGroup.datalistCall.call(
-                                            contentType: 'Team',
-                                            fields:
-                                                'Id,Name,Tag,Logo,Country,Flag,CreatedAt,UpdatedAt',
-                                            field1: 'Id',
-                                            field2: requestListItem.fromTeamId
-                                                .toString(),
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child: SpinKitChasingDots(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    size: 50.0,
+                                    Builder(
+                                      builder: (context) {
+                                        final teamList = getJsonField(
+                                          containerDatalistResponse.jsonBody,
+                                          r'''$.list''',
+                                        ).toList();
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: List.generate(
+                                              teamList.length, (teamListIndex) {
+                                            final teamListItem =
+                                                teamList[teamListIndex];
+                                            return Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                    child: Image.network(
+                                                      getJsonField(
+                                                        teamListItem,
+                                                        r'''$.Logo''',
+                                                      ),
+                                                      width: 40.0,
+                                                      height: 40.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ),
                                                 ),
-                                              );
-                                            }
-                                            final rowDatalistResponse =
-                                                snapshot.data!;
-                                            return Builder(
-                                              builder: (context) {
-                                                final teamList = getJsonField(
-                                                  rowDatalistResponse.jsonBody,
-                                                  r'''$.list''',
-                                                ).toList();
-                                                return Row(
+                                                Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
-                                                  children: List.generate(
-                                                      teamList.length,
-                                                      (teamListIndex) {
-                                                    final teamListItem =
-                                                        teamList[teamListIndex];
-                                                    return Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5.0),
-                                                        child: Image.network(
-                                                          getJsonField(
-                                                            teamListItem,
-                                                            r'''$.Logo''',
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      '[${getJsonField(
+                                                        teamListItem,
+                                                        r'''$.Tag''',
+                                                      ).toString()}] ${getJsonField(
+                                                        teamListItem,
+                                                        r'''$.Name''',
+                                                      ).toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge,
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0),
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        0.0),
+                                                            child:
+                                                                Image.network(
+                                                              'https://picsum.photos/seed/610/600',
+                                                              width: 16.0,
+                                                              height: 12.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
-                                                          width: 40.0,
-                                                          height: 40.0,
-                                                          fit: BoxFit.cover,
                                                         ),
-                                                      ),
-                                                    );
-                                                  }),
-                                                );
-                                              },
+                                                        Text(
+                                                          'Hello World',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             );
-                                          },
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        1.0,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Команда предлагает вступить в ее ряды. ',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
-                                              },
-                                              text: 'Отказаться',
-                                              options: FFButtonOptions(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Saira Semi Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent1,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent1,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
-                                              },
-                                              text: 'Вступить',
-                                              options: FFButtonOptions(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        15.0, 0.0, 15.0, 0.0),
-                                                iconPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 0.0, 0.0, 0.0),
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Saira Semi Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                        ),
-                                                elevation: 3.0,
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                              ),
-                                            ),
-                                          ),
-                                        ].divide(SizedBox(width: 15.0)),
-                                      ),
+                                          }),
+                                        );
+                                      },
                                     ),
                                   ],
                                 ),
