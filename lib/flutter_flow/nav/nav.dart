@@ -150,9 +150,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'LIST_REQUEST',
           path: '/listRequest',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'LIST_REQUEST')
-              : ListRequestWidget(),
+          builder: (context, params) => ListRequestWidget(),
         ),
         FFRoute(
           name: 'ADD_TOURNAMENT',
