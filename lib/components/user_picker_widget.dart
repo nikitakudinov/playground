@@ -461,9 +461,12 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                       child: Container(
                                         decoration: BoxDecoration(),
                                         child: FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .dropDownValueController ??=
-                                              FormFieldController<String>(null),
+                                          controller:
+                                              _model.dropDownValueController ??=
+                                                  FormFieldController<String>(
+                                            _model.dropDownValue ??=
+                                                _model.selectedUserTeamRole,
+                                          ),
                                           options: ['Лидер', 'Игрок команды'],
                                           onChanged: (val) => setState(
                                               () => _model.dropDownValue = val),
@@ -525,7 +528,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               ),
                                               child: Checkbox(
                                                 value: _model.checkboxValue ??=
-                                                    false,
+                                                    _model.selectedUserLineUp!,
                                                 onChanged: (newValue) async {
                                                   setState(() =>
                                                       _model.checkboxValue =
@@ -994,6 +997,9 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                   teamMembersListItem.country;
                                               _model.selectedUserFlag =
                                                   teamMembersListItem.flag;
+                                              _model.selectedUserTeamRole =
+                                                  teamMembersListItem.teamRole;
+                                              _model.selectedUserLineUp = true;
                                             });
                                             await _model.memberSettingsCol
                                                 ?.animateTo(

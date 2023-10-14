@@ -64,6 +64,10 @@ class UserPickerModel extends FlutterFlowModel<UserPickerWidget> {
   void updateSearchedUserAtIndex(int index, Function(UserStruct) updateFn) =>
       searchedUser[index] = updateFn(searchedUser[index]);
 
+  String? selectedUserTeamRole = '';
+
+  bool? selectedUserLineUp;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Column widget.
