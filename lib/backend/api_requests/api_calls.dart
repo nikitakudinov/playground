@@ -239,14 +239,17 @@ class CreatrequestCall {
     String? createdAt = '',
     String? updatedAt = '',
     int? creatorId,
+    int? fromTeamId,
+    int? toUserId,
   }) {
     final ffApiRequestBody = '''
 {
   "Type": "${type}",
   "CreatedAt": "${createdAt}",
   "UpdatedAt": "${updatedAt}",
+  "FromTeamId": ${fromTeamId},
+  "ToUserId": ${toUserId},
   "CreatorId": ${creatorId}
-
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'CREATREQUEST',
