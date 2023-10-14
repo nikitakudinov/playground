@@ -59,6 +59,8 @@ class ListRequestModel extends FlutterFlowModel<ListRequestWidget> {
   ApiCallResponse? apiResultnps;
   // Stores action output result for [Custom Action - jsonToDataTypeRequest] action in LIST_REQUEST widget.
   List<RequestStruct>? requestData;
+  // Stores action output result for [Backend Call - API (DATAITEM)] action in LIST_REQUEST widget.
+  ApiCallResponse? apiResult0by;
 
   /// Initialization and disposal methods.
 

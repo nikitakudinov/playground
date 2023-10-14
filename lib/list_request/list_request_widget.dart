@@ -50,6 +50,31 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
           _model.requestsList =
               _model.requestData!.toList().cast<RequestStruct>();
         });
+        if (_model.requestsList.last != null) {
+          _model.apiResult0by = await GetdataGroup.dataitemCall.call(
+            contentType: 'Tean',
+            contentId: getJsonField(
+              (_model.apiResultnps?.jsonBody ?? ''),
+              r'''$.list[:].FromTeamId''',
+            ),
+          );
+          if ((_model.apiResult0by?.succeeded ?? true)) {
+            await showDialog(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  title: Text('111111'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text('Ok'),
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        }
       }
     });
   }
