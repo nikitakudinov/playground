@@ -104,37 +104,40 @@ class _HomeWidgetState extends State<HomeWidget> {
                 ),
           ),
           actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 30.0, 0.0),
-              child: badges.Badge(
-                badgeContent: Text(
-                  FFAppState().requests.length.toString(),
-                  style: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Saira Semi Condensed',
-                        color: Colors.white,
-                        fontSize: 12.0,
-                      ),
-                ),
-                showBadge: true,
-                shape: badges.BadgeShape.circle,
-                badgeColor: FlutterFlowTheme.of(context).primary,
-                elevation: 4.0,
-                padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                position: badges.BadgePosition.topEnd(),
-                animationType: badges.BadgeAnimationType.scale,
-                toAnimate: true,
-                child: FlutterFlowIconButton(
-                  borderRadius: 20.0,
-                  borderWidth: 1.0,
-                  buttonSize: 40.0,
-                  icon: Icon(
-                    Icons.add_alert_rounded,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 26.0,
+            Visibility(
+              visible: FFAppState().requests.length == 0,
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 30.0, 0.0),
+                child: badges.Badge(
+                  badgeContent: Text(
+                    FFAppState().requests.length.toString(),
+                    style: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Saira Semi Condensed',
+                          color: Colors.white,
+                          fontSize: 12.0,
+                        ),
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
+                  showBadge: true,
+                  shape: badges.BadgeShape.circle,
+                  badgeColor: FlutterFlowTheme.of(context).primary,
+                  elevation: 4.0,
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                  position: badges.BadgePosition.topEnd(),
+                  animationType: badges.BadgeAnimationType.scale,
+                  toAnimate: true,
+                  child: FlutterFlowIconButton(
+                    borderRadius: 20.0,
+                    borderWidth: 1.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.add_alert_rounded,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 26.0,
+                    ),
+                    onPressed: () {
+                      print('IconButton pressed ...');
+                    },
+                  ),
                 ),
               ),
             ),
