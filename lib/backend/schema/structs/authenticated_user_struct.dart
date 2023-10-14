@@ -14,11 +14,15 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
     String? nickname,
     String? fBUserId,
     String? tag,
+    String? teamRole,
+    String? lineUp,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nickname = nickname,
         _fBUserId = fBUserId,
         _tag = tag,
+        _teamRole = teamRole,
+        _lineUp = lineUp,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -46,12 +50,26 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
   set tag(String? val) => _tag = val;
   bool hasTag() => _tag != null;
 
+  // "TeamRole" field.
+  String? _teamRole;
+  String get teamRole => _teamRole ?? '';
+  set teamRole(String? val) => _teamRole = val;
+  bool hasTeamRole() => _teamRole != null;
+
+  // "LineUp" field.
+  String? _lineUp;
+  String get lineUp => _lineUp ?? '';
+  set lineUp(String? val) => _lineUp = val;
+  bool hasLineUp() => _lineUp != null;
+
   static AuthenticatedUserStruct fromMap(Map<String, dynamic> data) =>
       AuthenticatedUserStruct(
         id: castToType<int>(data['Id']),
         nickname: data['Nickname'] as String?,
         fBUserId: data['FBUserId'] as String?,
         tag: data['Tag'] as String?,
+        teamRole: data['TeamRole'] as String?,
+        lineUp: data['LineUp'] as String?,
       );
 
   static AuthenticatedUserStruct? maybeFromMap(dynamic data) =>
@@ -64,6 +82,8 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
         'Nickname': _nickname,
         'FBUserId': _fBUserId,
         'Tag': _tag,
+        'TeamRole': _teamRole,
+        'LineUp': _lineUp,
       }.withoutNulls;
 
   @override
@@ -82,6 +102,14 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
         ),
         'Tag': serializeParam(
           _tag,
+          ParamType.String,
+        ),
+        'TeamRole': serializeParam(
+          _teamRole,
+          ParamType.String,
+        ),
+        'LineUp': serializeParam(
+          _lineUp,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -109,6 +137,16 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        teamRole: deserializeParam(
+          data['TeamRole'],
+          ParamType.String,
+          false,
+        ),
+        lineUp: deserializeParam(
+          data['LineUp'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -120,11 +158,14 @@ class AuthenticatedUserStruct extends FFFirebaseStruct {
         id == other.id &&
         nickname == other.nickname &&
         fBUserId == other.fBUserId &&
-        tag == other.tag;
+        tag == other.tag &&
+        teamRole == other.teamRole &&
+        lineUp == other.lineUp;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([id, nickname, fBUserId, tag]);
+  int get hashCode => const ListEquality()
+      .hash([id, nickname, fBUserId, tag, teamRole, lineUp]);
 }
 
 AuthenticatedUserStruct createAuthenticatedUserStruct({
@@ -132,6 +173,8 @@ AuthenticatedUserStruct createAuthenticatedUserStruct({
   String? nickname,
   String? fBUserId,
   String? tag,
+  String? teamRole,
+  String? lineUp,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -142,6 +185,8 @@ AuthenticatedUserStruct createAuthenticatedUserStruct({
       nickname: nickname,
       fBUserId: fBUserId,
       tag: tag,
+      teamRole: teamRole,
+      lineUp: lineUp,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
