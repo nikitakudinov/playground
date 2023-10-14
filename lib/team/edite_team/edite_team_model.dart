@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/components/user_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'edite_team_widget.dart' show EditeTeamWidget;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +27,8 @@ class EditeTeamModel extends FlutterFlowModel<EditeTeamWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (LETATIONSLIST)] action in EDITE_TEAM widget.
   ApiCallResponse? apiResultiha;
+  // Stores action output result for [Custom Action - jsonToDataTypeUser] action in EDITE_TEAM widget.
+  List<UserStruct>? teamMembersData;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));

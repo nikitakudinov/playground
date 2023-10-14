@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/components/user_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -60,11 +62,22 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
         relationField: 'MembersCount',
       );
       if ((_model.apiResultiha?.succeeded ?? true)) {
+        _model.teamMembersData = await actions.jsonToDataTypeUser(
+          getJsonField(
+            (_model.apiResultiha?.jsonBody ?? ''),
+            r'''$.list''',
+            true,
+          ),
+        );
+        setState(() {
+          FFAppState().teamMembers =
+              _model.teamMembersData!.toList().cast<UserStruct>();
+        });
         await showDialog(
           context: context,
           builder: (alertDialogContext) {
             return AlertDialog(
-              title: Text('1'),
+              title: Text('11'),
               actions: [
                 TextButton(
                   onPressed: () => Navigator.pop(alertDialogContext),

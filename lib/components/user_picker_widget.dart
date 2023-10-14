@@ -805,7 +805,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(3.0),
                                   child: Image.network(
-                                    teamMembersListItem.avatar,
+                                    'https://picsum.photos/seed/146/600',
                                     width: 50.0,
                                     height: 50.0,
                                     fit: BoxFit.cover,
@@ -825,63 +825,58 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              '[${teamMembersListItem.tag}] ',
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
                                             ),
                                           ),
                                           Text(
-                                            teamMembersListItem.nickname,
+                                            'Hello World',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
-                                          if (teamMembersListItem.lineUp ==
-                                              true)
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.00, -1.00),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 12.0),
-                                                    child: Icon(
-                                                      Icons
-                                                          .local_fire_department,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent1,
-                                                      size: 16.0,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.00, -1.00),
+                                                child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 12.0),
-                                                  child: Text(
-                                                    'LINEUP',
-                                                    style: FlutterFlowTheme.of(
+                                                  child: Icon(
+                                                    Icons.local_fire_department,
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Saira Semi Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          fontSize: 10.0,
-                                                        ),
+                                                        .accent1,
+                                                    size: 16.0,
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 12.0),
+                                                child: Text(
+                                                  'LINEUP',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Saira Semi Condensed',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        fontSize: 10.0,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ],
                                       ),
                                       Row(
@@ -897,7 +892,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(0.0),
                                               child: Image.network(
-                                                teamMembersListItem.flag,
+                                                'https://picsum.photos/seed/118/600',
                                                 width: 16.0,
                                                 height: 12.0,
                                                 fit: BoxFit.cover,
@@ -909,7 +904,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              teamMembersListItem.countryName,
+                                              'Hello World',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall
@@ -926,7 +921,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Text(
-                                          teamMembersListItem.teamRole,
+                                          'Hello World',
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall,
                                         ),
@@ -964,8 +959,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               _model.selectedUserNicknameVALUE =
                                                   teamMembersListItem.nickname;
                                               _model.selectedUserCountry =
-                                                  teamMembersListItem
-                                                      .countryName;
+                                                  teamMembersListItem.country;
                                               _model.selectedUserFlag =
                                                   teamMembersListItem.flag;
                                             });

@@ -83,35 +83,6 @@ class FFAppState extends ChangeNotifier {
     _countries.insert(_index, _value);
   }
 
-  List<TeamMemberStruct> _teamMembers = [];
-  List<TeamMemberStruct> get teamMembers => _teamMembers;
-  set teamMembers(List<TeamMemberStruct> _value) {
-    _teamMembers = _value;
-  }
-
-  void addToTeamMembers(TeamMemberStruct _value) {
-    _teamMembers.add(_value);
-  }
-
-  void removeFromTeamMembers(TeamMemberStruct _value) {
-    _teamMembers.remove(_value);
-  }
-
-  void removeAtIndexFromTeamMembers(int _index) {
-    _teamMembers.removeAt(_index);
-  }
-
-  void updateTeamMembersAtIndex(
-    int _index,
-    TeamMemberStruct Function(TeamMemberStruct) updateFn,
-  ) {
-    _teamMembers[_index] = updateFn(_teamMembers[_index]);
-  }
-
-  void insertAtIndexInTeamMembers(int _index, TeamMemberStruct _value) {
-    _teamMembers.insert(_index, _value);
-  }
-
   List<RequestStruct> _requests = [];
   List<RequestStruct> get requests => _requests;
   set requests(List<RequestStruct> _value) {
@@ -237,6 +208,35 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInTournamentMembers(int _index, TeamStruct _value) {
     _tournamentMembers.insert(_index, _value);
+  }
+
+  List<UserStruct> _teamMembers = [];
+  List<UserStruct> get teamMembers => _teamMembers;
+  set teamMembers(List<UserStruct> _value) {
+    _teamMembers = _value;
+  }
+
+  void addToTeamMembers(UserStruct _value) {
+    _teamMembers.add(_value);
+  }
+
+  void removeFromTeamMembers(UserStruct _value) {
+    _teamMembers.remove(_value);
+  }
+
+  void removeAtIndexFromTeamMembers(int _index) {
+    _teamMembers.removeAt(_index);
+  }
+
+  void updateTeamMembersAtIndex(
+    int _index,
+    UserStruct Function(UserStruct) updateFn,
+  ) {
+    _teamMembers[_index] = updateFn(_teamMembers[_index]);
+  }
+
+  void insertAtIndexInTeamMembers(int _index, UserStruct _value) {
+    _teamMembers.insert(_index, _value);
   }
 }
 
