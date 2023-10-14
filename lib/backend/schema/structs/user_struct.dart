@@ -20,6 +20,7 @@ class UserStruct extends FFFirebaseStruct {
     String? fBUserId,
     String? avatar,
     String? teamRole,
+    bool? lineUp,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nickname = nickname,
@@ -31,6 +32,7 @@ class UserStruct extends FFFirebaseStruct {
         _fBUserId = fBUserId,
         _avatar = avatar,
         _teamRole = teamRole,
+        _lineUp = lineUp,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -94,6 +96,12 @@ class UserStruct extends FFFirebaseStruct {
   set teamRole(String? val) => _teamRole = val;
   bool hasTeamRole() => _teamRole != null;
 
+  // "LineUp" field.
+  bool? _lineUp;
+  bool get lineUp => _lineUp ?? false;
+  set lineUp(bool? val) => _lineUp = val;
+  bool hasLineUp() => _lineUp != null;
+
   static UserStruct fromMap(Map<String, dynamic> data) => UserStruct(
         id: castToType<int>(data['Id']),
         nickname: data['Nickname'] as String?,
@@ -105,6 +113,7 @@ class UserStruct extends FFFirebaseStruct {
         fBUserId: data['FBUserId'] as String?,
         avatar: data['Avatar'] as String?,
         teamRole: data['TeamRole'] as String?,
+        lineUp: data['LineUp'] as bool?,
       );
 
   static UserStruct? maybeFromMap(dynamic data) =>
@@ -121,6 +130,7 @@ class UserStruct extends FFFirebaseStruct {
         'FBUserId': _fBUserId,
         'Avatar': _avatar,
         'TeamRole': _teamRole,
+        'LineUp': _lineUp,
       }.withoutNulls;
 
   @override
@@ -164,6 +174,10 @@ class UserStruct extends FFFirebaseStruct {
         'TeamRole': serializeParam(
           _teamRole,
           ParamType.String,
+        ),
+        'LineUp': serializeParam(
+          _lineUp,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -219,6 +233,11 @@ class UserStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        lineUp: deserializeParam(
+          data['LineUp'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -236,7 +255,8 @@ class UserStruct extends FFFirebaseStruct {
         flag == other.flag &&
         fBUserId == other.fBUserId &&
         avatar == other.avatar &&
-        teamRole == other.teamRole;
+        teamRole == other.teamRole &&
+        lineUp == other.lineUp;
   }
 
   @override
@@ -250,7 +270,8 @@ class UserStruct extends FFFirebaseStruct {
         flag,
         fBUserId,
         avatar,
-        teamRole
+        teamRole,
+        lineUp
       ]);
 }
 
@@ -265,6 +286,7 @@ UserStruct createUserStruct({
   String? fBUserId,
   String? avatar,
   String? teamRole,
+  bool? lineUp,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -281,6 +303,7 @@ UserStruct createUserStruct({
       fBUserId: fBUserId,
       avatar: avatar,
       teamRole: teamRole,
+      lineUp: lineUp,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
