@@ -121,20 +121,6 @@ Future loadOrganizators(
     relationField: 'OrganizatorsCount',
   );
   if ((jsonOrganizatorsDataList?.succeeded ?? true)) {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('API CALL GOOD'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
     organizatorData = await actions.jsonToDataTypeUser(
       getJsonField(
         (jsonOrganizatorsDataList?.jsonBody ?? ''),
@@ -146,20 +132,6 @@ Future loadOrganizators(
       FFAppState().TournamentOrganizators =
           organizatorData!.toList().cast<UserStruct>();
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('suak'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
 
@@ -176,20 +148,6 @@ Future loadTournamentMembers(
     relationField: 'MembersCount',
   );
   if ((jsonMembersDataList?.succeeded ?? true)) {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('MembersCount Loaded'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
     membersData = await actions.jsonToDataTypeTeam(
       getJsonField(
         (jsonMembersDataList?.jsonBody ?? ''),
@@ -200,20 +158,6 @@ Future loadTournamentMembers(
     FFAppState().update(() {
       FFAppState().tournamentMembers = membersData!.toList().cast<TeamStruct>();
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('Tournamnent members loaded to appstate'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
 
