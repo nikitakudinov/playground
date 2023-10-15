@@ -245,7 +245,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      if (FFAppState().AuthenticatedUser.tag ==
+                                      if (FFAppState().AuthenticatedUser.tag !=
                                           'false')
                                         Text(
                                           '[${FFAppState().AuthenticatedUser.tag}] ',
