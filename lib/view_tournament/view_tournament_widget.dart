@@ -140,14 +140,19 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                                   '~${FFAppState().tournament.tag}~',
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .titleMedium,
+                                                      .headlineLarge,
                                                 ),
                                               ),
-                                              Text(
-                                                FFAppState().tournament.name,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium,
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        5.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  FFAppState().tournament.name,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium,
+                                                ),
                                               ),
                                             ],
                                           ),
