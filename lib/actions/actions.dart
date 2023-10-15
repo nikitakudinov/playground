@@ -105,20 +105,6 @@ Future loadTournamentsToAppState(BuildContext context) async {
       FFAppState().tournaments =
           tournamentData!.toList().cast<TournamentStruct>();
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('1'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
 
