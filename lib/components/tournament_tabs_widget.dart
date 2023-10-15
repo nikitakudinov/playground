@@ -164,7 +164,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
               ),
               if (_model.membersListVISIBILITY)
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       final membersList =
@@ -251,7 +251,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
                 ),
               if (_model.organizatorsListVISIBILITY)
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Builder(
                     builder: (context) {
                       final organizatorsList =
