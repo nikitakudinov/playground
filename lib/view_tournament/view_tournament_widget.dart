@@ -135,21 +135,23 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                         ),
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                '~${FFAppState().tournament.tag}~',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineLarge,
+                                              ),
+                                            ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    '~${FFAppState().tournament.tag}~',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineLarge,
-                                                  ),
-                                                ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
