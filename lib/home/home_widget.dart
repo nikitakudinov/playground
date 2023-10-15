@@ -242,15 +242,22 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    '[${FFAppState().AuthenticatedUser.tag}] ${FFAppState().AuthenticatedUser.nickname}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelLarge
-                                        .override(
-                                          fontFamily: 'Saira Semi Condensed',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      if (FFAppState().AuthenticatedUser.tag ==
+                                          'false')
+                                        Text(
+                                          '[${FFAppState().AuthenticatedUser.tag}] ',
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleLarge,
                                         ),
+                                      Text(
+                                        FFAppState().AuthenticatedUser.nickname,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge,
+                                      ),
+                                    ],
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.max,
