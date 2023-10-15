@@ -22,13 +22,25 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
   late TournamentTabsModel _model;
 
   final animationsMap = {
-    'listViewOnPageLoadAnimation': AnimationInfo(
+    'listViewOnPageLoadAnimation1': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 1410.ms,
+          duration: 1000.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+    'listViewOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
           begin: 0.0,
           end: 1.0,
         ),
@@ -232,7 +244,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
                           );
                         },
                       ).animateOnPageLoad(
-                          animationsMap['listViewOnPageLoadAnimation']!);
+                          animationsMap['listViewOnPageLoadAnimation1']!);
                     },
                   ),
                 ),
@@ -319,7 +331,8 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
                             ),
                           );
                         },
-                      );
+                      ).animateOnPageLoad(
+                          animationsMap['listViewOnPageLoadAnimation2']!);
                     },
                   ),
                 ),
