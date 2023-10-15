@@ -1,6 +1,9 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +17,24 @@ class TournamentTabsWidget extends StatefulWidget {
   _TournamentTabsWidgetState createState() => _TournamentTabsWidgetState();
 }
 
-class _TournamentTabsWidgetState extends State<TournamentTabsWidget> {
+class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
+    with TickerProviderStateMixin {
   late TournamentTabsModel _model;
+
+  final animationsMap = {
+    'listViewOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1410.ms,
+          begin: 0.0,
+          end: 1.0,
+        ),
+      ],
+    ),
+  };
 
   @override
   void setState(VoidCallback callback) {
@@ -212,7 +231,8 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget> {
                             ),
                           );
                         },
-                      );
+                      ).animateOnPageLoad(
+                          animationsMap['listViewOnPageLoadAnimation']!);
                     },
                   ),
                 ),
