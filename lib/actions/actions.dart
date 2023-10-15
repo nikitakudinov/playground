@@ -49,6 +49,14 @@ Future updateAppStateAuthUser(BuildContext context) async {
           ..avatar = getJsonField(
             (apiResultnzr?.jsonBody ?? ''),
             r'''$.list[:].Avatar''',
+          )
+          ..country = getJsonField(
+            (apiResultnzr?.jsonBody ?? ''),
+            r'''$.list[:].Country''',
+          ).toString().toString()
+          ..flag = getJsonField(
+            (apiResultnzr?.jsonBody ?? ''),
+            r'''$.list[:].Flag''',
           ),
       );
     });
