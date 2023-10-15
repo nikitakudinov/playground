@@ -125,7 +125,7 @@ Future loadOrganizators(
       context: context,
       builder: (alertDialogContext) {
         return AlertDialog(
-          title: Text('1'),
+          title: Text('API CALL GOOD'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
@@ -150,7 +150,7 @@ Future loadOrganizators(
       context: context,
       builder: (alertDialogContext) {
         return AlertDialog(
-          title: Text('11'),
+          title: Text('suak'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
