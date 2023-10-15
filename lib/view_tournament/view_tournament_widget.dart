@@ -97,7 +97,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                           borderRadius: BorderRadius.circular(0.0),
                           child: Image.network(
                             FFAppState().tournament.headerLogo,
-                            fit: BoxFit.fill,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
