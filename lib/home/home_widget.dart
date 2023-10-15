@@ -104,7 +104,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           ),
           actions: [
             Visibility(
-              visible: FFAppState().requests.length == 0,
+              visible: FFAppState().requests.length != 0,
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                 child: FlutterFlowIconButton(
