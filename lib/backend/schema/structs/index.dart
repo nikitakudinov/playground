@@ -2,6 +2,7 @@ export '/backend/schema/util/schema_util.dart';
 
 export 'authenticated_user_struct.dart';
 export 'countrie_struct.dart';
+export 'match_struct.dart';
 export 'organizator_struct.dart';
 export 'relation_struct.dart';
 export 'request_struct.dart';
