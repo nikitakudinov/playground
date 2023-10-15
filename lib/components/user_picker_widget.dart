@@ -291,65 +291,69 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          _model.apiResultbms =
-                                              await CreatdataGroup
-                                                  .creatrequestCall
-                                                  .call(
-                                            type: 'Приглашение в команду',
-                                            createdAt:
-                                                getCurrentTimestamp.toString(),
-                                            updatedAt:
-                                                getCurrentTimestamp.toString(),
-                                            creatorId: FFAppState()
-                                                .AuthenticatedUser
-                                                .id,
-                                            fromTeamId: widget.docId,
-                                            toUserId: int.tryParse(
-                                                _model.textController.text),
-                                          );
-                                          setState(() {
-                                            _model.searchedUser = [];
-                                            _model.messageVISIBILITY = false;
-                                            _model.callToTeamButtonVISIBILITY =
-                                                true;
-                                          });
+                                    if (_model.searchedUser.first.teamRole ==
+                                        'Вне команды')
+                                      Expanded(
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            _model.apiResultbms =
+                                                await CreatdataGroup
+                                                    .creatrequestCall
+                                                    .call(
+                                              type: 'Приглашение в команду',
+                                              createdAt: getCurrentTimestamp
+                                                  .toString(),
+                                              updatedAt: getCurrentTimestamp
+                                                  .toString(),
+                                              creatorId: FFAppState()
+                                                  .AuthenticatedUser
+                                                  .id,
+                                              fromTeamId: widget.docId,
+                                              toUserId: int.tryParse(
+                                                  _model.textController.text),
+                                            );
+                                            setState(() {
+                                              _model.searchedUser = [];
+                                              _model.messageVISIBILITY = false;
+                                              _model.callToTeamButtonVISIBILITY =
+                                                  true;
+                                            });
 
-                                          setState(() {});
-                                        },
-                                        text: 'Да',
-                                        options: FFButtonOptions(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 0.0, 15.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleSmall
-                                              .override(
-                                                fontFamily:
-                                                    'Saira Semi Condensed',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                              ),
-                                          elevation: 3.0,
-                                          borderSide: BorderSide(
+                                            setState(() {});
+                                          },
+                                          text: 'Да',
+                                          options: FFButtonOptions(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    15.0, 0.0, 15.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 1.0,
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          'Saira Semi Condensed',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(3.0),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(3.0),
                                         ),
                                       ),
-                                    ),
                                   ].divide(SizedBox(width: 15.0)),
                                 ),
                               ),
