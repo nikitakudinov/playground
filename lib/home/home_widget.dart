@@ -270,7 +270,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
-                                    ],
+                                    ].divide(SizedBox(width: 5.0)),
                                   ),
                                 ],
                               ),
