@@ -1017,7 +1017,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                 await GetdataGroup.datalistCall.call(
                               contentType: 'User',
                               fields:
-                                  'Id,Nickname,CreatedAt,UpdatedAt,Tag,Country,Flag,FBUserId,Avatar',
+                                  'Id,Nickname,CreatedAt,UpdatedAt,Tag,Country,Flag,FBUserId,Avatar,TeamRole',
                               field1: 'Id',
                               field2: _model.textController.text,
                             );
