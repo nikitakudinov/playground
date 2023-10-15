@@ -260,7 +260,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                           final round2Item = round2[round2Index];
                           return Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 5.0),
+                                0.0, 0.0, 0.0, 20.0),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).tertiary,
