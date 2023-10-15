@@ -37,17 +37,17 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await action_blocks.loadOrganizators(
+      await action_blocks.loadTournament(
         context,
-        tournamentId: widget.tournamentId,
+        id: widget.tournamentId,
       );
       await action_blocks.loadTournamentMembers(
         context,
         tournamentId: widget.tournamentId,
       );
-      await action_blocks.loadTournament(
+      await action_blocks.loadOrganizators(
         context,
-        id: widget.tournamentId,
+        tournamentId: widget.tournamentId,
       );
     });
   }
