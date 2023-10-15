@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/actions/actions.dart' as action_blocks;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -239,7 +241,24 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                 15.0, 15.0, 15.0, 0.0),
                             child: TextFormField(
                               controller: _model.nameController,
-                              autofocus: true,
+                              onChanged: (_) => EasyDebounce.debounce(
+                                '_model.nameController',
+                                Duration(milliseconds: 2000),
+                                () async {
+                                  await action_blocks.creatTournament(
+                                    context,
+                                    name: _model.nameController.text,
+                                    tag: _model.tagController.text,
+                                    country:
+                                        _model.countryPickerModel.selectedName,
+                                    flag:
+                                        _model.countryPickerModel.selectedFlag,
+                                    logo: _model.uploadedFileUrl,
+                                  );
+
+                                  context.pushNamed('LIST_TOURNAMENT');
+                                },
+                              ),
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Название турнира',
@@ -277,7 +296,7 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
+                                    0.0, 15.0, 0.0, 10.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
@@ -295,7 +314,6 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                 15.0, 0.0, 15.0, 0.0),
                             child: TextFormField(
                               controller: _model.tagController,
-                              autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: '[TAG]',
@@ -333,7 +351,7 @@ class _AddTournamentWidgetState extends State<AddTournamentWidget> {
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 10.0),
+                                    0.0, 15.0, 0.0, 10.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium

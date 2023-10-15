@@ -232,3 +232,28 @@ Future loadTournamentMembers(
 }
 
 Future loadTeams(BuildContext context) async {}
+
+Future creatTournament(
+  BuildContext context, {
+  String? name,
+  String? tag,
+  String? country,
+  String? flag,
+  String? logo,
+}) async {
+  ApiCallResponse? apiResult0ll;
+
+  apiResult0ll = await CreatdataGroup.creattournamentCall.call(
+    name: name,
+    tag: tag,
+    createdAt: getCurrentTimestamp.toString(),
+    updatedAt: getCurrentTimestamp.toString(),
+    country: country,
+    flag: flag,
+    logo: logo,
+    creatorFBUserId: FFAppState().AuthenticatedUser.fBUserId,
+  );
+  if ((apiResult0ll?.succeeded ?? true)) {
+    context.pushNamed('LIST_TOURNAMENT');
+  }
+}
