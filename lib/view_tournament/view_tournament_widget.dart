@@ -616,7 +616,8 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget>
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Container(
-                    height: 200.0,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    decoration: BoxDecoration(),
                     child: Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(
                           15.0, 15.0, 15.0, 15.0),
@@ -873,6 +874,10 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget>
                       ),
                     ),
                   ),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [],
                 ),
               ],
             ),
