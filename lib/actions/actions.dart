@@ -197,20 +197,6 @@ Future loadTournamentMembers(
         true,
       ),
     );
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('11'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
     FFAppState().update(() {
       FFAppState().tournamentMembers = membersData!.toList().cast<TeamStruct>();
     });
