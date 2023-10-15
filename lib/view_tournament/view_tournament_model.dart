@@ -260,6 +260,20 @@ class ViewTournamentModel extends FlutterFlowModel<ViewTournamentWidget> {
         ),
       );
       matches = matchesData!.toList().cast<MatchStruct>();
+      await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text('MatchesLoaded'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text('Ok'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
