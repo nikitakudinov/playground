@@ -118,7 +118,8 @@ class _HomeWidgetState extends State<HomeWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              if (FFAppState().AuthenticatedUser == null)
+              if (FFAppState().AuthenticatedUser.nickname != null &&
+                  FFAppState().AuthenticatedUser.nickname != '')
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
