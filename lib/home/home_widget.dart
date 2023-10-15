@@ -211,7 +211,9 @@ class _HomeWidgetState extends State<HomeWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                child: Container(
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 100),
+                  curve: Curves.easeIn,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(5.0),
