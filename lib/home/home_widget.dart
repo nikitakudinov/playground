@@ -55,20 +55,6 @@ class _HomeWidgetState extends State<HomeWidget> {
           FFAppState().requests =
               _model.requestData1!.toList().cast<RequestStruct>();
         });
-        await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text('1'),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          },
-        );
       }
     });
   }
