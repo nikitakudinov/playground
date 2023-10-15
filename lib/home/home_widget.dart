@@ -228,7 +228,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ClipRRect(
                               borderRadius: BorderRadius.circular(5.0),
                               child: Image.network(
-                                'https://picsum.photos/seed/753/600',
+                                FFAppState().AuthenticatedUser.avatar,
                                 width: 75.0,
                                 height: 75.0,
                                 fit: BoxFit.cover,
