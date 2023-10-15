@@ -108,8 +108,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                 15.0, 15.0, 15.0, 15.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                color: Color(0x4213151C),
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
