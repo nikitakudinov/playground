@@ -153,7 +153,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                         clipBehavior: Clip.none,
                                         children: [
                                           if (_model.searchedUser.first
-                                                  .teamRole !=
+                                                  .teamRole ==
                                               'Вне команды')
                                             Text(
                                               'Отправить приглашение вступить в команду этому пользователю?',
@@ -162,7 +162,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                       .bodyMedium,
                                             ),
                                           if (_model.searchedUser.first
-                                                  .teamRole ==
+                                                  .teamRole !=
                                               'Вне команды')
                                             Text(
                                               'Отправить приглашение вступить в команду этому пользователю нельзя, так как он является членом другой команды.',
