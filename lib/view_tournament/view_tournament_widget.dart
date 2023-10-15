@@ -1,5 +1,4 @@
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
+import '/components/tournament_grid_widget.dart';
 import '/components/tournament_tabs_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -282,6 +281,11 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                   model: _model.tournamentTabsModel,
                   updateCallback: () => setState(() {}),
                   child: TournamentTabsWidget(),
+                ),
+                wrapWithModel(
+                  model: _model.tournamentGridModel,
+                  updateCallback: () => setState(() {}),
+                  child: TournamentGridWidget(),
                 ),
               ],
             ),

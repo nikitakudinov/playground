@@ -1,6 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/tournament_grid_widget.dart';
 import '/components/tournament_tabs_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -17,32 +17,25 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ViewTournamentModel extends FlutterFlowModel<ViewTournamentWidget> {
-  ///  Local state fields for this page.
-
-  List<MatchStruct> matches = [];
-  void addToMatches(MatchStruct item) => matches.add(item);
-  void removeFromMatches(MatchStruct item) => matches.remove(item);
-  void removeAtIndexFromMatches(int index) => matches.removeAt(index);
-  void insertAtIndexInMatches(int index, MatchStruct item) =>
-      matches.insert(index, item);
-  void updateMatchesAtIndex(int index, Function(MatchStruct) updateFn) =>
-      matches[index] = updateFn(matches[index]);
-
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   // Model for TournamentTabs component.
   late TournamentTabsModel tournamentTabsModel;
+  // Model for TournamentGrid component.
+  late TournamentGridModel tournamentGridModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     tournamentTabsModel = createModel(context, () => TournamentTabsModel());
+    tournamentGridModel = createModel(context, () => TournamentGridModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     tournamentTabsModel.dispose();
+    tournamentGridModel.dispose();
   }
 
   /// Action blocks are added here.
@@ -259,7 +252,9 @@ class ViewTournamentModel extends FlutterFlowModel<ViewTournamentWidget> {
           true,
         ),
       );
-      matches = matchesData!.toList().cast<MatchStruct>();
+      FFAppState().update(() {
+        FFAppState().matches = matchesData!.toList().cast<MatchStruct>();
+      });
       await showDialog(
         context: context,
         builder: (alertDialogContext) {
