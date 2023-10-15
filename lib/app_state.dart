@@ -238,6 +238,16 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInTeamMembers(int _index, UserStruct _value) {
     _teamMembers.insert(_index, _value);
   }
+
+  TournamentStruct _tournament = TournamentStruct();
+  TournamentStruct get tournament => _tournament;
+  set tournament(TournamentStruct _value) {
+    _tournament = _value;
+  }
+
+  void updateTournamentStruct(Function(TournamentStruct) updateFn) {
+    updateFn(_tournament);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

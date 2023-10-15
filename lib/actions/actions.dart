@@ -243,3 +243,55 @@ Future creatTournament(
     context.pushNamed('LIST_TOURNAMENT');
   }
 }
+
+Future loadTournament(
+  BuildContext context, {
+  int? id,
+}) async {
+  ApiCallResponse? apiResulttyn;
+
+  apiResulttyn = await GetdataGroup.datalistCall.call(
+    contentType: 'Tournament',
+    field1: 'Id',
+    field2: id?.toString(),
+  );
+  if ((apiResulttyn?.succeeded ?? true)) {
+    FFAppState().update(() {
+      FFAppState().updateTournamentStruct(
+        (e) => e
+          ..id = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].Id''',
+          )
+          ..name = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].Name''',
+          ).toString().toString()
+          ..tag = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].Tag''',
+          ).toString().toString()
+          ..logo = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].Logo''',
+          )
+          ..owner = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].Owner''',
+          ).toString().toString()
+          ..headerLogo = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].HeaderLogo''',
+          )
+          ..country = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].Country''',
+          ).toString().toString()
+          ..flag = getJsonField(
+            (apiResulttyn?.jsonBody ?? ''),
+            r'''$.list[:].Flag''',
+          ),
+      );
+    });
+  }
+}

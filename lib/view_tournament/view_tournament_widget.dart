@@ -45,6 +45,10 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
         context,
         tournamentId: widget.tournamentId,
       );
+      await action_blocks.loadTournament(
+        context,
+        id: widget.tournamentId,
+      );
     });
   }
 
@@ -92,9 +96,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(0.0),
                           child: Image.network(
-                            FFAppState()
-                                .tournaments[widget.tournamentIndex!]
-                                .headerLogo,
+                            FFAppState().tournament.headerLogo,
                             fit: BoxFit.fill,
                           ),
                         ),
