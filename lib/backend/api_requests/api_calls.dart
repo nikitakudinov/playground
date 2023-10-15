@@ -15,10 +15,8 @@ class GetdataGroup {
       'http://31.28.27.82:8080/api/v1/db/data/v1/pef1y2sb3hqy3yy/';
   static Map<String, String> headers = {
     'accept': 'application/json',
-    'xc-auth':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-    'xc-token':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+    'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+    'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
   };
   static DatalistCall datalistCall = DatalistCall();
   static DataviewCall dataviewCall = DataviewCall();
@@ -39,10 +37,8 @@ class DatalistCall {
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
       },
       params: {
         'ContentType': contentType,
@@ -73,10 +69,8 @@ class DataviewCall {
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
       },
       params: {
         'ContentType': contentType,
@@ -106,10 +100,8 @@ class DataitemCall {
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
       },
       params: {
         'ContentType': contentType,
@@ -133,10 +125,8 @@ class CreatdataGroup {
       'http://31.28.27.82:8080/api/v1/db/data/v1/pef1y2sb3hqy3yy/';
   static Map<String, String> headers = {
     'accept': 'application/json',
-    'xc-auth':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-    'xc-token':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+    'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+    'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
     'Content-Type': 'application/json',
   };
   static CreatuserCall creatuserCall = CreatuserCall();
@@ -171,10 +161,8 @@ class CreatuserCall {
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -216,10 +204,8 @@ class CreatteamCall {
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -257,10 +243,8 @@ class CreatrequestCall {
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -283,10 +267,8 @@ class DelitedataGroup {
       'http://31.28.27.82:8080/api/v1/db/data/v1/pef1y2sb3hqy3yy/';
   static Map<String, String> headers = {
     'accept': 'application/json',
-    'xc-auth':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-    'xc-token':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+    'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+    'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
     'Content-Type': 'application/json',
   };
   static DelitedataCall delitedataCall = DelitedataCall();
@@ -303,10 +285,8 @@ class DelitedataCall {
       callType: ApiCallType.DELETE,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -327,10 +307,8 @@ class UpdatedataGroup {
       'http://31.28.27.82:8080/api/v1/db/data/v1/pef1y2sb3hqy3yy/';
   static Map<String, String> headers = {
     'accept': 'application/json',
-    'xc-auth':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-    'xc-token':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+    'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+    'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
     'Content-Type': 'application/json',
   };
   static NicknameCall nicknameCall = NicknameCall();
@@ -357,10 +335,8 @@ class NicknameCall {
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -396,10 +372,8 @@ class UserteamCall {
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -433,10 +407,8 @@ class UserteamsettingsCall {
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -476,10 +448,8 @@ class TeamCall {
       callType: ApiCallType.PATCH,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
         'Content-Type': 'application/json',
       },
       params: {},
@@ -502,10 +472,8 @@ class RelationGroup {
       'http://31.28.27.82:8080/api/v1/db/data/v1/pef1y2sb3hqy3yy/';
   static Map<String, String> headers = {
     'accept': 'application/json',
-    'xc-auth':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-    'xc-token':
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+    'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+    'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
   };
   static LetationslistCall letationslistCall = LetationslistCall();
   static AddCall addCall = AddCall();
@@ -526,10 +494,8 @@ class LetationslistCall {
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
       },
       params: {
         'ContentType': contentType,
@@ -558,10 +524,8 @@ class AddCall {
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
       },
       params: {},
       bodyType: BodyType.JSON,
@@ -585,10 +549,8 @@ class AddteammemberCall {
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
       },
       params: {},
       bodyType: BodyType.NONE,
@@ -614,10 +576,8 @@ class RemoveCall {
       callType: ApiCallType.DELETE,
       headers: {
         'accept': 'application/json',
-        'xc-auth':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
-        'xc-token':
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5pa2l0YWt1ZGlub3Yuc3BiQGdtYWlsLmNvbSIsImlkIjoidXNqajVva2M0b3l3ZXIwZyIsInJvbGVzIjoib3JnLWxldmVsLWNyZWF0b3Isc3VwZXIiLCJ0b2tlbl92ZXJzaW9uIjoiOWI4NTlhN2QyMWYyOTAzNDM0NmYwNTJjYWMzNjE0N2UyODEyNTc2NDcyMTZlZjU1M2Q4ODU5MDllNThlYTZiNzg5MGViYzgwNGFlNThhZDUiLCJpYXQiOjE2OTczMDUwNTcsImV4cCI6MTY5NzM0MTA1N30.Dv_Q1EzRD0e7rmhe2egaIkEi_ME1iFyzIKDssOUsMg8',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
       },
       params: {},
       returnBody: true,

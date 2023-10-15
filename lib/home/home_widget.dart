@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
-import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -104,49 +103,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                 ),
           ),
           actions: [
-            Visibility(
-              visible: FFAppState().requests.length != 0,
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 30.0, 0.0),
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  focusColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () async {
-                    context.pushNamed('LIST_REQUEST');
-                  },
-                  child: badges.Badge(
-                    badgeContent: Text(
-                      FFAppState().requests.length.toString(),
-                      style: FlutterFlowTheme.of(context).titleSmall.override(
-                            fontFamily: 'Saira Semi Condensed',
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
-                    ),
-                    showBadge: true,
-                    shape: badges.BadgeShape.circle,
-                    badgeColor: FlutterFlowTheme.of(context).primary,
-                    elevation: 4.0,
-                    position: badges.BadgePosition.topEnd(),
-                    animationType: badges.BadgeAnimationType.scale,
-                    toAnimate: true,
-                    child: FlutterFlowIconButton(
-                      borderRadius: 20.0,
-                      borderWidth: 1.0,
-                      buttonSize: 40.0,
-                      icon: Icon(
-                        Icons.add_alert_rounded,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 26.0,
-                      ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
-                      },
-                    ),
-                  ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: FlutterFlowIconButton(
+                borderRadius: 20.0,
+                borderWidth: 1.0,
+                buttonSize: 40.0,
+                icon: Icon(
+                  Icons.email,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
                 ),
+                onPressed: () async {
+                  context.pushNamed('LIST_REQUEST');
+                },
               ),
             ),
           ],

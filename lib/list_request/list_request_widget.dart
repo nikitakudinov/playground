@@ -427,8 +427,9 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                                       .apiResultuxo
                                                                       ?.succeeded ??
                                                                   true)) {
-                                                                context.pushNamed(
-                                                                    'LIST_TEAM');
+                                                                context
+                                                                    .pushNamed(
+                                                                        'HOME');
                                                               }
                                                             }
                                                           }
@@ -718,7 +719,7 @@ class _ListRequestWidgetState extends State<ListRequestWidget> {
                                                                   ?.succeeded ??
                                                               true)) {
                                                             context.pushNamed(
-                                                                'LIST_REQUEST');
+                                                                'HOME');
                                                           }
 
                                                           setState(() {});
