@@ -13,7 +13,8 @@ Future updateAppStateAuthUser(BuildContext context) async {
 
   apiResultnzr = await GetdataGroup.datalistCall.call(
     contentType: 'User',
-    fields: 'Id,Nickname,CreatedAt,UpdatedAt,Tag,Country,Flag,FBUserId,Avatar',
+    fields:
+        'Id,Nickname,CreatedAt,UpdatedAt,Tag,Country,Flag,FBUserId,Avatar,TeamRole,LineUp',
     field1: 'FBUserId',
     field2: currentUserUid,
   );
