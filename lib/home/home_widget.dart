@@ -103,20 +103,23 @@ class _HomeWidgetState extends State<HomeWidget> {
                 ),
           ),
           actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: FlutterFlowIconButton(
-                borderRadius: 20.0,
-                borderWidth: 1.0,
-                buttonSize: 40.0,
-                icon: Icon(
-                  Icons.email,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24.0,
+            Visibility(
+              visible: FFAppState().requests.length == 0,
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                child: FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  borderWidth: 1.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.email,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 24.0,
+                  ),
+                  onPressed: () async {
+                    context.pushNamed('LIST_REQUEST');
+                  },
                 ),
-                onPressed: () async {
-                  context.pushNamed('LIST_REQUEST');
-                },
               ),
             ),
           ],
