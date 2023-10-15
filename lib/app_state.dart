@@ -152,35 +152,6 @@ class FFAppState extends ChangeNotifier {
     _teams.insert(_index, _value);
   }
 
-  List<OrganizatorStruct> _Organizators = [];
-  List<OrganizatorStruct> get Organizators => _Organizators;
-  set Organizators(List<OrganizatorStruct> _value) {
-    _Organizators = _value;
-  }
-
-  void addToOrganizators(OrganizatorStruct _value) {
-    _Organizators.add(_value);
-  }
-
-  void removeFromOrganizators(OrganizatorStruct _value) {
-    _Organizators.remove(_value);
-  }
-
-  void removeAtIndexFromOrganizators(int _index) {
-    _Organizators.removeAt(_index);
-  }
-
-  void updateOrganizatorsAtIndex(
-    int _index,
-    OrganizatorStruct Function(OrganizatorStruct) updateFn,
-  ) {
-    _Organizators[_index] = updateFn(_Organizators[_index]);
-  }
-
-  void insertAtIndexInOrganizators(int _index, OrganizatorStruct _value) {
-    _Organizators.insert(_index, _value);
-  }
-
   List<TeamStruct> _tournamentMembers = [];
   List<TeamStruct> get tournamentMembers => _tournamentMembers;
   set tournamentMembers(List<TeamStruct> _value) {
@@ -247,6 +218,35 @@ class FFAppState extends ChangeNotifier {
 
   void updateTournamentStruct(Function(TournamentStruct) updateFn) {
     updateFn(_tournament);
+  }
+
+  List<UserStruct> _TournamentOrganizators = [];
+  List<UserStruct> get TournamentOrganizators => _TournamentOrganizators;
+  set TournamentOrganizators(List<UserStruct> _value) {
+    _TournamentOrganizators = _value;
+  }
+
+  void addToTournamentOrganizators(UserStruct _value) {
+    _TournamentOrganizators.add(_value);
+  }
+
+  void removeFromTournamentOrganizators(UserStruct _value) {
+    _TournamentOrganizators.remove(_value);
+  }
+
+  void removeAtIndexFromTournamentOrganizators(int _index) {
+    _TournamentOrganizators.removeAt(_index);
+  }
+
+  void updateTournamentOrganizatorsAtIndex(
+    int _index,
+    UserStruct Function(UserStruct) updateFn,
+  ) {
+    _TournamentOrganizators[_index] = updateFn(_TournamentOrganizators[_index]);
+  }
+
+  void insertAtIndexInTournamentOrganizators(int _index, UserStruct _value) {
+    _TournamentOrganizators.insert(_index, _value);
   }
 }
 

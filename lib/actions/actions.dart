@@ -113,7 +113,7 @@ Future loadOrganizators(
   required int? tournamentId,
 }) async {
   ApiCallResponse? jsonOrganizatorsDataList;
-  List<OrganizatorStruct>? organizatorData;
+  List<UserStruct>? organizatorData;
 
   jsonOrganizatorsDataList = await RelationGroup.letationslistCall.call(
     contentType: 'Tournament',
@@ -135,7 +135,7 @@ Future loadOrganizators(
         );
       },
     );
-    organizatorData = await actions.jsonToDataTypeOrganizator(
+    organizatorData = await actions.jsonToDataTypeUser(
       getJsonField(
         (jsonOrganizatorsDataList?.jsonBody ?? ''),
         r'''$.list''',
@@ -143,8 +143,8 @@ Future loadOrganizators(
       ),
     );
     FFAppState().update(() {
-      FFAppState().Organizators =
-          organizatorData!.toList().cast<OrganizatorStruct>();
+      FFAppState().TournamentOrganizators =
+          organizatorData!.toList().cast<UserStruct>();
     });
     await showDialog(
       context: context,

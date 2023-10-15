@@ -212,7 +212,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                       Builder(
                                         builder: (context) {
                                           final organizatorsList = FFAppState()
-                                              .Organizators
+                                              .TournamentOrganizators
                                               .toList();
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
