@@ -76,6 +76,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
       child: Container(
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
+          borderRadius: BorderRadius.circular(5.0),
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
@@ -107,7 +108,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
                                 0.0, 10.0, 0.0, 10.0),
                             child: Text(
                               'Участники',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ),
                           if (_model.tab1BorderVISIBILITY)
@@ -144,7 +145,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
                                 0.0, 10.0, 0.0, 10.0),
                             child: Text(
                               'Организаторы',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context).titleSmall,
                             ),
                           ),
                           if (_model.tab2BorderVISIBILITY)
