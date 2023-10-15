@@ -133,6 +133,7 @@ class CreatdataGroup {
   static CreatteamCall creatteamCall = CreatteamCall();
   static CreattournamentCall creattournamentCall = CreattournamentCall();
   static CreatrequestCall creatrequestCall = CreatrequestCall();
+  static CreatmatchCall creatmatchCall = CreatmatchCall();
 }
 
 class CreatuserCall {
@@ -284,6 +285,45 @@ class CreatrequestCall {
     return ApiManager.instance.makeApiCall(
       callName: 'CREATREQUEST',
       apiUrl: '${CreatdataGroup.baseUrl}Request',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'xc-auth': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'xc-token': 'Q5eqSAUU7uzfxEs15yHpK8gDBZMW2_9cZaMK-Fkw',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CreatmatchCall {
+  Future<ApiCallResponse> call({
+    String? status = '',
+    String? createdAt = '',
+    String? updatedAt = '',
+    int? round,
+    int? pair,
+    int? tournamentId,
+  }) {
+    final ffApiRequestBody = '''
+{
+  "Status": "${status}",
+  "CreatedAt": "${createdAt}",
+  "UpdatedAt": "${updatedAt}",
+  "Round": ${round},
+  "TournamentId": ${tournamentId},
+  "Pair": ${pair}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'CREATMATCH',
+      apiUrl: '${CreatdataGroup.baseUrl}Match',
       callType: ApiCallType.POST,
       headers: {
         'accept': 'application/json',
