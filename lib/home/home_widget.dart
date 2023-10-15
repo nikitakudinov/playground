@@ -118,124 +118,132 @@ class _HomeWidgetState extends State<HomeWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 850),
-                  curve: Curves.easeIn,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(5.0),
-                              child: Image.network(
-                                FFAppState().AuthenticatedUser.avatar,
-                                width: 75.0,
-                                height: 75.0,
-                                fit: BoxFit.cover,
+              if (FFAppState().AuthenticatedUser != null)
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 850),
+                    curve: Curves.easeIn,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(5.0),
+                                child: Image.network(
+                                  FFAppState().AuthenticatedUser.avatar,
+                                  width: 75.0,
+                                  height: 75.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      if (FFAppState().AuthenticatedUser.tag !=
-                                          'false')
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        if (FFAppState()
+                                                .AuthenticatedUser
+                                                .tag !=
+                                            'false')
+                                          Text(
+                                            '[${FFAppState().AuthenticatedUser.tag}] ',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge,
+                                          ),
                                         Text(
-                                          '[${FFAppState().AuthenticatedUser.tag}] ',
+                                          FFAppState()
+                                              .AuthenticatedUser
+                                              .nickname,
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge,
                                         ),
-                                      Text(
-                                        FFAppState().AuthenticatedUser.nickname,
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge,
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.network(
-                                          FFAppState().AuthenticatedUser.flag,
-                                          width: 24.0,
-                                          height: 16.0,
-                                          fit: BoxFit.cover,
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.network(
+                                            FFAppState().AuthenticatedUser.flag,
+                                            width: 24.0,
+                                            height: 16.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        FFAppState().AuthenticatedUser.country,
+                                        Text(
+                                          FFAppState()
+                                              .AuthenticatedUser
+                                              .country,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ].divide(SizedBox(width: 5.0)),
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await Clipboard.setData(ClipboardData(
+                                            text: FFAppState()
+                                                .AuthenticatedUser
+                                                .id
+                                                .toString()));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'UID пользователя скопирован',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+                                      },
+                                      child: Text(
+                                        'UID#${FFAppState().AuthenticatedUser.id.toString()}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
-                                    ].divide(SizedBox(width: 5.0)),
-                                  ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await Clipboard.setData(ClipboardData(
-                                          text: FFAppState()
-                                              .AuthenticatedUser
-                                              .id
-                                              .toString()));
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'UID пользователя скопирован',
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                    },
-                                    child: Text(
-                                      'UID#${FFAppState().AuthenticatedUser.id.toString()}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
