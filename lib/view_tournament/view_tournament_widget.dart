@@ -120,7 +120,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                         borderRadius:
                                             BorderRadius.circular(5.0),
                                         child: Image.network(
-                                          'https://picsum.photos/seed/890/600',
+                                          FFAppState().tournament.logo,
                                           width: 75.0,
                                           height: 75.0,
                                           fit: BoxFit.cover,
@@ -132,11 +132,16 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Text(
-                                                '~${FFAppState().tournament.tag}~',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium,
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  '~${FFAppState().tournament.tag}~',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium,
+                                                ),
                                               ),
                                               Text(
                                                 FFAppState().tournament.name,
