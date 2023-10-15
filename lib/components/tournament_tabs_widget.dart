@@ -26,7 +26,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
-          curve: Curves.easeInOut,
+          curve: Curves.easeIn,
           delay: 0.ms,
           duration: 1000.ms,
           begin: 0.0,
