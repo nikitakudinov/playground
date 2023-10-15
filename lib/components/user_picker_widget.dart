@@ -321,6 +321,7 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                               _model.messageVISIBILITY = false;
                                               _model.callToTeamButtonVISIBILITY =
                                                   true;
+                                              _model.squadVISIBILITY = true;
                                             });
 
                                             setState(() {});
