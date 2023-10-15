@@ -16,6 +16,8 @@ class TournamentStruct extends FFFirebaseStruct {
     String? logo,
     String? owner,
     String? headerLogo,
+    String? country,
+    String? flag,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
@@ -23,6 +25,8 @@ class TournamentStruct extends FFFirebaseStruct {
         _logo = logo,
         _owner = owner,
         _headerLogo = headerLogo,
+        _country = country,
+        _flag = flag,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -62,6 +66,18 @@ class TournamentStruct extends FFFirebaseStruct {
   set headerLogo(String? val) => _headerLogo = val;
   bool hasHeaderLogo() => _headerLogo != null;
 
+  // "Country" field.
+  String? _country;
+  String get country => _country ?? '';
+  set country(String? val) => _country = val;
+  bool hasCountry() => _country != null;
+
+  // "Flag" field.
+  String? _flag;
+  String get flag => _flag ?? '';
+  set flag(String? val) => _flag = val;
+  bool hasFlag() => _flag != null;
+
   static TournamentStruct fromMap(Map<String, dynamic> data) =>
       TournamentStruct(
         id: castToType<int>(data['Id']),
@@ -70,6 +86,8 @@ class TournamentStruct extends FFFirebaseStruct {
         logo: data['Logo'] as String?,
         owner: data['Owner'] as String?,
         headerLogo: data['HeaderLogo'] as String?,
+        country: data['Country'] as String?,
+        flag: data['Flag'] as String?,
       );
 
   static TournamentStruct? maybeFromMap(dynamic data) =>
@@ -82,6 +100,8 @@ class TournamentStruct extends FFFirebaseStruct {
         'Logo': _logo,
         'Owner': _owner,
         'HeaderLogo': _headerLogo,
+        'Country': _country,
+        'Flag': _flag,
       }.withoutNulls;
 
   @override
@@ -108,6 +128,14 @@ class TournamentStruct extends FFFirebaseStruct {
         ),
         'HeaderLogo': serializeParam(
           _headerLogo,
+          ParamType.String,
+        ),
+        'Country': serializeParam(
+          _country,
+          ParamType.String,
+        ),
+        'Flag': serializeParam(
+          _flag,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -144,6 +172,16 @@ class TournamentStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        country: deserializeParam(
+          data['Country'],
+          ParamType.String,
+          false,
+        ),
+        flag: deserializeParam(
+          data['Flag'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -157,12 +195,14 @@ class TournamentStruct extends FFFirebaseStruct {
         tag == other.tag &&
         logo == other.logo &&
         owner == other.owner &&
-        headerLogo == other.headerLogo;
+        headerLogo == other.headerLogo &&
+        country == other.country &&
+        flag == other.flag;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([id, name, tag, logo, owner, headerLogo]);
+  int get hashCode => const ListEquality()
+      .hash([id, name, tag, logo, owner, headerLogo, country, flag]);
 }
 
 TournamentStruct createTournamentStruct({
@@ -172,6 +212,8 @@ TournamentStruct createTournamentStruct({
   String? logo,
   String? owner,
   String? headerLogo,
+  String? country,
+  String? flag,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -184,6 +226,8 @@ TournamentStruct createTournamentStruct({
       logo: logo,
       owner: owner,
       headerLogo: headerLogo,
+      country: country,
+      flag: flag,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
