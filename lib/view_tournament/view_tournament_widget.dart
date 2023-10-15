@@ -103,64 +103,74 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 15.0, 15.0, 15.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Color(0x4213151C),
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                        child: Image.network(
-                                          FFAppState().tournament.logo,
-                                          width: 75.0,
-                                          height: 75.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  '~${FFAppState().tournament.tag}~',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineLarge,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  FFAppState().tournament.name,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium,
-                                                ),
-                                              ),
-                                            ],
+                          Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 15.0, 15.0, 15.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0x4213151C),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  10.0, 10.0, 10.0, 10.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            child: Image.network(
+                                              FFAppState().tournament.logo,
+                                              width: 75.0,
+                                              height: 75.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          10.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    '~${FFAppState().tournament.tag}~',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLarge,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    FFAppState()
+                                                        .tournament
+                                                        .name,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleMedium,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
