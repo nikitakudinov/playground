@@ -152,13 +152,17 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             VerticalDirection.down,
                                         clipBehavior: Clip.none,
                                         children: [
-                                          Text(
-                                            'Отправить приглашение вступить в команду этому пользователю?',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
                                           if (_model.searchedUser.first
                                                   .teamRole !=
+                                              'Вне команды')
+                                            Text(
+                                              'Отправить приглашение вступить в команду этому пользователю?',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          if (_model.searchedUser.first
+                                                  .teamRole ==
                                               'Вне команды')
                                             Text(
                                               'Отправить приглашение вступить в команду этому пользователю нельзя, так как он является членом другой команды.',
