@@ -180,7 +180,7 @@ Future loadTournamentMembers(
       context: context,
       builder: (alertDialogContext) {
         return AlertDialog(
-          title: Text('1'),
+          title: Text('MembersCount Loaded'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(alertDialogContext),
@@ -200,6 +200,20 @@ Future loadTournamentMembers(
     FFAppState().update(() {
       FFAppState().tournamentMembers = membersData!.toList().cast<TeamStruct>();
     });
+    await showDialog(
+      context: context,
+      builder: (alertDialogContext) {
+        return AlertDialog(
+          title: Text('Tournamnent members loaded to appstate'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(alertDialogContext),
+              child: Text('Ok'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
