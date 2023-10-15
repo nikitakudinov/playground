@@ -157,11 +157,15 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
                                           ),
-                                          Text(
-                                            'Отправить приглашение вступить в команду этому пользователю нельзя, так как он является членом другой команды.',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                          ),
+                                          if (_model.searchedUser.first
+                                                  .teamRole !=
+                                              'Вне команды')
+                                            Text(
+                                              'Отправить приглашение вступить в команду этому пользователю нельзя, так как он является членом другой команды.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
                                         ],
                                       ),
                                     ),
