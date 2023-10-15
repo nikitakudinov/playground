@@ -52,7 +52,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
         context,
         tournamentId: widget.tournamentId,
       );
-      await _model.loadMatches(
+      await action_blocks.loadMatches(
         context,
         tournamentId: widget.tournamentId,
       );

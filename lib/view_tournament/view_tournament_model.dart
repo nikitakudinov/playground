@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/tournament_grid_widget.dart';
 import '/components/tournament_tabs_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
-import '/custom_code/actions/index.dart' as actions;
 import 'view_tournament_widget.dart' show ViewTournamentWidget;
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -229,46 +227,6 @@ class ViewTournamentModel extends FlutterFlowModel<ViewTournamentWidget> {
           }
         }
       }
-    }
-  }
-
-  Future loadMatches(
-    BuildContext context, {
-    int? tournamentId,
-  }) async {
-    ApiCallResponse? apiResulta4h;
-    List<MatchStruct>? matchesData;
-
-    apiResulta4h = await GetdataGroup.datalistCall.call(
-      contentType: 'Match',
-      field1: 'TournamentId',
-      field2: widget.tournamentId?.toString(),
-    );
-    if ((apiResulta4h?.succeeded ?? true)) {
-      matchesData = await actions.jsonToDataTypeMatch(
-        getJsonField(
-          (apiResulta4h?.jsonBody ?? ''),
-          r'''$.list''',
-          true,
-        ),
-      );
-      FFAppState().update(() {
-        FFAppState().matches = matchesData!.toList().cast<MatchStruct>();
-      });
-      await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text('MatchesLoaded'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text('Ok'),
-              ),
-            ],
-          );
-        },
-      );
     }
   }
 
