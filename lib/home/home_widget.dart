@@ -259,14 +259,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.network(
-                                          'https://picsum.photos/seed/333/600',
+                                          FFAppState().AuthenticatedUser.flag,
                                           width: 24.0,
                                           height: 16.0,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
                                       Text(
-                                        'Hello World',
+                                        FFAppState().AuthenticatedUser.country,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
