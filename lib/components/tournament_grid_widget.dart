@@ -435,7 +435,11 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          '',
+                                                          getJsonField(
+                                                            rowLetationslistResponse
+                                                                .jsonBody,
+                                                            r'''$.list[:].Tag''',
+                                                          ).toString(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium,
