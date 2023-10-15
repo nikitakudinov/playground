@@ -91,15 +91,71 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.network(
-                            FFAppState().tournament.headerLogo,
-                            fit: BoxFit.cover,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: Image.network(
+                                FFAppState().tournament.headerLogo,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 15.0, 15.0, 15.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                        child: Image.network(
+                                          'https://picsum.photos/seed/890/600',
+                                          width: 75.0,
+                                          height: 75.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Text(
+                                                '~${FFAppState().tournament.tag}~',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium,
+                                              ),
+                                              Text(
+                                                FFAppState().tournament.name,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
