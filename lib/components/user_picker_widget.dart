@@ -218,6 +218,13 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall,
                                             ),
+                                            Text(
+                                              _model
+                                                  .searchedUser.first.teamRole,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
                                           ],
                                         ),
                                       ],
