@@ -260,7 +260,11 @@ class _UserPickerWidgetState extends State<UserPickerWidget> {
                                             _model.searchVISIBILITY = true;
                                           });
                                         },
-                                        text: 'Нет',
+                                        text: _model.searchedUser.first
+                                                    .teamRole !=
+                                                'Вне команды'
+                                            ? 'Ясно'
+                                            : 'Нет',
                                         options: FFButtonOptions(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
