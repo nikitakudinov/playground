@@ -92,7 +92,9 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
-                onPressed: () async {},
+                onPressed: () {
+                  print('IconButton pressed ...');
+                },
               ),
             ),
           ],
