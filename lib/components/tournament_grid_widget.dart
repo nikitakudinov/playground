@@ -80,6 +80,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                             .toList();
                         return ListView.separated(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: round1.length,
@@ -322,6 +323,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                             .toList();
                         return ListView.separated(
                           padding: EdgeInsets.zero,
+                          primary: false,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: round2.length,
