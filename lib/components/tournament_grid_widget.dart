@@ -135,7 +135,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                         borderRadius:
                                             BorderRadius.circular(3.0),
                                         child: Image.network(
-                                          round1Item.rival1Logo[0],
+                                          round1Item.rival1Logo.first,
                                           width: 22.0,
                                           height: 22.0,
                                           fit: BoxFit.cover,
@@ -202,7 +202,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(3.0),
                                       child: Image.network(
-                                        round1Item.rival2Logo[0],
+                                        round1Item.rival2Logo.first,
                                         width: 22.0,
                                         height: 22.0,
                                         fit: BoxFit.cover,
