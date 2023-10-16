@@ -311,6 +311,8 @@ class CreatmatchCall {
     int? round,
     int? pair,
     int? tournamentId,
+    String? rival1Name = '',
+    String? rival2Name = '',
   }) {
     final ffApiRequestBody = '''
 {
@@ -319,7 +321,9 @@ class CreatmatchCall {
   "UpdatedAt": "${updatedAt}",
   "Round": ${round},
   "TournamentId": ${tournamentId},
-  "Pair": ${pair}
+  "Pair": ${pair},
+  "Rival1Name": "${rival1Name}",
+  "Rival2Name": "${rival2Name}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'CREATMATCH',

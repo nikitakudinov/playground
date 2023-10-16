@@ -43,6 +43,9 @@ class ViewTournamentModel extends FlutterFlowModel<ViewTournamentWidget> {
     int? tournamentId,
   }) async {
     ApiCallResponse? creatMatch1;
+    ApiCallResponse? creatMatch1;
+    ApiCallResponse? creatMatch1;
+    ApiCallResponse? creatMatch1;
 
     creatMatch1 = await CreatdataGroup.creatmatchCall.call(
       status: 'Добавлен в сетку турнира',
@@ -51,6 +54,38 @@ class ViewTournamentModel extends FlutterFlowModel<ViewTournamentWidget> {
       round: 1,
       pair: 1,
       tournamentId: widget.tournamentId,
+      rival1Name: 'Не определен',
+      rival2Name: 'Не определен',
+    );
+    creatMatch1 = await CreatdataGroup.creatmatchCall.call(
+      status: 'Добавлен в сетку турнира',
+      createdAt: getCurrentTimestamp.toString(),
+      updatedAt: getCurrentTimestamp.toString(),
+      round: 1,
+      pair: 2,
+      tournamentId: widget.tournamentId,
+      rival1Name: 'Не определен',
+      rival2Name: 'Не определен',
+    );
+    creatMatch1 = await CreatdataGroup.creatmatchCall.call(
+      status: 'Добавлен в сетку турнира',
+      createdAt: getCurrentTimestamp.toString(),
+      updatedAt: getCurrentTimestamp.toString(),
+      round: 1,
+      pair: 3,
+      tournamentId: widget.tournamentId,
+      rival1Name: 'Не определен',
+      rival2Name: 'Не определен',
+    );
+    creatMatch1 = await CreatdataGroup.creatmatchCall.call(
+      status: 'Добавлен в сетку турнира',
+      createdAt: getCurrentTimestamp.toString(),
+      updatedAt: getCurrentTimestamp.toString(),
+      round: 1,
+      pair: 4,
+      tournamentId: widget.tournamentId,
+      rival1Name: 'Не определен',
+      rival2Name: 'Не определен',
     );
   }
 
