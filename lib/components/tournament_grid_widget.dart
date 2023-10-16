@@ -600,6 +600,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                       10.0, 10.0, 10.0, 10.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -851,6 +852,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                     10.0, 10.0, 10.0, 10.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
