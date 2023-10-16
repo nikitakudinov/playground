@@ -52,7 +52,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 0.0, 15.0),
               child: Container(
                 width: 250.0,
                 decoration: BoxDecoration(
