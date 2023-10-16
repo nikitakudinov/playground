@@ -96,10 +96,6 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                       ),
                                     ],
                                   ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [],
-                                  ),
                                 ],
                               ),
                             ),
