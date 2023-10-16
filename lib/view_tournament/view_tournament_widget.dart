@@ -92,12 +92,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
-                onPressed: () async {
-                  await _model.creatTournamentMatch(
-                    context,
-                    tournamentId: widget.tournamentId,
-                  );
-                },
+                onPressed: () async {},
               ),
             ),
           ],

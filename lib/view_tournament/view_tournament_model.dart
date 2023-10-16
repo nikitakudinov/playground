@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/components/tournament_grid_widget.dart';
 import '/components/tournament_tabs_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -37,57 +36,6 @@ class ViewTournamentModel extends FlutterFlowModel<ViewTournamentWidget> {
   }
 
   /// Action blocks are added here.
-
-  Future creatTournamentMatch(
-    BuildContext context, {
-    int? tournamentId,
-  }) async {
-    ApiCallResponse? creatMatch1;
-    ApiCallResponse? creatMatch1;
-    ApiCallResponse? creatMatch1;
-    ApiCallResponse? creatMatch1;
-
-    creatMatch1 = await CreatdataGroup.creatmatchCall.call(
-      status: 'Добавлен в сетку турнира',
-      createdAt: getCurrentTimestamp.toString(),
-      updatedAt: getCurrentTimestamp.toString(),
-      round: 1,
-      pair: 1,
-      tournamentId: widget.tournamentId,
-      rival1Name: 'Не определен',
-      rival2Name: 'Не определен',
-    );
-    creatMatch1 = await CreatdataGroup.creatmatchCall.call(
-      status: 'Добавлен в сетку турнира',
-      createdAt: getCurrentTimestamp.toString(),
-      updatedAt: getCurrentTimestamp.toString(),
-      round: 1,
-      pair: 2,
-      tournamentId: widget.tournamentId,
-      rival1Name: 'Не определен',
-      rival2Name: 'Не определен',
-    );
-    creatMatch1 = await CreatdataGroup.creatmatchCall.call(
-      status: 'Добавлен в сетку турнира',
-      createdAt: getCurrentTimestamp.toString(),
-      updatedAt: getCurrentTimestamp.toString(),
-      round: 1,
-      pair: 3,
-      tournamentId: widget.tournamentId,
-      rival1Name: 'Не определен',
-      rival2Name: 'Не определен',
-    );
-    creatMatch1 = await CreatdataGroup.creatmatchCall.call(
-      status: 'Добавлен в сетку турнира',
-      createdAt: getCurrentTimestamp.toString(),
-      updatedAt: getCurrentTimestamp.toString(),
-      round: 1,
-      pair: 4,
-      tournamentId: widget.tournamentId,
-      rival1Name: 'Не определен',
-      rival2Name: 'Не определен',
-    );
-  }
 
   /// Additional helper methods are added here.
 }

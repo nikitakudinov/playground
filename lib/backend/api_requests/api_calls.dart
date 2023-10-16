@@ -321,9 +321,8 @@ class CreatmatchCall {
   "UpdatedAt": "${updatedAt}",
   "Round": ${round},
   "TournamentId": ${tournamentId},
-  "Pair": ${pair},
-  "Rival1Name": "${rival1Name}",
-  "Rival2Name": "${rival2Name}"
+  "Pair": ${pair}
+
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'CREATMATCH',
