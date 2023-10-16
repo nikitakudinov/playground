@@ -92,7 +92,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        round1Item.status,
+                                        '12.10.23',
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -236,7 +236,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                                 ),
                                           ),
                                           Text(
-                                            round1Item.rival1Name.first,
+                                            round1Item.rival2Name.first,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -260,7 +260,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 10.0, 0.0),
                                           child: Text(
-                                            '${round1Item.rival2Name.first}',
+                                            '${round1Item.rival2Wins.toString()}',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleSmall,
                                           ),
