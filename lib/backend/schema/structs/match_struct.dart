@@ -21,6 +21,15 @@ class MatchStruct extends FFFirebaseStruct {
     int? tournamentId,
     int? matchWinnerID,
     List<String>? rival1Logo,
+    List<String>? rival1Tag,
+    List<String>? rival1Name,
+    List<String>? rival1Country,
+    List<String>? rival1Flag,
+    List<String>? rival2Logo,
+    List<String>? rival2Tag,
+    List<String>? rival2Name,
+    List<String>? rival2Country,
+    List<String>? rival2Flag,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _status = status,
@@ -33,6 +42,15 @@ class MatchStruct extends FFFirebaseStruct {
         _tournamentId = tournamentId,
         _matchWinnerID = matchWinnerID,
         _rival1Logo = rival1Logo,
+        _rival1Tag = rival1Tag,
+        _rival1Name = rival1Name,
+        _rival1Country = rival1Country,
+        _rival1Flag = rival1Flag,
+        _rival2Logo = rival2Logo,
+        _rival2Tag = rival2Tag,
+        _rival2Name = rival2Name,
+        _rival2Country = rival2Country,
+        _rival2Flag = rival2Flag,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -112,6 +130,78 @@ class MatchStruct extends FFFirebaseStruct {
       updateFn(_rival1Logo ??= []);
   bool hasRival1Logo() => _rival1Logo != null;
 
+  // "Rival1Tag" field.
+  List<String>? _rival1Tag;
+  List<String> get rival1Tag => _rival1Tag ?? const [];
+  set rival1Tag(List<String>? val) => _rival1Tag = val;
+  void updateRival1Tag(Function(List<String>) updateFn) =>
+      updateFn(_rival1Tag ??= []);
+  bool hasRival1Tag() => _rival1Tag != null;
+
+  // "Rival1Name" field.
+  List<String>? _rival1Name;
+  List<String> get rival1Name => _rival1Name ?? const [];
+  set rival1Name(List<String>? val) => _rival1Name = val;
+  void updateRival1Name(Function(List<String>) updateFn) =>
+      updateFn(_rival1Name ??= []);
+  bool hasRival1Name() => _rival1Name != null;
+
+  // "Rival1Country" field.
+  List<String>? _rival1Country;
+  List<String> get rival1Country => _rival1Country ?? const [];
+  set rival1Country(List<String>? val) => _rival1Country = val;
+  void updateRival1Country(Function(List<String>) updateFn) =>
+      updateFn(_rival1Country ??= []);
+  bool hasRival1Country() => _rival1Country != null;
+
+  // "Rival1Flag" field.
+  List<String>? _rival1Flag;
+  List<String> get rival1Flag => _rival1Flag ?? const [];
+  set rival1Flag(List<String>? val) => _rival1Flag = val;
+  void updateRival1Flag(Function(List<String>) updateFn) =>
+      updateFn(_rival1Flag ??= []);
+  bool hasRival1Flag() => _rival1Flag != null;
+
+  // "Rival2Logo" field.
+  List<String>? _rival2Logo;
+  List<String> get rival2Logo => _rival2Logo ?? const [];
+  set rival2Logo(List<String>? val) => _rival2Logo = val;
+  void updateRival2Logo(Function(List<String>) updateFn) =>
+      updateFn(_rival2Logo ??= []);
+  bool hasRival2Logo() => _rival2Logo != null;
+
+  // "Rival2Tag" field.
+  List<String>? _rival2Tag;
+  List<String> get rival2Tag => _rival2Tag ?? const [];
+  set rival2Tag(List<String>? val) => _rival2Tag = val;
+  void updateRival2Tag(Function(List<String>) updateFn) =>
+      updateFn(_rival2Tag ??= []);
+  bool hasRival2Tag() => _rival2Tag != null;
+
+  // "Rival2Name" field.
+  List<String>? _rival2Name;
+  List<String> get rival2Name => _rival2Name ?? const [];
+  set rival2Name(List<String>? val) => _rival2Name = val;
+  void updateRival2Name(Function(List<String>) updateFn) =>
+      updateFn(_rival2Name ??= []);
+  bool hasRival2Name() => _rival2Name != null;
+
+  // "Rival2Country" field.
+  List<String>? _rival2Country;
+  List<String> get rival2Country => _rival2Country ?? const [];
+  set rival2Country(List<String>? val) => _rival2Country = val;
+  void updateRival2Country(Function(List<String>) updateFn) =>
+      updateFn(_rival2Country ??= []);
+  bool hasRival2Country() => _rival2Country != null;
+
+  // "Rival2Flag" field.
+  List<String>? _rival2Flag;
+  List<String> get rival2Flag => _rival2Flag ?? const [];
+  set rival2Flag(List<String>? val) => _rival2Flag = val;
+  void updateRival2Flag(Function(List<String>) updateFn) =>
+      updateFn(_rival2Flag ??= []);
+  bool hasRival2Flag() => _rival2Flag != null;
+
   static MatchStruct fromMap(Map<String, dynamic> data) => MatchStruct(
         id: castToType<int>(data['Id']),
         status: data['Status'] as String?,
@@ -124,6 +214,15 @@ class MatchStruct extends FFFirebaseStruct {
         tournamentId: castToType<int>(data['TournamentId']),
         matchWinnerID: castToType<int>(data['MatchWinnerID']),
         rival1Logo: getDataList(data['Rival1Logo']),
+        rival1Tag: getDataList(data['Rival1Tag']),
+        rival1Name: getDataList(data['Rival1Name']),
+        rival1Country: getDataList(data['Rival1Country']),
+        rival1Flag: getDataList(data['Rival1Flag']),
+        rival2Logo: getDataList(data['Rival2Logo']),
+        rival2Tag: getDataList(data['Rival2Tag']),
+        rival2Name: getDataList(data['Rival2Name']),
+        rival2Country: getDataList(data['Rival2Country']),
+        rival2Flag: getDataList(data['Rival2Flag']),
       );
 
   static MatchStruct? maybeFromMap(dynamic data) =>
@@ -141,6 +240,15 @@ class MatchStruct extends FFFirebaseStruct {
         'TournamentId': _tournamentId,
         'MatchWinnerID': _matchWinnerID,
         'Rival1Logo': _rival1Logo,
+        'Rival1Tag': _rival1Tag,
+        'Rival1Name': _rival1Name,
+        'Rival1Country': _rival1Country,
+        'Rival1Flag': _rival1Flag,
+        'Rival2Logo': _rival2Logo,
+        'Rival2Tag': _rival2Tag,
+        'Rival2Name': _rival2Name,
+        'Rival2Country': _rival2Country,
+        'Rival2Flag': _rival2Flag,
       }.withoutNulls;
 
   @override
@@ -187,6 +295,51 @@ class MatchStruct extends FFFirebaseStruct {
         ),
         'Rival1Logo': serializeParam(
           _rival1Logo,
+          ParamType.String,
+          true,
+        ),
+        'Rival1Tag': serializeParam(
+          _rival1Tag,
+          ParamType.String,
+          true,
+        ),
+        'Rival1Name': serializeParam(
+          _rival1Name,
+          ParamType.String,
+          true,
+        ),
+        'Rival1Country': serializeParam(
+          _rival1Country,
+          ParamType.String,
+          true,
+        ),
+        'Rival1Flag': serializeParam(
+          _rival1Flag,
+          ParamType.String,
+          true,
+        ),
+        'Rival2Logo': serializeParam(
+          _rival2Logo,
+          ParamType.String,
+          true,
+        ),
+        'Rival2Tag': serializeParam(
+          _rival2Tag,
+          ParamType.String,
+          true,
+        ),
+        'Rival2Name': serializeParam(
+          _rival2Name,
+          ParamType.String,
+          true,
+        ),
+        'Rival2Country': serializeParam(
+          _rival2Country,
+          ParamType.String,
+          true,
+        ),
+        'Rival2Flag': serializeParam(
+          _rival2Flag,
           ParamType.String,
           true,
         ),
@@ -249,6 +402,51 @@ class MatchStruct extends FFFirebaseStruct {
           ParamType.String,
           true,
         ),
+        rival1Tag: deserializeParam<String>(
+          data['Rival1Tag'],
+          ParamType.String,
+          true,
+        ),
+        rival1Name: deserializeParam<String>(
+          data['Rival1Name'],
+          ParamType.String,
+          true,
+        ),
+        rival1Country: deserializeParam<String>(
+          data['Rival1Country'],
+          ParamType.String,
+          true,
+        ),
+        rival1Flag: deserializeParam<String>(
+          data['Rival1Flag'],
+          ParamType.String,
+          true,
+        ),
+        rival2Logo: deserializeParam<String>(
+          data['Rival2Logo'],
+          ParamType.String,
+          true,
+        ),
+        rival2Tag: deserializeParam<String>(
+          data['Rival2Tag'],
+          ParamType.String,
+          true,
+        ),
+        rival2Name: deserializeParam<String>(
+          data['Rival2Name'],
+          ParamType.String,
+          true,
+        ),
+        rival2Country: deserializeParam<String>(
+          data['Rival2Country'],
+          ParamType.String,
+          true,
+        ),
+        rival2Flag: deserializeParam<String>(
+          data['Rival2Flag'],
+          ParamType.String,
+          true,
+        ),
       );
 
   @override
@@ -268,7 +466,16 @@ class MatchStruct extends FFFirebaseStruct {
         round == other.round &&
         tournamentId == other.tournamentId &&
         matchWinnerID == other.matchWinnerID &&
-        listEquality.equals(rival1Logo, other.rival1Logo);
+        listEquality.equals(rival1Logo, other.rival1Logo) &&
+        listEquality.equals(rival1Tag, other.rival1Tag) &&
+        listEquality.equals(rival1Name, other.rival1Name) &&
+        listEquality.equals(rival1Country, other.rival1Country) &&
+        listEquality.equals(rival1Flag, other.rival1Flag) &&
+        listEquality.equals(rival2Logo, other.rival2Logo) &&
+        listEquality.equals(rival2Tag, other.rival2Tag) &&
+        listEquality.equals(rival2Name, other.rival2Name) &&
+        listEquality.equals(rival2Country, other.rival2Country) &&
+        listEquality.equals(rival2Flag, other.rival2Flag);
   }
 
   @override
@@ -283,7 +490,16 @@ class MatchStruct extends FFFirebaseStruct {
         round,
         tournamentId,
         matchWinnerID,
-        rival1Logo
+        rival1Logo,
+        rival1Tag,
+        rival1Name,
+        rival1Country,
+        rival1Flag,
+        rival2Logo,
+        rival2Tag,
+        rival2Name,
+        rival2Country,
+        rival2Flag
       ]);
 }
 
