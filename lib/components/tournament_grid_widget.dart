@@ -79,222 +79,29 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 5.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  'РАУНД ${round1Item.round.toString()}  /  ПАРА ${round1Item.pair.toString()}',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Saira Semi Condensed',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                      ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'СЧЕТ',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Saira Semi Condensed',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                        child: Image.network(
+                                          round1Item.rival1Logo.first,
+                                          width: 30.0,
+                                          height: 30.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                    ),
-                                    FutureBuilder<ApiCallResponse>(
-                                      future:
-                                          RelationGroup.letationslistCall.call(
-                                        contentType: 'Match',
-                                        contentId: round1Item.id,
-                                        relationField: 'Rival1Count',
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitChasingDots(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        final rowLetationslistResponse =
-                                            snapshot.data!;
-                                        return Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        '[${getJsonField(
-                                                          rowLetationslistResponse
-                                                              .jsonBody,
-                                                          r'''$.list[:].Tag''',
-                                                        ).toString()}]',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                      Text(
-                                                        getJsonField(
-                                                          rowLetationslistResponse
-                                                              .jsonBody,
-                                                          r'''$.list[:].Name''',
-                                                        ).toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    round1Item.riva1Wins
-                                                        .toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                    FutureBuilder<ApiCallResponse>(
-                                      future:
-                                          RelationGroup.letationslistCall.call(
-                                        contentType: 'Match',
-                                        contentId: round1Item.id,
-                                        relationField: 'Rival2Count',
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: SpinKitChasingDots(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 50.0,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        final rowLetationslistResponse =
-                                            snapshot.data!;
-                                        return Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    '[${getJsonField(
-                                                      rowLetationslistResponse
-                                                          .jsonBody,
-                                                      r'''$.list[:].Tag''',
-                                                    ).toString()}]',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 10.0, 0.0),
-                                                  child: Text(
-                                                    round1Item.rival2Wins
-                                                        .toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [],
+                                  ),
+                                ],
                               ),
                             ),
                           );
