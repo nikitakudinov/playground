@@ -97,6 +97,7 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                     context,
                     tournamentId: widget.tournamentId,
                   );
+                  setState(() {});
                 },
               ),
             ),
