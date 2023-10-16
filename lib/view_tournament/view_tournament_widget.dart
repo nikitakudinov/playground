@@ -18,7 +18,7 @@ class ViewTournamentWidget extends StatefulWidget {
   const ViewTournamentWidget({
     Key? key,
     required this.tournamentId,
-    required this.tournamentIndex,
+    this.tournamentIndex,
   }) : super(key: key);
 
   final int? tournamentId;
@@ -97,7 +97,16 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                     context,
                     tournamentId: widget.tournamentId,
                   );
-                  setState(() {});
+
+                  context.pushNamed(
+                    'VIEW_TOURNAMENT',
+                    queryParameters: {
+                      'tournamentId': serializeParam(
+                        widget.tournamentId,
+                        ParamType.int,
+                      ),
+                    }.withoutNulls,
+                  );
                 },
               ),
             ),
