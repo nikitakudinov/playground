@@ -253,20 +253,6 @@ Future loadMatches(
     field2: tournamentId?.toString(),
   );
   if ((apiResulta4h?.succeeded ?? true)) {
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('114'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
     matchesData = await actions.jsonToDataTypeMatch(
       getJsonField(
         (apiResulta4h?.jsonBody ?? ''),
@@ -277,20 +263,6 @@ Future loadMatches(
     FFAppState().update(() {
       FFAppState().matches = matchesData!.toList().cast<MatchStruct>();
     });
-    await showDialog(
-      context: context,
-      builder: (alertDialogContext) {
-        return AlertDialog(
-          title: Text('MatchesLoaded'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(alertDialogContext),
-              child: Text('Ok'),
-            ),
-          ],
-        );
-      },
-    );
   }
 }
 
