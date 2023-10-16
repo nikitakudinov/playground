@@ -87,6 +87,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                           itemBuilder: (context, round1Index) {
                             final round1Item = round1[round1Index];
                             return Container(
+                              height: 120.0,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 borderRadius: BorderRadius.circular(5.0),
@@ -331,6 +332,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 120.0),
                               child: Container(
+                                height: 120.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context).tertiary,
                                   borderRadius: BorderRadius.circular(5.0),
