@@ -797,18 +797,18 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                     ),
                     child: Builder(
                       builder: (context) {
-                        final round3 = FFAppState()
+                        final round4 = FFAppState()
                             .matches
-                            .where((e) => e.round == 3)
+                            .where((e) => e.round == 4)
                             .toList();
                         return ListView.separated(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: round3.length,
+                          itemCount: round4.length,
                           separatorBuilder: (_, __) => SizedBox(height: 15.0),
-                          itemBuilder: (context, round3Index) {
-                            final round3Item = round3[round3Index];
+                          itemBuilder: (context, round4Index) {
+                            final round4Item = round4[round4Index];
                             return Container(
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).tertiary,
@@ -832,7 +832,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Пара: ${round3Item.pair.toString()}',
+                                            'Пара: ${round4Item.pair.toString()}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -864,8 +864,8 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          if (round3Item.rival1Logo != null &&
-                                              round3Item.rival1Logo != '')
+                                          if (round4Item.rival1Logo != null &&
+                                              round4Item.rival1Logo != '')
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 5.0, 0.0),
@@ -873,7 +873,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(3.0),
                                                 child: Image.network(
-                                                  round3Item.rival1Logo,
+                                                  round4Item.rival1Logo,
                                                   width: 30.0,
                                                   height: 30.0,
                                                   fit: BoxFit.cover,
@@ -886,17 +886,17 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                if (round3Item.rival1Tag !=
+                                                if (round4Item.rival1Tag !=
                                                         null &&
-                                                    round3Item.rival1Tag != '')
+                                                    round4Item.rival1Tag != '')
                                                   Text(
-                                                    '[${round3Item.rival1Tag}]',
+                                                    '[${round4Item.rival1Tag}]',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyLarge,
                                                   ),
                                                 Text(
-                                                  round3Item.rival1Name,
+                                                  round4Item.rival1Name,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -921,7 +921,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                                     .fromSTEB(
                                                         0.0, 0.0, 10.0, 0.0),
                                                 child: Text(
-                                                  '${round3Item.riva1Wins.toString()}',
+                                                  '${round4Item.riva1Wins.toString()}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .titleSmall,
@@ -935,8 +935,8 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        if (round3Item.rival2Logo != null &&
-                                            round3Item.rival2Logo != '')
+                                        if (round4Item.rival2Logo != null &&
+                                            round4Item.rival2Logo != '')
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -945,7 +945,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(3.0),
                                               child: Image.network(
-                                                round3Item.rival2Logo,
+                                                round4Item.rival2Logo,
                                                 width: 30.0,
                                                 height: 30.0,
                                                 fit: BoxFit.cover,
@@ -958,17 +958,17 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              if (round3Item.rival2Tag !=
+                                              if (round4Item.rival2Tag !=
                                                       null &&
-                                                  round3Item.rival2Tag != '')
+                                                  round4Item.rival2Tag != '')
                                                 Text(
-                                                  '[${round3Item.rival2Tag}]',
+                                                  '[${round4Item.rival2Tag}]',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyLarge,
                                                 ),
                                               Text(
-                                                round3Item.rival2Name,
+                                                round4Item.rival2Name,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -993,7 +993,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                                   .fromSTEB(
                                                       0.0, 0.0, 10.0, 0.0),
                                               child: Text(
-                                                '${round3Item.rival2Wins.toString()}',
+                                                '${round4Item.rival2Wins.toString()}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall,
