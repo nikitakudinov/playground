@@ -171,6 +171,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
                           FFAppState().tournamentMembers.toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: membersList.length,
@@ -258,6 +259,7 @@ class _TournamentTabsWidgetState extends State<TournamentTabsWidget>
                           FFAppState().TournamentOrganizators.toList();
                       return ListView.builder(
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: organizatorsList.length,
