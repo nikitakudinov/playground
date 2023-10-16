@@ -170,6 +170,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             tournamentId: params.getParam('tournamentId', ParamType.int),
             tournamentIndex: params.getParam('tournamentIndex', ParamType.int),
           ),
+        ),
+        FFRoute(
+          name: 'EDITE_TOURNAMENT',
+          path: '/editeTournament',
+          builder: (context, params) => EditeTournamentWidget(
+            tournamentId: params.getParam('tournamentId', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

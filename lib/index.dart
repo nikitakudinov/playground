@@ -12,4 +12,7 @@ export '/list_request/list_request_widget.dart' show ListRequestWidget;
 export '/tournament/add_tournament/add_tournament_widget.dart'
     show AddTournamentWidget;
 export '/home/home_widget.dart' show HomeWidget;
-export '/view_tournament/view_tournament_widget.dart' show ViewTournamentWidget;
+export '/tournament/view_tournament/view_tournament_widget.dart'
+    show ViewTournamentWidget;
+export '/tournament/edite_tournament/edite_tournament_widget.dart'
+    show EditeTournamentWidget;
