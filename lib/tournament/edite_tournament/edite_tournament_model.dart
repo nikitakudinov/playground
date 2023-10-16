@@ -1,5 +1,6 @@
 import '/backend/firebase_storage/storage.dart';
 import '/components/country_picker/country_picker_widget.dart';
+import '/components/organizator_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -40,11 +41,15 @@ class EditeTournamentModel extends FlutterFlowModel<EditeTournamentWidget> {
   String? Function(BuildContext, String?)? tagControllerValidator;
   // Model for countryPicker component.
   late CountryPickerModel countryPickerModel;
+  // Model for organizatorPicker component.
+  late OrganizatorPickerModel organizatorPickerModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     countryPickerModel = createModel(context, () => CountryPickerModel());
+    organizatorPickerModel =
+        createModel(context, () => OrganizatorPickerModel());
   }
 
   void dispose() {
@@ -52,6 +57,7 @@ class EditeTournamentModel extends FlutterFlowModel<EditeTournamentWidget> {
     nameController?.dispose();
     tagController?.dispose();
     countryPickerModel.dispose();
+    organizatorPickerModel.dispose();
   }
 
   /// Action blocks are added here.

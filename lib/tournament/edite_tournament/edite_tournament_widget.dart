@@ -1,5 +1,6 @@
 import '/backend/firebase_storage/storage.dart';
 import '/components/country_picker/country_picker_widget.dart';
+import '/components/organizator_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -438,6 +439,18 @@ class _EditeTournamentWidgetState extends State<EditeTournamentWidget> {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                  child: wrapWithModel(
+                    model: _model.organizatorPickerModel,
+                    updateCallback: () => setState(() {}),
+                    child: OrganizatorPickerWidget(
+                      docId: widget.tournamentId!,
+                      teamName: widget.tournamentId!.toString(),
                     ),
                   ),
                 ),
