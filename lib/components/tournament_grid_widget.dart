@@ -51,56 +51,48 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 250.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-              ),
-              child: Builder(
-                builder: (context) {
-                  final round1 = FFAppState().matches.toList();
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: round1.length,
-                    itemBuilder: (context, round1Index) {
-                      final round1Item = round1[round1Index];
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).tertiary,
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 10.0, 10.0, 10.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 5.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '12.10.23',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Saira Semi Condensed',
-                                            fontSize: 10.0,
-                                          ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          6.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Раунд: 1 Пара: 1',
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 0.0),
+              child: Container(
+                width: 250.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Builder(
+                  builder: (context) {
+                    final round1 = FFAppState().matches.toList();
+                    return ListView.separated(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: round1.length,
+                      separatorBuilder: (_, __) => SizedBox(height: 10.0),
+                      itemBuilder: (context, round1Index) {
+                        final round1Item = round1[round1Index];
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        round1Item.status,
                                         style: FlutterFlowTheme.of(context)
                                             .bodySmall
                                             .override(
@@ -109,23 +101,108 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               fontSize: 10.0,
                                             ),
                                       ),
-                                    ),
-                                    Text(
-                                      'Счет',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Saira Semi Condensed',
-                                            fontSize: 10.0,
-                                          ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            6.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Раунд: ${round1Item.round.toString()} Пара: ${round1Item.pair.toString()}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily:
+                                                    'Saira Semi Condensed',
+                                                fontSize: 10.0,
+                                              ),
+                                        ),
+                                      ),
+                                      Text(
+                                        'Счет',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .override(
+                                              fontFamily:
+                                                  'Saira Semi Condensed',
+                                              fontSize: 10.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 5.0),
-                                child: Row(
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 5.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
+                                          child: Image.network(
+                                            round1Item.rival1Logo.first,
+                                            width: 22.0,
+                                            height: 22.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '[${round1Item.rival1Tag.first}]',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Saira Semi Condensed',
+                                                        lineHeight: 0.8,
+                                                      ),
+                                            ),
+                                            Text(
+                                              round1Item.rival1Name.first,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Saira Semi Condensed',
+                                                        lineHeight: 0.8,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              '${round1Item.riva1Wins.toString()}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
@@ -135,7 +212,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                         borderRadius:
                                             BorderRadius.circular(3.0),
                                         child: Image.network(
-                                          round1Item.rival1Logo.first,
+                                          round1Item.rival2Logo.first,
                                           width: 22.0,
                                           height: 22.0,
                                           fit: BoxFit.cover,
@@ -149,7 +226,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '[SDW]',
+                                            '[${round1Item.rival2Tag.first}]',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -159,7 +236,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                                 ),
                                           ),
                                           Text(
-                                            'Some team name',
+                                            round1Item.rival1Name.first,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -183,7 +260,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 10.0, 0.0),
                                           child: Text(
-                                            '2',
+                                            '${round1Item.rival2Name.first}',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleSmall,
                                           ),
@@ -192,81 +269,17 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                     ),
                                   ],
                                 ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 5.0, 0.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(3.0),
-                                      child: Image.network(
-                                        round1Item.rival2Logo.first,
-                                        width: 22.0,
-                                        height: 22.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '[SDW]',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily:
-                                                    'Saira Semi Condensed',
-                                                lineHeight: 0.8,
-                                              ),
-                                        ),
-                                        Text(
-                                          'Some team name',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily:
-                                                    'Saira Semi Condensed',
-                                                lineHeight: 0.8,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
-                                        child: Text(
-                                          '5',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleSmall,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  );
-                },
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ),
-          ],
+          ].divide(SizedBox(width: 10.0)),
         ),
       ),
     );
