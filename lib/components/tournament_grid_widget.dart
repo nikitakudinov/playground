@@ -330,7 +330,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                             final round2Item = round2[round2Index];
                             return Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 105.0),
+                                  0.0, 0.0, 0.0, 135.0),
                               child: Container(
                                 height: 120.0,
                                 decoration: BoxDecoration(
