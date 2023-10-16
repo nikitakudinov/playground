@@ -298,12 +298,12 @@ Future creatTournamentMatchGrid16(
   BuildContext context, {
   int? tournamentId,
 }) async {
-  ApiCallResponse? apiResultjxv;
-  ApiCallResponse? apiResultjxv;
-  ApiCallResponse? apiResultjxv;
-  ApiCallResponse? apiResultjxv;
+  ApiCallResponse? match1;
+  ApiCallResponse? match2;
+  ApiCallResponse? match3;
+  ApiCallResponse? match4;
 
-  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+  match1 = await CreatdataGroup.creatmatchCall.call(
     status: 'Добавлен в сетку',
     createdAt: getCurrentTimestamp.toString(),
     updatedAt: getCurrentTimestamp.toString(),
@@ -313,7 +313,7 @@ Future creatTournamentMatchGrid16(
     rival1Name: 'Не определен',
     rival2Name: 'Не определен',
   );
-  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+  match2 = await CreatdataGroup.creatmatchCall.call(
     status: 'Добавлен в сетку',
     createdAt: getCurrentTimestamp.toString(),
     updatedAt: getCurrentTimestamp.toString(),
@@ -323,7 +323,7 @@ Future creatTournamentMatchGrid16(
     rival1Name: 'Не определен',
     rival2Name: 'Не определен',
   );
-  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+  match3 = await CreatdataGroup.creatmatchCall.call(
     status: 'Добавлен в сетку',
     createdAt: getCurrentTimestamp.toString(),
     updatedAt: getCurrentTimestamp.toString(),
@@ -333,7 +333,7 @@ Future creatTournamentMatchGrid16(
     rival1Name: 'Не определен',
     rival2Name: 'Не определен',
   );
-  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+  match4 = await CreatdataGroup.creatmatchCall.call(
     status: 'Добавлен в сетку',
     createdAt: getCurrentTimestamp.toString(),
     updatedAt: getCurrentTimestamp.toString(),
