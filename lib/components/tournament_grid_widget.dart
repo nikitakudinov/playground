@@ -202,7 +202,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(3.0),
                                       child: Image.network(
-                                        'https://picsum.photos/seed/171/600',
+                                        round1Item.rival2Logo[0],
                                         width: 22.0,
                                         height: 22.0,
                                         fit: BoxFit.cover,
