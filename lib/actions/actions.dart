@@ -251,8 +251,6 @@ Future loadMatches(
     contentType: 'Match',
     field1: 'TournamentId',
     field2: tournamentId?.toString(),
-    fields:
-        'Id,Status,CreatedAt,UpdatedAt,Pair,Riva1Wins,Rival2Wins,Round,TournamentId,Rival1Logo,Rival1Tag,Rival1Name,Rival1Country,Rival1Flag,Rival2Logo,Rival2Tag,Rival2Name,Rival2Country,Rival2Flag',
   );
   if ((apiResulta4h?.succeeded ?? true)) {
     await showDialog(

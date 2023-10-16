@@ -147,7 +147,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                           borderRadius:
                                               BorderRadius.circular(3.0),
                                           child: Image.network(
-                                            round1Item.rival1Logo.first,
+                                            round1Item.rival1Logo,
                                             width: 30.0,
                                             height: 30.0,
                                             fit: BoxFit.cover,
@@ -161,13 +161,13 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '[${round1Item.rival1Tag.first}]',
+                                              '[${round1Item.rival1Tag}]',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge,
                                             ),
                                             Text(
-                                              round1Item.rival1Name.first,
+                                              round1Item.rival1Name,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -213,7 +213,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                         borderRadius:
                                             BorderRadius.circular(3.0),
                                         child: Image.network(
-                                          round1Item.rival2Logo.first,
+                                          round1Item.rival2Logo,
                                           width: 30.0,
                                           height: 30.0,
                                           fit: BoxFit.cover,
@@ -227,12 +227,12 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '[${round1Item.rival2Tag.first}]',
+                                            '[${round1Item.rival2Tag}]',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge,
                                           ),
                                           Text(
-                                            round1Item.rival2Name.first,
+                                            round1Item.rival2Name,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
