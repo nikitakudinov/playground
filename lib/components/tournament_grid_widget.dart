@@ -163,12 +163,14 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              '[${round1Item.rival1Tag}]',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
-                                            ),
+                                            if (round1Item.rival1Tag != null &&
+                                                round1Item.rival1Tag != '')
+                                              Text(
+                                                '[${round1Item.rival1Tag}]',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge,
+                                              ),
                                             Text(
                                               round1Item.rival1Name,
                                               style:
@@ -209,8 +211,8 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    if (round1Item.rival2Logo == null ||
-                                        round1Item.rival2Logo == '')
+                                    if (round1Item.rival2Logo != null &&
+                                        round1Item.rival2Logo != '')
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 5.0, 0.0),
@@ -231,11 +233,13 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            '[${round1Item.rival2Tag}]',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyLarge,
-                                          ),
+                                          if (round1Item.rival2Tag == '')
+                                            Text(
+                                              '[${round1Item.rival2Tag}]',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge,
+                                            ),
                                           Text(
                                             round1Item.rival2Name,
                                             style: FlutterFlowTheme.of(context)
