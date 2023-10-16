@@ -20,6 +20,7 @@ class MatchStruct extends FFFirebaseStruct {
     int? round,
     int? tournamentId,
     int? matchWinnerID,
+    List<String>? rival1Logo,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _status = status,
@@ -31,6 +32,7 @@ class MatchStruct extends FFFirebaseStruct {
         _round = round,
         _tournamentId = tournamentId,
         _matchWinnerID = matchWinnerID,
+        _rival1Logo = rival1Logo,
         super(firestoreUtilData);
 
   // "Id" field.
@@ -102,6 +104,14 @@ class MatchStruct extends FFFirebaseStruct {
       _matchWinnerID = matchWinnerID + amount;
   bool hasMatchWinnerID() => _matchWinnerID != null;
 
+  // "Rival1Logo" field.
+  List<String>? _rival1Logo;
+  List<String> get rival1Logo => _rival1Logo ?? const [];
+  set rival1Logo(List<String>? val) => _rival1Logo = val;
+  void updateRival1Logo(Function(List<String>) updateFn) =>
+      updateFn(_rival1Logo ??= []);
+  bool hasRival1Logo() => _rival1Logo != null;
+
   static MatchStruct fromMap(Map<String, dynamic> data) => MatchStruct(
         id: castToType<int>(data['Id']),
         status: data['Status'] as String?,
@@ -113,6 +123,7 @@ class MatchStruct extends FFFirebaseStruct {
         round: castToType<int>(data['Round']),
         tournamentId: castToType<int>(data['TournamentId']),
         matchWinnerID: castToType<int>(data['MatchWinnerID']),
+        rival1Logo: getDataList(data['Rival1Logo']),
       );
 
   static MatchStruct? maybeFromMap(dynamic data) =>
@@ -129,6 +140,7 @@ class MatchStruct extends FFFirebaseStruct {
         'Round': _round,
         'TournamentId': _tournamentId,
         'MatchWinnerID': _matchWinnerID,
+        'Rival1Logo': _rival1Logo,
       }.withoutNulls;
 
   @override
@@ -172,6 +184,11 @@ class MatchStruct extends FFFirebaseStruct {
         'MatchWinnerID': serializeParam(
           _matchWinnerID,
           ParamType.int,
+        ),
+        'Rival1Logo': serializeParam(
+          _rival1Logo,
+          ParamType.String,
+          true,
         ),
       }.withoutNulls;
 
@@ -227,6 +244,11 @@ class MatchStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        rival1Logo: deserializeParam<String>(
+          data['Rival1Logo'],
+          ParamType.String,
+          true,
+        ),
       );
 
   @override
@@ -234,6 +256,7 @@ class MatchStruct extends FFFirebaseStruct {
 
   @override
   bool operator ==(Object other) {
+    const listEquality = ListEquality();
     return other is MatchStruct &&
         id == other.id &&
         status == other.status &&
@@ -244,7 +267,8 @@ class MatchStruct extends FFFirebaseStruct {
         rival2Wins == other.rival2Wins &&
         round == other.round &&
         tournamentId == other.tournamentId &&
-        matchWinnerID == other.matchWinnerID;
+        matchWinnerID == other.matchWinnerID &&
+        listEquality.equals(rival1Logo, other.rival1Logo);
   }
 
   @override
@@ -258,7 +282,8 @@ class MatchStruct extends FFFirebaseStruct {
         rival2Wins,
         round,
         tournamentId,
-        matchWinnerID
+        matchWinnerID,
+        rival1Logo
       ]);
 }
 
