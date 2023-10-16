@@ -140,20 +140,23 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 5.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(3.0),
-                                          child: Image.network(
-                                            round1Item.rival1Logo,
-                                            width: 30.0,
-                                            height: 30.0,
-                                            fit: BoxFit.cover,
+                                      if (round1Item.rival1Logo != null &&
+                                          round1Item.rival1Logo != '')
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 5.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(3.0),
+                                            child: Image.network(
+                                              round1Item.rival1Logo,
+                                              width: 30.0,
+                                              height: 30.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                      ),
                                       Expanded(
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -206,20 +209,22 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 5.0, 0.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(3.0),
-                                        child: Image.network(
-                                          round1Item.rival2Logo,
-                                          width: 30.0,
-                                          height: 30.0,
-                                          fit: BoxFit.cover,
+                                    if (round1Item.rival2Logo == null ||
+                                        round1Item.rival2Logo == '')
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 5.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(3.0),
+                                          child: Image.network(
+                                            round1Item.rival2Logo,
+                                            width: 30.0,
+                                            height: 30.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
-                                    ),
                                     Expanded(
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
