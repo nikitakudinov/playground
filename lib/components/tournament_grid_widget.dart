@@ -158,12 +158,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               '[${round1Item.rival1Tag.first}]',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Saira Semi Condensed',
-                                                        lineHeight: 0.8,
-                                                      ),
+                                                      .bodyLarge,
                                             ),
                                             Text(
                                               round1Item.rival1Name.first,
@@ -238,7 +233,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                           Text(
                                             round1Item.rival2Name.first,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   fontFamily:
                                                       'Saira Semi Condensed',
