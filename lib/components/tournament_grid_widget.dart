@@ -260,7 +260,11 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    '[SS] Supper Suka',
+                                                    '[${getJsonField(
+                                                      rowLetationslistResponse
+                                                          .jsonBody,
+                                                      r'''$.list[:].Tag''',
+                                                    ).toString()}]',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium,
