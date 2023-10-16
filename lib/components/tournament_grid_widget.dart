@@ -57,52 +57,41 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                 child: Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                  child: Builder(
-                    builder: (context) {
-                      final round1 = FFAppState()
-                          .matches
-                          .where((e) => e.round == 1)
-                          .toList();
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: round1.length,
-                        itemBuilder: (context, round1Index) {
-                          final round1Item = round1[round1Index];
-                          return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 5.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).tertiary,
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: Column(
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(3.0),
-                                        child: Image.network(
-                                          round1Item.rival1Logo.first,
-                                          width: 30.0,
-                                          height: 30.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ],
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(3.0),
+                                    child: Image.network(
+                                      'https://picsum.photos/seed/20/600',
+                                      width: 30.0,
+                                      height: 30.0,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          );
-                        },
-                      );
-                    },
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
