@@ -233,7 +233,8 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          if (round1Item.rival2Tag == '')
+                                          if (round1Item.rival2Tag != null &&
+                                              round1Item.rival2Tag != '')
                                             Text(
                                               '[${round1Item.rival2Tag}]',
                                               style:
