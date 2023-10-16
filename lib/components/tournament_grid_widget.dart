@@ -158,7 +158,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               '[${round1Item.rival1Tag.first}]',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodySmall
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Saira Semi Condensed',
@@ -169,7 +169,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                               round1Item.rival1Name.first,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodySmall
+                                                      .bodyMedium
                                                       .override(
                                                         fontFamily:
                                                             'Saira Semi Condensed',
@@ -228,7 +228,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                           Text(
                                             '[${round1Item.rival2Tag.first}]',
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall
+                                                .bodyLarge
                                                 .override(
                                                   fontFamily:
                                                       'Saira Semi Condensed',
@@ -238,7 +238,7 @@ class _TournamentGridWidgetState extends State<TournamentGridWidget> {
                                           Text(
                                             round1Item.rival2Name.first,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodySmall
+                                                .bodyLarge
                                                 .override(
                                                   fontFamily:
                                                       'Saira Semi Condensed',
