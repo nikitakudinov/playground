@@ -293,3 +293,54 @@ Future loadMatches(
     );
   }
 }
+
+Future creatTournamentMatchGrid16(
+  BuildContext context, {
+  int? tournamentId,
+}) async {
+  ApiCallResponse? apiResultjxv;
+  ApiCallResponse? apiResultjxv;
+  ApiCallResponse? apiResultjxv;
+  ApiCallResponse? apiResultjxv;
+
+  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+    status: 'Добавлен в сетку',
+    createdAt: getCurrentTimestamp.toString(),
+    updatedAt: getCurrentTimestamp.toString(),
+    round: 1,
+    pair: 1,
+    tournamentId: tournamentId,
+    rival1Name: 'Не определен',
+    rival2Name: 'Не определен',
+  );
+  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+    status: 'Добавлен в сетку',
+    createdAt: getCurrentTimestamp.toString(),
+    updatedAt: getCurrentTimestamp.toString(),
+    round: 1,
+    pair: 2,
+    tournamentId: tournamentId,
+    rival1Name: 'Не определен',
+    rival2Name: 'Не определен',
+  );
+  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+    status: 'Добавлен в сетку',
+    createdAt: getCurrentTimestamp.toString(),
+    updatedAt: getCurrentTimestamp.toString(),
+    round: 1,
+    pair: 3,
+    tournamentId: tournamentId,
+    rival1Name: 'Не определен',
+    rival2Name: 'Не определен',
+  );
+  apiResultjxv = await CreatdataGroup.creatmatchCall.call(
+    status: 'Добавлен в сетку',
+    createdAt: getCurrentTimestamp.toString(),
+    updatedAt: getCurrentTimestamp.toString(),
+    round: 1,
+    pair: 4,
+    tournamentId: tournamentId,
+    rival1Name: 'Не определен',
+    rival2Name: 'Не определен',
+  );
+}

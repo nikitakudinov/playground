@@ -92,8 +92,11 @@ class _ViewTournamentWidgetState extends State<ViewTournamentWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
-                onPressed: () {
-                  print('IconButton pressed ...');
+                onPressed: () async {
+                  await action_blocks.creatTournamentMatchGrid16(
+                    context,
+                    tournamentId: widget.tournamentId,
+                  );
                 },
               ),
             ),
