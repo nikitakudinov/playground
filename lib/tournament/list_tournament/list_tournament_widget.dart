@@ -134,6 +134,17 @@ class _ListTournamentWidgetState extends State<ListTournamentWidget> {
                                       }.withoutNulls,
                                     );
                                   },
+                                  onLongPress: () async {
+                                    context.pushNamed(
+                                      'EDITE_TOURNAMENT',
+                                      queryParameters: {
+                                        'tournamentId': serializeParam(
+                                          tournamentsListItem.id,
+                                          ParamType.int,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
