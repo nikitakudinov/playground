@@ -272,6 +272,7 @@ class CreatrequestCall {
     int? creatorId,
     int? fromTeamId,
     int? toUserId,
+    int? fromTournamentId,
   }) {
     final ffApiRequestBody = '''
 {
@@ -279,6 +280,7 @@ class CreatrequestCall {
   "CreatedAt": "${createdAt}",
   "UpdatedAt": "${updatedAt}",
   "FromTeamId": ${fromTeamId},
+  "FromTournamentId": ${fromTournamentId},
   "ToUserId": ${toUserId},
   "CreatorId": ${creatorId}
 }''';

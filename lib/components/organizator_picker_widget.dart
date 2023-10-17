@@ -151,7 +151,7 @@ class _OrganizatorPickerWidgetState extends State<OrganizatorPickerWidget> {
                                         clipBehavior: Clip.none,
                                         children: [
                                           Text(
-                                            'Исключить игрока из состава команды?',
+                                            'Отправить пользователю приглашение вступить в команду организаторов турнира.',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium,
                                           ),
@@ -267,58 +267,27 @@ class _OrganizatorPickerWidgetState extends State<OrganizatorPickerWidget> {
                                     Expanded(
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          _model.apiResultvoz =
-                                              await RelationGroup.removeCall
+                                          _model.apiResultkll =
+                                              await CreatdataGroup
+                                                  .creatrequestCall
                                                   .call(
-                                            contentType: 'Team',
-                                            contentId: widget.docId,
-                                            retionField: 'MembersCount',
-                                            relationId:
-                                                _model.selectedUserIdINT,
+                                            type:
+                                                'Приглашение в команду организаторов',
+                                            createdAt:
+                                                getCurrentTimestamp.toString(),
+                                            updatedAt:
+                                                getCurrentTimestamp.toString(),
+                                            creatorId: FFAppState()
+                                                .AuthenticatedUser
+                                                .id,
+                                            toUserId:
+                                                _model.searchedUser.first.id,
+                                            fromTournamentId: widget.docId,
                                           );
-                                          if ((_model.apiResultvoz?.succeeded ??
-                                              true)) {
-                                            await UpdatedataGroup.userteamCall
-                                                .call(
-                                              contentType: 'User',
-                                              tag: 'false',
-                                              teamRole: 'Вне команды',
-                                              updatedAt: getCurrentTimestamp
-                                                  .toString(),
-                                              contentId:
-                                                  _model.selectedUserIdINT,
-                                              lineUp: 'false',
-                                            );
-                                            setState(() {
-                                              FFAppState()
-                                                  .removeAtIndexFromTeamMembers(
-                                                      _model.selectedIndex!);
-                                            });
-                                            _model.apiResult287 =
-                                                await CreatdataGroup
-                                                    .creatrequestCall
-                                                    .call(
-                                              type: 'Исключение из команды',
-                                              createdAt: getCurrentTimestamp
-                                                  .toString(),
-                                              updatedAt: getCurrentTimestamp
-                                                  .toString(),
-                                              creatorId: FFAppState()
-                                                  .AuthenticatedUser
-                                                  .id,
-                                              fromTeamId: widget.docId,
-                                              toUserId:
-                                                  _model.selectedUserIdINT,
-                                            );
-                                            if ((_model
-                                                    .apiResult287?.succeeded ??
-                                                true)) {
-                                              setState(() {
-                                                _model.deliteMemberMessageVISIBILITY =
-                                                    false;
-                                              });
-                                            }
-                                          }
+                                          setState(() {
+                                            _model.deliteMemberMessageVISIBILITY =
+                                                false;
+                                          });
 
                                           setState(() {});
                                         },

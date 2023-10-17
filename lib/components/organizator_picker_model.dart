@@ -62,10 +62,8 @@ class OrganizatorPickerModel extends FlutterFlowModel<OrganizatorPickerWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - API (REMOVE)] action in Button widget.
-  ApiCallResponse? apiResultvoz;
   // Stores action output result for [Backend Call - API (CREATREQUEST)] action in Button widget.
-  ApiCallResponse? apiResult287;
+  ApiCallResponse? apiResultkll;
   // State field(s) for TextField widget.
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
