@@ -1,12 +1,9 @@
-import '/backend/api_requests/api_calls.dart';
-import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,26 +26,6 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ListTeamModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.jsonTeamsList = await GetdataGroup.datalistCall.call(
-        contentType: 'Team',
-        fields: 'Id,Name,CreatedAt,UpdatedAt,Tag,Logo,Country,Flag',
-      );
-      if ((_model.jsonTeamsList?.succeeded ?? true)) {
-        _model.aaa = await actions.jsonToDataTypeTeam(
-          getJsonField(
-            (_model.jsonTeamsList?.jsonBody ?? ''),
-            r'''$.list''',
-            true,
-          ),
-        );
-        setState(() {
-          FFAppState().teams = _model.aaa!.toList().cast<TeamStruct>();
-        });
-      }
-    });
   }
 
   @override
@@ -108,17 +85,34 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Builder(
-                  builder: (context) {
-                    final teamsList = FFAppState().teams.toList();
+                FutureBuilder<List<TeamRow>>(
+                  future: TeamTable().queryRows(
+                    queryFn: (q) => q,
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitChasingDots(
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 50.0,
+                          ),
+                        ),
+                      );
+                    }
+                    List<TeamRow> listViewTeamRowList = snapshot.data!;
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: teamsList.length,
-                      itemBuilder: (context, teamsListIndex) {
-                        final teamsListItem = teamsList[teamsListIndex];
+                      itemCount: listViewTeamRowList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewTeamRow =
+                            listViewTeamRowList[listViewIndex];
                         return Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,27 +135,27 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                       'VIEW_TEAM',
                                       queryParameters: {
                                         'teamID': serializeParam(
-                                          teamsListItem.id,
+                                          listViewTeamRow.id,
                                           ParamType.int,
                                         ),
                                         'name': serializeParam(
-                                          teamsListItem.name,
+                                          listViewTeamRow.name,
                                           ParamType.String,
                                         ),
                                         'tag': serializeParam(
-                                          teamsListItem.tag,
+                                          listViewTeamRow.tag,
                                           ParamType.String,
                                         ),
                                         'logo': serializeParam(
-                                          teamsListItem.logo,
+                                          listViewTeamRow.logo,
                                           ParamType.String,
                                         ),
                                         'flag': serializeParam(
-                                          teamsListItem.flag,
+                                          listViewTeamRow.flag,
                                           ParamType.String,
                                         ),
                                         'country': serializeParam(
-                                          teamsListItem.country,
+                                          listViewTeamRow.country,
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,
@@ -172,27 +166,27 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                       'EDITE_TEAM',
                                       queryParameters: {
                                         'name': serializeParam(
-                                          teamsListItem.name,
+                                          listViewTeamRow.name,
                                           ParamType.String,
                                         ),
                                         'logo': serializeParam(
-                                          teamsListItem.logo,
+                                          listViewTeamRow.logo,
                                           ParamType.String,
                                         ),
                                         'id': serializeParam(
-                                          teamsListItem.id,
+                                          listViewTeamRow.id,
                                           ParamType.int,
                                         ),
                                         'tag': serializeParam(
-                                          teamsListItem.tag,
+                                          listViewTeamRow.tag,
                                           ParamType.String,
                                         ),
                                         'country': serializeParam(
-                                          teamsListItem.country,
+                                          listViewTeamRow.country,
                                           ParamType.String,
                                         ),
                                         'flag': serializeParam(
-                                          teamsListItem.flag,
+                                          listViewTeamRow.flag,
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,
@@ -208,7 +202,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                           borderRadius:
                                               BorderRadius.circular(3.0),
                                           child: Image.network(
-                                            teamsListItem.logo,
+                                            listViewTeamRow.logo!,
                                             width: 50.0,
                                             height: 50.0,
                                             fit: BoxFit.cover,
@@ -221,7 +215,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '[${teamsListItem.tag}] ${teamsListItem.name}',
+                                            '[${listViewTeamRow.tag}] ${listViewTeamRow.name}',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium,
                                           ),
@@ -232,7 +226,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(2.0),
                                                 child: Image.network(
-                                                  teamsListItem.flag,
+                                                  listViewTeamRow.flag!,
                                                   width: 24.0,
                                                   height: 16.0,
                                                   fit: BoxFit.cover,
@@ -243,7 +237,7 @@ class _ListTeamWidgetState extends State<ListTeamWidget> {
                                                     .fromSTEB(
                                                         5.0, 0.0, 0.0, 0.0),
                                                 child: Text(
-                                                  teamsListItem.country,
+                                                  listViewTeamRow.country!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelMedium,
