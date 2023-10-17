@@ -433,6 +433,7 @@ class _OrganizatorPickerWidgetState extends State<OrganizatorPickerWidget> {
                                     .toList()
                                     .cast<UserStruct>();
                                 _model.searchVISIBILITY = false;
+                                _model.deliteMemberMessageVISIBILITY = true;
                               });
                             }
 
