@@ -1,7 +1,7 @@
-import '/auth/firebase_auth/auth_util.dart';
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -147,10 +147,6 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
                                           size: 24.0,
                                         ),
                                         onPressed: () async {
-                                          await FirebaseStorage.instance
-                                              .refFromURL(
-                                                  _model.uploadedFileUrl)
-                                              .delete();
                                           setState(() {
                                             _model.isDataUploading = false;
                                             _model.uploadedLocalFile =
@@ -174,6 +170,7 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   final selectedMedia = await selectMedia(
+                                    storageFolderPath: 'logo',
                                     maxWidth: 150.00,
                                     maxHeight: 150.00,
                                     mediaSource: MediaSource.photoGallery,
@@ -202,15 +199,11 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
                                               ))
                                           .toList();
 
-                                      downloadUrls = (await Future.wait(
-                                        selectedMedia.map(
-                                          (m) async => await uploadData(
-                                              m.storagePath, m.bytes),
-                                        ),
-                                      ))
-                                          .where((u) => u != null)
-                                          .map((u) => u!)
-                                          .toList();
+                                      downloadUrls =
+                                          await uploadSupabaseStorageFiles(
+                                        bucketName: currentUserEmail,
+                                        selectedFiles: selectedMedia,
+                                      );
                                     } finally {
                                       _model.isDataUploading = false;
                                     }
@@ -374,7 +367,6 @@ class _AddUserinfoWidgetState extends State<AddUserinfoWidget> {
                                                 getCurrentTimestamp.toString(),
                                             updatedAt:
                                                 getCurrentTimestamp.toString(),
-                                            fBUserId: currentUserUid,
                                             country: _model.countryPickerModel
                                                 .selectedName,
                                             flag: _model.countryPickerModel

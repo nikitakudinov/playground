@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/api_requests/api_manager.dart';
 import '/backend/backend.dart';
@@ -9,60 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 
-Future updateAppStateAuthUser(BuildContext context) async {
-  ApiCallResponse? apiResultnzr;
-
-  apiResultnzr = await GetdataGroup.datalistCall.call(
-    contentType: 'User',
-    fields:
-        'Id,Nickname,CreatedAt,UpdatedAt,Tag,Country,Flag,FBUserId,Avatar,TeamRole,LineUp',
-    field1: 'FBUserId',
-    field2: currentUserUid,
-  );
-  if ((apiResultnzr?.succeeded ?? true)) {
-    FFAppState().update(() {
-      FFAppState().updateAuthenticatedUserStruct(
-        (e) => e
-          ..id = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].Id''',
-          )
-          ..nickname = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].Nickname''',
-          ).toString().toString()
-          ..fBUserId = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].FBUserId''',
-          ).toString().toString()
-          ..tag = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].Tag''',
-          ).toString().toString()
-          ..teamRole = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].TeamRole''',
-          ).toString().toString()
-          ..lineUp = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].LineUp''',
-          ).toString().toString()
-          ..avatar = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].Avatar''',
-          )
-          ..country = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].Country''',
-          ).toString().toString()
-          ..flag = getJsonField(
-            (apiResultnzr?.jsonBody ?? ''),
-            r'''$.list[:].Flag''',
-          ),
-      );
-    });
-  }
-}
+Future updateAppStateAuthUser(BuildContext context) async {}
 
 Future loadCountriesToAppState(BuildContext context) async {
   ApiCallResponse? jsonCountryList;

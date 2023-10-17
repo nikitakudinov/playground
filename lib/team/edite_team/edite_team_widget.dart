@@ -1,6 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/components/user_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -174,9 +174,6 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    await FirebaseStorage.instance
-                                        .refFromURL(_model.imagePath!)
-                                        .delete();
                                     setState(() {
                                       _model.imagePath =
                                           'https://firebasestorage.googleapis.com/v0/b/nocode-80c8e.appspot.com/o/placeholders%2Fimage-7XR1sw6U%20-%20transformed%20(1).png?alt=media&token=671e5180-78fc-4e79-b537-358e63243c72&_gl=1*fdj3w2*_ga*MTcwNzE5NTQ0MS4xNjkzNDE5OTky*_ga_CW55HF8NVT*MTY5NjA1NDc3NS42Ny4xLjE2OTYwNTQ3OTIuNDMuMC4w';
@@ -202,6 +199,7 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                         child: FFButtonWidget(
                           onPressed: () async {
                             final selectedMedia = await selectMedia(
+                              storageFolderPath: 'logo',
                               maxWidth: 150.00,
                               maxHeight: 150.00,
                               mediaSource: MediaSource.photoGallery,
@@ -225,15 +223,10 @@ class _EditeTeamWidgetState extends State<EditeTeamWidget> {
                                         ))
                                     .toList();
 
-                                downloadUrls = (await Future.wait(
-                                  selectedMedia.map(
-                                    (m) async => await uploadData(
-                                        m.storagePath, m.bytes),
-                                  ),
-                                ))
-                                    .where((u) => u != null)
-                                    .map((u) => u!)
-                                    .toList();
+                                downloadUrls = await uploadSupabaseStorageFiles(
+                                  bucketName: widget.name!,
+                                  selectedFiles: selectedMedia,
+                                );
                               } finally {
                                 _model.isDataUploading = false;
                               }

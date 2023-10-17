@@ -1,4 +1,5 @@
-import '/backend/firebase_storage/storage.dart';
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/country_picker/country_picker_widget.dart';
 import '/components/organizator_picker_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
